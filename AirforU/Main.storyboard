@@ -598,6 +598,25 @@ If you wish to ask questions about your rights as a research participant or if y
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UCLA Health Cell" id="wAC-DV-gxD">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wAC-DV-gxD" id="GqO-zx-EJY">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UCLA_HealthSystem_RGB.png" translatesAutoresizingMaskIntoConstraints="NO" id="RaL-E0-V91">
+                                            <rect key="frame" x="37" y="5" width="162" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="162" id="Gkv-Vg-xga"/>
+                                                <constraint firstAttribute="height" constant="34" id="Lt0-e7-n0I"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="RaL-E0-V91" firstAttribute="top" secondItem="GqO-zx-EJY" secondAttribute="topMargin" constant="-3" id="982-Wk-lcv"/>
+                                        <constraint firstItem="RaL-E0-V91" firstAttribute="leading" secondItem="GqO-zx-EJY" secondAttribute="leadingMargin" constant="29" id="PfS-mO-712"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -1949,6 +1968,7 @@ If you have any questions, comments or concerns about the research, you can talk
         <image name="Prize-Icon.png" width="30" height="30"/>
         <image name="Toxic-Icon.png" width="30" height="30"/>
         <image name="UCLAHealth-Icon.png" width="30" height="30"/>
+        <image name="UCLA_HealthSystem_RGB.png" width="1800" height="378"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wZC-4p-ywj"/>

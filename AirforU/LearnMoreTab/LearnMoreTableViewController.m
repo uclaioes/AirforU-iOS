@@ -23,6 +23,7 @@
 #define CELL_IDENTIFIER_ORDINARY @"Ordinary Cell"
 #define CELL_IDENTIFIER_FAQ_CELL @"FAQ Cell"
 #define CELL_IDENTIFIER_FAQ_ANSWER_CELL @"FAQ Answer Cell"
+#define CELL_IDENTIFIER_UCLA_HEALTH @"UCLA Health Cell"
 
 #pragma mark - View Controller Life Cycle
 
@@ -125,10 +126,10 @@
                 }
                 case 4:
                 {
-                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_ORDINARY];
-                    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(37.0, 9.4, 120.0, 25.2)];
-                    img.image = [UIImage imageNamed:@"UCLA_HealthSystem_RGB.png"];
-                    [cell.contentView addSubview:img];
+                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_UCLA_HEALTH];
+//                    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(37.0, 9.4, 120.0, 25.2)];
+//                    img.image = [UIImage imageNamed:@"UCLA_HealthSystem_RGB.png"];
+//                    [cell.contentView addSubview:img];
                     break;
                 }
                     
@@ -300,7 +301,7 @@
     
     if (indexPath.section == 2 && indexPath.row == 0)
         return 56.0;
-    if (indexPath.section >= 4 && indexPath.section <= 10 && indexPath.row == 1)
+     else if (indexPath.section >= 4 && indexPath.section <= 10 && indexPath.row == 1)
         return 160.0;
     
     return 44.0;
@@ -310,8 +311,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Show Web View"])
-    {
+    if ([segue.identifier isEqualToString:@"Show Web View"]) {
         NSString *title = ((UITableViewCell *)sender).textLabel.text;
         NSString *urlString = @"";
         if ([title containsString:@"Environmental Protection Agency"]) {
@@ -321,7 +321,6 @@
         } else if ([title containsString:@"American Lung Association"]) {
             urlString = @"http://www.lung.org/healthy-air/";
         }
-        
         ((LearnMoreWebViewController *)segue.destinationViewController).nameOfWeb = title;
         ((LearnMoreWebViewController *)segue.destinationViewController).urlString = urlString;
     }
