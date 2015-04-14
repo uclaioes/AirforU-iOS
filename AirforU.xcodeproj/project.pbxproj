@@ -8,12 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		B4544ABC1ADC999D0023AB13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544ABB1ADC999D0023AB13 /* main.m */; };
-		B4544ABF1ADC999D0023AB13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544ABE1ADC999D0023AB13 /* AppDelegate.m */; };
-		B4544AC21ADC999D0023AB13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544AC11ADC999D0023AB13 /* ViewController.m */; };
-		B4544AC51ADC999D0023AB13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4544AC31ADC999D0023AB13 /* Main.storyboard */; };
-		B4544AC71ADC999D0023AB13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4544AC61ADC999D0023AB13 /* Images.xcassets */; };
-		B4544ACA1ADC999D0023AB13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4544AC81ADC999D0023AB13 /* LaunchScreen.xib */; };
 		B4544AD61ADC999D0023AB13 /* AirforUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544AD51ADC999D0023AB13 /* AirforUTests.m */; };
+		B4544AFB1ADC9A110023AB13 /* Cloud-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AE81ADC9A110023AB13 /* Cloud-Icon@2x.png */; };
+		B4544AFD1ADC9A110023AB13 /* Health-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AEA1ADC9A110023AB13 /* Health-Icon@2x.png */; };
+		B4544AFF1ADC9A110023AB13 /* Prize-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AEC1ADC9A110023AB13 /* Prize-Icon@2x.png */; };
+		B4544B011ADC9A110023AB13 /* Toxic-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AEE1ADC9A110023AB13 /* Toxic-Icon@2x.png */; };
+		B4544B031ADC9A110023AB13 /* UCLAHealth-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AF01ADC9A110023AB13 /* UCLAHealth-Icon@2x.png */; };
+		B4544B041ADC9A110023AB13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4544AF11ADC9A110023AB13 /* Images.xcassets */; };
+		B4544B051ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AF21ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png */; };
+		B4544B061ADC9A110023AB13 /* UGraphic_RGB.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B4544AF31ADC9A110023AB13 /* UGraphic_RGB.jpg */; };
+		B4544B3C1ADC9A280023AB13 /* AirNowAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B091ADC9A270023AB13 /* AirNowAPI.m */; };
+		B4544B3D1ADC9A280023AB13 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B0C1ADC9A270023AB13 /* Location.m */; };
+		B4544B3E1ADC9A280023AB13 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B0F1ADC9A270023AB13 /* PageContentViewController.m */; };
+		B4544B3F1ADC9A280023AB13 /* RandomSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B111ADC9A270023AB13 /* RandomSurveyViewController.m */; };
+		B4544B401ADC9A280023AB13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B131ADC9A270023AB13 /* ViewController.m */; };
+		B4544B411ADC9A280023AB13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B151ADC9A270023AB13 /* AppDelegate.m */; };
+		B4544B421ADC9A280023AB13 /* BackgroundTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B181ADC9A270023AB13 /* BackgroundTableViewController.m */; };
+		B4544B431ADC9A280023AB13 /* BackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B1A1ADC9A270023AB13 /* BackgroundViewController.m */; };
+		B4544B441ADC9A280023AB13 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4544B261ADC9A270023AB13 /* libGoogleAnalyticsServices.a */; };
+		B4544B451ADC9A280023AB13 /* HealthInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B291ADC9A270023AB13 /* HealthInfoTableViewController.m */; };
+		B4544B461ADC9A280023AB13 /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B2C1ADC9A270023AB13 /* InfoTableViewController.m */; };
+		B4544B471ADC9A280023AB13 /* LicenseAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B2E1ADC9A270023AB13 /* LicenseAgreementViewController.m */; };
+		B4544B481ADC9A280023AB13 /* QuestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B301ADC9A270023AB13 /* QuestionTableViewController.m */; };
+		B4544B491ADC9A280023AB13 /* SpecifyOtherQuestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B321ADC9A270023AB13 /* SpecifyOtherQuestionTableViewController.m */; };
+		B4544B4A1ADC9A280023AB13 /* LearnMoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B351ADC9A270023AB13 /* LearnMoreTableViewController.m */; };
+		B4544B4B1ADC9A280023AB13 /* LearnMoreWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B371ADC9A280023AB13 /* LearnMoreWebViewController.m */; };
+		B4544B4C1ADC9A280023AB13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4544B381ADC9A280023AB13 /* Main.storyboard */; };
+		B4544B4D1ADC9A280023AB13 /* ToxicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B3B1ADC9A280023AB13 /* ToxicsViewController.m */; };
+		B4544B501ADC9A980023AB13 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4544B4F1ADC9A980023AB13 /* CoreData.framework */; };
+		B4544B521ADC9AA10023AB13 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4544B511ADC9AA10023AB13 /* SystemConfiguration.framework */; };
+		B4544B541ADC9AA70023AB13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B4544B531ADC9AA70023AB13 /* libz.dylib */; };
+		B4544B561ADC9AB20023AB13 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B4544B551ADC9AB20023AB13 /* libsqlite3.dylib */; };
+		B4544B6B1ADC9EB80023AB13 /* good_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B651ADC9EB80023AB13 /* good_background.png */; };
+		B4544B6C1ADC9EB80023AB13 /* hazardous_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B661ADC9EB80023AB13 /* hazardous_background.png */; };
+		B4544B6D1ADC9EB80023AB13 /* moderate_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B671ADC9EB80023AB13 /* moderate_background.png */; };
+		B4544B6E1ADC9EB80023AB13 /* sensitive_backgroung.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B681ADC9EB80023AB13 /* sensitive_backgroung.png */; };
+		B4544B6F1ADC9EB80023AB13 /* unhealthy_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B691ADC9EB80023AB13 /* unhealthy_background.png */; };
+		B4544B701ADC9EB80023AB13 /* very_unhealthy_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B6A1ADC9EB80023AB13 /* very_unhealthy_background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,16 +61,72 @@
 		B4544AB61ADC999D0023AB13 /* AirforU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirforU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4544ABA1ADC999D0023AB13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4544ABB1ADC999D0023AB13 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B4544ABD1ADC999D0023AB13 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B4544ABE1ADC999D0023AB13 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B4544AC01ADC999D0023AB13 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B4544AC11ADC999D0023AB13 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B4544AC41ADC999D0023AB13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B4544AC61ADC999D0023AB13 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B4544AC91ADC999D0023AB13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B4544ACF1ADC999D0023AB13 /* AirforUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirforUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4544AD41ADC999D0023AB13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4544AD51ADC999D0023AB13 /* AirforUTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirforUTests.m; sourceTree = "<group>"; };
+		B4544AE81ADC9A110023AB13 /* Cloud-Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud-Icon@2x.png"; sourceTree = "<group>"; };
+		B4544AEA1ADC9A110023AB13 /* Health-Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Health-Icon@2x.png"; sourceTree = "<group>"; };
+		B4544AEC1ADC9A110023AB13 /* Prize-Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Prize-Icon@2x.png"; sourceTree = "<group>"; };
+		B4544AEE1ADC9A110023AB13 /* Toxic-Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toxic-Icon@2x.png"; sourceTree = "<group>"; };
+		B4544AF01ADC9A110023AB13 /* UCLAHealth-Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UCLAHealth-Icon@2x.png"; sourceTree = "<group>"; };
+		B4544AF11ADC9A110023AB13 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Supporting/Images.xcassets; sourceTree = "<group>"; };
+		B4544AF21ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UCLA_HealthSystem_RGB.png; path = Supporting/UCLA_HealthSystem_RGB.png; sourceTree = "<group>"; };
+		B4544AF31ADC9A110023AB13 /* UGraphic_RGB.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = UGraphic_RGB.jpg; path = Supporting/UGraphic_RGB.jpg; sourceTree = "<group>"; };
+		B4544B081ADC9A270023AB13 /* AirNowAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirNowAPI.h; sourceTree = "<group>"; };
+		B4544B091ADC9A270023AB13 /* AirNowAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirNowAPI.m; sourceTree = "<group>"; };
+		B4544B0A1ADC9A270023AB13 /* AirNowAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirNowAPIKey.h; sourceTree = "<group>"; };
+		B4544B0B1ADC9A270023AB13 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		B4544B0C1ADC9A270023AB13 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		B4544B0E1ADC9A270023AB13 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		B4544B0F1ADC9A270023AB13 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		B4544B101ADC9A270023AB13 /* RandomSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomSurveyViewController.h; sourceTree = "<group>"; };
+		B4544B111ADC9A270023AB13 /* RandomSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomSurveyViewController.m; sourceTree = "<group>"; };
+		B4544B121ADC9A270023AB13 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B4544B131ADC9A270023AB13 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B4544B141ADC9A270023AB13 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B4544B151ADC9A270023AB13 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B4544B171ADC9A270023AB13 /* BackgroundTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTableViewController.h; sourceTree = "<group>"; };
+		B4544B181ADC9A270023AB13 /* BackgroundTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTableViewController.m; sourceTree = "<group>"; };
+		B4544B191ADC9A270023AB13 /* BackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundViewController.h; sourceTree = "<group>"; };
+		B4544B1A1ADC9A270023AB13 /* BackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundViewController.m; sourceTree = "<group>"; };
+		B4544B1C1ADC9A270023AB13 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		B4544B1D1ADC9A270023AB13 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		B4544B1E1ADC9A270023AB13 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		B4544B1F1ADC9A270023AB13 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		B4544B201ADC9A270023AB13 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		B4544B211ADC9A270023AB13 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		B4544B221ADC9A270023AB13 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		B4544B231ADC9A270023AB13 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		B4544B241ADC9A270023AB13 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		B4544B251ADC9A270023AB13 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		B4544B261ADC9A270023AB13 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		B4544B281ADC9A270023AB13 /* HealthInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthInfoTableViewController.h; sourceTree = "<group>"; };
+		B4544B291ADC9A270023AB13 /* HealthInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthInfoTableViewController.m; sourceTree = "<group>"; };
+		B4544B2B1ADC9A270023AB13 /* InfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoTableViewController.h; sourceTree = "<group>"; };
+		B4544B2C1ADC9A270023AB13 /* InfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoTableViewController.m; sourceTree = "<group>"; };
+		B4544B2D1ADC9A270023AB13 /* LicenseAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseAgreementViewController.h; sourceTree = "<group>"; };
+		B4544B2E1ADC9A270023AB13 /* LicenseAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseAgreementViewController.m; sourceTree = "<group>"; };
+		B4544B2F1ADC9A270023AB13 /* QuestionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewController.h; sourceTree = "<group>"; };
+		B4544B301ADC9A270023AB13 /* QuestionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewController.m; sourceTree = "<group>"; };
+		B4544B311ADC9A270023AB13 /* SpecifyOtherQuestionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecifyOtherQuestionTableViewController.h; sourceTree = "<group>"; };
+		B4544B321ADC9A270023AB13 /* SpecifyOtherQuestionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecifyOtherQuestionTableViewController.m; sourceTree = "<group>"; };
+		B4544B341ADC9A270023AB13 /* LearnMoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnMoreTableViewController.h; sourceTree = "<group>"; };
+		B4544B351ADC9A270023AB13 /* LearnMoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnMoreTableViewController.m; sourceTree = "<group>"; };
+		B4544B361ADC9A280023AB13 /* LearnMoreWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnMoreWebViewController.h; sourceTree = "<group>"; };
+		B4544B371ADC9A280023AB13 /* LearnMoreWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnMoreWebViewController.m; sourceTree = "<group>"; };
+		B4544B381ADC9A280023AB13 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B4544B3A1ADC9A280023AB13 /* ToxicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToxicsViewController.h; sourceTree = "<group>"; };
+		B4544B3B1ADC9A280023AB13 /* ToxicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToxicsViewController.m; sourceTree = "<group>"; };
+		B4544B4F1ADC9A980023AB13 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B4544B511ADC9AA10023AB13 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B4544B531ADC9AA70023AB13 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B4544B551ADC9AB20023AB13 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		B4544B651ADC9EB80023AB13 /* good_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = good_background.png; sourceTree = "<group>"; };
+		B4544B661ADC9EB80023AB13 /* hazardous_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hazardous_background.png; sourceTree = "<group>"; };
+		B4544B671ADC9EB80023AB13 /* moderate_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moderate_background.png; sourceTree = "<group>"; };
+		B4544B681ADC9EB80023AB13 /* sensitive_backgroung.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sensitive_backgroung.png; sourceTree = "<group>"; };
+		B4544B691ADC9EB80023AB13 /* unhealthy_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unhealthy_background.png; sourceTree = "<group>"; };
+		B4544B6A1ADC9EB80023AB13 /* very_unhealthy_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = very_unhealthy_background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +134,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4544B561ADC9AB20023AB13 /* libsqlite3.dylib in Frameworks */,
+				B4544B541ADC9AA70023AB13 /* libz.dylib in Frameworks */,
+				B4544B521ADC9AA10023AB13 /* SystemConfiguration.framework in Frameworks */,
+				B4544B501ADC9A980023AB13 /* CoreData.framework in Frameworks */,
+				B4544B441ADC9A280023AB13 /* libGoogleAnalyticsServices.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				B4544AB81ADC999D0023AB13 /* AirforU */,
+				B4544B4E1ADC9A390023AB13 /* Frameworks */,
 				B4544AD21ADC999D0023AB13 /* AirforUTests */,
 				B4544AB71ADC999D0023AB13 /* Products */,
 			);
@@ -81,13 +174,16 @@
 		B4544AB81ADC999D0023AB13 /* AirforU */ = {
 			isa = PBXGroup;
 			children = (
-				B4544ABD1ADC999D0023AB13 /* AppDelegate.h */,
-				B4544ABE1ADC999D0023AB13 /* AppDelegate.m */,
-				B4544AC01ADC999D0023AB13 /* ViewController.h */,
-				B4544AC11ADC999D0023AB13 /* ViewController.m */,
-				B4544AC31ADC999D0023AB13 /* Main.storyboard */,
-				B4544AC61ADC999D0023AB13 /* Images.xcassets */,
-				B4544AC81ADC999D0023AB13 /* LaunchScreen.xib */,
+				B4544B381ADC9A280023AB13 /* Main.storyboard */,
+				B4544B141ADC9A270023AB13 /* AppDelegate.h */,
+				B4544B151ADC9A270023AB13 /* AppDelegate.m */,
+				B4544B2A1ADC9A270023AB13 /* IntakeSurvey */,
+				B4544B0D1ADC9A270023AB13 /* AirQualityTab */,
+				B4544B271ADC9A270023AB13 /* HealthTab */,
+				B4544B391ADC9A280023AB13 /* ToxicsTab */,
+				B4544B331ADC9A270023AB13 /* LearnMoreTab */,
+				B4544B071ADC9A270023AB13 /* AirNowAPI */,
+				B4544B161ADC9A270023AB13 /* BaseClasses */,
 				B4544AB91ADC999D0023AB13 /* Supporting Files */,
 			);
 			path = AirforU;
@@ -96,6 +192,11 @@
 		B4544AB91ADC999D0023AB13 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B4544B641ADC9EB80023AB13 /* BackgroundImages */,
+				B4544AE61ADC9A110023AB13 /* Icons */,
+				B4544AF11ADC9A110023AB13 /* Images.xcassets */,
+				B4544AF21ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png */,
+				B4544AF31ADC9A110023AB13 /* UGraphic_RGB.jpg */,
 				B4544ABA1ADC999D0023AB13 /* Info.plist */,
 				B4544ABB1ADC999D0023AB13 /* main.m */,
 			);
@@ -117,6 +218,144 @@
 				B4544AD41ADC999D0023AB13 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B4544AE61ADC9A110023AB13 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				B4544AE81ADC9A110023AB13 /* Cloud-Icon@2x.png */,
+				B4544AEA1ADC9A110023AB13 /* Health-Icon@2x.png */,
+				B4544AEC1ADC9A110023AB13 /* Prize-Icon@2x.png */,
+				B4544AEE1ADC9A110023AB13 /* Toxic-Icon@2x.png */,
+				B4544AF01ADC9A110023AB13 /* UCLAHealth-Icon@2x.png */,
+			);
+			name = Icons;
+			path = Supporting/Icons;
+			sourceTree = "<group>";
+		};
+		B4544B071ADC9A270023AB13 /* AirNowAPI */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B081ADC9A270023AB13 /* AirNowAPI.h */,
+				B4544B091ADC9A270023AB13 /* AirNowAPI.m */,
+				B4544B0A1ADC9A270023AB13 /* AirNowAPIKey.h */,
+				B4544B0B1ADC9A270023AB13 /* Location.h */,
+				B4544B0C1ADC9A270023AB13 /* Location.m */,
+			);
+			path = AirNowAPI;
+			sourceTree = "<group>";
+		};
+		B4544B0D1ADC9A270023AB13 /* AirQualityTab */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B0E1ADC9A270023AB13 /* PageContentViewController.h */,
+				B4544B0F1ADC9A270023AB13 /* PageContentViewController.m */,
+				B4544B101ADC9A270023AB13 /* RandomSurveyViewController.h */,
+				B4544B111ADC9A270023AB13 /* RandomSurveyViewController.m */,
+				B4544B121ADC9A270023AB13 /* ViewController.h */,
+				B4544B131ADC9A270023AB13 /* ViewController.m */,
+			);
+			path = AirQualityTab;
+			sourceTree = "<group>";
+		};
+		B4544B161ADC9A270023AB13 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B171ADC9A270023AB13 /* BackgroundTableViewController.h */,
+				B4544B181ADC9A270023AB13 /* BackgroundTableViewController.m */,
+				B4544B191ADC9A270023AB13 /* BackgroundViewController.h */,
+				B4544B1A1ADC9A270023AB13 /* BackgroundViewController.m */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		B4544B1B1ADC9A270023AB13 /* GoogleAnalyticsFramework */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B1C1ADC9A270023AB13 /* GAI.h */,
+				B4544B1D1ADC9A270023AB13 /* GAIDictionaryBuilder.h */,
+				B4544B1E1ADC9A270023AB13 /* GAIEcommerceFields.h */,
+				B4544B1F1ADC9A270023AB13 /* GAIEcommerceProduct.h */,
+				B4544B201ADC9A270023AB13 /* GAIEcommerceProductAction.h */,
+				B4544B211ADC9A270023AB13 /* GAIEcommercePromotion.h */,
+				B4544B221ADC9A270023AB13 /* GAIFields.h */,
+				B4544B231ADC9A270023AB13 /* GAILogger.h */,
+				B4544B241ADC9A270023AB13 /* GAITrackedViewController.h */,
+				B4544B251ADC9A270023AB13 /* GAITracker.h */,
+				B4544B261ADC9A270023AB13 /* libGoogleAnalyticsServices.a */,
+			);
+			path = GoogleAnalyticsFramework;
+			sourceTree = "<group>";
+		};
+		B4544B271ADC9A270023AB13 /* HealthTab */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B281ADC9A270023AB13 /* HealthInfoTableViewController.h */,
+				B4544B291ADC9A270023AB13 /* HealthInfoTableViewController.m */,
+			);
+			path = HealthTab;
+			sourceTree = "<group>";
+		};
+		B4544B2A1ADC9A270023AB13 /* IntakeSurvey */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B2B1ADC9A270023AB13 /* InfoTableViewController.h */,
+				B4544B2C1ADC9A270023AB13 /* InfoTableViewController.m */,
+				B4544B2D1ADC9A270023AB13 /* LicenseAgreementViewController.h */,
+				B4544B2E1ADC9A270023AB13 /* LicenseAgreementViewController.m */,
+				B4544B2F1ADC9A270023AB13 /* QuestionTableViewController.h */,
+				B4544B301ADC9A270023AB13 /* QuestionTableViewController.m */,
+				B4544B311ADC9A270023AB13 /* SpecifyOtherQuestionTableViewController.h */,
+				B4544B321ADC9A270023AB13 /* SpecifyOtherQuestionTableViewController.m */,
+			);
+			path = IntakeSurvey;
+			sourceTree = "<group>";
+		};
+		B4544B331ADC9A270023AB13 /* LearnMoreTab */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B341ADC9A270023AB13 /* LearnMoreTableViewController.h */,
+				B4544B351ADC9A270023AB13 /* LearnMoreTableViewController.m */,
+				B4544B361ADC9A280023AB13 /* LearnMoreWebViewController.h */,
+				B4544B371ADC9A280023AB13 /* LearnMoreWebViewController.m */,
+			);
+			path = LearnMoreTab;
+			sourceTree = "<group>";
+		};
+		B4544B391ADC9A280023AB13 /* ToxicsTab */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B3A1ADC9A280023AB13 /* ToxicsViewController.h */,
+				B4544B3B1ADC9A280023AB13 /* ToxicsViewController.m */,
+			);
+			path = ToxicsTab;
+			sourceTree = "<group>";
+		};
+		B4544B4E1ADC9A390023AB13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B551ADC9AB20023AB13 /* libsqlite3.dylib */,
+				B4544B531ADC9AA70023AB13 /* libz.dylib */,
+				B4544B511ADC9AA10023AB13 /* SystemConfiguration.framework */,
+				B4544B4F1ADC9A980023AB13 /* CoreData.framework */,
+				B4544B1B1ADC9A270023AB13 /* GoogleAnalyticsFramework */,
+			);
+			name = Frameworks;
+			path = AirforU;
+			sourceTree = "<group>";
+		};
+		B4544B641ADC9EB80023AB13 /* BackgroundImages */ = {
+			isa = PBXGroup;
+			children = (
+				B4544B651ADC9EB80023AB13 /* good_background.png */,
+				B4544B661ADC9EB80023AB13 /* hazardous_background.png */,
+				B4544B671ADC9EB80023AB13 /* moderate_background.png */,
+				B4544B681ADC9EB80023AB13 /* sensitive_backgroung.png */,
+				B4544B691ADC9EB80023AB13 /* unhealthy_background.png */,
+				B4544B6A1ADC9EB80023AB13 /* very_unhealthy_background.png */,
+			);
+			name = BackgroundImages;
+			path = Supporting/BackgroundImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +438,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4544AC51ADC999D0023AB13 /* Main.storyboard in Resources */,
-				B4544ACA1ADC999D0023AB13 /* LaunchScreen.xib in Resources */,
-				B4544AC71ADC999D0023AB13 /* Images.xcassets in Resources */,
+				B4544B061ADC9A110023AB13 /* UGraphic_RGB.jpg in Resources */,
+				B4544AFF1ADC9A110023AB13 /* Prize-Icon@2x.png in Resources */,
+				B4544B6F1ADC9EB80023AB13 /* unhealthy_background.png in Resources */,
+				B4544B031ADC9A110023AB13 /* UCLAHealth-Icon@2x.png in Resources */,
+				B4544B6C1ADC9EB80023AB13 /* hazardous_background.png in Resources */,
+				B4544AFD1ADC9A110023AB13 /* Health-Icon@2x.png in Resources */,
+				B4544B6E1ADC9EB80023AB13 /* sensitive_backgroung.png in Resources */,
+				B4544B6B1ADC9EB80023AB13 /* good_background.png in Resources */,
+				B4544AFB1ADC9A110023AB13 /* Cloud-Icon@2x.png in Resources */,
+				B4544B4C1ADC9A280023AB13 /* Main.storyboard in Resources */,
+				B4544B051ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png in Resources */,
+				B4544B701ADC9EB80023AB13 /* very_unhealthy_background.png in Resources */,
+				B4544B041ADC9A110023AB13 /* Images.xcassets in Resources */,
+				B4544B6D1ADC9EB80023AB13 /* moderate_background.png in Resources */,
+				B4544B011ADC9A110023AB13 /* Toxic-Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +470,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4544AC21ADC999D0023AB13 /* ViewController.m in Sources */,
-				B4544ABF1ADC999D0023AB13 /* AppDelegate.m in Sources */,
+				B4544B401ADC9A280023AB13 /* ViewController.m in Sources */,
+				B4544B421ADC9A280023AB13 /* BackgroundTableViewController.m in Sources */,
+				B4544B3F1ADC9A280023AB13 /* RandomSurveyViewController.m in Sources */,
+				B4544B3C1ADC9A280023AB13 /* AirNowAPI.m in Sources */,
+				B4544B3E1ADC9A280023AB13 /* PageContentViewController.m in Sources */,
+				B4544B3D1ADC9A280023AB13 /* Location.m in Sources */,
+				B4544B4D1ADC9A280023AB13 /* ToxicsViewController.m in Sources */,
+				B4544B491ADC9A280023AB13 /* SpecifyOtherQuestionTableViewController.m in Sources */,
+				B4544B471ADC9A280023AB13 /* LicenseAgreementViewController.m in Sources */,
 				B4544ABC1ADC999D0023AB13 /* main.m in Sources */,
+				B4544B4B1ADC9A280023AB13 /* LearnMoreWebViewController.m in Sources */,
+				B4544B461ADC9A280023AB13 /* InfoTableViewController.m in Sources */,
+				B4544B4A1ADC9A280023AB13 /* LearnMoreTableViewController.m in Sources */,
+				B4544B431ADC9A280023AB13 /* BackgroundViewController.m in Sources */,
+				B4544B481ADC9A280023AB13 /* QuestionTableViewController.m in Sources */,
+				B4544B411ADC9A280023AB13 /* AppDelegate.m in Sources */,
+				B4544B451ADC9A280023AB13 /* HealthInfoTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,25 +507,6 @@
 			targetProxy = B4544AD01ADC999D0023AB13 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B4544AC31ADC999D0023AB13 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B4544AC41ADC999D0023AB13 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B4544AC81ADC999D0023AB13 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B4544AC91ADC999D0023AB13 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B4544AD71ADC999D0023AB13 /* Debug */ = {
@@ -347,6 +593,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AirforU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -357,6 +607,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AirforU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
