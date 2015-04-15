@@ -46,7 +46,7 @@
 
 - (void)test
 {
-    AQLocation aqloc = AQSanFrancisco;
+    AQLocation aqloc = AQNorthwestCoastalLA;
     self.location = [AirNowAPI locationForAQLocation:aqloc];
 }
 

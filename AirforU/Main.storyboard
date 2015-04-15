@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uC6-5N-s2l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uC6-5N-s2l">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -308,7 +308,7 @@ If you wish to ask questions about your rights as a research participant or if y
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Agree" style="done" id="rfb-sr-pzq">
                             <connections>
-                                <segue destination="5x1-03-gEy" kind="push" id="xyK-kM-C7C"/>
+                                <segue destination="5x1-03-gEy" kind="show" id="xyK-kM-C7C"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -504,7 +504,7 @@ If you wish to ask questions about your rights as a research participant or if y
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="sKe-Hi-cnC" kind="push" identifier="To Question 1" id="sB8-UX-8vF"/>
+                        <segue destination="sKe-Hi-cnC" kind="show" identifier="To Question 1" id="sB8-UX-8vF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cez-ub-7dM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -626,9 +626,9 @@ If you wish to ask questions about your rights as a research participant or if y
                     </tableView>
                     <navigationItem key="navigationItem" title="Learn More" id="9Ze-0O-BVH"/>
                     <connections>
-                        <segue destination="n8R-NU-240" kind="push" identifier="Show About Us" id="ofz-Yl-Xi0"/>
-                        <segue destination="C6b-nT-Cg3" kind="push" identifier="Show Contact Us" id="HwB-sn-0hI"/>
-                        <segue destination="II2-44-wC5" kind="push" identifier="Show Web View" id="Htr-Qp-c8z"/>
+                        <segue destination="n8R-NU-240" kind="show" identifier="Show About Us" id="ofz-Yl-Xi0"/>
+                        <segue destination="C6b-nT-Cg3" kind="show" identifier="Show Contact Us" id="HwB-sn-0hI"/>
+                        <segue destination="II2-44-wC5" kind="show" identifier="Show Web View" id="Htr-Qp-c8z"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1LF-pv-Bgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -885,7 +885,7 @@ Any information that is obtained in connection with this study and that can iden
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Sbv-5d-jNw" kind="push" identifier="To Question 2" id="dff-U3-Mdd"/>
+                        <segue destination="Sbv-5d-jNw" kind="show" identifier="To Question 2" id="dff-U3-Mdd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uI4-EF-nWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -964,7 +964,7 @@ Any information that is obtained in connection with this study and that can iden
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="ODc-FP-gMg" kind="push" identifier="To Question 3" id="Onc-s8-3eD"/>
+                        <segue destination="ODc-FP-gMg" kind="show" identifier="To Question 3" id="Onc-s8-3eD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSG-be-qZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1043,8 +1043,8 @@ Any information that is obtained in connection with this study and that can iden
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="gIw-ji-z1i" kind="push" identifier="To Question 4" id="3PM-qp-Xux"/>
-                        <segue destination="FIm-ga-zU4" kind="push" identifier="Pass Question 4" id="wxd-yS-lf0"/>
+                        <segue destination="gIw-ji-z1i" kind="show" identifier="To Question 4" id="3PM-qp-Xux"/>
+                        <segue destination="FIm-ga-zU4" kind="show" identifier="Pass Question 4" id="wxd-yS-lf0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGA-dF-Jfs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1206,7 +1206,7 @@ Any information that is obtained in connection with this study and that can iden
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="FIm-ga-zU4" kind="push" identifier="To Question 5" id="wZC-4p-ywj"/>
+                        <segue destination="FIm-ga-zU4" kind="show" identifier="To Question 5" id="wZC-4p-ywj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCy-3I-RCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1368,7 +1368,7 @@ Any information that is obtained in connection with this study and that can iden
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="80b-6N-MtC" kind="push" identifier="To Question 6" id="cyc-9X-U7X"/>
+                        <segue destination="80b-6N-MtC" kind="show" identifier="To Question 6" id="cyc-9X-U7X"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6a-vK-Znv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1507,7 +1507,7 @@ Any information that is obtained in connection with this study and that can iden
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="iD5-vj-uz8" kind="push" identifier="To Question 7" id="JXj-p7-AYl"/>
+                        <segue destination="iD5-vj-uz8" kind="show" identifier="To Question 7" id="JXj-p7-AYl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spD-aK-irg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1586,8 +1586,8 @@ Any information that is obtained in connection with this study and that can iden
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="zwe-cb-tiC" kind="push" identifier="To Question 8" id="JTw-W8-cBE"/>
-                        <segue destination="HZu-7J-RmD" kind="push" identifier="Pass Question 8" id="F1D-DO-qxm"/>
+                        <segue destination="zwe-cb-tiC" kind="show" identifier="To Question 8" id="JTw-W8-cBE"/>
+                        <segue destination="HZu-7J-RmD" kind="show" identifier="Pass Question 8" id="F1D-DO-qxm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RVc-8G-EDZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1681,7 +1681,7 @@ Any information that is obtained in connection with this study and that can iden
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="HZu-7J-RmD" kind="push" identifier="To Question 9" id="x76-Df-fOK"/>
+                        <segue destination="HZu-7J-RmD" kind="show" identifier="To Question 9" id="x76-Df-fOK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3y-87-doz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1971,7 +1971,7 @@ If you have any questions, comments or concerns about the research, you can talk
         <image name="UCLA_HealthSystem_RGB.png" width="1800" height="378"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wZC-4p-ywj"/>
-        <segue reference="x76-Df-fOK"/>
+        <segue reference="wxd-yS-lf0"/>
+        <segue reference="F1D-DO-qxm"/>
     </inferredMetricsTieBreakers>
 </document>

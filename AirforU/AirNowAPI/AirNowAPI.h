@@ -75,6 +75,14 @@ typedef enum {
 + (NSURL *)URLForDate:(NSDate *)date
            forZipcode:(NSString *)zipcode;
 
+/* Air Quality Info */
++ (NSArray *)airQualityInfoForDate:(NSDate *)date
+                          latitude:(NSString *)latitude
+                         longitude:(NSString *)longitude;
+
++ (NSArray *)airQualityInfoForDate:(NSDate *)date
+                           zipcode:(NSString *)zipcode;
+
 + (AQAirQuality)aqForAQI:(NSString *)aqi;
 
 + (UIColor *)aqColorForAQ:(AQAirQuality)aq;

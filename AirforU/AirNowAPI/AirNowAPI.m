@@ -53,6 +53,24 @@
 
 
 
+//+ (NSArray *)airQualityInfoForDate:(NSDate *)date
+//                          latitude:(NSString *)latitude
+//                         longitude:(NSString *)longitude
+//{
+//    if ([date timeIntervalSinceNow] < SECONDS_DAY) {
+//        
+//    }
+//}
+//
+//+ (NSArray *)airQualityInfoForDate:(NSDate *)date
+//                           zipcode:(NSString *)zipcode
+//{
+//    
+//}
+
+
+
+
 + (AQAirQuality)aqForAQI:(NSString *)aqi
 {
     int aqiValue = [aqi intValue];
