@@ -22,6 +22,10 @@
 #define AIR_NOW_TODAY_FORECAST @"Today's Forecast"
 #define AIR_NOW_TOMORROW_FORECAST @"Tomorrow's Forecast"
 
+#define DOWNLOADED_AQI @"DownloadedAQI"
+#define DOWNLOADED_LOCATION @"DownloadedLocation"
+#define DOWNLOADED_DESCRIPTION @"DownloadedDescription"
+
 #define SECONDS_DAY 24*60*60
 
 typedef enum {
@@ -76,11 +80,13 @@ typedef enum {
            forZipcode:(NSString *)zipcode;
 
 /* Air Quality Info */
-+ (NSArray *)airQualityInfoForDate:(NSDate *)date
++ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
+                           content:(NSString *)content
                           latitude:(NSString *)latitude
                          longitude:(NSString *)longitude;
 
-+ (NSArray *)airQualityInfoForDate:(NSDate *)date
++ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
+                           content:(NSString *)content
                            zipcode:(NSString *)zipcode;
 
 + (AQAirQuality)aqForAQI:(NSString *)aqi;

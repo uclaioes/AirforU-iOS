@@ -45,6 +45,7 @@
 		B4544B6E1ADC9EB80023AB13 /* sensitive_backgroung.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B681ADC9EB80023AB13 /* sensitive_backgroung.png */; };
 		B4544B6F1ADC9EB80023AB13 /* unhealthy_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B691ADC9EB80023AB13 /* unhealthy_background.png */; };
 		B4544B701ADC9EB80023AB13 /* very_unhealthy_background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544B6A1ADC9EB80023AB13 /* very_unhealthy_background.png */; };
+		B46F52CF1AE59D9800A18E39 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		B4544B681ADC9EB80023AB13 /* sensitive_backgroung.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sensitive_backgroung.png; sourceTree = "<group>"; };
 		B4544B691ADC9EB80023AB13 /* unhealthy_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unhealthy_background.png; sourceTree = "<group>"; };
 		B4544B6A1ADC9EB80023AB13 /* very_unhealthy_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = very_unhealthy_background.png; sourceTree = "<group>"; };
+		B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 			children = (
 				B4544B641ADC9EB80023AB13 /* BackgroundImages */,
 				B4544AE61ADC9A110023AB13 /* Icons */,
+				B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */,
 				B4544AF11ADC9A110023AB13 /* Images.xcassets */,
 				B4544AF21ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png */,
 				B4544AF31ADC9A110023AB13 /* UGraphic_RGB.jpg */,
@@ -407,6 +410,7 @@
 				TargetAttributes = {
 					B4544AB51ADC999D0023AB13 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = YD86QUJBH5;
 					};
 					B4544ACE1ADC999D0023AB13 = {
 						CreatedOnToolsVersion = 6.2;
@@ -450,6 +454,7 @@
 				B4544B4C1ADC9A280023AB13 /* Main.storyboard in Resources */,
 				B4544B051ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png in Resources */,
 				B4544B701ADC9EB80023AB13 /* very_unhealthy_background.png in Resources */,
+				B46F52CF1AE59D9800A18E39 /* LaunchScreen.xib in Resources */,
 				B4544B041ADC9A110023AB13 /* Images.xcassets in Resources */,
 				B4544B6D1ADC9EB80023AB13 /* moderate_background.png in Resources */,
 				B4544B011ADC9A110023AB13 /* Toxic-Icon@2x.png in Resources */,
@@ -591,13 +596,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AirforU/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -605,13 +613,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AirforU/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -668,6 +679,7 @@
 				B4544ADB1ADC999D0023AB13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4544ADC1ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirforUTests" */ = {
 			isa = XCConfigurationList;
@@ -676,6 +688,7 @@
 				B4544ADE1ADC999D0023AB13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

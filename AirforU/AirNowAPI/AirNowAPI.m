@@ -53,20 +53,100 @@
 
 
 
-//+ (NSArray *)airQualityInfoForDate:(NSDate *)date
-//                          latitude:(NSString *)latitude
-//                         longitude:(NSString *)longitude
-//{
-//    if ([date timeIntervalSinceNow] < SECONDS_DAY) {
-//        
-//    }
-//}
-//
-//+ (NSArray *)airQualityInfoForDate:(NSDate *)date
-//                           zipcode:(NSString *)zipcode
-//{
-//    
-//}
++ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
+                           content:(NSString *)content
+                          latitude:(NSString *)latitude
+                         longitude:(NSString *)longitude
+{
+    NSURL *url;
+    
+    if ([content isEqualToString:AIR_NOW_TODAY]) {
+        
+    } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST]) {
+        
+    }
+    
+    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+    NSDictionary *propertyListResults;
+    NSError *error;
+    
+    if (jsonResults) {
+        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error];
+        if (propertyListResults)
+            return [self airQualityInfoForJSONResults:propertyListResults];
+    }
+    
+    return nil;
+}
+
++ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
+                           content:(NSString *)content
+                           zipcode:(NSString *)zipcode
+{
+    NSURL *url;
+    
+    if ([content isEqualToString:AIR_NOW_TODAY]) {
+        
+    } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST]) {
+        
+    }
+    
+    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+    NSDictionary *propertyListResults;
+    NSError *error;
+    
+    if (jsonResults) {
+        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error];
+        if (propertyListResults)
+            return [self airQualityInfoForJSONResults:propertyListResults];
+    }
+    
+    return nil;
+}
+
+
+
+
++ (NSDictionary *)airQualityInfoForJSONResults:(NSDictionary *)results
+{
+    NSString *aqi = @"";
+    NSString *location = @"";
+    NSString *description = @"";
+    
+    if (results) {
+        
+        /* Parse Category */
+        
+        BOOL categoryExists = false;
+        NSArray *category = [results valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
+        NSString *categoryName = @"Unavailable";
+        if (category && [category count] > 0) {
+            categoryName = [self worstAQ:category];
+            categoryExists = true;
+        }
+        
+        /* Parse Location */
+        
+        NSArray *stateArray = [results valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE];
+        NSArray *locationArray = [results valueForKeyPath:AIR_NOW_RESULTS_AREA];
+        NSString *state, *loc;
+        if (stateArray && locationArray && [stateArray count] != 0 && [locationArray count] != 0) {
+            state = [stateArray firstObject];
+            loc = [locationArray firstObject];
+        }
+        
+        /* Parse AQI */
+
+        NSArray *aqi = [results valueForKeyPath:AIR_NOW_RESULTS_AQI];
+        NSNumber *max = [aqi valueForKeyPath:@"@max.intValue"];
+        if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [results count] == 0)
+            max = [NSNumber numberWithInt:-1];
+    }
+    
+    return @{ DOWNLOADED_AQI : aqi,
+              DOWNLOADED_LOCATION : location,
+              DOWNLOADED_DESCRIPTION : description };
+}
 
 
 
@@ -100,7 +180,7 @@
         case AQUnhealthyForSensitive: return [UIColor orangeColor]; break;
         case AQUnhealthy: return [UIColor redColor]; break;
         case AQVeryUnhealthy: return [UIColor purpleColor]; break;
-        case AQUnavailable: return [UIColor grayColor]; break;
+        case AQUnavailable: return [UIColor whiteColor]; break;
             
         default: break;
     }
