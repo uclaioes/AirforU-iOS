@@ -11,23 +11,23 @@
 
 @implementation AirNowAPI
 
-+ (NSURL *)URLForLatitute:(NSString *)latitude
-             forLongitude:(NSString *)longitude
++ (NSURL *)URLForLatitute:(CLLocationDegrees)latitude
+             forLongitude:(CLLocationDegrees)longitude
 {
-    NSString *urlString = [NSString stringWithFormat:@"http://www.airnowapi.org/aq/observation/latLong/current/?format=application/json&latitude=%@&longitude=%@&distance=25&API_KEY=%@", latitude, longitude, AirNowAPIKey];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.airnowapi.org/aq/observation/latLong/current/?format=application/json&latitude=%f&longitude=%f&distance=25&API_KEY=%@", latitude, longitude, AirNowAPIKey];
     
     return [NSURL URLWithString:urlString];
 }
 
 + (NSURL *)URLForDate:(NSDate *)date
-          forLatitute:(NSString *)latitude
-         forLongitude:(NSString *)longitude
+          forLatitute:(CLLocationDegrees)latitude
+         forLongitude:(CLLocationDegrees)longitude
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString = [formatter stringFromDate:date];
     
-    NSString *urlString = [NSString stringWithFormat:@"http://www.airnowapi.org/aq/forecast/latlong/?format=application/json&latitude=%@&longitude=%@&date=%@&distance=25&api_key=%@", latitude, longitude, dateString, AirNowAPIKey];
+    NSString *urlString = [NSString stringWithFormat:@"http://www.airnowapi.org/aq/forecast/latlong/?format=application/json&latitude=%f&longitude=%f&date=%@&distance=25&api_key=%@", latitude, longitude, dateString, AirNowAPIKey];
     
     return [NSURL URLWithString:urlString];
 }
@@ -53,100 +53,100 @@
 
 
 
-+ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
-                           content:(NSString *)content
-                          latitude:(NSString *)latitude
-                         longitude:(NSString *)longitude
-{
-    NSURL *url;
-    
-    if ([content isEqualToString:AIR_NOW_TODAY]) {
-        
-    } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST]) {
-        
-    }
-    
-    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
-    NSDictionary *propertyListResults;
-    NSError *error;
-    
-    if (jsonResults) {
-        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error];
-        if (propertyListResults)
-            return [self airQualityInfoForJSONResults:propertyListResults];
-    }
-    
-    return nil;
-}
-
-+ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
-                           content:(NSString *)content
-                           zipcode:(NSString *)zipcode
-{
-    NSURL *url;
-    
-    if ([content isEqualToString:AIR_NOW_TODAY]) {
-        
-    } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST]) {
-        
-    }
-    
-    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
-    NSDictionary *propertyListResults;
-    NSError *error;
-    
-    if (jsonResults) {
-        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error];
-        if (propertyListResults)
-            return [self airQualityInfoForJSONResults:propertyListResults];
-    }
-    
-    return nil;
-}
-
-
-
-
-+ (NSDictionary *)airQualityInfoForJSONResults:(NSDictionary *)results
-{
-    NSString *aqi = @"";
-    NSString *location = @"";
-    NSString *description = @"";
-    
-    if (results) {
-        
-        /* Parse Category */
-        
-        BOOL categoryExists = false;
-        NSArray *category = [results valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
-        NSString *categoryName = @"Unavailable";
-        if (category && [category count] > 0) {
-            categoryName = [self worstAQ:category];
-            categoryExists = true;
-        }
-        
-        /* Parse Location */
-        
-        NSArray *stateArray = [results valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE];
-        NSArray *locationArray = [results valueForKeyPath:AIR_NOW_RESULTS_AREA];
-        NSString *state, *loc;
-        if (stateArray && locationArray && [stateArray count] != 0 && [locationArray count] != 0) {
-            state = [stateArray firstObject];
-            loc = [locationArray firstObject];
-        }
-        
-        /* Parse AQI */
-
-        NSArray *aqi = [results valueForKeyPath:AIR_NOW_RESULTS_AQI];
-        NSNumber *max = [aqi valueForKeyPath:@"@max.intValue"];
-        if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [results count] == 0)
-            max = [NSNumber numberWithInt:-1];
-    }
-    
-    return @{ DOWNLOADED_AQI : aqi,
-              DOWNLOADED_LOCATION : location,
-              DOWNLOADED_DESCRIPTION : description };
-}
+//+ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
+//                           content:(NSString *)content
+//                          latitude:(NSString *)latitude
+//                         longitude:(NSString *)longitude
+//{
+//    NSURL *url;
+//    
+//    if ([content isEqualToString:AIR_NOW_TODAY]) {
+//        url = [self URLForLatitute:latitude forLongitude:longitude];
+//    } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST]) {
+//        url = [self URLForDate:[date dateByAddingTimeInterval:SECONDS_DAY] forLatitute:latitude forLongitude:longitude];
+//    }
+//    
+//    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+//    NSDictionary *propertyListResults;
+//    NSError *error;
+//    
+//    
+//    if (jsonResults) {
+//        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error];
+//        NSLog(@"%@", propertyListResults);
+//
+//        if (propertyListResults)
+//            return [self airQualityInfoForJSONResults:propertyListResults];
+//    }
+//    
+//    return nil;
+//}
+//
+//+ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
+//                           content:(NSString *)content
+//                           zipcode:(NSString *)zipcode
+//{
+//    NSURL *url;
+//    
+//    if ([content isEqualToString:AIR_NOW_TODAY]) {
+//        url = [self URLForZipcode:zipcode];
+//    } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST]) {
+//        url = [self URLForDate:[date dateByAddingTimeInterval:SECONDS_DAY] forZipcode:zipcode];
+//    }
+//    
+//    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+//    NSDictionary *propertyListResults;
+//    NSError *error;
+//    
+//    if (jsonResults) {
+//        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error];
+//        if (propertyListResults)
+//            return [self airQualityInfoForJSONResults:propertyListResults];
+//    }
+//    
+//    return nil;
+//}
+//
+//+ (NSDictionary *)airQualityInfoForJSONResults:(NSDictionary *)results
+//{
+//    NSString *aqi = @"";
+//    NSString *location = @"";
+//    NSString *description = @"";
+//    
+//    if (results) {
+//        
+//        /* Parse Category */
+//        
+//        BOOL categoryExists = false;
+//        NSArray *category = [results valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
+//        NSString *categoryName = @"Unavailable";
+//        if (category && [category count] > 0) {
+//            categoryName = [self worstAQ:category];
+//            categoryExists = true;
+//        }
+//        
+//        /* Parse Location */
+//        
+//        NSArray *stateArray = [results valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE];
+//        NSArray *locationArray = [results valueForKeyPath:AIR_NOW_RESULTS_AREA];
+//        NSString *state, *loc;
+//        if (stateArray && locationArray && [stateArray count] != 0 && [locationArray count] != 0) {
+//            state = [stateArray firstObject];
+//            loc = [locationArray firstObject];
+//        }
+//        
+//        /* Parse AQI */
+//
+//        NSArray *aqi = [results valueForKeyPath:AIR_NOW_RESULTS_AQI];
+//        NSNumber *max = [aqi valueForKeyPath:@"@max.intValue"];
+//        if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [results count] == 0)
+//            max = [NSNumber numberWithInt:-1];
+//    }
+//    
+//    return @{ DOWNLOADED_AQI : aqi,
+//              DOWNLOADED_LOCATION : location,
+//              DOWNLOADED_DESCRIPTION : description };
+//}
 
 
 

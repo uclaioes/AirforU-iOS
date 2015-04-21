@@ -13,8 +13,9 @@
 #import "QuestionTableViewController.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
+#import "CCLocationNotifications.h"
 
-@interface AppDelegate () <UITabBarControllerDelegate>
+@interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
 @end
 
 @implementation AppDelegate
@@ -44,11 +45,11 @@
 
 #pragma mark - QuestionTableViewControllerDelegate
 
-- (void)test
-{
-    AQLocation aqloc = AQNorthwestCoastalLA;
-    self.location = [AirNowAPI locationForAQLocation:aqloc];
-}
+//- (void)test
+//{
+//    AQLocation aqloc = AQNorthwestCoastalLA;
+//    self.location = [AirNowAPI locationForAQLocation:aqloc];
+//}
 
 - (NSMutableArray *)answers
 {
@@ -62,6 +63,21 @@
     if (!_userInformation)
         _userInformation = [[NSMutableArray alloc] initWithCapacity:0];
     return _userInformation;
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+//    NSLog(@"%@", [AirNowAPI URLForLatitute:self.location.coordinate.latitude forLongitude:self.location.coordinate.longitude]);
+    
+    if (self.location.coordinate.latitude == 0 || self.location.coordinate.longitude == 0) {
+        [self.locationManager stopUpdatingLocation];
+        CLLocation *location = [locations lastObject];
+        self.location = location;
+        NSLog(@"%f, %f", self.location.coordinate.latitude, self.location.coordinate.longitude);
+        [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidUpdateNotification object:self];
+    }
 }
 
 #pragma mark - Application Life Cycle
@@ -81,17 +97,21 @@
     
     /* Core Location Integration */
     
-//    self.locationManager.delegate = self;
-//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-//
-//    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
-//    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-//        [self.locationManager requestWhenInUseAuthorization];
-//    } else if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-//        [self.locationManager requestAlwaysAuthorization];
-//    }
-//
-//    [self.locationManager startUpdatingLocation];
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+
+    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    } else if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+
+    [self.locationManager startUpdatingLocation];
     
     
     /* Other Setups on Launch */
@@ -99,9 +119,7 @@
     ((UITabBarController *)self.window.rootViewController).delegate = self;
     
     self.zipcode = nil;
-    self.location = nil;
-    
-    [self test];
+//    self.location = nil;
     
     for (int i = 0; i < 9; i++)
         [self.answers addObject:@""];
@@ -118,7 +136,7 @@
         [[((UITabBarController *)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"Agreement Segue" sender:self];
     else
         self.identification = [defaults objectForKey:@"identification"];
-    
+        
     return YES;
 }
 

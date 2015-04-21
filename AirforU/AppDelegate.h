@@ -23,10 +23,11 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 /* Location Properties (with Core Location) */
-//@property (nonatomic, strong) CLLocationManager *locationManager;
-//@property (nonatomic, strong) CLPlacemark *placemark;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLPlacemark *placemark;
+@property (nonatomic, strong) CLLocation *location;
 
-@property (nonatomic, strong) Location *location;
+//@property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSString *zipcode;
 
 @property (nonatomic, strong) NSString *identification;

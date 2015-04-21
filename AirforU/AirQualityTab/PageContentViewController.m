@@ -8,6 +8,7 @@
 
 #import "PageContentViewController.h"
 #import "HealthInfoTableViewController.h"
+#import "CCLocationNotifications.h"
 #import "ViewController.h"
 #import "AirNowAPI.h"
 #import "AppDelegate.h"
@@ -62,6 +63,11 @@
     button.titleLabel.font = textFont;
     [button setTitleColor:textColor forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateNormal];
+}
+
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshAirQuality:) name:CLLocationDidUpdateNotification object:nil];
 }
 
 - (void)viewDidLoad
@@ -126,6 +132,11 @@
         lineNumber:5];
 }
 
+- (void)refreshAirQuality:(NSNotification *)notification
+{
+    [self getAirQuality];
+}
+
 - (void)getAirQuality
 {
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
@@ -134,22 +145,25 @@
 
     if (app.zipcode && [app.zipcode length] == 5)
     {
+        NSLog(@"used zipcode");
         if ([self.content isEqualToString:AIR_NOW_TODAY])
             url = [AirNowAPI URLForZipcode:app.zipcode];
         else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
             url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:app.zipcode];
     }
     
-    else if (app.location && app.location.latitude && app.location.longitude)
+    else if (app.location && app.location && app.location)
     {
+        NSLog(@"used location");
         if ([self.content isEqualToString:AIR_NOW_TODAY])
-            url = [AirNowAPI URLForLatitute:app.location.latitude forLongitude:app.location.longitude];
+            url = [AirNowAPI URLForLatitute:app.location.coordinate.latitude forLongitude:app.location.coordinate.longitude];
         else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forLatitute:app.location.latitude forLongitude:app.location.longitude];
+            url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forLatitute:app.location.coordinate.latitude forLongitude:app.location.coordinate.longitude];
     }
     
     else
     {
+        NSLog(@"used default");
         NSString *zipcode = @"90024"; // defaulted to: zipcode of UCLA
         
         if ([self.content isEqualToString:AIR_NOW_TODAY])

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Location.h"
 
 // define keys for results
@@ -67,27 +68,27 @@ typedef enum {
 
 @interface AirNowAPI : NSObject
 
-+ (NSURL *)URLForLatitute:(NSString *)latitude
-             forLongitude:(NSString *)longitude;
++ (NSURL *)URLForLatitute:(CLLocationDegrees)latitude
+             forLongitude:(CLLocationDegrees)longitude;
 
 + (NSURL *)URLForDate:(NSDate *)date
-          forLatitute:(NSString *)latitude
-         forLongitude:(NSString *)longitude;
+          forLatitute:(CLLocationDegrees)latitude
+         forLongitude:(CLLocationDegrees)longitude;
 
 + (NSURL *)URLForZipcode:(NSString *)zipcode;
 
 + (NSURL *)URLForDate:(NSDate *)date
            forZipcode:(NSString *)zipcode;
 
-/* Air Quality Info */
-+ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
-                           content:(NSString *)content
-                          latitude:(NSString *)latitude
-                         longitude:(NSString *)longitude;
-
-+ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
-                           content:(NSString *)content
-                           zipcode:(NSString *)zipcode;
+///* Air Quality Info */
+//+ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
+//                           content:(NSString *)content
+//                          latitude:(CLLocationDegrees)latitude
+//                         longitude:(CLLocationDegrees)longitude;
+//
+//+ (NSDictionary *)airQualityInfoForDate:(NSDate *)date
+//                           content:(NSString *)content
+//                           zipcode:(NSString *)zipcode;
 
 + (AQAirQuality)aqForAQI:(NSString *)aqi;
 

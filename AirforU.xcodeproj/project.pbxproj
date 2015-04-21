@@ -129,6 +129,7 @@
 		B4544B691ADC9EB80023AB13 /* unhealthy_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unhealthy_background.png; sourceTree = "<group>"; };
 		B4544B6A1ADC9EB80023AB13 /* very_unhealthy_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = very_unhealthy_background.png; sourceTree = "<group>"; };
 		B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		B46F52D01AE5FB9F00A18E39 /* CCLocationNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCLocationNotifications.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +180,7 @@
 				B4544B381ADC9A280023AB13 /* Main.storyboard */,
 				B4544B141ADC9A270023AB13 /* AppDelegate.h */,
 				B4544B151ADC9A270023AB13 /* AppDelegate.m */,
+				B46F52D01AE5FB9F00A18E39 /* CCLocationNotifications.h */,
 				B4544B2A1ADC9A270023AB13 /* IntakeSurvey */,
 				B4544B0D1ADC9A270023AB13 /* AirQualityTab */,
 				B4544B271ADC9A270023AB13 /* HealthTab */,
