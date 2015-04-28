@@ -69,8 +69,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-//    NSLog(@"%@", [AirNowAPI URLForLatitute:self.location.coordinate.latitude forLongitude:self.location.coordinate.longitude]);
-    
     if (self.location.coordinate.latitude == 0 || self.location.coordinate.longitude == 0) {
         [self.locationManager stopUpdatingLocation];
         CLLocation *location = [locations lastObject];
@@ -118,9 +116,6 @@
     
     ((UITabBarController *)self.window.rootViewController).delegate = self;
     
-    self.zipcode = nil;
-//    self.location = nil;
-    
     for (int i = 0; i < 9; i++)
         [self.answers addObject:@""];
     
@@ -134,9 +129,11 @@
     
     if (!surveyed)
         [[((UITabBarController *)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"Agreement Segue" sender:self];
-    else
+    else {
         self.identification = [defaults objectForKey:@"identification"];
-        
+        self.zipcode = [defaults objectForKey:@"zipcode"];
+    }
+    
     return YES;
 }
 
@@ -185,7 +182,6 @@
         [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"---------------------------------------------------"
                                                                label:timestamp value:nil] build]];
         [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Open App" label:timestamp value:nil] build]];
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Today's Air Quality" label:timestamp value:nil] build]];
     }
 }
 

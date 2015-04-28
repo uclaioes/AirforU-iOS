@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B407B0E31AEEFBEB00882A2B /* NSDate+AQHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B407B0E21AEEFBEB00882A2B /* NSDate+AQHelper.m */; };
 		B4544ABC1ADC999D0023AB13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544ABB1ADC999D0023AB13 /* main.m */; };
 		B4544AD61ADC999D0023AB13 /* AirforUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544AD51ADC999D0023AB13 /* AirforUTests.m */; };
 		B4544AFB1ADC9A110023AB13 /* Cloud-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AE81ADC9A110023AB13 /* Cloud-Icon@2x.png */; };
@@ -59,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B407B0E11AEEFBEB00882A2B /* NSDate+AQHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AQHelper.h"; sourceTree = "<group>"; };
+		B407B0E21AEEFBEB00882A2B /* NSDate+AQHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AQHelper.m"; sourceTree = "<group>"; };
 		B4544AB61ADC999D0023AB13 /* AirforU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirforU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4544ABA1ADC999D0023AB13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4544ABB1ADC999D0023AB13 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 		B4544B071ADC9A270023AB13 /* AirNowAPI */ = {
 			isa = PBXGroup;
 			children = (
+				B407B0E11AEEFBEB00882A2B /* NSDate+AQHelper.h */,
+				B407B0E21AEEFBEB00882A2B /* NSDate+AQHelper.m */,
 				B4544B081ADC9A270023AB13 /* AirNowAPI.h */,
 				B4544B091ADC9A270023AB13 /* AirNowAPI.m */,
 				B4544B0A1ADC9A270023AB13 /* AirNowAPIKey.h */,
@@ -253,12 +258,12 @@
 		B4544B0D1ADC9A270023AB13 /* AirQualityTab */ = {
 			isa = PBXGroup;
 			children = (
+				B4544B121ADC9A270023AB13 /* ViewController.h */,
+				B4544B131ADC9A270023AB13 /* ViewController.m */,
 				B4544B0E1ADC9A270023AB13 /* PageContentViewController.h */,
 				B4544B0F1ADC9A270023AB13 /* PageContentViewController.m */,
 				B4544B101ADC9A270023AB13 /* RandomSurveyViewController.h */,
 				B4544B111ADC9A270023AB13 /* RandomSurveyViewController.m */,
-				B4544B121ADC9A270023AB13 /* ViewController.h */,
-				B4544B131ADC9A270023AB13 /* ViewController.m */,
 			);
 			path = AirQualityTab;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B407B0E31AEEFBEB00882A2B /* NSDate+AQHelper.m in Sources */,
 				B4544B401ADC9A280023AB13 /* ViewController.m in Sources */,
 				B4544B421ADC9A280023AB13 /* BackgroundTableViewController.m in Sources */,
 				B4544B3F1ADC9A280023AB13 /* RandomSurveyViewController.m in Sources */,

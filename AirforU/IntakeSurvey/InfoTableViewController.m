@@ -26,6 +26,7 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:zipcode forKey:@"zipcode"];
+        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = zipcode;
     }
 
     if ([email length] == 0 && [phone length] == 0) {

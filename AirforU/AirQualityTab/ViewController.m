@@ -13,6 +13,7 @@
 #import "RandomSurveyViewController.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAI.h"
+#import "NSDate+AQHelper.h"
 
 @interface ViewController ()
 
@@ -39,7 +40,7 @@
 	// Create the data model
     self.date = [NSDate date];
     self.pages = @[AIR_NOW_TODAY, AIR_NOW_TOMORROW_FORECAST];
-    [self createPageContents];
+    [self createPageContentsWithZipSearch:NO];
     
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -129,9 +130,9 @@
         NSString *timestamp = [formatter stringFromDate:[NSDate date]];
         
         [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:@"Search Zipcode"
+                                                              action:[NSString stringWithFormat:@"Search Zipcode (%@)", zip]
                                                                label:timestamp
-                                                               value:zip] build]];
+                                                               value:nil] build]];
         
         ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = self.zipcode.text;
         [self.zipcode resignFirstResponder];
@@ -201,7 +202,7 @@
     [self.pageViewController.view removeFromSuperview];
     
     [self.pageContents removeAllObjects];
-    [self createPageContents];
+    [self createPageContentsWithZipSearch:YES];
     [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageViewController];
@@ -211,7 +212,7 @@
     [self.view bringSubviewToFront:self.zipcode];
 }
 
-- (void)createPageContents
+- (void)createPageContentsWithZipSearch:(BOOL)zipsearch
 {
     for (int i = 0; i < 2; i++)
     {
@@ -219,17 +220,22 @@
         PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
         pageContentViewController.content = self.pages[i];
         pageContentViewController.contentSize = self.totalHeight;
-        dispatch_queue_t AirQueue = dispatch_queue_create("Air Queue", NULL);
-        dispatch_async(AirQueue, ^{
-            [pageContentViewController getAirQuality];
-        });
         pageContentViewController.pageIndex = i;
+        pageContentViewController.zipSearch = zipsearch;
         [self.pageContents addObject:pageContentViewController];
+        if (zipsearch) {
+            [pageContentViewController getAirQuality];
+        }
     }
 }
 
 - (void)addSurvey
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *date = [defaults stringForKey:@"behavioralQuestionDate"];
+    if ([date isEqualToString:[[NSDate date] dateID]])
+        return;
+    
     RandomSurveyViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
     vc.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + self.totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, self.totalHeight*(1.0/3.0 - 2.0/24.0));
     

@@ -12,6 +12,8 @@
 #import "ViewController.h"
 #import "AirNowAPI.h"
 #import "AppDelegate.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface PageContentViewController ()
 @property (nonatomic) AQAirQuality aq;
@@ -90,7 +92,6 @@
         lineNumber:1];
     
     
-    
     self.locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/6.0, self.view.bounds.size.width, self.contentSize/12.0 + 10.0)];
     [self.view addSubview:self.locationLabel];
     
@@ -139,25 +140,34 @@
 
 - (void)getAirQuality
 {
+    /* Google Analytics Report */
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
+    
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
     NSURL *url;
-
-    if (app.zipcode && [app.zipcode length] == 5)
+    
+    if (self.zipSearch && app.zipcode && [app.zipcode length] == 5)
     {
         NSLog(@"used zipcode");
-        if ([self.content isEqualToString:AIR_NOW_TODAY])
+        if ([self.content isEqualToString:AIR_NOW_TODAY]) {
             url = [AirNowAPI URLForZipcode:app.zipcode];
-        else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
+            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show Today's Air Quality (%@)", app.zipcode] label:timestamp value:nil] build]];
+        } else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
             url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:app.zipcode];
     }
     
     else if (app.location && app.location && app.location)
     {
         NSLog(@"used location");
-        if ([self.content isEqualToString:AIR_NOW_TODAY])
+        if ([self.content isEqualToString:AIR_NOW_TODAY]) {
             url = [AirNowAPI URLForLatitute:app.location.coordinate.latitude forLongitude:app.location.coordinate.longitude];
-        else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
+            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show Today's Air Quality (%f, %f)", app.location.coordinate.latitude, app.location.coordinate.longitude] label:timestamp value:nil] build]];
+        } else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
             url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forLatitute:app.location.coordinate.latitude forLongitude:app.location.coordinate.longitude];
     }
     
@@ -166,65 +176,70 @@
         NSLog(@"used default");
         NSString *zipcode = @"90024"; // defaulted to: zipcode of UCLA
         
-        if ([self.content isEqualToString:AIR_NOW_TODAY])
+        if ([self.content isEqualToString:AIR_NOW_TODAY]) {
             url = [AirNowAPI URLForZipcode:zipcode];
-        else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
+            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Today's Air Quality (Default)" label:timestamp value:nil] build]];
+        } else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
             url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:zipcode];
     }
     
-    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
-    NSDictionary *propertyListResults;
-    NSError *error2;
+    dispatch_queue_t AirQueue = dispatch_queue_create("Air Queue", NULL);
+    dispatch_async(AirQueue, ^{
     
-    if (jsonResults) {
+        NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+        NSDictionary *propertyListResults;
+        NSError *error2;
         
-        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error2];
-        
-        BOOL categoryExists = false;
-        
-        NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
-        NSString *categoryName = @"Unavailable";
-        if (category && [category count] > 0) {
-            categoryName = [AirNowAPI worstAQ:category];
-            categoryExists = true;
+        if (jsonResults) {
+            
+            propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error2];
+            
+            BOOL categoryExists = false;
+            
+            NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
+            NSString *categoryName = @"Unavailable";
+            if (category && [category count] > 0) {
+                categoryName = [AirNowAPI worstAQ:category];
+                categoryExists = true;
+            }
+            
+            NSArray *aqi = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI];
+            NSNumber *max = [aqi valueForKeyPath:@"@max.intValue"];
+            
+            if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [propertyListResults count] <= 0)
+                max = [NSNumber numberWithInt:-1];
+            
+            NSArray *stateA = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE];
+            NSArray *locationA = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AREA];
+            NSString *state = [stateA firstObject];
+            NSString *location = [locationA firstObject];
+            
+            NSString *maxString;
+            if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && !categoryExists)
+                maxString = @"N/A";
+            else if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && categoryExists)
+                maxString = @"";
+            else
+                maxString = [NSString stringWithFormat:@"%@", max];
+            
+            NSLog(@"max: %@", maxString);
+            NSLog(@"state: %@", state);
+            NSLog(@"location: %@", location);
+            
+            self.aqi = maxString;
+            self.location = (state && location) ? [NSString stringWithFormat:@"%@, %@", location, state] : @"Unavailable";
+            self.aq = [AirNowAPI aqForAQI:[NSString stringWithFormat:@"%@", max]];
+            
+        } else {
+            
+            self.aqi = @"N/A";
+            self.location = @"Not Available";
+            self.aq = AQUnavailable;
         }
         
-        NSArray *aqi = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI];
-        NSNumber *max = [aqi valueForKeyPath:@"@max.intValue"];
-        
-        if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [propertyListResults count] <= 0)
-            max = [NSNumber numberWithInt:-1];
-        
-        NSArray *stateA = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE];
-        NSArray *locationA = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AREA];
-        NSString *state = [stateA firstObject];
-        NSString *location = [locationA firstObject];
-        
-        NSString *maxString;
-        if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && !categoryExists)
-            maxString = @"N/A";
-        else if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && categoryExists)
-            maxString = @"";
-        else
-            maxString = [NSString stringWithFormat:@"%@", max];
-        
-        NSLog(@"max: %@", maxString);
-        NSLog(@"state: %@", state);
-        NSLog(@"location: %@", location);
-        
-        self.aqi = maxString;
-        self.location = (state && location) ? [NSString stringWithFormat:@"%@, %@", location, state] : @"Unavailable";
-        self.aq = [AirNowAPI aqForAQI:[NSString stringWithFormat:@"%@", max]];
-        
-    } else {
-        
-        self.aqi = @"N/A";
-        self.location = @"Not Available";
-        self.aq = AQUnavailable;
-    }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateDisplay];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateDisplay];
+        });
     });
 }
 

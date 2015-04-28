@@ -20,4 +20,6 @@
 - (void)getAirQuality;
 - (void)updateDisplay;
 
+@property (nonatomic) BOOL zipSearch;
+
 @end

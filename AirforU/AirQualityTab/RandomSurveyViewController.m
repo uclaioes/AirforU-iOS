@@ -9,6 +9,7 @@
 #import "RandomSurveyViewController.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
+#import "NSDate+AQHelper.h"
 #import "AppDelegate.h"
 
 @interface RandomSurveyViewController ()
@@ -55,6 +56,10 @@
     
     if ([self.questions count] == 0) {
         
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *dateID = [[NSDate date] dateID];
+        [defaults setValue:dateID forKey:@"behavioralQuestionDate"];
+        
         question = @"Thank you for answering the questions.";
         [self.questionLabel setText:question];
         
@@ -90,9 +95,9 @@
     NSString *timestamp = [formatter stringFromDate:[NSDate date]];
     
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:[NSString stringWithFormat:@"BQ%ld (%@)", (long)(self.currentQuestion+1), self.questionLabel.text]
+                                                          action:[NSString stringWithFormat:@"BQ%ld (%@) (1)", (long)(self.currentQuestion+1), self.questionLabel.text]
                                                            label:timestamp
-                                                           value:[NSNumber numberWithInt:1]] build]];
+                                                           value:nil] build]];
     
     [self.questions removeObject:[NSNumber numberWithInteger:self.currentQuestion]];
     [self setQuestion];
@@ -108,7 +113,7 @@
     NSString *timestamp = [formatter stringFromDate:[NSDate date]];
     
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:[NSString stringWithFormat:@"BQ%ld (%@)", (long)(self.currentQuestion+1), self.questionLabel.text]
+                                                          action:[NSString stringWithFormat:@"BQ%ld (%@) (2)", (long)(self.currentQuestion+1), self.questionLabel.text]
                                                            label:timestamp
                                                            value:[NSNumber numberWithInt:2]] build]];
     
