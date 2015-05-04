@@ -7,7 +7,6 @@
 //
 
 #import "LearnMoreTableViewController.h"
-#import "LearnMoreWebViewController.h"
 #import "AirNowAPI.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAI.h"
@@ -41,7 +40,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 11;
+    return 13;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -51,7 +50,7 @@
         case 0:
         case 1:
         case 3: return 1; break;
-        case 2: return 5; break;
+        case 2: return 3; break;
         case 4:
         case 5:
         case 6:
@@ -59,6 +58,8 @@
         case 8:
         case 9:
         case 10:
+        case 11:
+        case 12:
         {
             if (self.shouldDisplay && self.displayIndex == section)
                 return 2;
@@ -109,27 +110,12 @@
                 case 1:
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_ORDINARY];
-                    cell.textLabel.text = @"     Environmental Protection Agency";
+                    cell.textLabel.text = @"Environmental Protection Agency";
                     break;
                 }
                 case 2:
                 {
-                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_ORDINARY];
-                    cell.textLabel.text = @"     World Health Organization";
-                    break;
-                }
-                case 3:
-                {
-                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_ORDINARY];
-                    cell.textLabel.text = @"     American Lung Association";
-                    break;
-                }
-                case 4:
-                {
                     cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_UCLA_HEALTH];
-//                    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(37.0, 9.4, 120.0, 25.2)];
-//                    img.image = [UIImage imageNamed:@"UCLA_HealthSystem_RGB.png"];
-//                    [cell.contentView addSubview:img];
                     break;
                 }
                     
@@ -154,6 +140,8 @@
         case 8:
         case 9:
         case 10:
+        case 11:
+        case 12:
         {
             if (self.shouldDisplay && self.displayIndex == indexPath.section && indexPath.row == 1)
             {
@@ -225,9 +213,7 @@
         NSString *label = @"";
         switch (indexPath.row) {
             case 1: label = @"EPA"; break;
-            case 2: label = @"WHO"; break;
-            case 3: label = @"ALA"; break;
-            case 4: label = @"UCLA Health"; break;
+            case 2: label = @"UCLA Health"; break;
             default: break;
         }
         
@@ -238,16 +224,25 @@
                                                                    label:timestamp
                                                                    value:nil] build]];
         
-        if (indexPath.row != 4) {
-            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            [self performSegueWithIdentifier:@"Show Web View" sender:cell];
-        } else {
-            
-        }
+            NSURL *url;
+            switch (indexPath.row) {
+                case 1:
+                    url = [NSURL URLWithString:@"http://www.airnow.gov"];
+                    break;
+                
+                case 2:
+                    url = [NSURL URLWithString:@"https://www.uclahealth.org/Pages/Home.aspx"];
+                    break;
+                    
+                default: break;
+            }
+        
+        if (url)
+            [[UIApplication sharedApplication] openURL:url];
         
         return;
         
-    } else if (indexPath.section >= 4 && indexPath.section <= 10) {
+    } else if (indexPath.section >= 4 && indexPath.section <= 12) {
         
         NSUInteger index = indexPath.section - 3;
         
@@ -284,14 +279,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section >= 4 && section <= 10)
+    if (section >= 4 && section <= 12)
         return 0.01;
     return 24.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section >= 3 && section <= 10)
+    if (section >= 3 && section <= 12)
         return 0.001;
     return 8.0;
 }
@@ -301,29 +296,25 @@
     
     if (indexPath.section == 2 && indexPath.row == 0)
         return 56.0;
-     else if (indexPath.section >= 4 && indexPath.section <= 10 && indexPath.row == 1)
-        return 160.0;
+     else if (indexPath.section >= 4 && indexPath.section <= 12 && indexPath.row == 1)
+     {
+         switch (indexPath.section) {
+             case 4: return 185; break;
+             case 5: return 150; break;
+             case 6: return 120; break;
+             case 7: return 210; break;
+             case 8: return 160; break;
+             case 9: return 120; break;
+             case 10: return 220; break;
+             case 11: return 130; break;
+             case 12: return 130; break;
+             default: break;
+         }
+     }
     
     return 44.0;
 }
 
 #pragma mark - UINagivation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"Show Web View"]) {
-        NSString *title = ((UITableViewCell *)sender).textLabel.text;
-        NSString *urlString = @"";
-        if ([title containsString:@"Environmental Protection Agency"]) {
-            urlString = @"http://www.epa.gov/region07/air/quality/health.htm";
-        } else if ([title containsString:@"World Health Association"]) {
-            urlString = @"http://www.who.int/mediacentre/factsheets/fs313/en/";
-        } else if ([title containsString:@"American Lung Association"]) {
-            urlString = @"http://www.lung.org/healthy-air/";
-        }
-        ((LearnMoreWebViewController *)segue.destinationViewController).nameOfWeb = title;
-        ((LearnMoreWebViewController *)segue.destinationViewController).urlString = urlString;
-    }
-}
 
 @end

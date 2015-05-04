@@ -16,6 +16,7 @@
 #import "GAIDictionaryBuilder.h"
 
 @interface PageContentViewController ()
+
 @property (nonatomic) AQAirQuality aq;
 
 // User Interface Properties
@@ -77,7 +78,6 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
-    
     
     self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/18.0, self.view.bounds.size.width, self.contentSize/18.0)];
     [self.view addSubview:self.contentLabel];

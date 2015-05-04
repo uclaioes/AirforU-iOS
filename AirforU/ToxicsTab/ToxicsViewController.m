@@ -20,10 +20,10 @@
 {
     [super viewDidLoad];
     
-    NSString *calEcoMaps = @"http://www.environment.ucla.edu/ccep/calecomaps/";
-    NSURL *calEcoMapsURL = [NSURL URLWithString:calEcoMaps];
-    NSURLRequest *request = [NSURLRequest requestWithURL:calEcoMapsURL];
-    [self.mapWebView loadRequest:request];
+//    NSString *calEcoMaps = @"http://www.environment.ucla.edu/ccep/calecomaps/";
+//    NSURL *calEcoMapsURL = [NSURL URLWithString:calEcoMaps];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:calEcoMapsURL];
+//    [self.mapWebView loadRequest:request];
 }
 
 @end

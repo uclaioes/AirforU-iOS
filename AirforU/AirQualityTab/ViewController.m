@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *pageContents; // contains PageContentViewControllers
 @property (nonatomic, strong) UITextField *zipcode;
 @property (nonatomic) CGFloat totalHeight;
+@property (nonatomic, strong) UIPageControl *pageControl;
 @end
 
 @implementation ViewController
@@ -58,6 +59,13 @@
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
+    // Add the UIPageControl
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, self.pageViewController.view.frame.size.height + NAVIGATION_BAR_HEIGHT + TOP_HEIGHT, self.view.frame.size.width, 20.0)];
+    [self.view addSubview:self.pageControl];
+    self.pageControl.numberOfPages = 2;
+    self.pageControl.currentPage = ((PageContentViewController *)self.pageViewController.viewControllers[0]).pageIndex;
+    self.pageControl.userInteractionEnabled = NO;
+    
     NSString *imageName = [AirNowAPI aqImageNameForAQ:AQGood];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
@@ -91,6 +99,8 @@
                      nil];
     [toolbar sizeToFit];
     self.zipcode.inputAccessoryView = toolbar;
+    
+    [[UIPageControl appearance] setBounds:CGRectMake(0.0, 0.0, self.view.frame.size.width, 10.0)];
     
     [self.view addSubview:self.zipcode];
 }
@@ -178,6 +188,8 @@
         [((PageContentViewController *)pageViewController.viewControllers[0]) updateDisplay];
         UIImage *im = ((PageContentViewController *)pageViewController.viewControllers[0]).bgImage;
         self.view.backgroundColor = [UIColor colorWithPatternImage:im];
+        
+        self.pageControl.currentPage = ((PageContentViewController *)self.pageViewController.viewControllers[0]).pageIndex;
         
         /* Google Analytics Report */
         id tracker = [[GAI sharedInstance] defaultTracker];

@@ -33,7 +33,6 @@
 		B4544B481ADC9A280023AB13 /* QuestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B301ADC9A270023AB13 /* QuestionTableViewController.m */; };
 		B4544B491ADC9A280023AB13 /* SpecifyOtherQuestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B321ADC9A270023AB13 /* SpecifyOtherQuestionTableViewController.m */; };
 		B4544B4A1ADC9A280023AB13 /* LearnMoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B351ADC9A270023AB13 /* LearnMoreTableViewController.m */; };
-		B4544B4B1ADC9A280023AB13 /* LearnMoreWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B371ADC9A280023AB13 /* LearnMoreWebViewController.m */; };
 		B4544B4C1ADC9A280023AB13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4544B381ADC9A280023AB13 /* Main.storyboard */; };
 		B4544B4D1ADC9A280023AB13 /* ToxicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B3B1ADC9A280023AB13 /* ToxicsViewController.m */; };
 		B4544B501ADC9A980023AB13 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4544B4F1ADC9A980023AB13 /* CoreData.framework */; };
@@ -116,8 +115,6 @@
 		B4544B321ADC9A270023AB13 /* SpecifyOtherQuestionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecifyOtherQuestionTableViewController.m; sourceTree = "<group>"; };
 		B4544B341ADC9A270023AB13 /* LearnMoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnMoreTableViewController.h; sourceTree = "<group>"; };
 		B4544B351ADC9A270023AB13 /* LearnMoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnMoreTableViewController.m; sourceTree = "<group>"; };
-		B4544B361ADC9A280023AB13 /* LearnMoreWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnMoreWebViewController.h; sourceTree = "<group>"; };
-		B4544B371ADC9A280023AB13 /* LearnMoreWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnMoreWebViewController.m; sourceTree = "<group>"; };
 		B4544B381ADC9A280023AB13 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B4544B3A1ADC9A280023AB13 /* ToxicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToxicsViewController.h; sourceTree = "<group>"; };
 		B4544B3B1ADC9A280023AB13 /* ToxicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToxicsViewController.m; sourceTree = "<group>"; };
@@ -326,8 +323,6 @@
 			children = (
 				B4544B341ADC9A270023AB13 /* LearnMoreTableViewController.h */,
 				B4544B351ADC9A270023AB13 /* LearnMoreTableViewController.m */,
-				B4544B361ADC9A280023AB13 /* LearnMoreWebViewController.h */,
-				B4544B371ADC9A280023AB13 /* LearnMoreWebViewController.m */,
 			);
 			path = LearnMoreTab;
 			sourceTree = "<group>";
@@ -493,7 +488,6 @@
 				B4544B491ADC9A280023AB13 /* SpecifyOtherQuestionTableViewController.m in Sources */,
 				B4544B471ADC9A280023AB13 /* LicenseAgreementViewController.m in Sources */,
 				B4544ABC1ADC999D0023AB13 /* main.m in Sources */,
-				B4544B4B1ADC9A280023AB13 /* LearnMoreWebViewController.m in Sources */,
 				B4544B461ADC9A280023AB13 /* InfoTableViewController.m in Sources */,
 				B4544B4A1ADC9A280023AB13 /* LearnMoreTableViewController.m in Sources */,
 				B4544B431ADC9A280023AB13 /* BackgroundViewController.m in Sources */,

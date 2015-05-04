@@ -343,13 +343,15 @@
 {
     switch (section)
     {
-        case 4: return @"     What is the Air Quality Index (AQI)?"; break;
-        case 5: return @"     Where do we get this data?"; break;
-        case 6: return @"     What pollutants are included in the AQI?"; break;
-        case 7: return @"     What is particulate matter (PM)?"; break;
-        case 8: return @"     What are some of the health effects of air pollution?"; break;
-        case 9: return @"     What populations are especially vulnerable to air pollution?"; break;
-        case 10: return @"     What are some steps I can take to protect my health?"; break;
+        case 4: return @"What is the Air Quality Index (AQI)?"; break;
+        case 5: return @"Where do we get the Air Quality information?"; break;
+        case 6: return @"What pollutants are considered in the AQI?"; break;
+        case 7: return @"What is particulate matter (PM)?"; break;
+        case 8: return @"What are some of the health effects of air pollution?"; break;
+        case 9: return @"What populations are especially vulnerable to air pollution?"; break;
+        case 10: return @"What are some steps I can take to protect my health?"; break;
+        case 11: return @"What are some steps that can be taken to protect the health of children?"; break;
+        case 12: return @"What are outdoor activities?"; break;
 
         default: break;
     }
@@ -361,13 +363,15 @@
 {
     switch (section)
     {
-        case 4: return @"The AQI is a measure of how polluted or clean the air is. There are 6 levels in the AQI system depicted by a range and color. Each level is correlated with associated health effects so that people can take steps to protect their health. Higher numbers are associated with poorer air quality. An AQI of 100 corresponds to the national air quality."; break;
-        case 5: return @"This data is obtained from Environmental Protection Agency’s AirNow website. The AirNow program gathers air quality data from regulatory authorities throughout the nation. Data are provided on an hourly basis and next-day forecasts are also available."; break;
-        case 6: return @"The AQI is calculated by considering five major pollutants in the air – ozone, particulate matter (PM), nitrogen dioxide, sulfur dioxide and carbon monoxide. Ground-level ozone and PM pose the greatest threats to human health."; break;
-        case 7: return @"Particulate matter is one type of pollutant that consists of particles in the air. PM is from different sizes and comes from different sources. The particles may not solid or liquid droplets. They can get into our lungs when we breathe and pose serious health hazards."; break;
-        case 8: return @"The health effects of air pollution include, but are not limited to, difficulty breathing, respiratory inflammation, reduced lung function or lung damage, heart attacks, cancer and premature death. The effects may not due to short-term exposure (few hours-days) or long-term (over the course of months and years)."; break;
-        case 9: return @"Air pollution affects young children, the elderly, people with pre-existing heart and lug disease and asthmatics disproportionately but it also affects young and healthy individuals. Learn more here."; break;
-        case 10: return @"Some easy steps that individuals can take are to reduce their exposure to poor air quality. When outdoor air quality is poor it is best to avoid outdoor exercise and close windows. To reduce exposure to particles in the air, air filters on air conditioning/heating systems should be regularly maintained or stand-alone units could be used. Protective masks can be worn during outdoor activities."; break;
+        case 4: return @"The AQI is a measure of how polluted or clean the air is.  The higher the AQI, the worse the air quality.  There are 6 levels in the AQI system; each depicted by a range and color.  Each level corresponds to certain health effects and identifies the populations that need to take steps to protect their health. An AQI of 100 corresponds to the national air quality standards and levels above 100 pose higher health risks."; break;
+        case 5: return @"Air Quality information is obtained from the Environmental Protection Agency’s (EPA) AirNow website.  The AirNow program gathers air quality data monitored by regulatory agencies throughout the nation. The AQI has been developed by the EPA and is reported in accordance with EPA guidelines."; break;
+        case 6: return @"The AQI is calculated by considering four major pollutants in the air – ozone, particulate matter (PM), sulfur dioxide and carbon monoxide. Ground-level ozone and PM pose the greatest threats to human health."; break;
+        case 7: return @"Particulate Matter (PM) consists of particles of various shapes and sizes that are floating in the air and pose serious health hazards. PM10 and PM2.5 are two different categories that are regulated; PM10 are larger in size while PM2.5 are smaller in size.  The smaller particles are usually more harmful since they can get deposited deep in our lungs as we breathe. They come from a variety of sources such as vehicle exhaust, industrial processes, forest fires and dust."; break;
+        case 8: return @"The health effects of air pollution include, but are not limited to, difficulty in breathing, respiratory inflammation, reduced lung function or lung damage, heart attacks, cancer and premature death. The effects may be due to short-term exposure (few hours-days) or long-term (over the course of months and years)."; break;
+        case 9: return @"Air pollution affects young children, the elderly, people with pre-existing heart and lung disease and asthmatics disproportionately but it also affects young and healthy individuals."; break;
+        case 10: return @"Limiting time outdoors is one of the most effective steps to reduce exposure to poor air quality.  When outdoor air quality is poor it is best to avoid outdoor exercise and close windows.  Outdoor activities that increase the heart rate also increase breathing rates and thus should be avoided. To reduce exposure to particles in the air, air filters on air conditioning/heating systems should be regularly maintained or stand-alone air filters/purifiers could be used.  Protective masks can be worn during outdoor activities."; break;
+        case 11: return @"Since children are more active outdoors they breath in more air.  When combined with the fact that their lungs are still developing, make children under 18 a susceptible population.  Time spent outdoors should be limited when high air pollution events."; break;
+        case 12: return @"Outdoor activities such as running or other exercises increase the breathing rate and thus can be harmful when air pollution is high outdoors even for healthy people.  Outdoor activities include running, jogging or strenuous gardening etc. that increase the heart rate."; break;
 
         default: break;
     }

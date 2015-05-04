@@ -334,7 +334,7 @@ If you wish to ask questions about your rights as a research participant or if y
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0M-oS-hUN">
                                 <rect key="frame" x="16" y="20" width="568" height="503"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -511,41 +511,6 @@ If you wish to ask questions about your rights as a research participant or if y
             </objects>
             <point key="canvasLocation" x="3065" y="1461"/>
         </scene>
-        <!--Learn More Web View Controller-->
-        <scene sceneID="FsD-1L-FxY">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="II2-44-wC5" customClass="LearnMoreWebViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PHm-uX-XYI"/>
-                        <viewControllerLayoutGuide type="bottom" id="4DS-5U-ltv"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bS5-lO-CDH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOM-JH-fNp">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="GOM-JH-fNp" firstAttribute="leading" secondItem="bS5-lO-CDH" secondAttribute="leadingMargin" constant="-16" id="Nj8-UT-4Ry"/>
-                            <constraint firstItem="GOM-JH-fNp" firstAttribute="top" secondItem="PHm-uX-XYI" secondAttribute="bottom" id="V21-Jo-7LN"/>
-                            <constraint firstItem="4DS-5U-ltv" firstAttribute="top" secondItem="GOM-JH-fNp" secondAttribute="bottom" id="cKg-eD-bx6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GOM-JH-fNp" secondAttribute="trailing" constant="-16" id="kpO-PR-T95"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="c6e-VI-pyH"/>
-                    <connections>
-                        <outlet property="webView" destination="GOM-JH-fNp" id="sX4-Zj-Hvd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uoi-ek-CQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1060" y="-789"/>
-        </scene>
         <!--Learn More-->
         <scene sceneID="GfB-aO-3YT">
             <objects>
@@ -589,7 +554,7 @@ If you wish to ask questions about your rights as a research participant or if y
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Umn-cb-KTN" id="d91-TR-aua">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5ur-kp-YIP">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5ur-kp-YIP">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -604,7 +569,7 @@ If you wish to ask questions about your rights as a research participant or if y
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UCLA_HealthSystem_RGB.png" translatesAutoresizingMaskIntoConstraints="NO" id="RaL-E0-V91">
-                                            <rect key="frame" x="37" y="5" width="162" height="34"/>
+                                            <rect key="frame" x="16" y="5" width="162" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="162" id="Gkv-Vg-xga"/>
                                                 <constraint firstAttribute="height" constant="34" id="Lt0-e7-n0I"/>
@@ -613,7 +578,7 @@ If you wish to ask questions about your rights as a research participant or if y
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="RaL-E0-V91" firstAttribute="top" secondItem="GqO-zx-EJY" secondAttribute="topMargin" constant="-3" id="982-Wk-lcv"/>
-                                        <constraint firstItem="RaL-E0-V91" firstAttribute="leading" secondItem="GqO-zx-EJY" secondAttribute="leadingMargin" constant="29" id="PfS-mO-712"/>
+                                        <constraint firstItem="RaL-E0-V91" firstAttribute="leading" secondItem="GqO-zx-EJY" secondAttribute="leadingMargin" constant="8" id="s9D-xH-Jef"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -628,7 +593,6 @@ If you wish to ask questions about your rights as a research participant or if y
                     <connections>
                         <segue destination="n8R-NU-240" kind="show" identifier="Show About Us" id="ofz-Yl-Xi0"/>
                         <segue destination="C6b-nT-Cg3" kind="show" identifier="Show Contact Us" id="HwB-sn-0hI"/>
-                        <segue destination="II2-44-wC5" kind="show" identifier="Show Web View" id="Htr-Qp-c8z"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1LF-pv-Bgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
