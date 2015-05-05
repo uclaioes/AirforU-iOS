@@ -315,6 +315,4 @@
     return 44.0;
 }
 
-#pragma mark - UINagivation
-
 @end

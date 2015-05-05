@@ -14,15 +14,19 @@
 #import "GAIDictionaryBuilder.h"
 #import "GAI.h"
 #import "NSDate+AQHelper.h"
+#import "NSString+Helper.h"
 
-@interface ViewController ()
+@interface ViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) NSMutableArray *pageContents; // contains PageContentViewControllers
-@property (nonatomic, strong) UITextField *zipcode;
+//@property (nonatomic, strong) UITextField *zipcode;
 @property (nonatomic) CGFloat totalHeight;
 @property (nonatomic, strong) UIPageControl *pageControl;
+
+@property (nonatomic, strong) UISearchController *searchController;
+
 @end
 
 @implementation ViewController
@@ -78,31 +82,9 @@
     
     [self addSurvey];
     
-    self.zipcode = [[UITextField alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - SEARCH_TEXT_WIDTH - 20.0, self.totalHeight/3.0 + TOP_HEIGHT + NAVIGATION_BAR_HEIGHT, SEARCH_TEXT_WIDTH, SEARCH_TEXT_HEIGHT)];
-    self.zipcode.placeholder = @"Search Zip";
-    self.zipcode.textAlignment = NSTextAlignmentRight;
-    [self.zipcode setKeyboardType:UIKeyboardTypeNumberPad];
-    self.zipcode.textColor = [UIColor whiteColor];
-    
-    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 60.0)];
-    toolbar.barStyle = UIBarStyleDefault;
-    
-    UIBarButtonItem *zipcodeLabel = [[UIBarButtonItem alloc] initWithTitle:@"Please enter 5-digit zipcode" style:UIBarButtonItemStyleDone target:nil action:nil];
-    zipcodeLabel.enabled = NO;
-
-    toolbar.items = [NSArray arrayWithObjects:
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(cancelSearch:)],
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                     zipcodeLabel,
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(startSearch:)],
-                     nil];
-    [toolbar sizeToFit];
-    self.zipcode.inputAccessoryView = toolbar;
-    
     [[UIPageControl appearance] setBounds:CGRectMake(0.0, 0.0, self.view.frame.size.width, 10.0)];
-    
-    [self.view addSubview:self.zipcode];
+
+    [self initSearchButton];
 }
 
 - (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -115,39 +97,111 @@
     return vc;
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UISearchBarDelegate
 
-- (IBAction)cancelSearch:(id)sender
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self.zipcode resignFirstResponder];
-    self.zipcode.text = @"";
+    [self startSearch];
+    [self.searchController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)startSearch:(id)sender
+#pragma mark - Actions
+
+- (void)startSearch
 {
-    if ([self.zipcode.text length] != 5) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong Format!" message:@"The zipcode should be a 5-digit number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+    if ([self.searchController.searchBar.text isAllDigits]) {
+        if ([self.searchController.searchBar.text length] != 5) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong Format!" message:@"The zipcode should be a 5-digit number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        } else {
+            
+            NSNumber *zip = [NSNumber numberWithDouble:[self.searchController.searchBar.text integerValue]];
+            
+            /* Google Analytics Report*/
+            id tracker = [[GAI sharedInstance] defaultTracker];
+            NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+            NSString *timestamp = [formatter stringFromDate:[NSDate date]];
+            
+            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
+                                                                  action:[NSString stringWithFormat:@"Search Zipcode (%@)", zip]
+                                                                   label:timestamp
+                                                                   value:nil] build]];
+            
+            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = self.searchController.searchBar.text;
+            [self reloadPageController];
+        }
     } else {
         
-        NSNumber *zip = [NSNumber numberWithDouble:[self.zipcode.text integerValue]];
+        /* TODO: City Search */
         
-        /* Google Analytics Report*/
-        id tracker = [[GAI sharedInstance] defaultTracker];
-        NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-        NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-        
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:[NSString stringWithFormat:@"Search Zipcode (%@)", zip]
-                                                               label:timestamp
-                                                               value:nil] build]];
-        
-        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = self.zipcode.text;
-        [self.zipcode resignFirstResponder];
-        [self reloadPageController];
     }
+}
+
+- (void)initSearchButton
+{
+    UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearch:)];
+    searchButton.style = UIBarButtonSystemItemDone;
+    searchButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = searchButton;
+}
+
+- (IBAction)showSearch:(UIBarButtonItem *)sender
+{
+    _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    _searchController.hidesNavigationBarDuringPresentation = NO;
+    _searchController.searchBar.placeholder = @"Enter city name or zipcode";
+    
+    _searchController.searchBar.delegate = self;
+    
+    [self presentViewController:self.searchController animated:YES completion:nil];
+}
+
+- (void)reloadPageController
+{
+    [self.pageViewController removeFromParentViewController];
+    [self.pageViewController.view removeFromSuperview];
+    
+    [self.pageContents removeAllObjects];
+    [self createPageContentsWithZipSearch:YES];
+    [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    [self addChildViewController:self.pageViewController];
+    [self.view addSubview:self.pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
+}
+
+- (void)createPageContentsWithZipSearch:(BOOL)zipsearch
+{
+    for (int i = 0; i < 2; i++)
+    {
+        // Create a new view controller and pass suitable data.
+        PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
+        pageContentViewController.content = self.pages[i];
+        pageContentViewController.contentSize = self.totalHeight;
+        pageContentViewController.pageIndex = i;
+        pageContentViewController.zipSearch = zipsearch;
+        [self.pageContents addObject:pageContentViewController];
+        if (zipsearch) {
+            [pageContentViewController getAirQuality];
+        }
+    }
+}
+
+- (void)addSurvey
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *date = [defaults stringForKey:@"behavioralQuestionDate"];
+    if ([date isEqualToString:[[NSDate date] dateID]])
+        return;
+    
+    RandomSurveyViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
+    vc.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + self.totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, self.totalHeight*(1.0/3.0 - 2.0/24.0));
+    
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
+    [vc didMoveToParentViewController:self];
 }
 
 #pragma mark - UIPageViewControllerDataSource
@@ -208,59 +262,13 @@
 
 #pragma mark - Ordinary Methods
 
-- (void)reloadPageController
-{
-    [self.pageViewController removeFromParentViewController];
-    [self.pageViewController.view removeFromSuperview];
-    
-    [self.pageContents removeAllObjects];
-    [self createPageContentsWithZipSearch:YES];
-    [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    [self addChildViewController:self.pageViewController];
-    [self.view addSubview:self.pageViewController.view];
-    [self.pageViewController didMoveToParentViewController:self];
-    
-    [self.view bringSubviewToFront:self.zipcode];
-}
-
-- (void)createPageContentsWithZipSearch:(BOOL)zipsearch
-{
-    for (int i = 0; i < 2; i++)
-    {
-        // Create a new view controller and pass suitable data.
-        PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-        pageContentViewController.content = self.pages[i];
-        pageContentViewController.contentSize = self.totalHeight;
-        pageContentViewController.pageIndex = i;
-        pageContentViewController.zipSearch = zipsearch;
-        [self.pageContents addObject:pageContentViewController];
-        if (zipsearch) {
-            [pageContentViewController getAirQuality];
-        }
-    }
-}
-
-- (void)addSurvey
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *date = [defaults stringForKey:@"behavioralQuestionDate"];
-    if ([date isEqualToString:[[NSDate date] dateID]])
-        return;
-    
-    RandomSurveyViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
-    vc.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + self.totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, self.totalHeight*(1.0/3.0 - 2.0/24.0));
-    
-    [self addChildViewController:vc];
-    [self.view addSubview:vc.view];
-    [vc didMoveToParentViewController:self];
-}
-
 - (NSMutableArray *)pageContents
 {
     if (!_pageContents)
         _pageContents = [[NSMutableArray alloc] initWithCapacity:0];
     return _pageContents;
 }
+
+
 
 @end
