@@ -690,25 +690,9 @@ Any information that is obtained in connection with this study and that can iden
                     <view key="view" contentMode="scaleToFill" id="419-5Y-ieQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oke-xq-WiP">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hlt-Xb-p6y" firstAttribute="top" secondItem="Oke-xq-WiP" secondAttribute="bottom" id="0Sa-vM-QjF"/>
-                            <constraint firstItem="Oke-xq-WiP" firstAttribute="top" secondItem="D4y-mM-2og" secondAttribute="bottom" id="9WR-Th-WFb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Oke-xq-WiP" secondAttribute="trailing" constant="-16" id="eWr-dK-ELw"/>
-                            <constraint firstItem="Oke-xq-WiP" firstAttribute="leading" secondItem="419-5Y-ieQ" secondAttribute="leadingMargin" constant="-16" id="sqh-3a-RBq"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Toxics" id="6Tc-Gf-GT8"/>
-                    <connections>
-                        <outlet property="mapWebView" destination="Oke-xq-WiP" id="BEm-Hg-YgJ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="InN-Ea-HX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

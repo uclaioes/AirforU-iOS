@@ -170,6 +170,7 @@
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
+    self.pageControl.currentPage = 0;
 }
 
 - (void)createPageContentsWithZipSearch:(BOOL)zipsearch
@@ -268,7 +269,5 @@
         _pageContents = [[NSMutableArray alloc] initWithCapacity:0];
     return _pageContents;
 }
-
-
 
 @end

@@ -48,6 +48,7 @@
 		B4661B7E1AF8437A00CEA31C /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = B4661B7D1AF8437A00CEA31C /* NSString+Helper.m */; };
 		B4661B801AF8455800CEA31C /* AirForUicon120.png in Resources */ = {isa = PBXBuildFile; fileRef = B4661B7F1AF8455800CEA31C /* AirForUicon120.png */; };
 		B4661B821AF8477B00CEA31C /* IOES-Logo-Top.png in Resources */ = {isa = PBXBuildFile; fileRef = B4661B811AF8477B00CEA31C /* IOES-Logo-Top.png */; };
+		B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = B46C62121AFB2E5F00463605 /* UIColor+Helper.m */; };
 		B46F52CF1AE59D9800A18E39 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +136,8 @@
 		B4661B7D1AF8437A00CEA31C /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
 		B4661B7F1AF8455800CEA31C /* AirForUicon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AirForUicon120.png; sourceTree = "<group>"; };
 		B4661B811AF8477B00CEA31C /* IOES-Logo-Top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IOES-Logo-Top.png"; path = "Supporting/IOES-Logo-Top.png"; sourceTree = "<group>"; };
+		B46C62111AFB2E5F00463605 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
+		B46C62121AFB2E5F00463605 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		B46F52D01AE5FB9F00A18E39 /* CCLocationNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCLocationNotifications.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,6 +253,8 @@
 		B4544B071ADC9A270023AB13 /* AirNowAPI */ = {
 			isa = PBXGroup;
 			children = (
+				B46C62111AFB2E5F00463605 /* UIColor+Helper.h */,
+				B46C62121AFB2E5F00463605 /* UIColor+Helper.m */,
 				B4661B7C1AF8437A00CEA31C /* NSString+Helper.h */,
 				B4661B7D1AF8437A00CEA31C /* NSString+Helper.m */,
 				B407B0E11AEEFBEB00882A2B /* NSDate+AQHelper.h */,
@@ -497,6 +502,7 @@
 				B4544B3C1ADC9A280023AB13 /* AirNowAPI.m in Sources */,
 				B4544B3E1ADC9A280023AB13 /* PageContentViewController.m in Sources */,
 				B4544B3D1ADC9A280023AB13 /* Location.m in Sources */,
+				B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */,
 				B4544B4D1ADC9A280023AB13 /* ToxicsViewController.m in Sources */,
 				B4544B491ADC9A280023AB13 /* SpecifyOtherQuestionTableViewController.m in Sources */,
 				B4544B471ADC9A280023AB13 /* LicenseAgreementViewController.m in Sources */,

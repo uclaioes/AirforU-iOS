@@ -8,6 +8,7 @@
 
 #import "AirNowAPI.h"
 #import "AirNowAPIKey.h"
+#import "UIColor+Helper.h"
 
 @implementation AirNowAPI
 
@@ -175,11 +176,12 @@
 {
     switch (aq)
     {
-        case AQGood: return [UIColor greenColor]; break;
-        case AQModerate: return [UIColor yellowColor]; break;
-        case AQUnhealthyForSensitive: return [UIColor orangeColor]; break;
-        case AQUnhealthy: return [UIColor redColor]; break;
-        case AQVeryUnhealthy: return [UIColor purpleColor]; break;
+        case AQGood: return [UIColor aqGreenColor]; break;
+        case AQModerate: return [UIColor aqYellowColor]; break;
+        case AQUnhealthyForSensitive: return [UIColor aqOrangeColor]; break;
+        case AQUnhealthy: return [UIColor aqRedColor]; break;
+        case AQVeryUnhealthy: return [UIColor aqPurpleColor]; break;
+        case AQHazardous: return [UIColor aqMaroonColor]; break;
         case AQUnavailable: return [UIColor whiteColor]; break;
             
         default: break;
@@ -195,34 +197,19 @@
     return [UIColor whiteColor];
 }
 
-+ (NSInteger)aqIndexForColor:(UIColor *)color
-{
-    if (color == [UIColor greenColor])
-        return 0;
-    else if (color == [UIColor yellowColor])
-        return 1;
-    else if (color == [UIColor orangeColor])
-        return 2;
-    else if (color == [UIColor redColor])
-        return 3;
-    else if (color == [UIColor purpleColor])
-        return 4;
-    return -1;
-}
-
 + (NSString *)aqImageNameForAQ:(AQAirQuality)aq
 {
-    NSString *imageName = @"";
+    NSString *imageName = @"good_background.png";
     
     switch (aq)
     {
         case AQGood: imageName = @"good_background.png"; break;
         case AQModerate: imageName = @"moderate_background.png"; break;
-        case AQUnhealthyForSensitive: imageName = @"sensitive_background.png"; break;
+        case AQUnhealthyForSensitive: imageName = @"sensitive_backgroung.png"; break;
         case AQUnhealthy: imageName = @"unhealthy_background.png"; break;
         case AQVeryUnhealthy: imageName = @"very_unhealthy_background.png"; break;
         case AQHazardous: imageName = @"hazardous_background.png"; break;
-        case AQUnavailable: imageName = @"good_background.png"; break;
+        case AQUnavailable: break;
         
         default: break;
     }

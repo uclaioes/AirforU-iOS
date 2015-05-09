@@ -265,36 +265,28 @@
     [self.aqiButton setTitleColor:[AirNowAPI aqTextColorForAQ:self.aq] forState:UIControlStateNormal];
     [self setBackground];
     self.view.superview.superview.superview.superview.backgroundColor = [UIColor colorWithPatternImage:self.bgImage];
+    
+    /* Update Health Info Selection */
+    HealthInfoTableViewController *vc = ((UINavigationController *)self.tabBarController.viewControllers[1]).viewControllers[0];
+    AQAirQuality index = [AirNowAPI aqForAQI:self.aqi];
+    if (index != AQUnavailable && index != AQHazardous) {
+        if (vc.shouldDisplay && vc.displayIndex == index)
+            return;
+        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
+    } else {
+        if (!vc.shouldDisplay)
+            return;
+        index = vc.displayIndex;
+        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
+    }
 }
 
 /* IBAction to change tab */
 - (IBAction)showHealthInfo:(UIButton *)sender
 {
-    UIColor *color = sender.backgroundColor;
-    NSInteger index = [AirNowAPI aqIndexForColor:color];
-    
     self.tabBarController.selectedIndex = 1;
-    
-    HealthInfoTableViewController *vc = ((UINavigationController *)self.tabBarController.selectedViewController).viewControllers[0];
-    
-    if (index != -1) {
-        
-        if (vc.shouldDisplay && vc.displayIndex == index)
-            return;
-        
-        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
-        
-    } else {
-        
-        if (!vc.shouldDisplay)
-            return;
-        
-        index = vc.displayIndex;
-        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
-        
-    }
 }
 
 @end

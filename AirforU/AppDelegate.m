@@ -19,6 +19,12 @@
 @end
 
 @implementation AppDelegate
+{
+    BOOL allowNotif;
+    BOOL allowsSound;
+    BOOL allowsBadge;
+    BOOL allowsAlert;
+}
 
 #pragma mark - UITabBarControllerDelegate
 
@@ -78,12 +84,23 @@
     }
 }
 
+#pragma mark - Actions
+
+- (void)setNotificationTypesAllowed
+{
+    // get the current notification settings
+    UIUserNotificationSettings *currentSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    allowNotif = (currentSettings.types != UIUserNotificationTypeNone);
+    allowsSound = (currentSettings.types & UIUserNotificationTypeSound) != 0;
+    allowsBadge = (currentSettings.types & UIUserNotificationTypeBadge) != 0;
+    allowsAlert = (currentSettings.types & UIUserNotificationTypeAlert) != 0;
+}
+
 #pragma mark - Application Life Cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     /* Initialize Google Analytics Tracker */
-
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 45;
     
@@ -93,12 +110,43 @@
     
     
     
+    /* Register Local Notifications */
+    UIUserNotificationType types = UIUserNotificationTypeAlert;
+    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [application registerUserNotificationSettings:mySettings];
+    
+    UILocalNotification *notif = [[UILocalNotification alloc] init];
+    [self setNotificationTypesAllowed];
+    if (notif)
+    {
+        if (allowNotif && allowsAlert)
+        {
+            NSCalendar *cal = [NSCalendar currentCalendar];
+            NSDateComponents *comps = [[NSDateComponents alloc] init];
+            [comps setDay:9];
+            [comps setMonth:5];
+            [comps setYear:2015];
+            [comps setHour:10];
+            [comps setMinute:0];
+            [comps setSecond:0];
+            [cal setTimeZone:[NSTimeZone defaultTimeZone]];
+            NSDate *tempDate = [cal dateFromComponents:comps];
+            
+            notif.timeZone = [NSTimeZone defaultTimeZone];
+            notif.fireDate = tempDate;
+            notif.repeatInterval = NSCalendarUnitWeekOfYear;
+            notif.alertBody = @"Check your local air quality levels!";
+            
+            /* Schedule Notification */
+            [application scheduleLocalNotification:notif];
+        }
+    }
+    
+    
+    
     /* Core Location Integration */
-    
     self.locationManager = [[CLLocationManager alloc] init];
-    
     [self.locationManager requestWhenInUseAuthorization];
-    
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 
@@ -112,8 +160,8 @@
     [self.locationManager startUpdatingLocation];
     
     
-    /* Other Setups on Launch */
     
+    /* Other Setups on Launch */
     ((UITabBarController *)self.window.rootViewController).delegate = self;
     
     for (int i = 0; i < 9; i++)

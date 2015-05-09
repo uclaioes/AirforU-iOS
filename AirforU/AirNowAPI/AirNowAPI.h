@@ -94,7 +94,6 @@ typedef enum {
 
 + (UIColor *)aqColorForAQ:(AQAirQuality)aq;
 + (UIColor *)aqTextColorForAQ:(AQAirQuality)aq;
-+ (NSInteger)aqIndexForColor:(UIColor *)color;
 + (NSString *)aqImageNameForAQ:(AQAirQuality)aq;
 + (NSString *)aqQualityTitleForAQ:(AQAirQuality)aq;
 + (NSString *)aqRangeForAQ:(AQAirQuality)aq;

@@ -31,7 +31,7 @@
     self.yesButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
     self.noButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
     
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 3; i++)
         [self.questions addObject:[NSNumber numberWithInteger:i]];
     
     [self setQuestion];
@@ -48,7 +48,7 @@
 {
     long rand;
     do {
-        rand = arc4random() % 4;
+        rand = arc4random() % 3;
     } while (![self.questions containsObject:[NSNumber numberWithInteger:rand]] &&
              [self.questions count] != 0);
     
@@ -60,7 +60,7 @@
         NSString *dateID = [[NSDate date] dateID];
         [defaults setValue:dateID forKey:@"behavioralQuestionDate"];
         
-        question = @"Thank you for answering the questions.";
+        question = @"Thank you for your response! Check your score in the prizes tab.";
         [self.questionLabel setText:question];
         
         // set time to remove question view
@@ -77,7 +77,6 @@
         case 0: question = @"Have you or will you engage in outdoor activity today?"; break;
         case 1: question = @"Did you or a household member have an asthma attack today?"; break;
         case 2: question = @"Did you talk to someone about air quality today?"; break;
-        case 3: question = @"Did you seek additional information about air quality today?"; break;
 
         default: break;
     }
@@ -115,7 +114,7 @@
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
                                                           action:[NSString stringWithFormat:@"BQ%ld (%@) (2)", (long)(self.currentQuestion+1), self.questionLabel.text]
                                                            label:timestamp
-                                                           value:[NSNumber numberWithInt:2]] build]];
+                                                           value:nil] build]];
     
     [self.questions removeObject:[NSNumber numberWithInteger:self.currentQuestion]];
     [self setQuestion];
