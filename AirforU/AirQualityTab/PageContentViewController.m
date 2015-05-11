@@ -197,9 +197,9 @@
             BOOL categoryExists = false;
             
             NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
-            NSString *categoryName = @"Unavailable";
+//            NSString *categoryName = @"Unavailable";
             if (category && [category count] > 0) {
-                categoryName = [AirNowAPI worstAQ:category];
+//                categoryName = [AirNowAPI worstAQ:category];
                 categoryExists = true;
             }
             
