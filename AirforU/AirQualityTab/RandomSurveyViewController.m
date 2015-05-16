@@ -46,41 +46,50 @@
 
 - (void)setQuestion
 {
-    long rand;
-    do {
-        rand = arc4random() % 3;
-    } while (![self.questions containsObject:[NSNumber numberWithInteger:rand]] &&
-             [self.questions count] != 0);
-    
     NSString *question = @"";
     
-    if ([self.questions count] == 0) {
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *dateID = [[NSDate date] dateID];
-        [defaults setValue:dateID forKey:@"behavioralQuestionDate"];
-        
-        question = @"Thank you for your response! Check your score in the prizes tab.";
-        [self.questionLabel setText:question];
-        
-        // set time to remove question view
-        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(hide:) userInfo:nil repeats:NO];
-
-        [self.yesButton removeFromSuperview];
-        [self.noButton removeFromSuperview];
-        
-        return;
-    }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH"];
+    NSString *hourString = [formatter stringFromDate:[NSDate date]];
+    NSInteger hour = [hourString integerValue];
     
-    switch (rand)
-    {
-        case 0: question = @"Have you or will you engage in outdoor activity today?"; break;
-        case 1: question = @"Did you or a household member have an asthma attack today?"; break;
-        case 2: question = @"Did you talk to someone about air quality today?"; break;
+    if (!(hour >= 2 && hour <= 16)) {
+    
+        long rand;
+        do {
+            rand = arc4random() % 3;
+        } while (![self.questions containsObject:[NSNumber numberWithInteger:rand]] &&
+                 [self.questions count] != 0);
+        
+        if ([self.questions count] == 0) {
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSString *dateID = [[NSDate date] dateID];
+            [defaults setValue:dateID forKey:@"behavioralQuestionDate"];
+            
+            question = @"Thank you for your response! Check your score in the prizes tab.";
+            [self.questionLabel setText:question];
+            
+            // set time to remove question view
+            [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(hide:) userInfo:nil repeats:NO];
 
-        default: break;
+            [self.yesButton removeFromSuperview];
+            [self.noButton removeFromSuperview];
+            
+            return;
+        }
+        
+        switch (rand)
+        {
+            case 0: question = @"Have you or will you engage in outdoor activity today?"; break;
+            case 1: question = @"Did you or a household member have an asthma attack today?"; break;
+            case 2: question = @"Did you talk to someone about air quality today?"; break;
+
+            default: break;
+        }
+        self.currentQuestion = rand;
+        
     }
-    self.currentQuestion = rand;
     [self.questionLabel setText:question];
 }
 

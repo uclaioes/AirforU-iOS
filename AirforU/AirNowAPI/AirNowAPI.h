@@ -18,6 +18,7 @@
 #define AIR_NOW_RESULTS_DATE_OBSERVED @"DateObserved"
 #define AIR_NOW_RESULTS_DATE_FORECAST @"DateForecast"
 #define AIR_NOW_RESULTS_CATEGORY_NAME @"Category.Name"
+#define AIR_NOW_RESULTS_ACTIONDAY @"actionDay"
 
 #define AIR_NOW_TODAY @"Today's Air Quality"
 #define AIR_NOW_TODAY_FORECAST @"Today's Forecast"
@@ -26,6 +27,10 @@
 #define DOWNLOADED_AQI @"DownloadedAQI"
 #define DOWNLOADED_LOCATION @"DownloadedLocation"
 #define DOWNLOADED_DESCRIPTION @"DownloadedDescription"
+
+#define NAVIGATION_BAR_HEIGHT 44.0
+#define TAB_BAR_HEIGHT 49.0
+#define TOP_HEIGHT 20.0
 
 #define SECONDS_DAY 24*60*60
 

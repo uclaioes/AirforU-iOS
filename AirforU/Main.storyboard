@@ -660,10 +660,10 @@ Any information that is obtained in connection with this study and that can iden
             </objects>
             <point key="canvasLocation" x="1719" y="707"/>
         </scene>
-        <!--Prizes-->
+        <!--Monthly Giveaways-->
         <scene sceneID="dds-If-mWb">
             <objects>
-                <viewController id="xWT-Qf-0Gb" customClass="BackgroundViewController" sceneMemberID="viewController">
+                <viewController id="xWT-Qf-0Gb" customClass="MonthlyGiveaways" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ByB-g7-9C8"/>
                         <viewControllerLayoutGuide type="bottom" id="ssQ-HL-6LO"/>
@@ -673,7 +673,7 @@ Any information that is obtained in connection with this study and that can iden
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Prizes" id="zHb-8P-vDS"/>
+                    <navigationItem key="navigationItem" title="Monthly Giveaways" id="zHb-8P-vDS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8e-OR-LnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -21,8 +21,6 @@
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) NSMutableArray *pageContents; // contains PageContentViewControllers
-//@property (nonatomic, strong) UITextField *zipcode;
-@property (nonatomic) CGFloat totalHeight;
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 @property (nonatomic, strong) UISearchController *searchController;
@@ -30,6 +28,9 @@
 @end
 
 @implementation ViewController
+{
+    CGFloat totalHeight;
+}
 
 #pragma mark - View Controller Life Cycle
 
@@ -40,7 +41,7 @@
 {
     [super viewDidLoad];
     
-    self.totalHeight = self.view.frame.size.height - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - TOP_HEIGHT;
+    totalHeight = self.view.frame.size.height - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - TOP_HEIGHT;
     
 	// Create the data model
     self.date = [NSDate date];
@@ -57,7 +58,7 @@
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT, self.view.frame.size.width, self.totalHeight*(2.0/3.0));
+    self.pageViewController.view.frame = CGRectMake(0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT, self.view.frame.size.width, totalHeight*(2.0/3.0));
     
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
@@ -180,7 +181,7 @@
         // Create a new view controller and pass suitable data.
         PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
         pageContentViewController.content = self.pages[i];
-        pageContentViewController.contentSize = self.totalHeight;
+        pageContentViewController.contentSize = totalHeight;
         pageContentViewController.pageIndex = i;
         pageContentViewController.zipSearch = zipsearch;
         [self.pageContents addObject:pageContentViewController];
@@ -198,7 +199,7 @@
         return;
     
     RandomSurveyViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
-    vc.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + self.totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, self.totalHeight*(1.0/3.0 - 2.0/24.0));
+    vc.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, totalHeight*(1.0/3.0 - 2.0/24.0));
     
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
