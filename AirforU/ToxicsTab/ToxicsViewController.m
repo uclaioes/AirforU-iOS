@@ -9,7 +9,7 @@
 #import "ToxicsViewController.h"
 
 @interface ToxicsViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *mapWebView;
+
 @end
 
 @implementation ToxicsViewController

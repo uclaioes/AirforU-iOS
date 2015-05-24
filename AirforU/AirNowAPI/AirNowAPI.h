@@ -20,8 +20,8 @@
 #define AIR_NOW_RESULTS_CATEGORY_NAME @"Category.Name"
 #define AIR_NOW_RESULTS_ACTIONDAY @"actionDay"
 
+#define AIR_NOW_HISTORY @"Historical Exposure"
 #define AIR_NOW_TODAY @"Today's Air Quality"
-#define AIR_NOW_TODAY_FORECAST @"Today's Forecast"
 #define AIR_NOW_TOMORROW_FORECAST @"Tomorrow's Forecast"
 
 #define DOWNLOADED_AQI @"DownloadedAQI"

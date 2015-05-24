@@ -32,9 +32,16 @@
 @property (nonatomic, strong) NSString *aqi;
 @property (nonatomic, strong) NSString *location;
 
+// Historical Exposure Properties
+@property (nonatomic, strong) NSArray *history;
+@property (nonatomic, strong) NSString *zipcode;
+@property (nonatomic) NSInteger *average;
+
 @end
 
 @implementation PageContentViewController
+
+#define GAP 10.0
 
 - (void)setLabel:(UILabel *)label
            title:(NSString *)title
@@ -79,58 +86,123 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
-    self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/18.0, self.view.bounds.size.width, self.contentSize/18.0)];
-    [self.view addSubview:self.contentLabel];
+    if ([self.content isEqualToString:AIR_NOW_HISTORY])
+    {
+        self.zipcode = @"90024";
+        self.history = @[@{@"Tue" : @"230"},
+                         @{@"Wed" : @"21"},
+                         @{@"Thu" : @"80"},
+                         @{@"Fri" : @"101"},
+                         @{@"Sat" : @"350"},
+                         @{@"Sun" : @"200"}];
+        
+        self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/24.0, self.view.bounds.size.width, self.contentSize/18.0)];
+        [self.view addSubview:self.contentLabel];
+        
+        /* Content Label */
+        [self setLabel:self.contentLabel
+                 title:[NSString stringWithFormat:@"Last week exposure %@", self.zipcode]
+            titleColor:[UIColor blackColor]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:19.0]
+       backgroundColor:[UIColor clearColor]
+         textAlignment:NSTextAlignmentCenter
+         lineBreakMode:NSLineBreakByWordWrapping
+            lineNumber:1];
+        
+        CGFloat height = (self.contentSize*(5.0/8.0) - self.contentLabel.bounds.size.height - 6*GAP) / 6;
+        
+        for (int i = 0; i < [self.history count]; i++) {
+            NSDictionary *dict = self.history[i];
+            NSString *key = [[dict allKeys] firstObject];
+            NSString *value = [dict valueForKey:key];
+            
+            /* Exposure AQI Label */
+            UIButton *exposureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 - height/2.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), height, height)];
+            [self.view addSubview:exposureButton];
+            
+            [self setButton:exposureButton
+                      title:value
+                 titleColor:[UIColor blackColor]
+                       font:[UIFont fontWithName:@"Helvetica" size:13.0]
+            backgroundColor:[AirNowAPI aqColorForAQ:[AirNowAPI aqForAQI:value]]
+               cornerRadius:height/2.0];
+            
+            UILabel *exposureLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), self.view.bounds.size.width/2.0 - height/2.0 - 40.0, height)];
+            [self.view addSubview:exposureLabel];
+            
+            /* Exposure Day Label */
+            [self setLabel:exposureLabel
+                     title:key
+                titleColor:[UIColor blackColor]
+                      font:[UIFont fontWithName:@"Helvetica" size:15.0]
+           backgroundColor:[UIColor clearColor]
+             textAlignment:NSTextAlignmentLeft
+             lineBreakMode:NSLineBreakByWordWrapping
+                lineNumber:1];
+        }
+        
+        /* Average Text Label */
+        
+        /* Average Label */
+    }
     
-    [self setLabel:self.contentLabel
-             title:self.content
-        titleColor:[UIColor whiteColor]
-              font:[UIFont fontWithName:@"Helvetica-Bold" size:19.0]
-   backgroundColor:[UIColor clearColor]
-     textAlignment:NSTextAlignmentCenter
-     lineBreakMode:NSLineBreakByWordWrapping
-        lineNumber:1];
-    
-    
-    self.locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/6.0, self.view.bounds.size.width, self.contentSize/12.0 + 10.0)];
-    [self.view addSubview:self.locationLabel];
-    
-    [self setLabel:self.locationLabel
-             title:@""
-        titleColor:[UIColor whiteColor]
-              font:[UIFont fontWithName:@"Helvetica-Bold" size:23.0]
-   backgroundColor:[UIColor clearColor]
-     textAlignment:NSTextAlignmentCenter
-     lineBreakMode:NSLineBreakByWordWrapping
-        lineNumber:2];
-    
-    
-    
-    self.aqiButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 - self.contentSize/8.0, self.contentSize/3.0, self.contentSize/4.0, self.contentSize/4.0)];
-    [self.view addSubview:self.aqiButton];
+    else
+    {
+        /* Content Label */
+        self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/18.0, self.view.bounds.size.width, self.contentSize/18.0)];
+        [self.view addSubview:self.contentLabel];
+        
+        [self setLabel:self.contentLabel
+                 title:self.content
+            titleColor:[UIColor whiteColor]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:19.0]
+       backgroundColor:[UIColor clearColor]
+         textAlignment:NSTextAlignmentCenter
+         lineBreakMode:NSLineBreakByWordWrapping
+            lineNumber:1];
+        
+        
+        /* Location Label */
+        self.locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/6.0, self.view.bounds.size.width, self.contentSize/12.0 + 10.0)];
+        [self.view addSubview:self.locationLabel];
+        
+        [self setLabel:self.locationLabel
+                 title:@""
+            titleColor:[UIColor whiteColor]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:23.0]
+       backgroundColor:[UIColor clearColor]
+         textAlignment:NSTextAlignmentCenter
+         lineBreakMode:NSLineBreakByWordWrapping
+            lineNumber:2];
+        
+        
+        /* AQI Button */
+        self.aqiButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 - self.contentSize/8.0, self.contentSize/3.0, self.contentSize/4.0, self.contentSize/4.0)];
+        [self.view addSubview:self.aqiButton];
 
-    [self setButton:self.aqiButton
-              title:@""
-         titleColor:[UIColor clearColor]
-               font:[UIFont fontWithName:@"Helvetica-Bold" size:55.0]
-    backgroundColor:[UIColor clearColor]
-       cornerRadius:self.contentSize/8.0];
-    
-    [self.aqiButton addTarget:self action:@selector(showHealthInfo:) forControlEvents:UIControlEventTouchDown];
-    
-    
-    
-    self.qualityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/3.0 + self.contentSize/4.0, self.view.bounds.size.width, self.contentSize/12.0)];
-    [self.view addSubview:self.qualityLabel];
+        [self setButton:self.aqiButton
+                  title:@""
+             titleColor:[UIColor clearColor]
+                   font:[UIFont fontWithName:@"Helvetica-Bold" size:55.0]
+        backgroundColor:[UIColor clearColor]
+           cornerRadius:self.contentSize/8.0];
+        
+        [self.aqiButton addTarget:self action:@selector(showHealthInfo:) forControlEvents:UIControlEventTouchDown];
+        
+        
+        /* Quality Label */
+        self.qualityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/3.0 + self.contentSize/4.0, self.view.bounds.size.width, self.contentSize/12.0)];
+        [self.view addSubview:self.qualityLabel];
 
-    [self setLabel:self.qualityLabel
-             title:@""
-        titleColor:[UIColor whiteColor]
-              font:[UIFont fontWithName:@"Helvetica-Bold" size:23.0]
-   backgroundColor:[UIColor clearColor]
-     textAlignment:NSTextAlignmentCenter
-     lineBreakMode:NSLineBreakByWordWrapping
-        lineNumber:5];
+        [self setLabel:self.qualityLabel
+                 title:@""
+            titleColor:[UIColor whiteColor]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:23.0]
+       backgroundColor:[UIColor clearColor]
+         textAlignment:NSTextAlignmentCenter
+         lineBreakMode:NSLineBreakByWordWrapping
+            lineNumber:5];
+    }
 }
 
 - (void)refreshAirQuality:(NSNotification *)notification
@@ -197,9 +269,7 @@
             BOOL categoryExists = false;
             
             NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
-//            NSString *categoryName = @"Unavailable";
             if (category && [category count] > 0) {
-//                categoryName = [AirNowAPI worstAQ:category];
                 categoryExists = true;
             }
             

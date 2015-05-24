@@ -8,8 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		B407B0E31AEEFBEB00882A2B /* NSDate+AQHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B407B0E21AEEFBEB00882A2B /* NSDate+AQHelper.m */; };
+		B40AACC31B0FEBF800574453 /* aanchal_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACBF1B0FEBF800574453 /* aanchal_image.png */; };
+		B40AACC41B0FEBF800574453 /* magali_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACC01B0FEBF800574453 /* magali_image.png */; };
+		B40AACC51B0FEBF800574453 /* stephen_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACC11B0FEBF800574453 /* stephen_image.png */; };
+		B40AACC61B0FEBF800574453 /* victor_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACC21B0FEBF800574453 /* victor_image.png */; };
 		B4163DA41B06DC91001B128C /* MonthlyGiveaways.m in Sources */ = {isa = PBXBuildFile; fileRef = B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */; };
 		B4163DA61B06E15D001B128C /* card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B4163DA51B06E15D001B128C /* card.jpg */; };
+		B433B8C51B07F01800B7DE6A /* LocationIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */; };
 		B4544ABC1ADC999D0023AB13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544ABB1ADC999D0023AB13 /* main.m */; };
 		B4544AD61ADC999D0023AB13 /* AirforUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544AD51ADC999D0023AB13 /* AirforUTests.m */; };
 		B4544AFB1ADC9A110023AB13 /* Cloud-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AE81ADC9A110023AB13 /* Cloud-Icon@2x.png */; };
@@ -67,9 +72,14 @@
 /* Begin PBXFileReference section */
 		B407B0E11AEEFBEB00882A2B /* NSDate+AQHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AQHelper.h"; sourceTree = "<group>"; };
 		B407B0E21AEEFBEB00882A2B /* NSDate+AQHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AQHelper.m"; sourceTree = "<group>"; };
+		B40AACBF1B0FEBF800574453 /* aanchal_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aanchal_image.png; sourceTree = "<group>"; };
+		B40AACC01B0FEBF800574453 /* magali_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magali_image.png; sourceTree = "<group>"; };
+		B40AACC11B0FEBF800574453 /* stephen_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stephen_image.png; sourceTree = "<group>"; };
+		B40AACC21B0FEBF800574453 /* victor_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = victor_image.png; sourceTree = "<group>"; };
 		B4163DA21B06DC91001B128C /* MonthlyGiveaways.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonthlyGiveaways.h; path = MonthlyGiveaways/MonthlyGiveaways.h; sourceTree = "<group>"; };
 		B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthlyGiveaways.m; path = MonthlyGiveaways/MonthlyGiveaways.m; sourceTree = "<group>"; };
 		B4163DA51B06E15D001B128C /* card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = card.jpg; path = Supporting/card.jpg; sourceTree = "<group>"; };
+		B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LocationIcon@3x.png"; sourceTree = "<group>"; };
 		B4544AB61ADC999D0023AB13 /* AirforU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirforU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4544ABA1ADC999D0023AB13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4544ABB1ADC999D0023AB13 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -170,6 +180,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B40AACBE1B0FEBF800574453 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				B40AACBF1B0FEBF800574453 /* aanchal_image.png */,
+				B40AACC01B0FEBF800574453 /* magali_image.png */,
+				B40AACC11B0FEBF800574453 /* stephen_image.png */,
+				B40AACC21B0FEBF800574453 /* victor_image.png */,
+			);
+			name = Team;
+			path = Supporting/Team;
+			sourceTree = "<group>";
+		};
 		B4163DA11B06DC0F001B128C /* MonthlyGiveaways */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				B4163DA51B06E15D001B128C /* card.jpg */,
+				B40AACBE1B0FEBF800574453 /* Team */,
 				B4544B641ADC9EB80023AB13 /* BackgroundImages */,
 				B4544AE61ADC9A110023AB13 /* Icons */,
 				B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */,
@@ -256,6 +279,7 @@
 		B4544AE61ADC9A110023AB13 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */,
 				B4544AE81ADC9A110023AB13 /* Cloud-Icon@2x.png */,
 				B4544AEA1ADC9A110023AB13 /* Health-Icon@2x.png */,
 				B4544AEC1ADC9A110023AB13 /* Prize-Icon@2x.png */,
@@ -477,11 +501,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4544B061ADC9A110023AB13 /* UGraphic_RGB.jpg in Resources */,
+				B40AACC31B0FEBF800574453 /* aanchal_image.png in Resources */,
 				B4544AFF1ADC9A110023AB13 /* Prize-Icon@2x.png in Resources */,
 				B4544B6F1ADC9EB80023AB13 /* unhealthy_background.png in Resources */,
+				B40AACC61B0FEBF800574453 /* victor_image.png in Resources */,
+				B433B8C51B07F01800B7DE6A /* LocationIcon@3x.png in Resources */,
 				B4544B031ADC9A110023AB13 /* UCLAHealth-Icon@2x.png in Resources */,
 				B4544B6C1ADC9EB80023AB13 /* hazardous_background.png in Resources */,
 				B4544AFD1ADC9A110023AB13 /* Health-Icon@2x.png in Resources */,
+				B40AACC41B0FEBF800574453 /* magali_image.png in Resources */,
+				B40AACC51B0FEBF800574453 /* stephen_image.png in Resources */,
 				B4544B6E1ADC9EB80023AB13 /* sensitive_backgroung.png in Resources */,
 				B4163DA61B06E15D001B128C /* card.jpg in Resources */,
 				B4544B6B1ADC9EB80023AB13 /* good_background.png in Resources */,

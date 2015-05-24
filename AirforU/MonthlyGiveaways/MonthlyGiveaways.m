@@ -69,22 +69,12 @@
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(25.0, top + totalHeight*(3/4.0), self.view.frame.size.width - 50.0, totalHeight*(1/6.0))];
     [textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:17.0]];
     [textLabel setTextAlignment:NSTextAlignmentCenter];
-    [textLabel setText:@"To increase your daily score, respond to the daily questions. Raffles will be conducted monthly among the top users."];
+    [textLabel setText:@"To increase your score, respond to the daily questions. Raffles will be conducted monthly among the top users."];
     [textLabel setTextColor:[UIColor whiteColor]];
     [textLabel setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3]];
     [textLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [textLabel setNumberOfLines:6];
     [self.view addSubview:textLabel];
-    
-    
-    NSString *imageName = [AirNowAPI aqImageNameForAQ:AQGood];
-    
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [[UIImage imageNamed:imageName] drawInRect:self.view.bounds];
-    UIImage *bg = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:bg];
 }
 
 @end

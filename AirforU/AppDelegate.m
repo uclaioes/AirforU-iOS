@@ -14,6 +14,7 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "CCLocationNotifications.h"
+#import "NSDate+AQHelper.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
 @end
@@ -165,6 +166,12 @@
     /* Other Setups on Launch */
     ((UITabBarController *)self.window.rootViewController).delegate = self;
     
+    UIGraphicsBeginImageContext(self.window.frame.size);
+    [[UIImage imageNamed:@"good_background.png"] drawInRect:self.window.bounds];
+    UIImage *bg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.window.backgroundColor = [UIColor colorWithPatternImage:bg];
+    
     for (int i = 0; i < 9; i++)
         [self.answers addObject:@""];
     
@@ -175,6 +182,9 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL surveyed = [defaults boolForKey:@"hasBeenSurveyed"];
+    NSString *date = [defaults stringForKey:@"behavioralQuestionDate"];
+    if (!date)
+        [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:@"behavioralQuestionDate"];
     
     if (!surveyed)
         [[((UITabBarController *)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"Agreement Segue" sender:self];

@@ -17,7 +17,14 @@
     [[UIImage imageNamed:@"good_background.png"] drawInRect:self.view.bounds];
     UIImage *bg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.tableView.backgroundColor = [UIColor colorWithPatternImage:bg];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:bg];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.view.backgroundColor = [UIColor clearColor];
 }
 
 @end

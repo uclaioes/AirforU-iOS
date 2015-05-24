@@ -534,6 +534,7 @@ If you wish to ask questions about your rights as a research participant or if y
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQ Cell" textLabel="G4M-bZ-XES" rowHeight="84" style="IBUITableViewCellStyleDefault" id="xfT-BD-S0w">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -548,6 +549,7 @@ If you wish to ask questions about your rights as a research participant or if y
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQ Answer Cell" textLabel="5ur-kp-YIP" rowHeight="140" style="IBUITableViewCellStyleDefault" id="Umn-cb-KTN">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -562,6 +564,7 @@ If you wish to ask questions about your rights as a research participant or if y
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="UCLA Health Cell" id="wAC-DV-gxD">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -581,6 +584,7 @@ If you wish to ask questions about your rights as a research participant or if y
                                         <constraint firstItem="RaL-E0-V91" firstAttribute="leading" secondItem="GqO-zx-EJY" secondAttribute="leadingMargin" constant="8" id="s9D-xH-Jef"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -591,8 +595,8 @@ If you wish to ask questions about your rights as a research participant or if y
                     </tableView>
                     <navigationItem key="navigationItem" title="Learn More" id="9Ze-0O-BVH"/>
                     <connections>
-                        <segue destination="n8R-NU-240" kind="show" identifier="Show About Us" id="ofz-Yl-Xi0"/>
                         <segue destination="C6b-nT-Cg3" kind="show" identifier="Show Contact Us" id="HwB-sn-0hI"/>
+                        <segue destination="l2J-SK-eLY" kind="show" identifier="Show About Us" id="38A-C5-yzP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1LF-pv-Bgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -600,43 +604,263 @@ If you wish to ask questions about your rights as a research participant or if y
             <point key="canvasLocation" x="1872" y="-78"/>
         </scene>
         <!--About Us-->
-        <scene sceneID="NLz-25-0ZE">
+        <scene sceneID="6xX-e0-8YT">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="n8R-NU-240" customClass="BackgroundViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PCI-r8-XTI"/>
-                        <viewControllerLayoutGuide type="bottom" id="kPD-ua-AY0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qd5-qJ-7Uj">
+                <tableViewController id="l2J-SK-eLY" customClass="BackgroundTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Pkd-OC-pTU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J40-lB-8js">
-                                <rect key="frame" x="16" y="64" width="568" height="487"/>
-                                <string key="text">
-We are a team of researchers led by Professor Magali Delmas and a joint team from the Institute of the Environment &amp; Sustainability and the Electrical Engineering Department, at UCLA. We are trying to better understand how users interact with air quality information to promote behaviors that reduce the harmful effects of air pollution. The results will help inform policy makers about effective ways to engage users with air quality information. Equipping users with this information will allow users to make more informed decisions regarding their exposure to harmful air pollutants. 
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="Vfs-KO-elk">
+                                <cells>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jaR-GE-2a0" rowHeight="115" style="IBUITableViewCellStyleDefault" id="GcQ-cb-BLC">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GcQ-cb-BLC" id="tVy-mb-2f1">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jaR-GE-2a0">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <string key="text">This application and the associated research study have been developed by a team of researchers at the UCLA Institute of the Environment &amp; Sustainability in connection with UCLA Health.   The AirForU team (with pictures)</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="96" id="VUi-Y0-feb">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VUi-Y0-feb" id="14A-op-kdX">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magali_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-Sr-HhX">
+                                                    <rect key="frame" x="506" y="8" width="80" height="79.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="CYR-Sr-HhX" secondAttribute="height" multiplier="96:95" id="HYZ-Wz-KCs"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt0-bO-7rq">
+                                                    <rect key="frame" x="16" y="8" width="482" height="79.5"/>
+                                                    <string key="text">Magali Delmas, Ph.D
+Professor of Management Principal Investigator</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Rt0-bO-7rq" firstAttribute="top" secondItem="14A-op-kdX" secondAttribute="topMargin" id="9MB-9J-QVU"/>
+                                                <constraint firstItem="Rt0-bO-7rq" firstAttribute="leading" secondItem="14A-op-kdX" secondAttribute="leadingMargin" constant="8" id="BAU-tD-iM0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CYR-Sr-HhX" secondAttribute="trailing" constant="6" id="Cfo-lg-q0Q"/>
+                                                <constraint firstItem="Rt0-bO-7rq" firstAttribute="bottom" secondItem="14A-op-kdX" secondAttribute="bottomMargin" id="LgB-0k-VuX"/>
+                                                <constraint firstItem="CYR-Sr-HhX" firstAttribute="leading" secondItem="Rt0-bO-7rq" secondAttribute="trailing" constant="8" id="Nd7-iJ-FPx"/>
+                                                <constraint firstItem="CYR-Sr-HhX" firstAttribute="top" secondItem="14A-op-kdX" secondAttribute="topMargin" id="SnN-hq-5Jh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CYR-Sr-HhX" secondAttribute="bottom" id="fbk-6z-tLg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="96" id="ekM-U1-AIx">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ekM-U1-AIx" id="osz-lV-35v">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aanchal_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="ac6-DT-hN6">
+                                                    <rect key="frame" x="16" y="8" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="ac6-DT-hN6" secondAttribute="height" multiplier="1:1" id="4Uv-ml-qMb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8Q-bK-kGu">
+                                                    <rect key="frame" x="104" y="8" width="480" height="80"/>
+                                                    <string key="text">Aanchal Kohli, Doctoral Candidate 
+Project Coordinator 
+Environmental Science &amp; Engr.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="u8Q-bK-kGu" firstAttribute="leading" secondItem="ac6-DT-hN6" secondAttribute="trailing" constant="8" id="2xT-TH-Lit"/>
+                                                <constraint firstItem="u8Q-bK-kGu" firstAttribute="trailing" secondItem="osz-lV-35v" secondAttribute="trailingMargin" constant="-8" id="Az4-02-cGI"/>
+                                                <constraint firstItem="ac6-DT-hN6" firstAttribute="top" secondItem="osz-lV-35v" secondAttribute="topMargin" id="CTO-7T-zfi"/>
+                                                <constraint firstItem="u8Q-bK-kGu" firstAttribute="top" secondItem="osz-lV-35v" secondAttribute="topMargin" id="O5V-C3-8Tz"/>
+                                                <constraint firstItem="ac6-DT-hN6" firstAttribute="leading" secondItem="osz-lV-35v" secondAttribute="leadingMargin" constant="8" id="VRQ-2j-Bhz"/>
+                                                <constraint firstItem="u8Q-bK-kGu" firstAttribute="bottom" secondItem="osz-lV-35v" secondAttribute="bottomMargin" id="Z4W-hf-9YA"/>
+                                                <constraint firstItem="ac6-DT-hN6" firstAttribute="bottom" secondItem="osz-lV-35v" secondAttribute="bottomMargin" id="pfb-03-LoW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="96" id="SKQ-1e-jNl">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SKQ-1e-jNl" id="sFf-Ie-b3I">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stephen_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="XNu-LL-0T4">
+                                                    <rect key="frame" x="506" y="8" width="80" height="79.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="XNu-LL-0T4" secondAttribute="height" multiplier="96:95" id="Gr2-8j-PWf"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aen-x7-K8s">
+                                                    <rect key="frame" x="16" y="8" width="482" height="79.5"/>
+                                                    <string key="text">Stephen Locke, PhD
+Postdoctoral Scholar</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="XNu-LL-0T4" secondAttribute="bottom" id="aFL-kS-s2k"/>
+                                                <constraint firstItem="XNu-LL-0T4" firstAttribute="leading" secondItem="Aen-x7-K8s" secondAttribute="trailing" constant="8" id="bAD-pT-RWe"/>
+                                                <constraint firstItem="Aen-x7-K8s" firstAttribute="leading" secondItem="sFf-Ie-b3I" secondAttribute="leadingMargin" constant="8" id="cmk-Pc-FoF"/>
+                                                <constraint firstItem="Aen-x7-K8s" firstAttribute="bottom" secondItem="sFf-Ie-b3I" secondAttribute="bottomMargin" id="k7L-Yt-59O"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="XNu-LL-0T4" secondAttribute="trailing" constant="6" id="kPj-nI-5yn"/>
+                                                <constraint firstItem="Aen-x7-K8s" firstAttribute="top" secondItem="sFf-Ie-b3I" secondAttribute="topMargin" id="msq-su-m8W"/>
+                                                <constraint firstItem="XNu-LL-0T4" firstAttribute="top" secondItem="sFf-Ie-b3I" secondAttribute="topMargin" id="r8L-1E-nNS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="96" id="htS-sz-xNF">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="htS-sz-xNF" id="Hhz-uJ-ZiS">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="victor_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="YEP-mi-bAR">
+                                                    <rect key="frame" x="16" y="8" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="YEP-mi-bAR" secondAttribute="height" multiplier="1:1" id="6Rd-yZ-Nis"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5E-hx-FG0">
+                                                    <rect key="frame" x="104" y="8" width="480" height="80"/>
+                                                    <string key="text">Victor Chen, PhD
+Electrical Engineering </string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YEP-mi-bAR" firstAttribute="leading" secondItem="Hhz-uJ-ZiS" secondAttribute="leadingMargin" constant="8" id="0nC-hv-ns2"/>
+                                                <constraint firstItem="d5E-hx-FG0" firstAttribute="bottom" secondItem="Hhz-uJ-ZiS" secondAttribute="bottomMargin" id="3p4-N5-MsM"/>
+                                                <constraint firstItem="YEP-mi-bAR" firstAttribute="bottom" secondItem="Hhz-uJ-ZiS" secondAttribute="bottomMargin" id="Iro-lK-A1C"/>
+                                                <constraint firstItem="d5E-hx-FG0" firstAttribute="leading" secondItem="YEP-mi-bAR" secondAttribute="trailing" constant="8" id="Zpq-nc-9pb"/>
+                                                <constraint firstItem="d5E-hx-FG0" firstAttribute="trailing" secondItem="Hhz-uJ-ZiS" secondAttribute="trailingMargin" constant="-8" id="gGx-s8-9BH"/>
+                                                <constraint firstItem="YEP-mi-bAR" firstAttribute="top" secondItem="Hhz-uJ-ZiS" secondAttribute="topMargin" id="xPz-jf-YVf"/>
+                                                <constraint firstItem="d5E-hx-FG0" firstAttribute="top" secondItem="Hhz-uJ-ZiS" secondAttribute="topMargin" id="yQL-9b-JsC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="96" id="74m-g0-She">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74m-g0-She" id="NWf-5R-ovy">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-ia-AH2">
+                                                    <rect key="frame" x="506" y="8" width="80" height="79.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="K1F-ia-AH2" secondAttribute="height" multiplier="96:95" id="Vzm-42-9bf"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mG-HP-6mi">
+                                                    <rect key="frame" x="16" y="8" width="482" height="79.5"/>
+                                                    <string key="text">Walter Qian
+Android Developer
+Computer Science Student </string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="K1F-ia-AH2" secondAttribute="trailing" constant="6" id="4pB-dM-SbT"/>
+                                                <constraint firstItem="8mG-HP-6mi" firstAttribute="bottom" secondItem="NWf-5R-ovy" secondAttribute="bottomMargin" id="Ihg-bJ-4H8"/>
+                                                <constraint firstItem="8mG-HP-6mi" firstAttribute="leading" secondItem="NWf-5R-ovy" secondAttribute="leadingMargin" constant="8" id="aDe-hN-P2i"/>
+                                                <constraint firstItem="K1F-ia-AH2" firstAttribute="leading" secondItem="8mG-HP-6mi" secondAttribute="trailing" constant="8" id="dj8-xJ-IUx"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="K1F-ia-AH2" secondAttribute="bottom" id="nwP-Dz-DOv"/>
+                                                <constraint firstItem="K1F-ia-AH2" firstAttribute="top" secondItem="NWf-5R-ovy" secondAttribute="topMargin" id="tAJ-ZM-zrz"/>
+                                                <constraint firstItem="8mG-HP-6mi" firstAttribute="top" secondItem="NWf-5R-ovy" secondAttribute="topMargin" id="xJ2-xK-qw1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="96" id="4nH-qJ-hGd">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4nH-qJ-hGd" id="POD-p0-kYp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-Ip-TAv">
+                                                    <rect key="frame" x="16" y="8" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="wcd-Ip-TAv" secondAttribute="height" multiplier="1:1" id="UpF-ul-dJn"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLt-Ij-49E">
+                                                    <rect key="frame" x="104" y="8" width="480" height="80"/>
+                                                    <string key="text">Qingwei Lan
+iOS Developer 
+Computer Science Student</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CLt-Ij-49E" firstAttribute="top" secondItem="POD-p0-kYp" secondAttribute="topMargin" id="4it-Lj-TeX"/>
+                                                <constraint firstItem="wcd-Ip-TAv" firstAttribute="leading" secondItem="POD-p0-kYp" secondAttribute="leadingMargin" constant="8" id="69p-Fi-C5w"/>
+                                                <constraint firstItem="wcd-Ip-TAv" firstAttribute="top" secondItem="POD-p0-kYp" secondAttribute="topMargin" id="6uQ-J3-Bz0"/>
+                                                <constraint firstItem="CLt-Ij-49E" firstAttribute="trailing" secondItem="POD-p0-kYp" secondAttribute="trailingMargin" constant="-8" id="Ayc-Nq-Ruf"/>
+                                                <constraint firstItem="CLt-Ij-49E" firstAttribute="leading" secondItem="wcd-Ip-TAv" secondAttribute="trailing" constant="8" id="Dke-jj-fCH"/>
+                                                <constraint firstItem="CLt-Ij-49E" firstAttribute="bottom" secondItem="POD-p0-kYp" secondAttribute="bottomMargin" id="Ohy-ar-hh5"/>
+                                                <constraint firstItem="wcd-Ip-TAv" firstAttribute="bottom" secondItem="POD-p0-kYp" secondAttribute="bottomMargin" id="rO1-id-EKb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="n7e-oR-Osl" rowHeight="200" style="IBUITableViewCellStyleDefault" id="8AH-oW-9Ws">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8AH-oW-9Ws" id="q44-Xk-xc0">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n7e-oR-Osl">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <string key="text">Through AirForU we aim to 
+•  Understand how users interact with air quality information 
+•  Promote behaviors that reduce the harmful effects of air pollution
+•  Allow users to make more informed decisions 
+•  Inform policy makers about effective strategies to protect sensitive populations
 
-Any information that is obtained in connection with this study and that can identify you will remain confidential. It will be disclosed only with your permission or as required by law. 
-</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="J40-lB-8js" firstAttribute="leading" secondItem="qd5-qJ-7Uj" secondAttribute="leadingMargin" id="1HD-BU-K4c"/>
-                            <constraint firstItem="J40-lB-8js" firstAttribute="top" secondItem="PCI-r8-XTI" secondAttribute="bottom" id="CmH-TI-FOe"/>
-                            <constraint firstItem="J40-lB-8js" firstAttribute="trailing" secondItem="qd5-qJ-7Uj" secondAttribute="trailingMargin" id="ulh-0y-8GV"/>
-                            <constraint firstItem="kPD-ua-AY0" firstAttribute="top" secondItem="J40-lB-8js" secondAttribute="bottom" id="woa-Kc-OSv"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="About Us" id="Bo1-xP-wAF"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cPx-Xo-lcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+Any personal information obtained in connection with this study will remain confidential. It will be disclosed only with your permission or as required by law. </string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="l2J-SK-eLY" id="fgJ-R2-ri1"/>
+                            <outlet property="delegate" destination="l2J-SK-eLY" id="uQz-CF-np4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="About Us" id="6jR-pU-8tY"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y6I-Sa-7cH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="-73"/>
+            <point key="canvasLocation" x="2539" y="-78"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pKw-IR-W9W">
@@ -1932,6 +2156,10 @@ If you have any questions, comments or concerns about the research, you can talk
         <image name="Toxic-Icon.png" width="30" height="30"/>
         <image name="UCLAHealth-Icon.png" width="30" height="30"/>
         <image name="UCLA_HealthSystem_RGB.png" width="1800" height="378"/>
+        <image name="aanchal_image.png" width="849" height="945"/>
+        <image name="magali_image.png" width="117" height="150"/>
+        <image name="stephen_image.png" width="810" height="862"/>
+        <image name="victor_image.png" width="855" height="840"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wxd-yS-lf0"/>

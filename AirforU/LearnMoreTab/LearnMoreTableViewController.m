@@ -165,8 +165,6 @@
     }
     
     if (cell) {
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.contentView.backgroundColor = [UIColor clearColor];
         cell.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
     }
     

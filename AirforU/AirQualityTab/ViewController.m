@@ -34,9 +34,6 @@
 
 #pragma mark - View Controller Life Cycle
 
-#define SEARCH_TEXT_WIDTH 90.0
-#define SEARCH_TEXT_HEIGHT 30.0
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,7 +42,7 @@
     
 	// Create the data model
     self.date = [NSDate date];
-    self.pages = @[AIR_NOW_TODAY, AIR_NOW_TOMORROW_FORECAST];
+    self.pages = @[AIR_NOW_HISTORY, AIR_NOW_TODAY, AIR_NOW_TOMORROW_FORECAST];
     [self createPageContentsWithZipSearch:NO];
     
     // Create page view controller
@@ -53,21 +50,21 @@
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     
-    PageContentViewController *startingViewController = [self viewControllerAtIndex:0];
+    PageContentViewController *startingViewController = [self viewControllerAtIndex:1];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT, self.view.frame.size.width, totalHeight*(2.0/3.0));
+    self.pageViewController.view.frame = CGRectMake(0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT, self.view.frame.size.width, totalHeight);
     
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
     // Add the UIPageControl
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, self.pageViewController.view.frame.size.height + NAVIGATION_BAR_HEIGHT + TOP_HEIGHT, self.view.frame.size.width, 20.0)];
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, self.pageViewController.view.frame.size.height + NAVIGATION_BAR_HEIGHT + TOP_HEIGHT - 20.0, self.view.frame.size.width, 20.0)];
     [self.view addSubview:self.pageControl];
-    self.pageControl.numberOfPages = 2;
+    self.pageControl.numberOfPages = 3;
     self.pageControl.currentPage = ((PageContentViewController *)self.pageViewController.viewControllers[0]).pageIndex;
     self.pageControl.userInteractionEnabled = NO;
     
@@ -81,11 +78,12 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:bg];
     self.pageViewController.view.backgroundColor = [UIColor clearColor];
     
-    [self addSurvey];
-    
     [[UIPageControl appearance] setBounds:CGRectMake(0.0, 0.0, self.view.frame.size.width, 10.0)];
 
-    [self initSearchButton];
+    [self initRightBarButtons];
+    
+    /* Add random survey */
+    [self addSurvey];
 }
 
 - (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -131,7 +129,7 @@
                                                                    value:nil] build]];
             
             ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = self.searchController.searchBar.text;
-            [self reloadPageController];
+            [self reloadPageControllerWithZipSearch:YES];
         }
     } else {
         
@@ -140,12 +138,16 @@
     }
 }
 
-- (void)initSearchButton
+- (void)initRightBarButtons
 {
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearch:)];
     searchButton.style = UIBarButtonSystemItemDone;
     searchButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = searchButton;
+    
+    UIBarButtonItem *locationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"LocationIcon@3x.png"] style:UIBarButtonItemStyleDone target:self action:@selector(showCurrentLocation:)];
+    locationButton.tintColor = [UIColor blackColor];
+    
+    self.navigationItem.rightBarButtonItems = @[locationButton, searchButton];
 }
 
 - (IBAction)showSearch:(UIBarButtonItem *)sender
@@ -159,24 +161,31 @@
     [self presentViewController:self.searchController animated:YES completion:nil];
 }
 
-- (void)reloadPageController
+- (IBAction)showCurrentLocation:(UIBarButtonItem *)sender
+{
+    
+    [self reloadPageControllerWithZipSearch:NO];
+}
+
+- (void)reloadPageControllerWithZipSearch:(BOOL)zipSearch
 {
     [self.pageViewController removeFromParentViewController];
     [self.pageViewController.view removeFromSuperview];
     
     [self.pageContents removeAllObjects];
-    [self createPageContentsWithZipSearch:YES];
-    [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self createPageContentsWithZipSearch:zipSearch];
+    [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:1]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    self.pageControl.currentPage = 0;
+    self.pageControl.currentPage = 1;
 }
 
 - (void)createPageContentsWithZipSearch:(BOOL)zipsearch
 {
-    for (int i = 0; i < 2; i++)
+    
+    for (int i = 0; i < 3; i++)
     {
         // Create a new view controller and pass suitable data.
         PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
@@ -185,18 +194,28 @@
         pageContentViewController.pageIndex = i;
         pageContentViewController.zipSearch = zipsearch;
         [self.pageContents addObject:pageContentViewController];
-        if (zipsearch) {
-            [pageContentViewController getAirQuality];
-        }
+        [pageContentViewController getAirQuality];
     }
 }
 
 - (void)addSurvey
 {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH"];
+    NSString *hourString = [formatter stringFromDate:[NSDate date]];
+    NSInteger hour = [hourString integerValue];
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *date = [defaults stringForKey:@"behavioralQuestionDate"];
-    if ([date isEqualToString:[[NSDate date] dateID]])
+
+    if (hour >= 0 && hour <= 2) {
+        if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_DAY] dateID]])
+            return;
+    } else if ([date isEqualToString:[[NSDate date] dateID]])
         return;
+    else
+        if (hour > 2 && hour < 4)
+            return;
     
     RandomSurveyViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
     vc.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, totalHeight*(1.0/3.0 - 2.0/24.0));
@@ -241,11 +260,13 @@
        transitionCompleted:(BOOL)completed
 {
     if (finished && completed) {
-        [((PageContentViewController *)pageViewController.viewControllers[0]) updateDisplay];
-        UIImage *im = ((PageContentViewController *)pageViewController.viewControllers[0]).bgImage;
-        self.view.backgroundColor = [UIColor colorWithPatternImage:im];
-        
-        self.pageControl.currentPage = ((PageContentViewController *)self.pageViewController.viewControllers[0]).pageIndex;
+        PageContentViewController *vc = pageViewController.viewControllers[0];
+        if (![vc.content isEqualToString:AIR_NOW_HISTORY]) {
+            [vc updateDisplay];
+            UIImage *im = vc.bgImage;
+            self.view.backgroundColor = [UIColor colorWithPatternImage:im];
+        }
+        self.pageControl.currentPage = vc.pageIndex;
         
         /* Google Analytics Report */
         id tracker = [[GAI sharedInstance] defaultTracker];
@@ -253,12 +274,8 @@
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
         NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-        NSString *content = [self.pages objectAtIndex:((PageContentViewController *)pageViewController.viewControllers[0]).pageIndex];
         
-        if ([content containsString:@"Today's Air Quality"])
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Today's Air Quality" label:timestamp value:nil] build]];
-        else if ([content containsString:@"Tomorrow's Forecast"])
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Tomorrow's Forecast" label:timestamp value:nil] build]];
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@", vc.content] label:timestamp value:nil] build]];
     }
 }
 

@@ -20,4 +20,10 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:bg];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.view.backgroundColor = [UIColor clearColor];
+}
+
 @end
