@@ -25,6 +25,8 @@
 
 @property (nonatomic, strong) UISearchController *searchController;
 
+@property (nonatomic, strong) RandomSurveyViewController *survey;
+
 @end
 
 @implementation ViewController
@@ -217,12 +219,12 @@
         if (hour > 2 && hour < 4)
             return;
     
-    RandomSurveyViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
-    vc.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, totalHeight*(1.0/3.0 - 2.0/24.0));
+    _survey = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
+    _survey.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, totalHeight*(1.0/3.0 - 2.0/24.0));
     
-    [self addChildViewController:vc];
-    [self.view addSubview:vc.view];
-    [vc didMoveToParentViewController:self];
+    [self addChildViewController:_survey];
+    [self.view addSubview:_survey.view];
+    [_survey didMoveToParentViewController:self];
 }
 
 #pragma mark - UIPageViewControllerDataSource
@@ -255,6 +257,17 @@
 #pragma mark - UIPageViewControllerDelegate
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
+willTransitionToViewControllers:(NSArray *)pendingViewControllers
+{
+    PageContentViewController *vc = [pendingViewControllers firstObject];
+    if ([vc.content isEqualToString:AIR_NOW_HISTORY]) {
+        if (self.survey && self.survey.view.superview) {
+            [self.survey.view removeFromSuperview];
+        }
+    }
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController
         didFinishAnimating:(BOOL)finished
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed
@@ -265,7 +278,11 @@
             [vc updateDisplay];
             UIImage *im = vc.bgImage;
             self.view.backgroundColor = [UIColor colorWithPatternImage:im];
+            if (self.survey && !self.survey.view.superview) {
+                [self.view addSubview:self.survey.view];
+            }
         }
+        
         self.pageControl.currentPage = vc.pageIndex;
         
         /* Google Analytics Report */

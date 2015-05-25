@@ -35,7 +35,7 @@
 // Historical Exposure Properties
 @property (nonatomic, strong) NSArray *history;
 @property (nonatomic, strong) NSString *zipcode;
-@property (nonatomic) NSInteger *average;
+@property (nonatomic) NSInteger average;
 
 @end
 
@@ -89,12 +89,19 @@
     if ([self.content isEqualToString:AIR_NOW_HISTORY])
     {
         self.zipcode = @"90024";
-        self.history = @[@{@"Tue" : @"230"},
-                         @{@"Wed" : @"21"},
-                         @{@"Thu" : @"80"},
+        self.history = @[@{@"Tue" : @"210"},
+                         @{@"Wed" : @"1"},
+                         @{@"Thu" : @"60"},
                          @{@"Fri" : @"101"},
                          @{@"Sat" : @"350"},
                          @{@"Sun" : @"200"}];
+        
+        NSInteger total = 0;
+        for (NSDictionary *dict in self.history) {
+            NSInteger value = [[[dict allValues] firstObject] integerValue];
+            total += value;
+        }
+        self.average = total / 6.0;
         
         self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/24.0, self.view.bounds.size.width, self.contentSize/18.0)];
         [self.view addSubview:self.contentLabel];
@@ -141,9 +148,30 @@
                 lineNumber:1];
         }
         
-        /* Average Text Label */
-        
         /* Average Label */
+        CGFloat averageLabelHeight = self.contentSize*(1/4.0) - self.contentSize/18.0 - 2*GAP;
+        UIButton *averageButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 2*GAP, averageLabelHeight, averageLabelHeight)];
+        [self.view addSubview:averageButton];
+        
+        [self setButton:averageButton
+                  title:[NSString stringWithFormat:@"%ld", self.average]
+             titleColor:[UIColor blackColor]
+                   font:[UIFont fontWithName:@"Helvetica" size:16.0]
+        backgroundColor:[AirNowAPI aqColorForAQ:[AirNowAPI aqForAQI:[NSString stringWithFormat:@"%ld", self.average]]]
+           cornerRadius:averageLabelHeight/2.0];
+        
+        /* Average Text Label */
+        UILabel *averageLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 2*GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0 - 40.0, averageLabelHeight)];
+        [self.view addSubview:averageLabel];
+        
+        [self setLabel:averageLabel
+                 title:@"Average weekly AQI"
+            titleColor:[UIColor blackColor]
+                  font:[UIFont fontWithName:@"Helvetica" size:15.0]
+       backgroundColor:[UIColor clearColor]
+         textAlignment:NSTextAlignmentLeft
+         lineBreakMode:NSLineBreakByWordWrapping
+            lineNumber:5];
     }
     
     else
