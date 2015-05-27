@@ -62,7 +62,7 @@
     
     
     UIImageView *prizeImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"card.jpg"]];
-    [prizeImage setFrame:CGRectMake((self.view.frame.size.width/2.0) - totalHeight * (5/48.0), top + totalHeight*(1/2.0), totalHeight * (5/24.0), totalHeight * (2/15.0))];
+    [prizeImage setFrame:CGRectMake((self.view.frame.size.width/2.0) - totalHeight * (5/32.0), top + totalHeight*(1/2.0), totalHeight * (5/16.0), totalHeight * (1/5.0))];
     [self.view addSubview:prizeImage];
     
     

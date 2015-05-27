@@ -12,6 +12,7 @@
 		B40AACC41B0FEBF800574453 /* magali_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACC01B0FEBF800574453 /* magali_image.png */; };
 		B40AACC51B0FEBF800574453 /* stephen_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACC11B0FEBF800574453 /* stephen_image.png */; };
 		B40AACC61B0FEBF800574453 /* victor_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACC21B0FEBF800574453 /* victor_image.png */; };
+		B41349B01B15807B0028CCD3 /* FacilityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B41349AF1B15807B0028CCD3 /* FacilityCell.m */; };
 		B4163DA41B06DC91001B128C /* MonthlyGiveaways.m in Sources */ = {isa = PBXBuildFile; fileRef = B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */; };
 		B4163DA61B06E15D001B128C /* card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B4163DA51B06E15D001B128C /* card.jpg */; };
 		B433B8C51B07F01800B7DE6A /* LocationIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */; };
@@ -76,6 +77,8 @@
 		B40AACC01B0FEBF800574453 /* magali_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magali_image.png; sourceTree = "<group>"; };
 		B40AACC11B0FEBF800574453 /* stephen_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stephen_image.png; sourceTree = "<group>"; };
 		B40AACC21B0FEBF800574453 /* victor_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = victor_image.png; sourceTree = "<group>"; };
+		B41349AE1B15807B0028CCD3 /* FacilityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacilityCell.h; sourceTree = "<group>"; };
+		B41349AF1B15807B0028CCD3 /* FacilityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacilityCell.m; sourceTree = "<group>"; };
 		B4163DA21B06DC91001B128C /* MonthlyGiveaways.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonthlyGiveaways.h; path = MonthlyGiveaways/MonthlyGiveaways.h; sourceTree = "<group>"; };
 		B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthlyGiveaways.m; path = MonthlyGiveaways/MonthlyGiveaways.m; sourceTree = "<group>"; };
 		B4163DA51B06E15D001B128C /* card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = card.jpg; path = Supporting/card.jpg; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 			children = (
 				B4544B3A1ADC9A280023AB13 /* ToxicsViewController.h */,
 				B4544B3B1ADC9A280023AB13 /* ToxicsViewController.m */,
+				B41349AE1B15807B0028CCD3 /* FacilityCell.h */,
+				B41349AF1B15807B0028CCD3 /* FacilityCell.m */,
 			);
 			path = ToxicsTab;
 			sourceTree = "<group>";
@@ -549,6 +554,7 @@
 				B4544B3E1ADC9A280023AB13 /* PageContentViewController.m in Sources */,
 				B4544B3D1ADC9A280023AB13 /* Location.m in Sources */,
 				B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */,
+				B41349B01B15807B0028CCD3 /* FacilityCell.m in Sources */,
 				B4544B4D1ADC9A280023AB13 /* ToxicsViewController.m in Sources */,
 				B4544B491ADC9A280023AB13 /* SpecifyOtherQuestionTableViewController.m in Sources */,
 				B4544B471ADC9A280023AB13 /* LicenseAgreementViewController.m in Sources */,

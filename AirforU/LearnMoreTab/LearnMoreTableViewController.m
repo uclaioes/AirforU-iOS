@@ -23,6 +23,7 @@
 #define CELL_IDENTIFIER_FAQ_CELL @"FAQ Cell"
 #define CELL_IDENTIFIER_FAQ_ANSWER_CELL @"FAQ Answer Cell"
 #define CELL_IDENTIFIER_UCLA_HEALTH @"UCLA Health Cell"
+#define CELL_IDENTIFIER_UCLA_ASTHMA @"U Asthma Cell"
 
 #pragma mark - View Controller Life Cycle
 
@@ -50,7 +51,7 @@
         case 0:
         case 1:
         case 3: return 1; break;
-        case 2: return 3; break;
+        case 2: return 4; break;
         case 4:
         case 5:
         case 6:
@@ -116,6 +117,11 @@
                 case 2:
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_UCLA_HEALTH];
+                    break;
+                }
+                case 3:
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_UCLA_ASTHMA];
                     break;
                 }
                     
@@ -212,6 +218,7 @@
         switch (indexPath.row) {
             case 1: label = @"EPA"; break;
             case 2: label = @"UCLA Health"; break;
+            case 3: label = @"U Child Asthma"; break;
             default: break;
         }
         
@@ -231,6 +238,9 @@
                 case 2:
                     url = [NSURL URLWithString:@"https://www.uclahealth.org/Pages/Home.aspx"];
                     break;
+                    
+                case 3:
+                    url = [NSURL URLWithString:@"https://www.uclahealth.org/Mattel/Pediatric-Pulmonology/Pages/Asthma-Program.aspx"];
                     
                 default: break;
             }

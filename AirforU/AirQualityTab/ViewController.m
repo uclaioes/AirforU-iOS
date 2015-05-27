@@ -165,7 +165,6 @@
 
 - (IBAction)showCurrentLocation:(UIBarButtonItem *)sender
 {
-    
     [self reloadPageControllerWithZipSearch:NO];
 }
 
@@ -182,6 +181,8 @@
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     self.pageControl.currentPage = 1;
+    
+    [self addSurvey];
 }
 
 - (void)createPageContentsWithZipSearch:(BOOL)zipsearch
@@ -202,6 +203,9 @@
 
 - (void)addSurvey
 {
+    if (self.survey && self.survey.view.superview)
+        return;
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH"];
     NSString *hourString = [formatter stringFromDate:[NSDate date]];
@@ -272,7 +276,7 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed
 {
-    if (finished && completed) {
+    if (finished) {
         PageContentViewController *vc = pageViewController.viewControllers[0];
         if (![vc.content isEqualToString:AIR_NOW_HISTORY]) {
             [vc updateDisplay];

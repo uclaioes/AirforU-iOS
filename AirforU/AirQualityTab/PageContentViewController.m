@@ -89,13 +89,15 @@
     if ([self.content isEqualToString:AIR_NOW_HISTORY])
     {
         self.zipcode = @"90024";
-        self.history = @[@{@"Tue" : @"210"},
-                         @{@"Wed" : @"1"},
-                         @{@"Thu" : @"60"},
-                         @{@"Fri" : @"101"},
-                         @{@"Sat" : @"350"},
-                         @{@"Sun" : @"200"}];
+        self.history = @[@{@"Tuesday" : @"210"},
+                         @{@"Wednesday" : @"1"},
+                         @{@"Thursday" : @"60"},
+                         @{@"Friday" : @"101"},
+                         @{@"Saturday" : @"350"},
+                         @{@"Sunday" : @"200"}];
         
+        
+        /* compute average */
         NSInteger total = 0;
         for (NSDictionary *dict in self.history) {
             NSInteger value = [[[dict allValues] firstObject] integerValue];
@@ -105,6 +107,7 @@
         
         self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/24.0, self.view.bounds.size.width, self.contentSize/18.0)];
         [self.view addSubview:self.contentLabel];
+        
         
         /* Content Label */
         [self setLabel:self.contentLabel
@@ -123,6 +126,7 @@
             NSString *key = [[dict allKeys] firstObject];
             NSString *value = [dict valueForKey:key];
             
+            
             /* Exposure AQI Label */
             UIButton *exposureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 - height/2.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), height, height)];
             [self.view addSubview:exposureButton];
@@ -130,46 +134,77 @@
             [self setButton:exposureButton
                       title:value
                  titleColor:[UIColor blackColor]
-                       font:[UIFont fontWithName:@"Helvetica" size:13.0]
+                       font:[UIFont fontWithName:@"Helvetica-Bold" size:13.0]
             backgroundColor:[AirNowAPI aqColorForAQ:[AirNowAPI aqForAQI:value]]
                cornerRadius:height/2.0];
             
             UILabel *exposureLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), self.view.bounds.size.width/2.0 - height/2.0 - 40.0, height)];
             [self.view addSubview:exposureLabel];
             
+            
             /* Exposure Day Label */
             [self setLabel:exposureLabel
                      title:key
                 titleColor:[UIColor blackColor]
-                      font:[UIFont fontWithName:@"Helvetica" size:15.0]
+                      font:[UIFont fontWithName:@"Helvetica" size:16.0]
            backgroundColor:[UIColor clearColor]
              textAlignment:NSTextAlignmentLeft
              lineBreakMode:NSLineBreakByWordWrapping
                 lineNumber:1];
         }
         
+        
         /* Average Label */
-        CGFloat averageLabelHeight = self.contentSize*(1/4.0) - self.contentSize/18.0 - 2*GAP;
-        UIButton *averageButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 2*GAP, averageLabelHeight, averageLabelHeight)];
+        CGFloat averageLabelHeight = self.contentSize*(5.0/16.0) - self.contentSize/18.0 - 3*GAP;
+        UIButton *averageButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 3*GAP, averageLabelHeight, averageLabelHeight)];
         [self.view addSubview:averageButton];
         
         [self setButton:averageButton
-                  title:[NSString stringWithFormat:@"%ld", self.average]
+                  title:[NSString stringWithFormat:@"%ld", (long)self.average]
              titleColor:[UIColor blackColor]
-                   font:[UIFont fontWithName:@"Helvetica" size:16.0]
-        backgroundColor:[AirNowAPI aqColorForAQ:[AirNowAPI aqForAQI:[NSString stringWithFormat:@"%ld", self.average]]]
+                   font:[UIFont fontWithName:@"Helvetica-Bold" size:28.0]
+        backgroundColor:[AirNowAPI aqColorForAQ:[AirNowAPI aqForAQI:[NSString stringWithFormat:@"%ld", (long)self.average]]]
            cornerRadius:averageLabelHeight/2.0];
         
+        
+        /* Modifier Label */
+        UILabel *modifierLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 + averageLabelHeight/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, averageLabelHeight/2.0 + 3*GAP)];
+        [self.view addSubview:modifierLabel];
+        
+        [self setLabel:modifierLabel
+                 title:[AirNowAPI aqQualityTitleForAQ:[AirNowAPI aqForAQI:[NSString stringWithFormat:@"%ld", (long)self.average]]]
+            titleColor:[UIColor blackColor]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:15.0]
+       backgroundColor:[UIColor clearColor]
+         textAlignment:NSTextAlignmentCenter
+         lineBreakMode:NSLineBreakByWordWrapping
+            lineNumber:5];
+        
+        
+        /* Disclaimer Label */
+        UILabel *disclaimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 + averageLabelHeight/2.0 + GAP/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + modifierLabel.bounds.size.height, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0 - GAP/2.0, averageLabelHeight/2.0)];
+        [self.view addSubview:disclaimerLabel];
+        
+        [self setLabel:disclaimerLabel
+                 title:@"This is a disclaimer. This is a disclaimer. This is a disclaimer."
+            titleColor:[UIColor blackColor]
+                  font:[UIFont fontWithName:@"Helvetica" size:8.0]
+       backgroundColor:[UIColor clearColor]
+         textAlignment:NSTextAlignmentCenter
+         lineBreakMode:NSLineBreakByWordWrapping
+            lineNumber:4];
+        
+        
         /* Average Text Label */
-        UILabel *averageLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 2*GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0 - 40.0, averageLabelHeight)];
+        UILabel *averageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 3*GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, averageLabelHeight)];
         [self.view addSubview:averageLabel];
         
         [self setLabel:averageLabel
-                 title:@"Average weekly AQI"
+                 title:@"Average\nWeekly\nAQI"
             titleColor:[UIColor blackColor]
-                  font:[UIFont fontWithName:@"Helvetica" size:15.0]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:20.0]
        backgroundColor:[UIColor clearColor]
-         textAlignment:NSTextAlignmentLeft
+         textAlignment:NSTextAlignmentCenter
          lineBreakMode:NSLineBreakByWordWrapping
             lineNumber:5];
     }

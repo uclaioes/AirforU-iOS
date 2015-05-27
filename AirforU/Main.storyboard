@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Air for U-->
@@ -586,6 +587,36 @@ If you wish to ask questions about your rights as a research participant or if y
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="U Asthma Cell" id="K7T-zq-Cqb">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K7T-zq-Cqb" id="2BV-Bc-ZaJ">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UGraphic_RGB.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="K6h-Ji-GTp">
+                                            <rect key="frame" x="16" y="5" width="34" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="K6h-Ji-GTp" secondAttribute="height" multiplier="1:1" id="233-9f-9Rd"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Child Asthma" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jk-aR-jqr">
+                                            <rect key="frame" x="58" y="5" width="509" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="K6h-Ji-GTp" firstAttribute="leading" secondItem="2BV-Bc-ZaJ" secondAttribute="leadingMargin" constant="8" id="3At-08-b69"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6Jk-aR-jqr" secondAttribute="bottom" constant="-3" id="4ck-d0-mnr"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="K6h-Ji-GTp" secondAttribute="bottom" constant="-3" id="61T-xd-EBJ"/>
+                                        <constraint firstItem="6Jk-aR-jqr" firstAttribute="top" secondItem="2BV-Bc-ZaJ" secondAttribute="topMargin" constant="-3" id="BtV-jz-Ywn"/>
+                                        <constraint firstItem="6Jk-aR-jqr" firstAttribute="leading" secondItem="K6h-Ji-GTp" secondAttribute="trailing" constant="8" id="OQs-Aa-RfN"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6Jk-aR-jqr" secondAttribute="trailing" constant="-8" id="nMd-wh-Qy8"/>
+                                        <constraint firstItem="K6h-Ji-GTp" firstAttribute="top" secondItem="2BV-Bc-ZaJ" secondAttribute="topMargin" constant="-3" id="tGq-cd-gNw"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -607,10 +638,11 @@ If you wish to ask questions about your rights as a research participant or if y
         <scene sceneID="6xX-e0-8YT">
             <objects>
                 <tableViewController id="l2J-SK-eLY" customClass="BackgroundTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Pkd-OC-pTU">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Pkd-OC-pTU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="Vfs-KO-elk">
@@ -620,11 +652,25 @@ If you wish to ask questions about your rights as a research participant or if y
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GcQ-cb-BLC" id="tVy-mb-2f1">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jaR-GE-2a0">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jaR-GE-2a0">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <string key="text">This application and the associated research study have been developed by a team of researchers at the UCLA Institute of the Environment &amp; Sustainability in connection with UCLA Health.   The AirForU team (with pictures)</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <string key="content">This application and the associated research study have been developed by a team of researchers at the UCLA Institute of the Environment &amp; Sustainability in connection with UCLA Health.   </string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="The AirForU team">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="13" name="HelveticaNeue-Bold"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -647,7 +693,7 @@ If you wish to ask questions about your rights as a research participant or if y
                                                     <string key="text">Magali Delmas, Ph.D
 Professor of Management Principal Investigator</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -680,7 +726,7 @@ Professor of Management Principal Investigator</string>
 Project Coordinator 
 Environmental Science &amp; Engr.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -712,7 +758,7 @@ Environmental Science &amp; Engr.</string>
                                                     <string key="text">Stephen Locke, PhD
 Postdoctoral Scholar</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -744,7 +790,7 @@ Postdoctoral Scholar</string>
                                                     <string key="text">Victor Chen, PhD
 Electrical Engineering </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -777,7 +823,7 @@ Electrical Engineering </string>
 Android Developer
 Computer Science Student </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -810,7 +856,7 @@ Computer Science Student </string>
 iOS Developer 
 Computer Science Student</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -833,7 +879,7 @@ Computer Science Student</string>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n7e-oR-Osl">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <string key="text">Through AirForU we aim to 
+                                                    <string key="text">Through AirForU we aim to: 
 •  Understand how users interact with air quality information 
 •  Promote behaviors that reduce the harmful effects of air pollution
 •  Allow users to make more informed decisions 
@@ -841,7 +887,7 @@ Computer Science Student</string>
 
 Any personal information obtained in connection with this study will remain confidential. It will be disclosed only with your permission or as required by law. </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -867,7 +913,7 @@ Any personal information obtained in connection with this study will remain conf
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uC6-5N-s2l" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jQK-iK-myB">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -912,11 +958,81 @@ Any personal information obtained in connection with this study will remain conf
                         <viewControllerLayoutGuide type="bottom" id="hlt-Xb-p6y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="419-5Y-ieQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pJa-xj-f2m">
+                                <rect key="frame" x="0.0" y="122" width="600" height="365"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearest Facilities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gka-Gx-p7v">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <prototypes>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Facility Cell" rowHeight="91" id="QWj-13-89i" customClass="FacilityCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWj-13-89i" id="BJy-gE-Ei4">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Tesoro Alaoka Co." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFf-TP-6zn">
+                                                    <rect key="frame" x="8" y="12" width="584" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance: 20 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDA-BQ-qUA">
+                                                    <rect key="frame" x="25" y="37" width="567" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chemical Release (lbs): 84" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvn-Uq-KpW">
+                                                    <rect key="frame" x="25" y="62" width="567" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="top" secondItem="HFf-TP-6zn" secondAttribute="bottom" constant="8" id="3ss-Oa-kJY"/>
+                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="top" secondItem="BJy-gE-Ei4" secondAttribute="topMargin" constant="4" id="6Nb-sV-tul"/>
+                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="top" secondItem="HFf-TP-6zn" secondAttribute="bottom" constant="8" id="B9s-uE-LBy"/>
+                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" id="J5q-85-wZP"/>
+                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" constant="17" id="TQw-lf-Py0"/>
+                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="Tq1-nl-0gD"/>
+                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="top" secondItem="ZDA-BQ-qUA" secondAttribute="bottom" constant="8" id="Xz0-hM-SBJ"/>
+                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="top" secondItem="ZDA-BQ-qUA" secondAttribute="bottom" constant="8" id="fo8-rh-Q5E"/>
+                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="tz2-iw-bww"/>
+                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="uTi-zw-oxL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bvn-Uq-KpW" secondAttribute="bottom" constant="3.5" id="un0-3u-fK3"/>
+                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" constant="17" id="vZd-r2-BZE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="distanceLabel" destination="ZDA-BQ-qUA" id="681-Xd-puO"/>
+                                            <outlet property="nameLabel" destination="HFf-TP-6zn" id="dcP-on-3Ld"/>
+                                            <outlet property="releaseLabel" destination="bvn-Uq-KpW" id="tap-98-nrS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hlt-Xb-p6y" firstAttribute="top" secondItem="pJa-xj-f2m" secondAttribute="bottom" id="B7M-rG-dI1"/>
+                            <constraint firstAttribute="height" secondItem="pJa-xj-f2m" secondAttribute="height" multiplier="4:3" id="Ifb-vF-NXT"/>
+                            <constraint firstItem="pJa-xj-f2m" firstAttribute="leading" secondItem="419-5Y-ieQ" secondAttribute="leadingMargin" constant="-16" id="mpv-TY-adX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pJa-xj-f2m" secondAttribute="trailing" constant="-16" id="rv7-on-0P7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Toxics" id="6Tc-Gf-GT8"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="pJa-xj-f2m" id="7db-IX-T4I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="InN-Ea-HX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2005,7 +2121,7 @@ Any personal information obtained in connection with this study will remain conf
             <objects>
                 <tableViewController id="4TD-ZO-ZmU" customClass="HealthInfoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="0Uo-WW-mXo">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -2096,7 +2212,9 @@ If you have any questions, comments or concerns about the research, you can talk
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZQl-zJ-FFC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Toxics" image="Toxic-Icon.png" id="AyH-S0-evU"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MmG-ZG-zpp">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="MmG-ZG-zpp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2156,6 +2274,7 @@ If you have any questions, comments or concerns about the research, you can talk
         <image name="Toxic-Icon.png" width="30" height="30"/>
         <image name="UCLAHealth-Icon.png" width="30" height="30"/>
         <image name="UCLA_HealthSystem_RGB.png" width="1800" height="378"/>
+        <image name="UGraphic_RGB.jpg" width="600" height="600"/>
         <image name="aanchal_image.png" width="849" height="945"/>
         <image name="magali_image.png" width="117" height="150"/>
         <image name="stephen_image.png" width="810" height="862"/>
