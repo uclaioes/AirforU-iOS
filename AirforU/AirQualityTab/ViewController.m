@@ -220,7 +220,7 @@
     } else if ([date isEqualToString:[[NSDate date] dateID]])
         return;
     else
-        if (hour > 2 && hour < 4)
+        if (hour > 2 && hour < 16)
             return;
     
     _survey = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
