@@ -12,7 +12,10 @@
 @interface MonthlyGiveaways ()
 
 @property (nonatomic, strong) NSDate *date;
-@property (nonatomic, strong) NSString *score;
+@property (nonatomic) NSInteger score;
+@property (nonatomic, strong) NSString *scoreName;
+
+@property (nonatomic, strong) UILabel *scoreLabel;
 
 @end
 
@@ -23,14 +26,31 @@
 
 #pragma mark - View Controller Life Cycle
 
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateUI:)
+                                                 name:NSUserDefaultsDidChangeNotification
+                                               object:nil];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.date = [NSDate date];
     
-    /* Test */
-    self.score = @"MEDIUM";
+    /* Get score */
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.score = [defaults integerForKey:@"currentScore"];
+    self.scoreName = @"LOW";
+    switch (self.score) {
+        case 2: self.scoreName = @"MEDIUM"; break;
+        case 3: self.scoreName = @"HIGH"; break;
+        case 0:
+        case 1:
+        default: break;
+    }
 
     totalHeight = self.view.frame.size.height - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - TOP_HEIGHT;
     CGFloat top = NAVIGATION_BAR_HEIGHT+TOP_HEIGHT;
@@ -45,12 +65,12 @@
     [self.view addSubview:prizeScoreLabel];
     
     
-    UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top + totalHeight*(1/6.0), self.view.frame.size.width, totalHeight*(2/15.0))];
-    [scoreLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:55.0]];
-    [scoreLabel setTextAlignment:NSTextAlignmentCenter];
-    [scoreLabel setText:self.score];
-    [scoreLabel setTextColor:[UIColor whiteColor]];
-    [self.view addSubview:scoreLabel];
+    self.scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top + totalHeight*(1/6.0), self.view.frame.size.width, totalHeight*(2/15.0))];
+    [self.scoreLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:55.0]];
+    [self.scoreLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.scoreLabel setText:self.scoreName];
+    [self.scoreLabel setTextColor:[UIColor whiteColor]];
+    [self.view addSubview:self.scoreLabel];
     
     
     UILabel *monthPrizeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, top + totalHeight*(2/5.0), self.view.frame.size.width, totalHeight*(1/15.0))];
@@ -75,6 +95,23 @@
     [textLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [textLabel setNumberOfLines:6];
     [self.view addSubview:textLabel];
+}
+
+- (void)updateUI:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger newScore = [defaults integerForKey:@"currentScore"];
+    if (newScore == self.score)
+        return;
+    self.score = newScore;
+    switch (self.score) {
+        case 2: self.scoreName = @"MEDIUM"; break;
+        case 3: self.scoreName = @"HIGH"; break;
+        case 0:
+        case 1:
+        default: break;
+    }
+    self.scoreLabel.text = self.scoreName;
 }
 
 @end

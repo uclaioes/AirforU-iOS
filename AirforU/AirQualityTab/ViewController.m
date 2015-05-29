@@ -219,9 +219,27 @@
             return;
     } else if ([date isEqualToString:[[NSDate date] dateID]])
         return;
-    else
-        if (hour > 2 && hour < 4)
-            return;
+    else if (hour > 2 && hour < 16)
+        return;
+    
+    /* Reset score in NSUserDefaults */
+    NSString *refreshDate = [defaults stringForKey:@"refreshDate"];
+    
+    if (![refreshDate isEqualToString:[[NSDate date] dateID]]) {
+        if (hour >= 2) {
+            NSInteger score = [defaults integerForKey:@"currentScore"];
+            NSLog(@"currentScore: %ld", score);
+            score = 0;
+            [defaults setInteger:score forKey:@"currentScore"];
+            [defaults setObject:[[NSDate date] dateID] forKey:@"refreshDate"];
+        }
+    }
+    
+    NSArray *questionNumbers = @[[NSNumber numberWithInt:0],
+                                 [NSNumber numberWithInt:1],
+                                 [NSNumber numberWithInt:2]];
+    
+    [defaults setObject:questionNumbers forKey:@"questionNumbers"];
     
     _survey = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
     _survey.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, totalHeight*(1.0/3.0 - 2.0/24.0));

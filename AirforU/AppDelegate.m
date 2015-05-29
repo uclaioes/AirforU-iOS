@@ -186,6 +186,10 @@
     if (!date)
         [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:@"behavioralQuestionDate"];
     
+    NSString *refreshDate = [defaults stringForKey:@"refreshDate"];
+    if (!refreshDate)
+        [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:@"refreshDate"];
+    
     if (!surveyed)
         [[((UITabBarController *)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"Agreement Segue" sender:self];
     else {

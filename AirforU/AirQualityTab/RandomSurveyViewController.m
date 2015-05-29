@@ -32,8 +32,8 @@
     self.yesButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
     self.noButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
     
-    for (int i = 0; i < 3; i++)
-        [self.questions addObject:[NSNumber numberWithInteger:i]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.questions = [[defaults objectForKey:@"questionNumbers"] mutableCopy];
     
     [self setQuestion];
 }
@@ -98,12 +98,22 @@
     [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     NSString *timestamp = [formatter stringFromDate:[NSDate date]];
     
+    /* Update score in NSUserDefaults */
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger score = [defaults integerForKey:@"currentScore"];
+    score++;
+    [defaults setInteger:score forKey:@"currentScore"];
+    
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
                                                           action:[NSString stringWithFormat:@"BQ%ld (%@) (1)", (long)(self.currentQuestion+1), self.questionLabel.text]
-                                                           label:timestamp
-                                                           value:nil] build]];
+                                                           label:timestamp value:nil] build]];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
+                                                          action:@"Score" label:@""
+                                                           value:[NSNumber numberWithInt:1]] build]];
     
     [self.questions removeObject:[NSNumber numberWithInteger:self.currentQuestion]];
+    [defaults setObject:self.questions forKey:@"questionNumbers"];
     [self setQuestion];
 }
 
@@ -116,12 +126,22 @@
     [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     NSString *timestamp = [formatter stringFromDate:[NSDate date]];
     
+    /* Update score in NSUserDefaults */
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger score = [defaults integerForKey:@"currentScore"];
+    score++;
+    [defaults setInteger:score forKey:@"currentScore"];
+    
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
                                                           action:[NSString stringWithFormat:@"BQ%ld (%@) (2)", (long)(self.currentQuestion+1), self.questionLabel.text]
-                                                           label:timestamp
-                                                           value:nil] build]];
+                                                           label:timestamp value:nil] build]];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
+                                                          action:@"Score" label:@""
+                                                           value:[NSNumber numberWithInt:1]] build]];
     
     [self.questions removeObject:[NSNumber numberWithInteger:self.currentQuestion]];
+    [defaults setObject:self.questions forKey:@"questionNumbers"];
     [self setQuestion];
 }
 
