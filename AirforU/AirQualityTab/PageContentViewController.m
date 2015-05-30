@@ -275,48 +275,9 @@
 
 - (void)getAirQuality
 {
-    /* Google Analytics Report */
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
-    NSURL *url;
-    
-    if (self.zipSearch && app.zipcode && [app.zipcode length] == 5)
-    {
-        NSLog(@"used zipcode");
-        if ([self.content isEqualToString:AIR_NOW_TODAY]) {
-            url = [AirNowAPI URLForZipcode:app.zipcode];
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show Today's Air Quality (%@)", app.zipcode] label:timestamp value:nil] build]];
-        } else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:app.zipcode];
-    }
-    
-    else if (app.location && app.location.coordinate.latitude && app.location.coordinate.longitude)
-    {
-        NSLog(@"used location");
-        if ([self.content isEqualToString:AIR_NOW_TODAY]) {
-            url = [AirNowAPI URLForLatitute:app.location.coordinate.latitude forLongitude:app.location.coordinate.longitude];
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show Today's Air Quality (%f, %f)", app.location.coordinate.latitude, app.location.coordinate.longitude] label:timestamp value:nil] build]];
-        } else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forLatitute:app.location.coordinate.latitude forLongitude:app.location.coordinate.longitude];
-    }
-    
-    else
-    {
-        NSLog(@"used default");
-        NSString *zipcode = @"90024"; // defaulted to: zipcode of UCLA
-        
-        if ([self.content isEqualToString:AIR_NOW_TODAY]) {
-            url = [AirNowAPI URLForZipcode:zipcode];
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Today's Air Quality (Default)" label:timestamp value:nil] build]];
-        } else if ([self.content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:zipcode];
-    }
+    NSURL *url = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getURLForAirQualityWithContent:self.content];
+    if (!url)
+        return;
     
     dispatch_queue_t AirQueue = dispatch_queue_create("Air Queue", NULL);
     dispatch_async(AirQueue, ^{
@@ -342,10 +303,8 @@
             if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [propertyListResults count] <= 0)
                 max = [NSNumber numberWithInt:-1];
             
-            NSArray *stateA = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE];
-            NSArray *locationA = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AREA];
-            NSString *state = [stateA firstObject];
-            NSString *location = [locationA firstObject];
+            NSString *state = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE] firstObject];
+            NSString *location = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AREA] firstObject];
             
             NSString *maxString;
             if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && !categoryExists)

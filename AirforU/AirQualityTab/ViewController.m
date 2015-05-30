@@ -187,7 +187,6 @@
 
 - (void)createPageContentsWithZipSearch:(BOOL)zipsearch
 {
-    
     for (int i = 0; i < 3; i++)
     {
         // Create a new view controller and pass suitable data.
@@ -195,7 +194,7 @@
         pageContentViewController.content = self.pages[i];
         pageContentViewController.contentSize = totalHeight;
         pageContentViewController.pageIndex = i;
-        pageContentViewController.zipSearch = zipsearch;
+        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).shouldZipSearch = zipsearch;
         [self.pageContents addObject:pageContentViewController];
         [pageContentViewController getAirQuality];
     }

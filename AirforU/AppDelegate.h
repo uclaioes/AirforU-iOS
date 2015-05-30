@@ -27,8 +27,10 @@
 @property (nonatomic, strong) CLPlacemark *placemark;
 @property (nonatomic, strong) CLLocation *location;
 
-//@property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSString *zipcode;
+@property (nonatomic) BOOL shouldZipSearch;
+
+- (NSURL *)getURLForAirQualityWithContent:(NSString *)content;
 
 @property (nonatomic, strong) NSString *identification;
 

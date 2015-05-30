@@ -160,25 +160,4 @@
     }
 }
 
-#pragma mark - Helper Methods
-
-- (void)addAnswer:(NSString *)answer toAnswers:(NSString *)answers
-{
-    if (![answers containsString:answer]) {
-        NSMutableString *mutableAnswers = [answers mutableCopy];
-        [mutableAnswers appendString:answer];
-        answers = mutableAnswers;
-    }
-}
-
-- (void)deleteAnswer:(NSString *)answer fromAnswers:(NSString *)answers
-{
-    if ([answers containsString:answer]) {
-        NSMutableString *mutableAnswers = [answers mutableCopy];
-        NSRange answerRange = [answers rangeOfString:answer];
-        [mutableAnswers deleteCharactersInRange:answerRange];
-        answers = mutableAnswers;
-    }
-}
-
 @end
