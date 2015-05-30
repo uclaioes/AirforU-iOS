@@ -204,7 +204,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     /* Background session configuration */
-//    [application setMinimumBackgroundFetchInterval:21600]; // ever 6 hours
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
     
@@ -354,11 +353,16 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
             
             propertyListResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error2];
             NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
-            
+//            max = [NSNumber numberWithInt:150];
             NSLog(@"%@", max);
             
             if ([max integerValue] >= 100) {
                 // Create local notification to alert
+                UILocalNotification *notif = [[UILocalNotification alloc] init];
+                if (notif == nil)
+                    return;
+                notif.alertBody = @"Your local air quality is poor!";
+                [application presentLocalNotificationNow:notif];
             }
         }
         
