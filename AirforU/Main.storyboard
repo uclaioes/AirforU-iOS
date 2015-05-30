@@ -913,7 +913,7 @@ Any personal information obtained in connection with this study will remain conf
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uC6-5N-s2l" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jQK-iK-myB">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

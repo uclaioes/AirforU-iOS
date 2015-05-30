@@ -474,6 +474,11 @@
 					B4544AB51ADC999D0023AB13 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = YD86QUJBH5;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					B4544ACE1ADC999D0023AB13 = {
 						CreatedOnToolsVersion = 6.2;

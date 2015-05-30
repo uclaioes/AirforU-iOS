@@ -228,7 +228,7 @@
     if (![refreshDate isEqualToString:[[NSDate date] dateID]]) {
         if (hour >= 2) {
             NSInteger score = [defaults integerForKey:@"currentScore"];
-            NSLog(@"currentScore: %ld", score);
+            NSLog(@"currentScore: %ld", (long)score);
             score = 0;
             [defaults setInteger:score forKey:@"currentScore"];
             [defaults setObject:[[NSDate date] dateID] forKey:@"refreshDate"];

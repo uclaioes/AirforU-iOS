@@ -296,7 +296,7 @@
             url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:app.zipcode];
     }
     
-    else if (app.location && app.location && app.location)
+    else if (app.location && app.location.coordinate.latitude && app.location.coordinate.longitude)
     {
         NSLog(@"used location");
         if ([self.content isEqualToString:AIR_NOW_TODAY]) {
@@ -410,7 +410,7 @@
     } else {
         if (!vc.shouldDisplay)
             return;
-        index = vc.displayIndex;
+        index = (AQAirQuality)vc.displayIndex;
         [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
         [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
     }

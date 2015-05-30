@@ -79,6 +79,4 @@
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
-
 @end

@@ -10,5 +10,6 @@
 #define AIR_NOW_CLLOCATION_NOTIFICATIONS_INCLUDED
 
 #define CLLocationDidUpdateNotification @"CLLocationDidUpdateNotification"
+#define CLLocationDidBackgroundUpdateNotification @"CLLocationDidBackgroundUpdateNotification"
 
 #endif

@@ -80,8 +80,15 @@
         [self.locationManager stopUpdatingLocation];
         CLLocation *location = [locations lastObject];
         self.location = location;
-        NSLog(@"%f, %f", self.location.coordinate.latitude, self.location.coordinate.longitude);
-        [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidUpdateNotification object:self];
+        NSLog(@"GPS LOCATION: %f, %f", self.location.coordinate.latitude, self.location.coordinate.longitude);
+        
+        if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateBackground) {
+            NSLog(@"NOTIFICATION SENT");
+            [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidUpdateNotification object:self];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidBackgroundUpdateNotification object:self];
+            NSLog(@"APPLICATION IS IN BACKGROUND");
+        }
     }
 }
 
@@ -101,6 +108,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /* Background session configuration */
+//    [application setMinimumBackgroundFetchInterval:21600]; // ever 6 hours
+    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    
+    
+    
+    /* Get the state of applicaton
+     * Background or Foreground */
+    UIApplicationState state = application.applicationState;
+    NSLog(@"Background? %d", state == UIApplicationStateBackground);
+    
+    
+    
     /* Initialize Google Analytics Tracker */
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 45;
@@ -150,7 +170,7 @@
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager requestAlwaysAuthorization];
     self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
 
     // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -160,6 +180,21 @@
     }
 
     [self.locationManager startUpdatingLocation];
+    
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        
+        NSLog(@"Location Services Enabled");
+        
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
+                                               message:@"To re-enable, please go to Settings and turn on Location Service for this app."
+                                              delegate:nil
+                                     cancelButtonTitle:@"OK"
+                                     otherButtonTitles:nil];
+            [alert show];
+        }
+    }
     
     
     
@@ -198,6 +233,29 @@
     }
     
     return YES;
+}
+
+- (void)application:(UIApplication *)application
+performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSLog(@"BACKGROUND FETCH STARTED");
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+    
+    NSURL *url = [NSURL URLWithString:@""];
+    NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            completionHandler(UIBackgroundFetchResultFailed);
+            return;
+        }
+        
+        // Parse response/data and determine whether new content was available
+        // Launch notifications if over AQI 100
+        BOOL shouldAlert = NO;
+        
+    }];
+    
+    [task resume];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
