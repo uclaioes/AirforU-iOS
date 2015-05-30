@@ -30,7 +30,8 @@
 @property (nonatomic, strong) NSString *zipcode;
 @property (nonatomic) BOOL shouldZipSearch;
 
-- (NSURL *)getURLForAirQualityWithContent:(NSString *)content;
+- (NSArray *)getAirQualityWithContent:(NSString *)content;
+//- (NSURL *)getURLForAirQualityWithContent:(NSString *)content;
 
 @property (nonatomic, strong) NSString *identification;
 

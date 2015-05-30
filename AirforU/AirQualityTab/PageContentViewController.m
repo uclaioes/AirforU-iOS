@@ -275,59 +275,17 @@
 
 - (void)getAirQuality
 {
-    NSURL *url = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getURLForAirQualityWithContent:self.content];
-    if (!url)
-        return;
-    
     dispatch_queue_t AirQueue = dispatch_queue_create("Air Queue", NULL);
     dispatch_async(AirQueue, ^{
-    
-        NSData *jsonResults = [NSData dataWithContentsOfURL:url];
-        NSDictionary *propertyListResults;
-        NSError *error2;
+        NSArray *arr = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getAirQualityWithContent:self.content];
         
-        if (jsonResults) {
-            
-            propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error2];
-            
-            BOOL categoryExists = false;
-            
-            NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
-            if (category && [category count] > 0) {
-                categoryExists = true;
-            }
-            
-            NSArray *aqi = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI];
-            NSNumber *max = [aqi valueForKeyPath:@"@max.intValue"];
-            
-            if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [propertyListResults count] <= 0)
-                max = [NSNumber numberWithInt:-1];
-            
-            NSString *state = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE] firstObject];
-            NSString *location = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AREA] firstObject];
-            
-            NSString *maxString;
-            if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && !categoryExists)
-                maxString = @"N/A";
-            else if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && categoryExists)
-                maxString = @"";
-            else
-                maxString = [NSString stringWithFormat:@"%@", max];
-            
-            NSLog(@"max: %@", maxString);
-            NSLog(@"state: %@", state);
-            NSLog(@"location: %@", location);
-            
-            self.aqi = maxString;
-            self.location = (state && location) ? [NSString stringWithFormat:@"%@, %@", location, state] : @"Unavailable";
-            self.aq = [AirNowAPI aqForAQI:[NSString stringWithFormat:@"%@", max]];
-            
-        } else {
-            
-            self.aqi = @"N/A";
-            self.location = @"Not Available";
-            self.aq = AQUnavailable;
-        }
+        if (!arr)
+            return;
+        
+        NSString *aqi = arr[0];
+        self.aqi = ([aqi integerValue] >= 0) ? aqi : @"N/A";
+        self.location = arr[1];
+        self.aq = [AirNowAPI aqForAQI:self.aqi];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self updateDisplay];

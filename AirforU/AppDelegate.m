@@ -150,6 +150,55 @@
     return url;
 }
 
+- (NSArray *)getAirQualityWithContent:(NSString *)content
+{
+    NSURL *url = [self getURLForAirQualityWithContent:content];
+    if (!url)
+        return nil;
+    
+    NSArray *airQuality = nil;
+    
+    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+    NSDictionary *propertyListResults;
+    NSError *error2;
+    
+    if (jsonResults) {
+        
+        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error2];
+        
+        BOOL categoryExists = false;
+        
+        NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
+        if (category && [category count] > 0) {
+            categoryExists = true;
+        }
+        
+        NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
+        
+        if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [propertyListResults count] <= 0)
+            max = [NSNumber numberWithInt:-1];
+        
+        NSString *state = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE] firstObject];
+        NSString *location = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AREA] firstObject];
+        
+        NSString *maxString;
+        if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && !categoryExists)
+            maxString = @"N/A";
+        else if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && categoryExists)
+            maxString = @"";
+        else
+            maxString = [NSString stringWithFormat:@"%@", max];
+        
+        airQuality = @[maxString, (state && location) ? [NSString stringWithFormat:@"%@, %@", location, state] : @"Unavailable"];
+        
+    } else {
+        
+        airQuality = @[@"-1", @"Not Available"];
+    }
+    
+    return airQuality;
+}
+
 #pragma mark - Application Life Cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -288,7 +337,7 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
     
-    NSURL *url = [NSURL URLWithString:@""];
+    NSURL *url = [self getURLForAirQualityWithContent:AIR_NOW_TODAY];
     NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
             completionHandler(UIBackgroundFetchResultFailed);
@@ -297,7 +346,24 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
         
         // Parse response/data and determine whether new content was available
         // Launch notifications if over AQI 100
-        BOOL shouldAlert = NO;
+        
+        if (data) {
+
+            NSDictionary *propertyListResults;
+            NSError *error2;
+            
+            propertyListResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error2];
+            NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
+            
+            NSLog(@"%@", max);
+            
+            if ([max integerValue] >= 100) {
+                // Create local notification to alert
+            }
+        }
+        
+        completionHandler(UIBackgroundFetchResultNewData);
+        return;
         
     }];
     
