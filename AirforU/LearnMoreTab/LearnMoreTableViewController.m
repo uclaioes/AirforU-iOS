@@ -41,7 +41,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 13;
+    return 14;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -61,6 +61,7 @@
         case 10:
         case 11:
         case 12:
+        case 13:
         {
             if (self.shouldDisplay && self.displayIndex == section)
                 return 2;
@@ -148,6 +149,7 @@
         case 10:
         case 11:
         case 12:
+        case 13:
         {
             if (self.shouldDisplay && self.displayIndex == indexPath.section && indexPath.row == 1)
             {
@@ -250,7 +252,7 @@
         
         return;
         
-    } else if (indexPath.section >= 4 && indexPath.section <= 12) {
+    } else if (indexPath.section >= 4 && indexPath.section <= 13) {
         
         NSUInteger index = indexPath.section - 3;
         
@@ -287,14 +289,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section >= 4 && section <= 12)
+    if (section >= 4 && section <= 13)
         return 0.01;
     return 24.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section >= 3 && section <= 12)
+    if (section >= 3 && section <= 13)
         return 0.001;
     return 8.0;
 }
@@ -304,7 +306,7 @@
     
     if (indexPath.section == 2 && indexPath.row == 0)
         return 56.0;
-     else if (indexPath.section >= 4 && indexPath.section <= 12 && indexPath.row == 1)
+     else if (indexPath.section >= 4 && indexPath.section <= 13 && indexPath.row == 1)
      {
          switch (indexPath.section) {
              case 4: return 185; break;
@@ -316,6 +318,7 @@
              case 10: return 220; break;
              case 11: return 130; break;
              case 12: return 130; break;
+             case 13: return 150; break;
              default: break;
          }
      }

@@ -339,6 +339,7 @@
         case 10: return @"What are some steps I can take to protect my health?"; break;
         case 11: return @"What are some steps that can be taken to protect the health of children?"; break;
         case 12: return @"What are outdoor activities?"; break;
+        case 13: return @"Where do you get data for facilities that release toxics?"; break;
 
         default: break;
     }
@@ -359,6 +360,7 @@
         case 10: return @"Limiting time outdoors is one of the most effective steps to reduce exposure to poor air quality.  When outdoor air quality is poor it is best to avoid outdoor exercise and close windows.  Outdoor activities that increase the heart rate also increase breathing rates and thus should be avoided. To reduce exposure to particles in the air, air filters on air conditioning/heating systems should be regularly maintained or stand-alone air filters/purifiers could be used.  Protective masks can be worn during outdoor activities."; break;
         case 11: return @"Since children are more active outdoors they breath in more air.  When combined with the fact that their lungs are still developing, make children under 18 a susceptible population.  Time spent outdoors should be limited when high air pollution events."; break;
         case 12: return @"Outdoor activities such as running or other exercises increase the breathing rate and thus can be harmful when air pollution is high outdoors even for healthy people.  Outdoor activities include running, jogging or strenuous gardening etc. that increase the heart rate."; break;
+        case 13: return @"This data is obtained from EPA's Toxic Release Inventory (TRI). All large manufacturing facilities are required to report to the TRI on an annual basis and provide information about the amounts of specific chemicals that they release into the environment. These chemicals pose significant health hazards to humans and the environment e.g. cancer-causing chemicals."; break;
 
         default: break;
     }
