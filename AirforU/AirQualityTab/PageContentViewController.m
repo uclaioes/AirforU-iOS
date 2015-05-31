@@ -232,7 +232,7 @@
         [self setLabel:self.locationLabel
                  title:@""
             titleColor:[UIColor whiteColor]
-                  font:[UIFont fontWithName:@"Helvetica-Bold" size:23.0]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:21.0]
        backgroundColor:[UIColor clearColor]
          textAlignment:NSTextAlignmentCenter
          lineBreakMode:NSLineBreakByWordWrapping
@@ -275,22 +275,23 @@
 
 - (void)getAirQuality
 {
-    dispatch_queue_t AirQueue = dispatch_queue_create("Air Queue", NULL);
-    dispatch_async(AirQueue, ^{
-        NSArray *arr = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getAirQualityWithContent:self.content];
-        
-        if (!arr)
-            return;
-        
-        NSString *aqi = arr[0];
-        self.aqi = ([aqi integerValue] >= 0) ? aqi : @"N/A";
-        self.location = arr[1];
-        self.aq = [AirNowAPI aqForAQI:self.aqi];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self updateDisplay];
+    if (![self.content isEqualToString:AIR_NOW_HISTORY]) {
+        dispatch_queue_t AirQueue = dispatch_queue_create("Air Queue", NULL);
+        dispatch_async(AirQueue, ^{
+            NSArray *arr = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getAirQualityWithContent:self.content];
+            if (!arr)
+                return;
+            
+            NSString *aqi = arr[0];
+            self.aqi = aqi;
+            self.location = arr[1];
+            self.aq = [AirNowAPI aqForAQI:self.aqi];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self updateDisplay];
+            });
         });
-    });
+    }
 }
 
 - (void)setBackground

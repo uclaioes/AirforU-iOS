@@ -16,6 +16,8 @@
 #import "CCLocationNotifications.h"
 #import "NSDate+AQHelper.h"
 
+#import "GoogleGeocodingAPI.h"
+
 @interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
 @end
 
@@ -51,12 +53,6 @@
 }
 
 #pragma mark - QuestionTableViewControllerDelegate
-
-//- (void)test
-//{
-//    AQLocation aqloc = AQNorthwestCoastalLA;
-//    self.location = [AirNowAPI locationForAQLocation:aqloc];
-//}
 
 - (NSMutableArray *)answers
 {
@@ -104,7 +100,7 @@
     allowsAlert = (currentSettings.types & UIUserNotificationTypeAlert) != 0;
 }
 
-- (NSURL *)getURLForAirQualityWithContent:(NSString *)content
+- (NSArray *)getURLForAirQualityWithContent:(NSString *)content
 {
     /* Google Analytics Report */
     id tracker = [[GAI sharedInstance] defaultTracker];
@@ -113,26 +109,29 @@
     [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     NSString *timestamp = [formatter stringFromDate:[NSDate date]];
     
-    NSURL *url = nil;
+    NSURL *airnowURL = nil;
+    NSURL *geocodingURL = nil;
     
     if (self.shouldZipSearch && self.zipcode && [self.zipcode length] == 5)
     {
         NSLog(@"used zipcode");
+        geocodingURL = [GoogleGeocodingAPI urlForSearch:self.zipcode];
         if ([content isEqualToString:AIR_NOW_TODAY]) {
-            url = [AirNowAPI URLForZipcode:self.zipcode];
+            airnowURL = [AirNowAPI URLForZipcode:self.zipcode];
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show Today's Air Quality (%@)", self.zipcode] label:timestamp value:nil] build]];
         } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:self.zipcode];
+            airnowURL = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:self.zipcode];
     }
     
     else if (self.location && self.location.coordinate.latitude && self.location.coordinate.longitude)
     {
         NSLog(@"used location");
+//        geocodingURL = [GoogleGeocodingAPI];
         if ([content isEqualToString:AIR_NOW_TODAY]) {
-            url = [AirNowAPI URLForLatitute:self.location.coordinate.latitude forLongitude:self.location.coordinate.longitude];
+            airnowURL = [AirNowAPI URLForLatitute:self.location.coordinate.latitude forLongitude:self.location.coordinate.longitude];
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show Today's Air Quality (%f, %f)", self.location.coordinate.latitude, self.location.coordinate.longitude] label:timestamp value:nil] build]];
         } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forLatitute:self.location.coordinate.latitude forLongitude:self.location.coordinate.longitude];
+            airnowURL = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forLatitute:self.location.coordinate.latitude forLongitude:self.location.coordinate.longitude];
     }
     
     else
@@ -140,69 +139,95 @@
         NSLog(@"used default");
         NSString *zipcode = @"90024"; // defaulted to: zipcode of UCLA
         
+        geocodingURL = [GoogleGeocodingAPI urlForSearch:zipcode];
+        
         if ([content isEqualToString:AIR_NOW_TODAY]) {
-            url = [AirNowAPI URLForZipcode:zipcode];
+            airnowURL = [AirNowAPI URLForZipcode:zipcode];
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Today's Air Quality (Default)" label:timestamp value:nil] build]];
         } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            url = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:zipcode];
+            airnowURL = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:zipcode];
     }
     
-    return url;
+    return @[airnowURL ? airnowURL : [NSNull null],
+             geocodingURL ? geocodingURL : [NSNull null]];
 }
 
 - (NSArray *)getAirQualityWithContent:(NSString *)content
 {
-    NSURL *url = [self getURLForAirQualityWithContent:content];
-    if (!url)
-        return nil;
+    NSArray *urls = [self getURLForAirQualityWithContent:content];
+    // use geocoding to get location
+    NSURL *geocodingURL = urls[1];
+    NSURL *airnowURL = urls[0];
     
-    NSArray *airQuality = nil;
+    NSString *location = @"Not Available";
+    NSString *aqi = @"N/A";
     
-    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
-    NSDictionary *propertyListResults;
-    NSError *error2;
-    
-    if (jsonResults) {
-        
-        propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:&error2];
-        
-        BOOL categoryExists = false;
-        
-        NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
-        if (category && [category count] > 0) {
-            categoryExists = true;
+    if ((NSNull *)geocodingURL != [NSNull null]) {
+        NSData *jsonResults = [NSData dataWithContentsOfURL:geocodingURL];
+        if (jsonResults) {
+            NSDictionary *propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:NULL];
+            NSString *formattedAddress = [[propertyListResults valueForKeyPath:GEOCODING_RESULTS_FORMATTED_ADDRESS] firstObject];
+            if (formattedAddress)
+                location = formattedAddress;
         }
-        
-        NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
-        
-        if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [propertyListResults count] <= 0)
-            max = [NSNumber numberWithInt:-1];
-        
-        NSString *state = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE] firstObject];
-        NSString *location = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AREA] firstObject];
-        
-        NSString *maxString;
-        if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && !categoryExists)
-            maxString = @"N/A";
-        else if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && categoryExists)
-            maxString = @"";
-        else
-            maxString = [NSString stringWithFormat:@"%@", max];
-        
-        airQuality = @[maxString, (state && location) ? [NSString stringWithFormat:@"%@, %@", location, state] : @"Unavailable"];
-        
-    } else {
-        
-        airQuality = @[@"-1", @"Not Available"];
     }
     
-    return airQuality;
+    if ((NSNull *)airnowURL != [NSNull null]) {
+        NSData *jsonResults = [NSData dataWithContentsOfURL:airnowURL];
+        NSDictionary *propertyListResults;
+        if (jsonResults) {
+            
+            propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:NULL];
+            BOOL categoryExists = false;
+            
+            NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
+            if (category && [category count] > 0)
+                categoryExists = true;
+            NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
+            if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [propertyListResults count] <= 0)
+                max = [NSNumber numberWithInt:-1];
+            
+            NSString *maxString;
+            if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && !categoryExists)
+                maxString = @"N/A";
+            else if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && categoryExists)
+                maxString = @"";
+            else
+                maxString = [NSString stringWithFormat:@"%@", max];
+            
+            aqi = maxString;
+        }
+    }
+    
+    NSLog(@"%@", @[aqi, location]);
+    
+    return @[aqi, location];
 }
 
 #pragma mark - Application Life Cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    NSURL *url = [GoogleGeocodingAPI urlForCity:@"westwood ca"];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    if (data) {
+//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+//        NSLog(@"%@",dict);
+//        NSString *add = [[dict valueForKeyPath:GEOCODING_RESULTS_FORMATTED_ADDRESS] firstObject];
+//        NSString *lat = [[dict valueForKeyPath:GEOCODING_RESULTS_LAT] firstObject];
+//        NSString *lng = [[dict valueForKeyPath:GEOCODING_RESULTS_LNG] firstObject];
+//
+//        NSLog(@"%@ (%@, %@)", add, lat, lng);
+//        
+//        NSURL *search = [AirNowAPI URLForLatitute:[lat doubleValue] forLongitude:[lng doubleValue]];
+//        NSData *searchData = [NSData dataWithContentsOfURL:search];
+//        if (searchData) {
+//            NSDictionary *s = [NSJSONSerialization JSONObjectWithData:searchData options:0 error:NULL];
+//            NSString *location = [NSString stringWithFormat:@"%@ %@", [[s valueForKeyPath:AIR_NOW_RESULTS_AREA] firstObject], [[s valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE] firstObject]];
+//            NSLog(@"LOCATION %@", location);
+//        }
+//    }
+    
     /* Background session configuration */
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
@@ -336,7 +361,7 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
     
-    NSURL *url = [self getURLForAirQualityWithContent:AIR_NOW_TODAY];
+    NSURL *url = [self getURLForAirQualityWithContent:AIR_NOW_TODAY][0];
     NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
             completionHandler(UIBackgroundFetchResultFailed);

@@ -7,7 +7,7 @@
 //
 
 #import "MonthlyGiveaways.h"
-#import "AirNowAPI.h"
+#import "AQConstants.h"
 
 @interface MonthlyGiveaways ()
 

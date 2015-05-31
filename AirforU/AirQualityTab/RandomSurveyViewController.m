@@ -7,7 +7,7 @@
 //
 
 #import "RandomSurveyViewController.h"
-#import "AirNowAPI.h"
+#import "AQConstants.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "NSDate+AQHelper.h"
