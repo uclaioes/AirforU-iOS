@@ -11,14 +11,24 @@
 
 @implementation GoogleGeocodingAPI
 
-+ (NSURL *)urlForSearch:(NSString *)search
++ (NSURL *)urlForCitySearch:(NSString *)city
 {
     NSURL *url = nil;
     
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true&key=%@", search, GEOCODING_KEY];
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=%@&result_type=locality&components=country:US&sensor=true&key=%@", city, GEOCODING_KEY];
     urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     url = [NSURL URLWithString:urlString];
 
+    return url;
+}
+
++ (NSURL *)urlForZipcodeSearch:(NSString *)zipcode
+{
+    NSURL *url = nil;
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?address=&result_type=locality&components=postal_code:%@|country:US&sensor=true&key=%@", zipcode, GEOCODING_KEY];
+    url = [NSURL URLWithString:urlString];
+    
     return url;
 }
 
@@ -26,7 +36,7 @@
 {
     NSURL *url = nil;
     
-    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f&sensor=true&key=%@", latitude, longitude, GEOCODING_KEY];
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f&result_type=locality&components=country:US&sensor=true&key=%@", latitude, longitude, GEOCODING_KEY];
     urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     url = [NSURL URLWithString:urlString];
     

@@ -11,7 +11,9 @@
 
 @interface GoogleGeocodingAPI : NSObject
 
-+ (NSURL *)urlForSearch:(NSString *)search;
++ (NSURL *)urlForCitySearch:(NSString *)city;
+
++ (NSURL *)urlForZipcodeSearch:(NSString *)zipcode;
 
 + (NSURL *)urlForLatitude:(CLLocationDegrees)latitude withLongitude:(CLLocationDegrees)longitude;
 
