@@ -7,10 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "AQConstants.h"
-
 
 @interface AirNowAPI : NSObject
 
@@ -26,23 +23,6 @@
 + (NSURL *)URLForDate:(NSDate *)date
            forZipcode:(NSString *)zipcode;
 
-+ (AQAirQuality)aqForAQI:(NSString *)aqi;
 
-+ (UIColor *)aqColorForAQ:(AQAirQuality)aq;
-+ (UIColor *)aqTextColorForAQ:(AQAirQuality)aq;
-+ (NSString *)aqImageNameForAQ:(AQAirQuality)aq;
-+ (NSString *)aqQualityTitleForAQ:(AQAirQuality)aq;
-+ (NSString *)aqRangeForAQ:(AQAirQuality)aq;
-+ (NSString *)aqPreventionDetailForAQ:(AQAirQuality)aq;
-
-+ (NSString *)worstAQ:(NSArray *)aq;
-
-+ (Location *)locationForAQLocation:(AQLocation)aql;
-
-// FAQ Questions & Answers
-+ (NSString *)faqQuestionForSection:(NSInteger)section;
-+ (NSString *)faqAnswerForSection:(NSInteger)section;
-
-+ (NSString *)intakeSurveyQuestionForQuestionNumber:(NSUInteger)questionNumber;
 
 @end
