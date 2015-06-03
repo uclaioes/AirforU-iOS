@@ -160,7 +160,7 @@
     NSDate *date = [NSDate date];
     
     if (hour >= 0 && hour <= 2)
-        date = [date dateByAddingTimeInterval:-SECONDS_DAY];
+        date = [date dateByAddingTimeInterval:-SECONDS_PER_DAY];
     
     NSString *dateString = [date dateID];
     

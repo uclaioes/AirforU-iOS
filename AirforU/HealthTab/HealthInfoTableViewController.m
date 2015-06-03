@@ -7,7 +7,7 @@
 //
 
 #import "HealthInfoTableViewController.h"
-#import "AirNowAPI.h"
+#import "AQUtilities.h"
 #import "AppDelegate.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
@@ -53,22 +53,22 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_EXTRA_DISPLAY];
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:14.0]];
-        NSString *detail = [AirNowAPI aqPreventionDetailForAQ:(AQAirQuality)indexPath.section];
+        NSString *detail = [AQUtilities aqPreventionDetailForAQ:(AQAirQuality)indexPath.section];
         cell.textLabel.text = detail;
     }
     else
     {
         cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_DISPLAY];
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18.0]];
-        NSString *title = [NSString stringWithFormat:@"%@ %@", [AirNowAPI aqQualityTitleForAQ:(AQAirQuality)indexPath.section],
-                           [AirNowAPI aqRangeForAQ:(AQAirQuality)indexPath.section]];
+        NSString *title = [NSString stringWithFormat:@"%@ %@", [AQUtilities aqQualityTitleForAQ:(AQAirQuality)indexPath.section],
+                           [AQUtilities aqRangeForAQ:(AQAirQuality)indexPath.section]];
         cell.textLabel.text = title;
     }
     
     if (cell) {
         cell.textLabel.numberOfLines = 7;
         cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        cell.contentView.backgroundColor = [AirNowAPI aqColorForAQ:(AQAirQuality)indexPath.section];
+        cell.contentView.backgroundColor = [AQUtilities aqColorForAQ:(AQAirQuality)indexPath.section];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
     

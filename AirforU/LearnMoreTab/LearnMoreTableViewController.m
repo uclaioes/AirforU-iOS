@@ -7,7 +7,7 @@
 //
 
 #import "LearnMoreTableViewController.h"
-#import "AirNowAPI.h"
+#import "AQUtilities.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAI.h"
 #import "AppDelegate.h"
@@ -154,14 +154,14 @@
             if (self.shouldDisplay && self.displayIndex == indexPath.section && indexPath.row == 1)
             {
                 cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_FAQ_ANSWER_CELL];
-                cell.textLabel.text = [AirNowAPI faqAnswerForSection:indexPath.section];
+                cell.textLabel.text = [AQUtilities faqAnswerForSection:indexPath.section];
                 cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:14.0];
                 cell.userInteractionEnabled = YES;
             }
             else if (indexPath.row == 0)
             {
                 cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_FAQ_CELL];
-                cell.textLabel.text = [AirNowAPI faqQuestionForSection:indexPath.section];
+                cell.textLabel.text = [AQUtilities faqQuestionForSection:indexPath.section];
                 cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:14.0];
                 cell.userInteractionEnabled = YES;
             }
@@ -197,8 +197,7 @@
         /* Google Analytics Report */
         [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
                                                               action:@"Show About Us"
-                                                               label:timestamp
-                                                               value:nil] build]];
+                                                               label:timestamp value:nil] build]];
         
         [self performSegueWithIdentifier:@"Show About Us" sender:self];
         return;
@@ -208,8 +207,7 @@
         /* Google Analytics Report */
         [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
                                                               action:@"Show Contact Us"
-                                                               label:timestamp
-                                                               value:nil] build]];
+                                                               label:timestamp value:nil] build]];
         
         [self performSegueWithIdentifier:@"Show Contact Us" sender:self];
         return;
@@ -228,8 +226,7 @@
             /* Google Analytics Report */
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
                                                                   action:[NSString stringWithFormat:@"Show %@", label]
-                                                                   label:timestamp
-                                                                   value:nil] build]];
+                                                                   label:timestamp value:nil] build]];
         
             NSURL *url;
             switch (indexPath.row) {
@@ -266,8 +263,7 @@
             /* Google Analytics Report */
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
                                                                   action:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]
-                                                                   label:timestamp
-                                                                   value:nil] build]];
+                                                                   label:timestamp value:nil] build]];
             
             self.shouldDisplay = YES;
             self.displayIndex = indexPath.section;
@@ -277,8 +273,7 @@
             /* Google Analytics Report */
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
                                                                   action:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]
-                                                                   label:timestamp
-                                                                   value:nil] build]];
+                                                                   label:timestamp value:nil] build]];
             
             self.shouldDisplay = YES;
             self.displayIndex = indexPath.section;

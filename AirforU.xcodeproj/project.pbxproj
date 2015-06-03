@@ -27,7 +27,6 @@
 		B4544B051ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AF21ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png */; };
 		B4544B061ADC9A110023AB13 /* UGraphic_RGB.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B4544AF31ADC9A110023AB13 /* UGraphic_RGB.jpg */; };
 		B4544B3C1ADC9A280023AB13 /* AirNowAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B091ADC9A270023AB13 /* AirNowAPI.m */; };
-		B4544B3D1ADC9A280023AB13 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B0C1ADC9A270023AB13 /* Location.m */; };
 		B4544B3E1ADC9A280023AB13 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B0F1ADC9A270023AB13 /* PageContentViewController.m */; };
 		B4544B3F1ADC9A280023AB13 /* RandomSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B111ADC9A270023AB13 /* RandomSurveyViewController.m */; };
 		B4544B401ADC9A280023AB13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544B131ADC9A270023AB13 /* ViewController.m */; };
@@ -59,6 +58,8 @@
 		B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = B46C62121AFB2E5F00463605 /* UIColor+Helper.m */; };
 		B46F52CF1AE59D9800A18E39 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */; };
 		B47151AD1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */; };
+		B490F6A71B1E83590044886F /* AirQualityFetchAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */; };
+		B490F6AA1B1EB6930044886F /* AQUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A91B1EB6930044886F /* AQUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,8 +101,6 @@
 		B4544AF31ADC9A110023AB13 /* UGraphic_RGB.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = UGraphic_RGB.jpg; path = Supporting/UGraphic_RGB.jpg; sourceTree = "<group>"; };
 		B4544B081ADC9A270023AB13 /* AirNowAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirNowAPI.h; sourceTree = "<group>"; };
 		B4544B091ADC9A270023AB13 /* AirNowAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirNowAPI.m; sourceTree = "<group>"; };
-		B4544B0B1ADC9A270023AB13 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		B4544B0C1ADC9A270023AB13 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		B4544B0E1ADC9A270023AB13 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		B4544B0F1ADC9A270023AB13 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		B4544B101ADC9A270023AB13 /* RandomSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomSurveyViewController.h; sourceTree = "<group>"; };
@@ -161,6 +160,10 @@
 		B47151AA1B1BAA8800AFABB1 /* AQConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AQConstants.h; sourceTree = "<group>"; };
 		B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleGeocodingAPI.h; sourceTree = "<group>"; };
 		B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleGeocodingAPI.m; sourceTree = "<group>"; };
+		B490F6A51B1E83590044886F /* AirQualityFetchAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirQualityFetchAPI.h; sourceTree = "<group>"; };
+		B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirQualityFetchAPI.m; sourceTree = "<group>"; };
+		B490F6A81B1EB6930044886F /* AQUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQUtilities.h; sourceTree = "<group>"; };
+		B490F6A91B1EB6930044886F /* AQUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,18 +303,20 @@
 			isa = PBXGroup;
 			children = (
 				B47151AA1B1BAA8800AFABB1 /* AQConstants.h */,
-				B4544B081ADC9A270023AB13 /* AirNowAPI.h */,
-				B4544B091ADC9A270023AB13 /* AirNowAPI.m */,
+				B490F6A81B1EB6930044886F /* AQUtilities.h */,
+				B490F6A91B1EB6930044886F /* AQUtilities.m */,
+				B490F6A51B1E83590044886F /* AirQualityFetchAPI.h */,
+				B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */,
 				B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */,
 				B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */,
+				B4544B081ADC9A270023AB13 /* AirNowAPI.h */,
+				B4544B091ADC9A270023AB13 /* AirNowAPI.m */,
 				B46C62111AFB2E5F00463605 /* UIColor+Helper.h */,
 				B46C62121AFB2E5F00463605 /* UIColor+Helper.m */,
 				B4661B7C1AF8437A00CEA31C /* NSString+Helper.h */,
 				B4661B7D1AF8437A00CEA31C /* NSString+Helper.m */,
 				B407B0E11AEEFBEB00882A2B /* NSDate+AQHelper.h */,
 				B407B0E21AEEFBEB00882A2B /* NSDate+AQHelper.m */,
-				B4544B0B1ADC9A270023AB13 /* Location.h */,
-				B4544B0C1ADC9A270023AB13 /* Location.m */,
 			);
 			path = AirNowAPI;
 			sourceTree = "<group>";
@@ -562,11 +567,11 @@
 				B4544B3F1ADC9A280023AB13 /* RandomSurveyViewController.m in Sources */,
 				B4544B3C1ADC9A280023AB13 /* AirNowAPI.m in Sources */,
 				B4544B3E1ADC9A280023AB13 /* PageContentViewController.m in Sources */,
-				B4544B3D1ADC9A280023AB13 /* Location.m in Sources */,
 				B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */,
 				B41349B01B15807B0028CCD3 /* FacilityCell.m in Sources */,
 				B47151AD1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m in Sources */,
 				B4544B4D1ADC9A280023AB13 /* ToxicsViewController.m in Sources */,
+				B490F6A71B1E83590044886F /* AirQualityFetchAPI.m in Sources */,
 				B4544B491ADC9A280023AB13 /* SpecifyOtherQuestionTableViewController.m in Sources */,
 				B4544B471ADC9A280023AB13 /* LicenseAgreementViewController.m in Sources */,
 				B4544ABC1ADC999D0023AB13 /* main.m in Sources */,
@@ -578,6 +583,7 @@
 				B4544B481ADC9A280023AB13 /* QuestionTableViewController.m in Sources */,
 				B4544B411ADC9A280023AB13 /* AppDelegate.m in Sources */,
 				B4544B451ADC9A280023AB13 /* HealthInfoTableViewController.m in Sources */,
+				B490F6AA1B1EB6930044886F /* AQUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
