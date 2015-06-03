@@ -56,32 +56,4 @@ typedef enum {
     AQUnavailable
 } AQAirQuality;
 
-// test cities
-typedef enum {
-    AQCentralLA,
-    AQNorthwestCoastalLA,
-    AQSouthwestCoastalLA,
-    AQSouthCoastalLA,
-    AQSanFrancisco,
-    AQOakland,
-    AQSanJose,
-    AQSacramento,
-    AQSanDiego,
-    AQBakersfield,
-    AQFresno,
-    AQSequoia,
-    AQYosemite,
-    AQRedding,
-    AQChico,
-    AQLassen,
-    AQConcord,
-    AQSanRaefel,
-    AQStockton,
-    AQSantaCruz,
-    AQHollister,
-    AQMerced,
-    AQColumbus,
-    AQNipomo
-} AQLocation;
-
 #endif
