@@ -10,7 +10,7 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "AppDelegate.h"
-#import "AirNowAPI.h"
+#import "AQUtilities.h"
 
 @interface QuestionTableViewController ()
 @property (nonatomic) BOOL warned;
@@ -52,7 +52,7 @@
             
             /* Google Analytics Report*/
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Q4 (%@)", [AirNowAPI intakeSurveyQuestionForQuestionNumber:4]]
+                                                                  action:[NSString stringWithFormat:@"Q4 (%@)", [AQUtilities intakeSurveyQuestionForQuestionNumber:4]]
                                                                    label:@"skp"
                                                                    value:nil] build]];
             
@@ -70,7 +70,7 @@
             
             /* Google Analytics Report*/
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Q8 (%@)", [AirNowAPI intakeSurveyQuestionForQuestionNumber:8]]
+                                                                  action:[NSString stringWithFormat:@"Q8 (%@)", [AQUtilities intakeSurveyQuestionForQuestionNumber:8]]
                                                                    label:@"skp"
                                                                    value:nil] build]];
             
@@ -86,7 +86,7 @@
     
     /* Google Analytics Report */
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:[NSString stringWithFormat:@"Q%ld (%@)", (long)(questionNumber+1), [AirNowAPI intakeSurveyQuestionForQuestionNumber:questionNumber+1]]
+                                                          action:[NSString stringWithFormat:@"Q%ld (%@)", (long)(questionNumber+1), [AQUtilities intakeSurveyQuestionForQuestionNumber:questionNumber+1]]
                                                            label:[((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber] isEqualToString:@""] ? @"?" : ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber]
                                                            value:nil] build]];
 }
@@ -109,7 +109,7 @@
     id tracker = [[GAI sharedInstance] defaultTracker];
     NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:[NSString stringWithFormat:@"Q%ld (%@)", (long)(questionNumber+1), [AirNowAPI intakeSurveyQuestionForQuestionNumber:questionNumber+1]]
+                                                          action:[NSString stringWithFormat:@"Q%ld (%@)", (long)(questionNumber+1), [AQUtilities intakeSurveyQuestionForQuestionNumber:questionNumber+1]]
                                                            label:[((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber] isEqualToString:@""] ? @"?" : ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber]
                                                            value:nil] build]];
     
