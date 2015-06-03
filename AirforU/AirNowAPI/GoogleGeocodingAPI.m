@@ -22,4 +22,15 @@
     return url;
 }
 
++ (NSURL *)urlForLatitude:(CLLocationDegrees)latitude withLongitude:(CLLocationDegrees)longitude
+{
+    NSURL *url = nil;
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f&sensor=true&key=%@", latitude, longitude, GEOCODING_KEY];
+    urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    url = [NSURL URLWithString:urlString];
+    
+    return url;
+}
+
 @end

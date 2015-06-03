@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface GoogleGeocodingAPI : NSObject
 
 + (NSURL *)urlForSearch:(NSString *)search;
 
-+ (NSURL *)urlForLatitude:(NSString *)latitude withLongitude:(NSString *)longitude;
++ (NSURL *)urlForLatitude:(CLLocationDegrees)latitude withLongitude:(CLLocationDegrees)longitude;
 
 @end
