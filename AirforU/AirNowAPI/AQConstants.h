@@ -24,6 +24,7 @@
 
 //define keys for Google Geocoding Results
 #define GEOCODING_RESULTS_FORMATTED_ADDRESS @"results.formatted_address"
+#define GEOCODING_RESUTLS_ADDRESS_COMPONENTS @"results.address_components"
 #define GEOCODING_RESULTS_LAT @"results.geometry.location.lat"
 #define GEOCODING_RESULTS_LNG @"results.geometry.location.lng"
 
@@ -42,7 +43,7 @@
 #define TOP_HEIGHT 20.0
 
 // define seconds in a day
-#define SECONDS_DAY 24*60*60
+#define SECONDS_PER_DAY 24*60*60
 
 // define AQ levels
 typedef enum {
