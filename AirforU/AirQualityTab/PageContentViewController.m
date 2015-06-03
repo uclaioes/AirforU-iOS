@@ -10,7 +10,7 @@
 #import "HealthInfoTableViewController.h"
 #import "CCLocationNotifications.h"
 #import "ViewController.h"
-#import "AirNowAPI.h"
+#import "AQUtilities.h"
 #import "AppDelegate.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
@@ -31,6 +31,7 @@
 
 @property (nonatomic, strong) NSString *aqi;
 @property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *aqDescription;
 
 // Historical Exposure Properties
 @property (nonatomic, strong) NSArray *history;
@@ -135,7 +136,7 @@
                       title:value
                  titleColor:[UIColor blackColor]
                        font:[UIFont fontWithName:@"Helvetica-Bold" size:13.0]
-            backgroundColor:[AirNowAPI aqColorForAQ:[AirNowAPI aqForAQI:value]]
+            backgroundColor:[AQUtilities aqColorForAQ:[AQUtilities aqForAQI:value]]
                cornerRadius:height/2.0];
             
             UILabel *exposureLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), self.view.bounds.size.width/2.0 - height/2.0 - 40.0, height)];
@@ -163,7 +164,7 @@
                   title:[NSString stringWithFormat:@"%ld", (long)self.average]
              titleColor:[UIColor blackColor]
                    font:[UIFont fontWithName:@"Helvetica-Bold" size:28.0]
-        backgroundColor:[AirNowAPI aqColorForAQ:[AirNowAPI aqForAQI:[NSString stringWithFormat:@"%ld", (long)self.average]]]
+        backgroundColor:[AQUtilities aqColorForAQ:[AQUtilities aqForAQI:[NSString stringWithFormat:@"%ld", (long)self.average]]]
            cornerRadius:averageLabelHeight/2.0];
         
         
@@ -172,7 +173,7 @@
         [self.view addSubview:modifierLabel];
         
         [self setLabel:modifierLabel
-                 title:[AirNowAPI aqQualityTitleForAQ:[AirNowAPI aqForAQI:[NSString stringWithFormat:@"%ld", (long)self.average]]]
+                 title:[AQUtilities aqQualityTitleForAQ:[AQUtilities aqForAQI:[NSString stringWithFormat:@"%ld", (long)self.average]]]
             titleColor:[UIColor blackColor]
                   font:[UIFont fontWithName:@"Helvetica-Bold" size:15.0]
        backgroundColor:[UIColor clearColor]
@@ -276,16 +277,18 @@
 - (void)getAirQuality
 {
     if (![self.content isEqualToString:AIR_NOW_HISTORY]) {
+        
         dispatch_queue_t AirQueue = dispatch_queue_create("Air Queue", NULL);
         dispatch_async(AirQueue, ^{
-            NSArray *arr = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getAirQualityWithContent:self.content];
-            if (!arr)
+            NSArray *values = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getAirQualityWithContent:self.content];
+            if (!values)
                 return;
             
-            NSString *aqi = arr[0];
-            self.aqi = aqi;
-            self.location = arr[1];
-            self.aq = [AirNowAPI aqForAQI:self.aqi];
+            self.location = values[0];
+            self.aqi = values[1];
+            self.aqDescription = values[2];
+
+            self.aq = [AQUtilities aqForAQI:self.aqi];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self updateDisplay];
@@ -296,7 +299,7 @@
 
 - (void)setBackground
 {
-    NSString *imageName = [AirNowAPI aqImageNameForAQ:self.aq];
+    NSString *imageName = [AQUtilities aqImageNameForAQ:self.aq];
     
     UIGraphicsBeginImageContext(self.view.superview.superview.superview.superview.frame.size);
     [[UIImage imageNamed:imageName] drawInRect:self.view.superview.superview.superview.superview.bounds];
@@ -311,15 +314,15 @@
 {
     self.locationLabel.text = self.location;
     [self.aqiButton setTitle: self.aqi forState:UIControlStateNormal];
-    self.qualityLabel.text = [AirNowAPI aqQualityTitleForAQ:self.aq];
-    [self.aqiButton setBackgroundColor:[AirNowAPI aqColorForAQ:self.aq]];
-    [self.aqiButton setTitleColor:[AirNowAPI aqTextColorForAQ:self.aq] forState:UIControlStateNormal];
+    self.qualityLabel.text = [AQUtilities aqQualityTitleForAQ:self.aq];
+    [self.aqiButton setBackgroundColor:[AQUtilities aqColorForAQ:self.aq]];
+    [self.aqiButton setTitleColor:[AQUtilities aqTextColorForAQ:self.aq] forState:UIControlStateNormal];
     [self setBackground];
     self.view.superview.superview.superview.superview.backgroundColor = [UIColor colorWithPatternImage:self.bgImage];
     
     /* Update Health Info Selection */
     HealthInfoTableViewController *vc = ((UINavigationController *)self.tabBarController.viewControllers[1]).viewControllers[0];
-    AQAirQuality index = [AirNowAPI aqForAQI:self.aqi];
+    AQAirQuality index = [AQUtilities aqForAQI:self.aqi];
     if (index != AQUnavailable && index != AQHazardous) {
         if (vc.shouldDisplay && vc.displayIndex == index)
             return;

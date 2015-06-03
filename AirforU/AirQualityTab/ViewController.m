@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "AirNowAPI.h"
+#import "AQUtilities.h"
+#import "GoogleGeocodingAPI.h"
 #import "LicenseAgreementViewController.h"
 #import "AppDelegate.h"
 #import "RandomSurveyViewController.h"
@@ -45,7 +46,7 @@
 	// Create the data model
     self.date = [NSDate date];
     self.pages = @[AIR_NOW_HISTORY, AIR_NOW_TODAY, AIR_NOW_TOMORROW_FORECAST];
-    [self createPageContentsWithZipSearch:NO];
+    [self createPageContentsWithZipSearch:NO withCitySearch:NO];
     
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
@@ -70,7 +71,7 @@
     self.pageControl.currentPage = ((PageContentViewController *)self.pageViewController.viewControllers[0]).pageIndex;
     self.pageControl.userInteractionEnabled = NO;
     
-    NSString *imageName = [AirNowAPI aqImageNameForAQ:AQGood];
+    NSString *imageName = [AQUtilities aqImageNameForAQ:AQGood];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:imageName] drawInRect:self.view.bounds];
@@ -108,6 +109,27 @@
 
 #pragma mark - Actions
 
+//- (void)getZipcodeFromSearch:(NSString *)search
+//{
+//    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+//    NSURL *url = [GoogleGeocodingAPI urlForSearch:search];
+//    if (!url)
+//        return;
+//    
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    if (!data)
+//        return;
+//    
+//    NSDictionary *jsonResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+//    if (!jsonResults)
+//        return;
+//    
+//    NSString *lat = [[jsonResults valueForKeyPath:GEOCODING_RESULTS_LAT] firstObject];
+//    NSString *lng = [[jsonResults valueForKeyPath:GEOCODING_RESULTS_LNG] firstObject];
+//    delegate.location.coordinate.latitude = [lat doubleValue];
+//    
+//}
+
 - (void)startSearch
 {
     if ([self.searchController.searchBar.text isAllDigits]) {
@@ -115,9 +137,7 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong Format!" message:@"The zipcode should be a 5-digit number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         } else {
-            
-            NSNumber *zip = [NSNumber numberWithDouble:[self.searchController.searchBar.text integerValue]];
-            
+            NSString *zipcode = self.searchController.searchBar.text;
             /* Google Analytics Report*/
             id tracker = [[GAI sharedInstance] defaultTracker];
             NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
@@ -126,17 +146,15 @@
             NSString *timestamp = [formatter stringFromDate:[NSDate date]];
             
             [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Search Zipcode (%@)", zip]
-                                                                   label:timestamp
-                                                                   value:nil] build]];
+                                                                  action:[NSString stringWithFormat:@"Search Zipcode (%@)", zipcode]
+                                                                   label:timestamp value:nil] build]];
             
-            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = self.searchController.searchBar.text;
-            [self reloadPageControllerWithZipSearch:YES];
+            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = zipcode;
+            [self reloadPageControllerWithZipSearch:YES withCitySearch:NO];
         }
     } else {
-        
-        /* TODO: City Search */
-        
+        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).city = self.searchController.searchBar.text;
+        [self reloadPageControllerWithZipSearch:NO withCitySearch:YES];
     }
 }
 
@@ -165,16 +183,18 @@
 
 - (IBAction)showCurrentLocation:(UIBarButtonItem *)sender
 {
-    [self reloadPageControllerWithZipSearch:NO];
+    [self reloadPageControllerWithZipSearch:NO withCitySearch:NO];
 }
 
-- (void)reloadPageControllerWithZipSearch:(BOOL)zipSearch
+- (void)reloadPageControllerWithZipSearch:(BOOL)zipSearch withCitySearch:(BOOL)citySearch
 {
     [self.pageViewController removeFromParentViewController];
     [self.pageViewController.view removeFromSuperview];
     
     [self.pageContents removeAllObjects];
-    [self createPageContentsWithZipSearch:zipSearch];
+    
+    [self createPageContentsWithZipSearch:zipSearch withCitySearch:citySearch];
+    
     [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:1]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageViewController];
@@ -185,8 +205,12 @@
     [self addSurvey];
 }
 
-- (void)createPageContentsWithZipSearch:(BOOL)zipsearch
+- (void)createPageContentsWithZipSearch:(BOOL)zipsearch withCitySearch:(BOOL)citySearch
 {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.shouldZipSearch = zipsearch;
+    delegate.shouldCitySearch = citySearch;
+    
     for (int i = 0; i < 3; i++)
     {
         // Create a new view controller and pass suitable data.
@@ -194,7 +218,7 @@
         pageContentViewController.content = self.pages[i];
         pageContentViewController.contentSize = totalHeight;
         pageContentViewController.pageIndex = i;
-        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).shouldZipSearch = zipsearch;
+        
         [self.pageContents addObject:pageContentViewController];
         [pageContentViewController getAirQuality];
     }
@@ -214,7 +238,7 @@
     NSString *date = [defaults stringForKey:@"behavioralQuestionDate"];
 
     if (hour >= 0 && hour <= 2) {
-        if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_DAY] dateID]])
+        if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_PER_DAY] dateID]])
             return;
     } else if ([date isEqualToString:[[NSDate date] dateID]])
         return;
