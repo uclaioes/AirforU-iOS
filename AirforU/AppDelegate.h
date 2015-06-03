@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
-#import "Location.h"
+#import "AQConstants.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -25,16 +25,19 @@
 /* Location Properties (with Core Location) */
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLPlacemark *placemark;
-@property (nonatomic, strong) CLLocation *location;
 
+
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
 @property (nonatomic, strong) NSString *zipcode;
 @property (nonatomic) BOOL shouldZipSearch;
+@property (nonatomic) BOOL shouldCitySearch;
+@property (nonatomic, strong) NSString *city;
 
 - (NSArray *)getAirQualityWithContent:(NSString *)content;
-//- (NSURL *)getURLForAirQualityWithContent:(NSString *)content;
 
+/* Intake survey properties */
 @property (nonatomic, strong) NSString *identification;
-
 @property (nonatomic, strong) NSMutableArray *answers; // contains NSString
 @property (nonatomic, strong) NSMutableArray *userInformation; // contains NSString
 

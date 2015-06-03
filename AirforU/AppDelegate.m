@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AirNowAPI.h"
+#import "AirQualityFetchAPI.h"
 #import "ViewController.h"
 #import "PageContentViewController.h"
 #import "QuestionTableViewController.h"
@@ -15,8 +16,7 @@
 #import "GAIDictionaryBuilder.h"
 #import "CCLocationNotifications.h"
 #import "NSDate+AQHelper.h"
-
-#import "GoogleGeocodingAPI.h"
+//#import "GoogleGeocodingAPI.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
 @end
@@ -29,214 +29,12 @@
     BOOL allowsAlert;
 }
 
-#pragma mark - UITabBarControllerDelegate
-
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-    NSUInteger index = tabBarController.selectedIndex;
-    
-    /* Google Analytics Report */
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = self.identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
-    switch (index) {
-        case 0: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Air Quality Tab" label:timestamp value:nil] build]]; break;
-        case 1: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Health Info Tab" label:timestamp value:nil] build]]; break;
-        case 2: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Toxics Tab" label:timestamp value:nil] build]]; break;
-        case 3: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Prizes Tab" label:timestamp value:nil] build]]; break;
-        case 4: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Learn More Tab" label:timestamp value:nil] build]]; break;
-        default: break;
-    }
-}
-
-#pragma mark - QuestionTableViewControllerDelegate
-
-- (NSMutableArray *)answers
-{
-    if (!_answers)
-        _answers = [[NSMutableArray alloc] initWithCapacity:0];
-    return _answers;
-}
-
-- (NSMutableArray *)userInformation
-{
-    if (!_userInformation)
-        _userInformation = [[NSMutableArray alloc] initWithCapacity:0];
-    return _userInformation;
-}
-
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    if (self.location.coordinate.latitude == 0 || self.location.coordinate.longitude == 0) {
-        [self.locationManager stopUpdatingLocation];
-        CLLocation *location = [locations lastObject];
-        self.location = location;
-        NSLog(@"GPS LOCATION: %f, %f", self.location.coordinate.latitude, self.location.coordinate.longitude);
-        
-        if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateBackground) {
-            NSLog(@"NOTIFICATION SENT");
-            [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidUpdateNotification object:self];
-        } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidBackgroundUpdateNotification object:self];
-            NSLog(@"APPLICATION IS IN BACKGROUND");
-        }
-    }
-}
-
-#pragma mark - Actions
-
-- (void)setNotificationTypesAllowed
-{
-    // get the current notification settings
-    UIUserNotificationSettings *currentSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
-    allowNotif = (currentSettings.types != UIUserNotificationTypeNone);
-    allowsSound = (currentSettings.types & UIUserNotificationTypeSound) != 0;
-    allowsBadge = (currentSettings.types & UIUserNotificationTypeBadge) != 0;
-    allowsAlert = (currentSettings.types & UIUserNotificationTypeAlert) != 0;
-}
-
-- (NSArray *)getURLForAirQualityWithContent:(NSString *)content
-{
-    /* Google Analytics Report */
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
-    NSURL *airnowURL = nil;
-    NSURL *geocodingURL = nil;
-    
-    if (self.shouldZipSearch && self.zipcode && [self.zipcode length] == 5)
-    {
-        NSLog(@"used zipcode");
-        geocodingURL = [GoogleGeocodingAPI urlForSearch:self.zipcode];
-        if ([content isEqualToString:AIR_NOW_TODAY]) {
-            airnowURL = [AirNowAPI URLForZipcode:self.zipcode];
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show Today's Air Quality (%@)", self.zipcode] label:timestamp value:nil] build]];
-        } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            airnowURL = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:self.zipcode];
-    }
-    
-    else if (self.location && self.location.coordinate.latitude && self.location.coordinate.longitude)
-    {
-        NSLog(@"used location");
-//        geocodingURL = [GoogleGeocodingAPI];
-        if ([content isEqualToString:AIR_NOW_TODAY]) {
-            airnowURL = [AirNowAPI URLForLatitute:self.location.coordinate.latitude forLongitude:self.location.coordinate.longitude];
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show Today's Air Quality (%f, %f)", self.location.coordinate.latitude, self.location.coordinate.longitude] label:timestamp value:nil] build]];
-        } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            airnowURL = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forLatitute:self.location.coordinate.latitude forLongitude:self.location.coordinate.longitude];
-    }
-    
-    else
-    {
-        NSLog(@"used default");
-        NSString *zipcode = @"90024"; // defaulted to: zipcode of UCLA
-        
-        geocodingURL = [GoogleGeocodingAPI urlForSearch:zipcode];
-        
-        if ([content isEqualToString:AIR_NOW_TODAY]) {
-            airnowURL = [AirNowAPI URLForZipcode:zipcode];
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Today's Air Quality (Default)" label:timestamp value:nil] build]];
-        } else if ([content isEqualToString:AIR_NOW_TOMORROW_FORECAST])
-            airnowURL = [AirNowAPI URLForDate:[[NSDate date] dateByAddingTimeInterval:SECONDS_DAY] forZipcode:zipcode];
-    }
-    
-    return @[airnowURL ? airnowURL : [NSNull null],
-             geocodingURL ? geocodingURL : [NSNull null]];
-}
-
-- (NSArray *)getAirQualityWithContent:(NSString *)content
-{
-    NSArray *urls = [self getURLForAirQualityWithContent:content];
-    // use geocoding to get location
-    NSURL *geocodingURL = urls[1];
-    NSURL *airnowURL = urls[0];
-    
-    NSString *location = @"Not Available";
-    NSString *aqi = @"N/A";
-    
-    if ((NSNull *)geocodingURL != [NSNull null]) {
-        NSData *jsonResults = [NSData dataWithContentsOfURL:geocodingURL];
-        if (jsonResults) {
-            NSDictionary *propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:NULL];
-            NSString *formattedAddress = [[propertyListResults valueForKeyPath:GEOCODING_RESULTS_FORMATTED_ADDRESS] firstObject];
-            if (formattedAddress)
-                location = formattedAddress;
-        }
-    }
-    
-    if ((NSNull *)airnowURL != [NSNull null]) {
-        NSData *jsonResults = [NSData dataWithContentsOfURL:airnowURL];
-        NSDictionary *propertyListResults;
-        if (jsonResults) {
-            
-            propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults options:0 error:NULL];
-            BOOL categoryExists = false;
-            
-            NSArray *category = [propertyListResults valueForKeyPath:AIR_NOW_RESULTS_CATEGORY_NAME];
-            if (category && [category count] > 0)
-                categoryExists = true;
-            NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
-            if ([max isEqualToNumber:[NSNumber numberWithInt:-1]] || [propertyListResults count] <= 0)
-                max = [NSNumber numberWithInt:-1];
-            
-            NSString *maxString;
-            if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && !categoryExists)
-                maxString = @"N/A";
-            else if ([max isEqualToNumber:[NSNumber numberWithInteger:-1]] && categoryExists)
-                maxString = @"";
-            else
-                maxString = [NSString stringWithFormat:@"%@", max];
-            
-            aqi = maxString;
-        }
-    }
-    
-    NSLog(@"%@", @[aqi, location]);
-    
-    return @[aqi, location];
-}
-
 #pragma mark - Application Life Cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    NSURL *url = [GoogleGeocodingAPI urlForCity:@"westwood ca"];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-//    if (data) {
-//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-//        NSLog(@"%@",dict);
-//        NSString *add = [[dict valueForKeyPath:GEOCODING_RESULTS_FORMATTED_ADDRESS] firstObject];
-//        NSString *lat = [[dict valueForKeyPath:GEOCODING_RESULTS_LAT] firstObject];
-//        NSString *lng = [[dict valueForKeyPath:GEOCODING_RESULTS_LNG] firstObject];
-//
-//        NSLog(@"%@ (%@, %@)", add, lat, lng);
-//        
-//        NSURL *search = [AirNowAPI URLForLatitute:[lat doubleValue] forLongitude:[lng doubleValue]];
-//        NSData *searchData = [NSData dataWithContentsOfURL:search];
-//        if (searchData) {
-//            NSDictionary *s = [NSJSONSerialization JSONObjectWithData:searchData options:0 error:NULL];
-//            NSString *location = [NSString stringWithFormat:@"%@ %@", [[s valueForKeyPath:AIR_NOW_RESULTS_AREA] firstObject], [[s valueForKeyPath:AIR_NOW_RESULTS_STATE_CODE] firstObject]];
-//            NSLog(@"LOCATION %@", location);
-//        }
-//    }
-    
     /* Background session configuration */
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    
-    
-    
-    /* Get the state of applicaton
-     * Background or Foreground */
-    UIApplicationState state = application.applicationState;
-    NSLog(@"Background? %d", state == UIApplicationStateBackground);
     
     
     
@@ -290,14 +88,14 @@
     [self.locationManager requestAlwaysAuthorization];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-
+    
     // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [self.locationManager requestWhenInUseAuthorization];
     } else if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
         [self.locationManager requestAlwaysAuthorization];
     }
-
+    
     [self.locationManager startUpdatingLocation];
     
     
@@ -307,10 +105,10 @@
         
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
-                                               message:@"To re-enable, please go to Settings and turn on Location Service for this app."
-                                              delegate:nil
-                                     cancelButtonTitle:@"OK"
-                                     otherButtonTitles:nil];
+                                                            message:@"To re-enable, please go to Settings and turn on Location Service for this app."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
             [alert show];
         }
     }
@@ -361,7 +159,14 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
     
-    NSURL *url = [self getURLForAirQualityWithContent:AIR_NOW_TODAY][0];
+    NSURL *url;
+    if (self.latitude && self.longitude)
+        url = [AirNowAPI URLForLatitute:self.latitude forLongitude:self.longitude];
+    else if (![self.zipcode isEqualToString:@""])
+        url = [AirNowAPI URLForZipcode:self.zipcode];
+    else
+        url = [AirNowAPI URLForZipcode:@"90024"];
+    
     NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error) {
             completionHandler(UIBackgroundFetchResultFailed);
@@ -372,13 +177,13 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
         // Launch notifications if over AQI 100
         
         if (data) {
-
+            
             NSDictionary *propertyListResults;
             NSError *error2;
             
             propertyListResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error2];
             NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
-//            max = [NSNumber numberWithInt:150];
+            //            max = [NSNumber numberWithInt:150];
             NSLog(@"%@", max);
             
             if ([max integerValue] >= 100) {
@@ -401,9 +206,6 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    
     [[GAI sharedInstance] dispatch];
     
     /* Google Analytics Report */
@@ -418,21 +220,8 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
                                                            label:timestamp value:nil] build]];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
     /* Google Analytics Report */
     id tracker = [[GAI sharedInstance] defaultTracker];
     NSString *identification = self.identification;
@@ -449,9 +238,6 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    // Saves changes in the application's managed object context before the application terminates.
-    
     [self saveContext];
     [[GAI sharedInstance] dispatch];
     
@@ -464,6 +250,109 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Close App" label:timestamp value:nil] build]];
 }
+
+#pragma mark - UITabBarControllerDelegate
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSUInteger index = tabBarController.selectedIndex;
+    
+    /* Google Analytics Report */
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    NSString *identification = self.identification;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
+    
+    switch (index) {
+        case 0: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Air Quality Tab" label:timestamp value:nil] build]]; break;
+        case 1: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Health Info Tab" label:timestamp value:nil] build]]; break;
+        case 2: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Toxics Tab" label:timestamp value:nil] build]]; break;
+        case 3: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Prizes Tab" label:timestamp value:nil] build]]; break;
+        case 4: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Learn More Tab" label:timestamp value:nil] build]]; break;
+        default: break;
+    }
+}
+
+#pragma mark - QuestionTableViewControllerDelegate
+
+- (NSMutableArray *)answers
+{
+    if (!_answers)
+        _answers = [[NSMutableArray alloc] initWithCapacity:0];
+    return _answers;
+}
+
+- (NSMutableArray *)userInformation
+{
+    if (!_userInformation)
+        _userInformation = [[NSMutableArray alloc] initWithCapacity:0];
+    return _userInformation;
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    if (self.latitude == 0 || self.longitude == 0) {
+        [self.locationManager stopUpdatingLocation];
+        CLLocation *location = [locations lastObject];
+        self.latitude = location.coordinate.latitude;
+        self.longitude = location.coordinate.longitude;
+
+        NSLog(@"GPS LOCATION: %f, %f", self.latitude, self.longitude);
+        
+        if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateBackground) {
+            NSLog(@"NOTIFICATION SENT");
+            [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidUpdateNotification object:self];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidBackgroundUpdateNotification object:self];
+            NSLog(@"APPLICATION IS IN BACKGROUND");
+        }
+    }
+}
+
+#pragma mark - Actions
+
+- (void)setNotificationTypesAllowed
+{
+    // get the current notification settings
+    UIUserNotificationSettings *currentSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    allowNotif = (currentSettings.types != UIUserNotificationTypeNone);
+    allowsSound = (currentSettings.types & UIUserNotificationTypeSound) != 0;
+    allowsBadge = (currentSettings.types & UIUserNotificationTypeBadge) != 0;
+    allowsAlert = (currentSettings.types & UIUserNotificationTypeAlert) != 0;
+}
+
+- (NSArray *)getAirQualityWithContent:(NSString *)content
+{
+    /* Google Analytics Report */
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
+    
+    NSArray *values;
+    
+    if (self.shouldZipSearch && self.zipcode && [self.zipcode length] == 5) {
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@ (%@)", content, self.zipcode] label:timestamp value:nil] build]];
+        values = [AirQualityFetchAPI getAirQualityForContent:content forZipcode:self.zipcode];
+    } else if (self.shouldCitySearch && self.city) {
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@ (%@)", content, self.city] label:timestamp value:nil] build]];
+        values = [AirQualityFetchAPI getAirQualityForContent:content forSearch:self.city];
+    } else if (self.latitude && self.longitude) {
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@ (%f, %f)", content, self.latitude, self.longitude] label:timestamp value:nil] build]];
+        values = [AirQualityFetchAPI getAirQualityForContent:content forLatitude:self.latitude forLongitude:self.longitude];
+    } else {
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@ (Default)", content] label:timestamp value:nil] build]];
+        values = [AirQualityFetchAPI getAirQualityForContent:content forZipcode:@"90024"];
+    }
+
+    return values;
+}
+
+
 
 #pragma mark - Core Data stack
 
