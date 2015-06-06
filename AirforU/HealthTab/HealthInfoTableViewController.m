@@ -100,7 +100,7 @@
         
         /* Google Analytics Report */
         [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:[NSString stringWithFormat:@"Show Health Info %d", (indexPath.section+1)]
+                                                              action:[NSString stringWithFormat:@"Show Health Info %ld", (indexPath.section+1)]
                                                                label:timestamp
                                                                value:nil] build]];
         
@@ -112,7 +112,7 @@
     {
         /* Google Analytics Report */
         [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                             action:[NSString stringWithFormat:@"Show Health Info %d", (indexPath.section+1)]
+                                                             action:[NSString stringWithFormat:@"Show Health Info %ld", (indexPath.section+1)]
                                                                label:timestamp
                                                                value:nil] build]];
         
