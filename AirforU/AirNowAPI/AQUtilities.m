@@ -158,7 +158,7 @@
     switch (section)
     {
         case 4: return @"What is the Air Quality Index (AQI)?"; break;
-        case 5: return @"Where do we get the Air Quality information?"; break;
+        case 5: return @"Where do you get the Air Quality information?"; break;
         case 6: return @"What pollutants are considered in the AQI?"; break;
         case 7: return @"What is particulate matter (PM)?"; break;
         case 8: return @"What are some of the health effects of air pollution?"; break;
