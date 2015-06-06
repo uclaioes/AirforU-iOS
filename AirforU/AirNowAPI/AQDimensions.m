@@ -10,6 +10,12 @@
 
 @implementation AQDimensions
 
+/* Determine Phone Size */
++ (AQPhoneType)phoneTypeForScreenHeight:(CGFloat)height
+{
+    return IPHONE5;
+}
+
 /* Air Quality Page */
 + (CGFloat)sizeForContentLabelForPhoneType:(AQPhoneType)type
 {

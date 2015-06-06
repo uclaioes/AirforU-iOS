@@ -18,6 +18,9 @@ typedef enum {
     IPHONE6P
 } AQPhoneType;
 
+/* Determine Phone Size */
++ (AQPhoneType)phoneTypeForScreenHeight:(CGFloat)height;
+
 /* Air Quality Page */
 + (CGFloat)sizeForContentLabelForPhoneType:(AQPhoneType)type;
 + (CGFloat)sizeForLocationLabelForPhoneType:(AQPhoneType)type;
