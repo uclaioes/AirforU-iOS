@@ -60,6 +60,7 @@
 		B47151AD1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */; };
 		B490F6A71B1E83590044886F /* AirQualityFetchAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */; };
 		B490F6AA1B1EB6930044886F /* AQUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A91B1EB6930044886F /* AQUtilities.m */; };
+		B498521E1B22DF0E00FE7B59 /* AQDimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B498521D1B22DF0E00FE7B59 /* AQDimensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,8 @@
 		B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirQualityFetchAPI.m; sourceTree = "<group>"; };
 		B490F6A81B1EB6930044886F /* AQUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQUtilities.h; sourceTree = "<group>"; };
 		B490F6A91B1EB6930044886F /* AQUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQUtilities.m; sourceTree = "<group>"; };
+		B498521C1B22DF0E00FE7B59 /* AQDimensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQDimensions.h; sourceTree = "<group>"; };
+		B498521D1B22DF0E00FE7B59 /* AQDimensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQDimensions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +308,8 @@
 				B47151AA1B1BAA8800AFABB1 /* AQConstants.h */,
 				B490F6A81B1EB6930044886F /* AQUtilities.h */,
 				B490F6A91B1EB6930044886F /* AQUtilities.m */,
+				B498521C1B22DF0E00FE7B59 /* AQDimensions.h */,
+				B498521D1B22DF0E00FE7B59 /* AQDimensions.m */,
 				B490F6A51B1E83590044886F /* AirQualityFetchAPI.h */,
 				B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */,
 				B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */,
@@ -565,6 +570,7 @@
 				B4544B401ADC9A280023AB13 /* ViewController.m in Sources */,
 				B4544B421ADC9A280023AB13 /* BackgroundTableViewController.m in Sources */,
 				B4544B3F1ADC9A280023AB13 /* RandomSurveyViewController.m in Sources */,
+				B498521E1B22DF0E00FE7B59 /* AQDimensions.m in Sources */,
 				B4544B3C1ADC9A280023AB13 /* AirNowAPI.m in Sources */,
 				B4544B3E1ADC9A280023AB13 /* PageContentViewController.m in Sources */,
 				B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */,
