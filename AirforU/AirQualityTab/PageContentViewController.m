@@ -11,6 +11,7 @@
 #import "CCLocationNotifications.h"
 #import "ViewController.h"
 #import "AQUtilities.h"
+#import "AQDimensions.h"
 #import "AppDelegate.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
@@ -41,6 +42,9 @@
 @end
 
 @implementation PageContentViewController
+{
+    AQPhoneType phoneType;
+}
 
 #define GAP 10.0
 
@@ -85,6 +89,9 @@
 {
     [super viewDidLoad];
     
+    phoneType = [AQDimensions phoneTypeForScreenHeight:self.view.bounds.size.height];
+    NSLog(@"%d", phoneType);
+    
     self.view.backgroundColor = [UIColor clearColor];
     
     if ([self.content isEqualToString:AIR_NOW_HISTORY])
@@ -114,7 +121,7 @@
         [self setLabel:self.contentLabel
                  title:[NSString stringWithFormat:@"Last week exposure %@", self.zipcode]
             titleColor:[UIColor blackColor]
-                  font:[UIFont fontWithName:@"Helvetica-Bold" size:19.0]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForContentLabelForPhoneType:phoneType]]
        backgroundColor:[UIColor clearColor]
          textAlignment:NSTextAlignmentCenter
          lineBreakMode:NSLineBreakByWordWrapping
@@ -135,7 +142,7 @@
             [self setButton:exposureButton
                       title:value
                  titleColor:[UIColor blackColor]
-                       font:[UIFont fontWithName:@"Helvetica-Bold" size:13.0]
+                       font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForSmallAQIForPhoneType:phoneType]]
             backgroundColor:[AQUtilities aqColorForAQ:[AQUtilities aqForAQI:value]]
                cornerRadius:height/2.0];
             
@@ -147,7 +154,7 @@
             [self setLabel:exposureLabel
                      title:key
                 titleColor:[UIColor blackColor]
-                      font:[UIFont fontWithName:@"Helvetica" size:16.0]
+                      font:[UIFont fontWithName:@"Helvetica" size:[AQDimensions sizeForWeekdayLabelsForPhoneType:phoneType]]
            backgroundColor:[UIColor clearColor]
              textAlignment:NSTextAlignmentLeft
              lineBreakMode:NSLineBreakByWordWrapping
@@ -163,19 +170,31 @@
         [self setButton:averageButton
                   title:[NSString stringWithFormat:@"%ld", (long)self.average]
              titleColor:[UIColor blackColor]
-                   font:[UIFont fontWithName:@"Helvetica-Bold" size:28.0]
+                   font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForLargeAQIForPhoneType:phoneType]]
         backgroundColor:[AQUtilities aqColorForAQ:[AQUtilities aqForAQI:[NSString stringWithFormat:@"%ld", (long)self.average]]]
            cornerRadius:averageLabelHeight/2.0];
         
+        /* Average Text Label */
+        UILabel *averageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 2*GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, averageLabelHeight)];
+        [self.view addSubview:averageLabel];
+        
+        [self setLabel:averageLabel
+                 title:@"Average\nWeekly\nAQI"
+            titleColor:[UIColor blackColor]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForAverageTextLabelForPhoneType:phoneType]]
+       backgroundColor:[UIColor clearColor]
+         textAlignment:NSTextAlignmentCenter
+         lineBreakMode:NSLineBreakByWordWrapping
+            lineNumber:5];
         
         /* Modifier Label */
-        UILabel *modifierLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 + averageLabelHeight/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, averageLabelHeight/2.0 + 3*GAP)];
+        UILabel *modifierLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 + averageLabelHeight/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 3*GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, averageLabelHeight/2.0 + 3*GAP)];
         [self.view addSubview:modifierLabel];
         
         [self setLabel:modifierLabel
                  title:[AQUtilities aqQualityTitleForAQ:[AQUtilities aqForAQI:[NSString stringWithFormat:@"%ld", (long)self.average]]]
             titleColor:[UIColor blackColor]
-                  font:[UIFont fontWithName:@"Helvetica-Bold" size:15.0]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForAverageAirQualityDescriptionForPhoneType:phoneType]]
        backgroundColor:[UIColor clearColor]
          textAlignment:NSTextAlignmentCenter
          lineBreakMode:NSLineBreakByWordWrapping
@@ -183,31 +202,18 @@
         
         
         /* Disclaimer Label */
-        UILabel *disclaimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 + averageLabelHeight/2.0 + GAP/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + modifierLabel.bounds.size.height, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0 - GAP/2.0, averageLabelHeight/2.0)];
+        UILabel *disclaimerLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + modifierLabel.bounds.size.height + GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0 - GAP/2.0, averageLabelHeight/2.0)];
         [self.view addSubview:disclaimerLabel];
         
         [self setLabel:disclaimerLabel
                  title:@"This is a disclaimer. This is a disclaimer. This is a disclaimer."
             titleColor:[UIColor blackColor]
-                  font:[UIFont fontWithName:@"Helvetica" size:8.0]
+                  font:[UIFont fontWithName:@"Helvetica" size:[AQDimensions sizeForDisclaimerForPhoneType:phoneType]]
        backgroundColor:[UIColor clearColor]
          textAlignment:NSTextAlignmentCenter
          lineBreakMode:NSLineBreakByWordWrapping
             lineNumber:4];
         
-        
-        /* Average Text Label */
-        UILabel *averageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 3*GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, averageLabelHeight)];
-        [self.view addSubview:averageLabel];
-        
-        [self setLabel:averageLabel
-                 title:@"Average\nWeekly\nAQI"
-            titleColor:[UIColor blackColor]
-                  font:[UIFont fontWithName:@"Helvetica-Bold" size:20.0]
-       backgroundColor:[UIColor clearColor]
-         textAlignment:NSTextAlignmentCenter
-         lineBreakMode:NSLineBreakByWordWrapping
-            lineNumber:5];
     }
     
     else
@@ -219,7 +225,7 @@
         [self setLabel:self.contentLabel
                  title:self.content
             titleColor:[UIColor whiteColor]
-                  font:[UIFont fontWithName:@"Helvetica-Bold" size:19.0]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForContentLabelForPhoneType:phoneType]]
        backgroundColor:[UIColor clearColor]
          textAlignment:NSTextAlignmentCenter
          lineBreakMode:NSLineBreakByWordWrapping
@@ -233,7 +239,7 @@
         [self setLabel:self.locationLabel
                  title:@""
             titleColor:[UIColor whiteColor]
-                  font:[UIFont fontWithName:@"Helvetica-Bold" size:21.0]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForLocationLabelForPhoneType:phoneType]]
        backgroundColor:[UIColor clearColor]
          textAlignment:NSTextAlignmentCenter
          lineBreakMode:NSLineBreakByWordWrapping
@@ -247,7 +253,7 @@
         [self setButton:self.aqiButton
                   title:@""
              titleColor:[UIColor clearColor]
-                   font:[UIFont fontWithName:@"Helvetica-Bold" size:55.0]
+                   font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForAQILabelForPhoneType:phoneType]]
         backgroundColor:[UIColor clearColor]
            cornerRadius:self.contentSize/8.0];
         
@@ -261,7 +267,7 @@
         [self setLabel:self.qualityLabel
                  title:@""
             titleColor:[UIColor whiteColor]
-                  font:[UIFont fontWithName:@"Helvetica-Bold" size:23.0]
+                  font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForAirQualityDescriptionForPhoneType:phoneType]]
        backgroundColor:[UIColor clearColor]
          textAlignment:NSTextAlignmentCenter
          lineBreakMode:NSLineBreakByWordWrapping
