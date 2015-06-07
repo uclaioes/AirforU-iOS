@@ -188,7 +188,7 @@
             lineNumber:5];
         
         /* Modifier Label */
-        UILabel *modifierLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 + averageLabelHeight/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 3*GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, averageLabelHeight/2.0 + 3*GAP)];
+        UILabel *modifierLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 + averageLabelHeight/2.0, self.contentSize*(5.0/8.0) + self.contentSize/18.0 + 3*GAP, self.view.bounds.size.width/2.0 - averageLabelHeight/2.0, averageLabelHeight)];
         [self.view addSubview:modifierLabel];
         
         [self setLabel:modifierLabel
