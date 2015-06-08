@@ -188,6 +188,7 @@
 
 - (void)reloadPageControllerWithZipSearch:(BOOL)zipSearch withCitySearch:(BOOL)citySearch
 {
+    NSInteger index = self.pageControl.currentPage;
     [self.pageViewController removeFromParentViewController];
     [self.pageViewController.view removeFromSuperview];
     
@@ -195,12 +196,12 @@
     
     [self createPageContentsWithZipSearch:zipSearch withCitySearch:citySearch];
     
-    [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:1]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self.pageViewController setViewControllers:@[[self viewControllerAtIndex:index]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    self.pageControl.currentPage = 1;
+    self.pageControl.currentPage = index;
     
     [self addSurvey];
 }
@@ -227,6 +228,9 @@
 - (void)addSurvey
 {
     if (self.survey && self.survey.view.superview)
+        return;
+    
+    if (self.pageControl.currentPage == 0)
         return;
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
