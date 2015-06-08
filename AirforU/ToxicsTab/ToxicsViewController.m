@@ -52,10 +52,6 @@
     [toolBar sizeToFit];
     self.searchField.inputAccessoryView = toolBar;
     
-    
-//    NSURL *url = [NSURL URLWithString:@"http://engage.environment.ucla.edu/airforu_tri.php?lat=34.072&long=-118.444"];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-//    NSArray *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
     [self fetchCurrentResults];
     
 }
@@ -139,9 +135,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"Facility Cell";
-    
     FacilityCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
-    
     NSDictionary *dict = self.results[indexPath.row];
     
     /* Set cell properties */
@@ -166,6 +160,7 @@
         long cast = (long)rls;
         releases = [NSString stringWithFormat:@"%ld", cast];
     }
+    
     cell.distanceLabel.text = [NSString stringWithFormat:@"Distance: %@ mi",  distance];
     cell.releaseLabel.text = [NSString stringWithFormat:@"Chemical Release (lbs): %@", releases];
     
