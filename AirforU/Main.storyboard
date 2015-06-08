@@ -1051,6 +1051,7 @@ Any personal information obtained in connection with this study will remain conf
                     <navigationItem key="navigationItem" title="Toxics" id="6Tc-Gf-GT8"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="facilitiesTitle" destination="Gka-Gx-p7v" id="rTV-8J-oX1"/>
                         <outlet property="searchField" destination="DpL-Xr-cHD" id="SVh-Il-esd"/>
                         <outlet property="tableView" destination="pJa-xj-f2m" id="7db-IX-T4I"/>
                     </connections>

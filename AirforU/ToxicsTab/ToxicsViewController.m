@@ -9,11 +9,14 @@
 #import "ToxicsViewController.h"
 #import "FacilityCell.h"
 #import "AppDelegate.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAI.h"
 
 @interface ToxicsViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
+@property (weak, nonatomic) IBOutlet UILabel *facilitiesTitle;
 
 @property (nonatomic, strong) NSArray *results;
 
@@ -64,12 +67,16 @@
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
     NSURL *url;
-    if (shouldZipSearch && zipcode)
+    if (shouldZipSearch && zipcode) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_tri.php?zip=%@", zipcode]];
-    else if (delegate.latitude && delegate.longitude)
+        self.facilitiesTitle.text = [NSString stringWithFormat:@"  Nearest facilities for %@", zipcode];
+    } else if (delegate.latitude && delegate.longitude) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_tri.php?lat=%f&long=%f", delegate.latitude, delegate.longitude]];
-    else
+        self.facilitiesTitle.text = @"  Nearest facilities";
+    } else {
         url = [NSURL URLWithString:@"http://engage.environment.ucla.edu/airforu_tri.php?zip=90024"];
+        self.facilitiesTitle.text = @"  Nearest facilities for 90024";
+    }
     
     dispatch_queue_t ToxicsQueue = dispatch_queue_create("ToxicsQueue", NULL);
     dispatch_async(ToxicsQueue, ^{
@@ -95,7 +102,25 @@
 
 - (void)search:(UIBarButtonItem *)sender
 {
-    /* TODO: Implement Search */
+    if ([self.searchField.text length] != 5) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong Format!" message:@"The zipcode should be a 5-digit number" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    } else {
+        zipcode = self.searchField.text;
+        /* Google Analytics Report*/
+        id tracker = [[GAI sharedInstance] defaultTracker];
+        NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+        NSString *timestamp = [formatter stringFromDate:[NSDate date]];
+        
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
+                                                              action:[NSString stringWithFormat:@"Search Facilities Zipcode (%@)", zipcode]
+                                                               label:timestamp value:nil] build]];
+        shouldZipSearch = YES;
+        [self fetchCurrentResults];
+    }
+    
     [self.searchField resignFirstResponder];
 }
 
@@ -120,7 +145,8 @@
     NSDictionary *dict = self.results[indexPath.row];
     
     /* Set cell properties */
-    cell.nameLabel.text = [dict valueForKeyPath:TOXICS_KEY_NAME];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%ld. %@", indexPath.row+1, [dict valueForKeyPath:TOXICS_KEY_NAME]];
+    
     NSString *distance = [dict valueForKeyPath:TOXICS_KEY_DISTANCE];
     if (!distance)
         distance = @"?";
@@ -130,8 +156,18 @@
         long cast = (long)dis;
         distance = [NSString stringWithFormat:@"%ld", cast];
     }
+    
+    NSString *releases = [dict valueForKeyPath:TOXICS_KEY_TOTAL_RELEASES];
+    if (!releases)
+        releases = @"?";
+    else {
+        double rls = [releases doubleValue];
+        rls += 0.5;
+        long cast = (long)rls;
+        releases = [NSString stringWithFormat:@"%ld", cast];
+    }
     cell.distanceLabel.text = [NSString stringWithFormat:@"Distance: %@ mi",  distance];
-    cell.releaseLabel.text = [NSString stringWithFormat:@"Chemical Release (lbs): %@", [dict valueForKeyPath:TOXICS_KEY_TOTAL_RELEASES]];
+    cell.releaseLabel.text = [NSString stringWithFormat:@"Chemical Release (lbs): %@", releases];
     
     return cell;
 }

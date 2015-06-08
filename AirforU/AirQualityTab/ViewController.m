@@ -109,27 +109,6 @@
 
 #pragma mark - Actions
 
-//- (void)getZipcodeFromSearch:(NSString *)search
-//{
-//    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-//    NSURL *url = [GoogleGeocodingAPI urlForSearch:search];
-//    if (!url)
-//        return;
-//    
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-//    if (!data)
-//        return;
-//    
-//    NSDictionary *jsonResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-//    if (!jsonResults)
-//        return;
-//    
-//    NSString *lat = [[jsonResults valueForKeyPath:GEOCODING_RESULTS_LAT] firstObject];
-//    NSString *lng = [[jsonResults valueForKeyPath:GEOCODING_RESULTS_LNG] firstObject];
-//    delegate.location.coordinate.latitude = [lat doubleValue];
-//    
-//}
-
 - (void)startSearch
 {
     if ([self.searchController.searchBar.text isAllDigits]) {
