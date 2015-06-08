@@ -230,6 +230,9 @@
     if (self.survey && self.survey.view.superview)
         return;
     
+    if (self.pageControl.currentPage == 0)
+        return;
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH"];
     NSString *hourString = [formatter stringFromDate:[NSDate date]];
