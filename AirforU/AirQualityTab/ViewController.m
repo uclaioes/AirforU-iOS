@@ -88,7 +88,7 @@
     [[UIPageControl appearance] setBounds:CGRectMake(0, 0, self.view.frame.size.width, 10.0)];
     
     /* Add random survey */
-//    [self addSurvey];
+    [self addSurvey];
 }
 
 - (AQBaseViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -204,7 +204,6 @@
         // Create a new view controller and pass suitable data.
         AQBaseViewController *airQualityVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Air Quality"];
         airQualityVC.content = self.pages[i];
-//        airQualityVC.contentSize = totalHeight;
         airQualityVC.pageIndex = i;
         
         [self.pageContents addObject:airQualityVC];
@@ -256,7 +255,7 @@
     [defaults setObject:questionNumbers forKey:@"questionNumbers"];
     
     _survey = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
-//    _survey.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, totalHeight*(1.0/3.0 - 2.0/24.0));
+    _survey.view.frame = CGRectMake(0.0, self.view.bounds.size.height * (17.0/24), self.view.frame.size.width, self.view.bounds.size.height * (1.0/4));
     
     [self addChildViewController:_survey];
     [self.view addSubview:_survey.view];

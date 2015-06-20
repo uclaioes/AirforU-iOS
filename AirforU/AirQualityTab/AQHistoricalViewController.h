@@ -10,4 +10,6 @@
 
 @interface AQHistoricalViewController : AQBaseViewController
 
+- (void)updateDisplay;
+
 @end

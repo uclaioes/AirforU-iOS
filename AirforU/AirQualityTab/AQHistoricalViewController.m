@@ -8,6 +8,35 @@
 
 #import "AQHistoricalViewController.h"
 
+@interface AQHistoricalViewController ()
+
+@end
+
 @implementation AQHistoricalViewController
+
+#pragma mark - View Controller Life Cycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    
+}
+
+#pragma mark - Actions
+
+- (void)getContent
+{
+    [super getContent];
+    
+    NSLog(@"GET CONTENT IN HISTORICAL VC");
+}
+
+- (void)updateDisplay
+{
+    [super updateDisplay];
+    
+    NSLog(@"UPDATE DISPLAY IN HISTORICAL VC");
+}
 
 @end

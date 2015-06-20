@@ -10,4 +10,6 @@
 
 @interface AQAirQualityViewController : AQBaseViewController
 
+- (void)updateDisplay;
+
 @end

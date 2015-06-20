@@ -14,7 +14,16 @@
 
 @implementation AQBaseViewController
 
-- (void)getContent { }
-- (void)updateDisplay { }
+#pragma mark - Actions
+
+- (void)getContent
+{
+    NSLog(@"GET CONTENT IN BASE");
+}
+
+- (void)updateDisplay
+{
+    NSLog(@"UPDATE DISPLAY IN BASE");
+}
 
 @end

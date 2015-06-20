@@ -120,7 +120,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-v5-Q4m">
                                 <rect key="frame" x="16" y="325" width="568" height="162.5"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -167,6 +167,12 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="airQualityButton" destination="pGV-bK-l4g" id="MjI-pM-hkf"/>
+                        <outlet property="contentLabel" destination="pFT-cn-IiD" id="XGA-fG-ww4"/>
+                        <outlet property="descriptionLabel" destination="P29-cx-8si" id="wqA-VJ-xf6"/>
+                        <outlet property="locationLabel" destination="Eu8-cz-Qfw" id="fD7-5p-k4j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFw-7m-cb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -462,15 +468,15 @@ If you wish to ask questions about your rights as a research participant or if y
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="16" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0M-oS-hUN">
-                                <rect key="frame" x="16" y="20" width="568" height="450"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="20" width="568" height="400"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-ne-P0Q">
-                                <rect key="frame" x="16" y="470" width="282" height="130"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="424" width="282" height="176"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="√">
@@ -494,8 +500,8 @@ If you wish to ask questions about your rights as a research participant or if y
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ez-ey-SP3">
-                                <rect key="frame" x="302" y="470" width="282" height="130"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="302" y="424" width="282" height="176"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="✕   ">
@@ -520,14 +526,14 @@ If you wish to ask questions about your rights as a research participant or if y
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ozE-HW-7uZ" firstAttribute="top" secondItem="3ez-ey-SP3" secondAttribute="bottom" id="1AX-9Q-gW0"/>
-                            <constraint firstItem="Udo-ne-P0Q" firstAttribute="top" secondItem="U0M-oS-hUN" secondAttribute="bottom" id="1cY-5I-yGh"/>
+                            <constraint firstItem="Udo-ne-P0Q" firstAttribute="top" secondItem="U0M-oS-hUN" secondAttribute="bottom" constant="4" id="1cY-5I-yGh"/>
                             <constraint firstItem="Udo-ne-P0Q" firstAttribute="width" secondItem="3ez-ey-SP3" secondAttribute="width" id="6SD-JK-5ZM"/>
                             <constraint firstItem="Udo-ne-P0Q" firstAttribute="leading" secondItem="0Uq-0x-REz" secondAttribute="leadingMargin" id="9b3-cy-ICT"/>
                             <constraint firstItem="U0M-oS-hUN" firstAttribute="top" secondItem="Rdq-8d-Q1y" secondAttribute="bottom" id="9g2-Sb-hlG"/>
                             <constraint firstItem="U0M-oS-hUN" firstAttribute="leading" secondItem="0Uq-0x-REz" secondAttribute="leadingMargin" id="Baq-Ek-ip0"/>
                             <constraint firstItem="U0M-oS-hUN" firstAttribute="trailing" secondItem="0Uq-0x-REz" secondAttribute="trailingMargin" id="FFp-zm-1Yp"/>
                             <constraint firstItem="3ez-ey-SP3" firstAttribute="trailing" secondItem="0Uq-0x-REz" secondAttribute="trailingMargin" id="Ldj-kf-x7D"/>
-                            <constraint firstItem="U0M-oS-hUN" firstAttribute="height" secondItem="0Uq-0x-REz" secondAttribute="height" multiplier="3/4" id="SfD-3g-fFr"/>
+                            <constraint firstItem="U0M-oS-hUN" firstAttribute="height" secondItem="0Uq-0x-REz" secondAttribute="height" multiplier="2:3" id="SfD-3g-fFr"/>
                             <constraint firstItem="ozE-HW-7uZ" firstAttribute="top" secondItem="Udo-ne-P0Q" secondAttribute="bottom" id="UCZ-6L-U9X"/>
                             <constraint firstItem="3ez-ey-SP3" firstAttribute="leading" secondItem="Udo-ne-P0Q" secondAttribute="trailing" constant="4" id="YGM-Vv-YsT"/>
                             <constraint firstItem="Udo-ne-P0Q" firstAttribute="height" secondItem="0Uq-0x-REz" secondAttribute="height" multiplier="1:4" id="bEi-2l-Ty0"/>
