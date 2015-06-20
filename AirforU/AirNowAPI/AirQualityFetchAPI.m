@@ -59,6 +59,7 @@
 {
     NSString *aqi = @"N/A";
     NSString *description = @"";
+    NSString *station = @"";
     
     NSData *aqiData = [NSData dataWithContentsOfURL:url];
     if (aqiData) {
@@ -69,13 +70,17 @@
                 max = [NSNumber numberWithInt:-1];
             if (max.integerValue != -1)
                 aqi = [NSString stringWithFormat:@"%@", max];
+            
+            // get monitoring station
+            if ([aqiDict count] != 0)
+                station = [[aqiDict valueForKeyPath:AIR_NOW_RESULTS_AREA] firstObject];
         }
     }
     
     if (![aqi isEqualToString:@"N/A"])
         description = [AQUtilities aqQualityTitleForAQ:[AQUtilities aqForAQI:aqi]];
     
-    return @[aqi, description];
+    return @[aqi, description, station];
 }
 
 + (NSArray *)getAirQualityForContent:(NSString *)content
@@ -86,6 +91,7 @@
     NSString *location = @"Not Available";
     NSString *aqi = @"N/A";
     NSString *description = @"";
+    NSString *station = @"";
     
     /* fetch the location */
     NSURL *locURL = [GoogleGeocodingAPI urlForLatitude:latitude withLongitude:longitude];
@@ -102,8 +108,9 @@
     NSArray *aqiData = [self getAirQualityPropertiesForURL:aqiURL];
     aqi = aqiData[0];
     description = aqiData[1];
+    station = aqiData[2];
     
-    return @[location, aqi, description];
+    return @[location, aqi, description, station];
 }
 
 + (NSArray *)getAirQualityForContent:(NSString *)content
@@ -113,7 +120,8 @@
     NSString *location = @"Not Available";
     NSString *aqi = @"N/A";
     NSString *description = @"";
-    
+    NSString *station = @"";
+
     /* fetch the location */
     NSURL *locURL = [GoogleGeocodingAPI urlForZipcodeSearch:zipcode];
     NSArray *locationData = [self getLocationPropertiesForURL:locURL];
@@ -129,8 +137,9 @@
     NSArray *aqiData = [self getAirQualityPropertiesForURL:aqiURL];
     aqi = aqiData[0];
     description = aqiData[1];
-    
-    return @[location, aqi, description];
+    station = aqiData[2];
+
+    return @[location, aqi, description, station];
 }
 
 + (NSArray *)getAirQualityForContent:(NSString *)content
@@ -140,7 +149,8 @@
     NSString *location = @"Not Available";
     NSString *aqi = @"N/A";
     NSString *description = @"";
-    
+    NSString *station = @"";
+
     /* fetch the location */
     NSURL *locURL = [GoogleGeocodingAPI urlForCitySearch:search];
     NSArray *locationData = [self getLocationPropertiesForURL:locURL];
@@ -159,9 +169,10 @@
         NSArray *aqiData = [self getAirQualityPropertiesForURL:aqiURL];
         aqi = aqiData[0];
         description = aqiData[1];
+        station = aqiData[2];
     }
     
-    return @[location, aqi, description];
+    return @[location, aqi, description, station];
 }
 
 @end

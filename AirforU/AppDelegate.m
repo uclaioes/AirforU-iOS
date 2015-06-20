@@ -16,7 +16,6 @@
 #import "GAIDictionaryBuilder.h"
 #import "CCLocationNotifications.h"
 #import "NSDate+AQHelper.h"
-#import "HistoricalViewAPI.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
 @end

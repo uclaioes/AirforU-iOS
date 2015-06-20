@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
+#import "HistoricalViewAPI.h"
 
 @interface PageContentViewController ()
 
@@ -38,6 +39,9 @@
 @property (nonatomic, strong) NSArray *history;
 @property (nonatomic, strong) NSString *zipcode;
 @property (nonatomic) NSInteger average;
+
+@property (nonatomic, strong) NSMutableArray *exposureButtons;
+@property (nonatomic, strong) NSMutableArray *exposureLabels;
 
 @end
 
@@ -96,22 +100,22 @@
     
     if ([self.content isEqualToString:AIR_NOW_HISTORY])
     {
-        self.zipcode = @"90024";
-        self.history = @[@{@"Tuesday" : @"210"},
-                         @{@"Wednesday" : @"1"},
-                         @{@"Thursday" : @"60"},
-                         @{@"Friday" : @"101"},
-                         @{@"Saturday" : @"350"},
-                         @{@"Sunday" : @"200"}];
+//        self.history = @[@{@"Tuesday" : @"210"},
+//                         @{@"Wednesday" : @"1"},
+//                         @{@"Thursday" : @"60"},
+//                         @{@"Friday" : @"101"},
+//                         @{@"Saturday" : @"350"},
+//                         @{@"Sunday" : @"200"}];
+//        NSArray *days =
         
         
-        /* compute average */
-        NSInteger total = 0;
-        for (NSDictionary *dict in self.history) {
-            NSInteger value = [[[dict allValues] firstObject] integerValue];
-            total += value;
-        }
-        self.average = total / 6.0;
+//        /* compute average */
+//        NSInteger total = 0;
+//        for (NSDictionary *dict in self.history) {
+//            NSInteger value = [[[dict allValues] firstObject] integerValue];
+//            total += value;
+//        }
+//        self.average = total / 6.0;
         
         self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, self.contentSize/24.0, self.view.bounds.size.width, self.contentSize/18.0)];
         [self.view addSubview:self.contentLabel];
@@ -119,7 +123,8 @@
         
         /* Content Label */
         [self setLabel:self.contentLabel
-                 title:[NSString stringWithFormat:@"Last week exposure %@", self.zipcode]
+//                 title:[NSString stringWithFormat:@"Last week exposure %@", self.zipcode]
+                 title:[NSString stringWithFormat:@"Last week exposure"]
             titleColor:[UIColor blackColor]
                   font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForContentLabelForPhoneType:phoneType]]
        backgroundColor:[UIColor clearColor]
@@ -140,25 +145,29 @@
             [self.view addSubview:exposureButton];
             
             [self setButton:exposureButton
-                      title:value
+                      title:@""
                  titleColor:[UIColor blackColor]
                        font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForSmallAQIForPhoneType:phoneType]]
             backgroundColor:[AQUtilities aqColorForAQ:[AQUtilities aqForAQI:value]]
                cornerRadius:height/2.0];
             
-            UILabel *exposureLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), self.view.bounds.size.width/2.0 - height/2.0 - 40.0, height)];
-            [self.view addSubview:exposureLabel];
+            [self.exposureButtons addObject:exposureButton];
             
             
             /* Exposure Day Label */
+            UILabel *exposureLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), self.view.bounds.size.width/2.0 - height/2.0 - 40.0, height)];
+            [self.view addSubview:exposureLabel];
+            
             [self setLabel:exposureLabel
-                     title:key
+                     title:@""
                 titleColor:[UIColor blackColor]
                       font:[UIFont fontWithName:@"Helvetica" size:[AQDimensions sizeForWeekdayLabelsForPhoneType:phoneType]]
            backgroundColor:[UIColor clearColor]
              textAlignment:NSTextAlignmentLeft
              lineBreakMode:NSLineBreakByWordWrapping
                 lineNumber:1];
+            
+            [self.exposureLabels addObject:exposureLabel];
         }
         
         
@@ -303,7 +312,23 @@
         
     } else { // historical view
         
-        
+        dispatch_queue_t HistoricalQueue = dispatch_queue_create("Historical Queue", NULL);
+        dispatch_async(HistoricalQueue, ^{
+            NSArray *values = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getAirQualityWithContent:AIR_NOW_TODAY];
+            if (!values)
+                return;
+            
+            NSString *station = values[3];
+
+            NSURL *url = [HistoricalViewAPI urlForMonitoringStation:station];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            if (data) {
+                NSArray *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+                if (results) {
+                    self.history = results;
+                }
+            }
+        });
     }
 }
 
@@ -322,28 +347,66 @@
 /* called each time view is loaded to update display */
 - (void)updateDisplay
 {
-    self.locationLabel.text = self.location;
-    [self.aqiButton setTitle: self.aqi forState:UIControlStateNormal];
-    self.qualityLabel.text = [AQUtilities aqQualityTitleForAQ:self.aq];
-    [self.aqiButton setBackgroundColor:[AQUtilities aqColorForAQ:self.aq]];
-    [self.aqiButton setTitleColor:[AQUtilities aqTextColorForAQ:self.aq] forState:UIControlStateNormal];
-    [self setBackground];
-    self.view.superview.superview.superview.superview.backgroundColor = [UIColor colorWithPatternImage:self.bgImage];
-    
-    /* Update Health Info Selection */
-    HealthInfoTableViewController *vc = ((UINavigationController *)self.tabBarController.viewControllers[1]).viewControllers[0];
-    AQAirQuality index = [AQUtilities aqForAQI:self.aqi];
-    if (index != AQUnavailable && index != AQHazardous) {
-        if (vc.shouldDisplay && vc.displayIndex == index)
-            return;
-        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
+    if ([self.content isEqualToString:AIR_NOW_HISTORY]) {
+        
+        for (int i = 0; i < [self.history count]; i++) {
+            NSDictionary *dict = self.history[i];
+            NSString *value = [dict valueForKey:@"value"];
+            
+            
+            
+            
+//            /* Exposure AQI Label */
+//            UIButton *exposureButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0 - height/2.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), height, height)];
+//            [self.view addSubview:exposureButton];
+//            
+//            [self setButton:exposureButton
+//                      title:@""
+//                 titleColor:[UIColor blackColor]
+//                       font:[UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForSmallAQIForPhoneType:phoneType]]
+//            backgroundColor:[AQUtilities aqColorForAQ:[AQUtilities aqForAQI:value]]
+//               cornerRadius:height/2.0];
+//            
+//            UILabel *exposureLabel = [[UILabel alloc] initWithFrame:CGRectMake(40.0, self.contentSize/18.0 + self.contentLabel.bounds.size.height + GAP + i*(height + GAP), self.view.bounds.size.width/2.0 - height/2.0 - 40.0, height)];
+//            [self.view addSubview:exposureLabel];
+//            
+//            
+//            /* Exposure Day Label */
+//            [self setLabel:exposureLabel
+//                     title:@""
+//                titleColor:[UIColor blackColor]
+//                      font:[UIFont fontWithName:@"Helvetica" size:[AQDimensions sizeForWeekdayLabelsForPhoneType:phoneType]]
+//           backgroundColor:[UIColor clearColor]
+//             textAlignment:NSTextAlignmentLeft
+//             lineBreakMode:NSLineBreakByWordWrapping
+//                lineNumber:1];
+        }
+        
     } else {
-        if (!vc.shouldDisplay)
-            return;
-        index = (AQAirQuality)vc.displayIndex;
-        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
+        
+        self.locationLabel.text = self.location;
+        [self.aqiButton setTitle: self.aqi forState:UIControlStateNormal];
+        self.qualityLabel.text = [AQUtilities aqQualityTitleForAQ:self.aq];
+        [self.aqiButton setBackgroundColor:[AQUtilities aqColorForAQ:self.aq]];
+        [self.aqiButton setTitleColor:[AQUtilities aqTextColorForAQ:self.aq] forState:UIControlStateNormal];
+        [self setBackground];
+        self.view.superview.superview.superview.superview.backgroundColor = [UIColor colorWithPatternImage:self.bgImage];
+        
+        /* Update Health Info Selection */
+        HealthInfoTableViewController *vc = ((UINavigationController *)self.tabBarController.viewControllers[1]).viewControllers[0];
+        AQAirQuality index = [AQUtilities aqForAQI:self.aqi];
+        if (index != AQUnavailable && index != AQHazardous) {
+            if (vc.shouldDisplay && vc.displayIndex == index)
+                return;
+            [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
+        } else {
+            if (!vc.shouldDisplay)
+                return;
+            index = (AQAirQuality)vc.displayIndex;
+            [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
+        }
     }
 }
 
@@ -351,6 +414,20 @@
 - (IBAction)showHealthInfo:(UIButton *)sender
 {
     self.tabBarController.selectedIndex = 1;
+}
+
+- (NSMutableArray *)exposureButtons
+{
+    if (!_exposureButtons)
+        _exposureButtons = [[NSMutableArray alloc] initWithCapacity:0];
+    return _exposureButtons;
+}
+
+- (NSMutableArray *)exposureLabels
+{
+    if (!_exposureLabels)
+        _exposureLabels = [[NSMutableArray alloc] initWithCapacity:0];
+    return _exposureLabels;
 }
 
 @end
