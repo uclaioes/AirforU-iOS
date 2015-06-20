@@ -300,6 +300,10 @@
                 [self updateDisplay];
             });
         });
+        
+    } else { // historical view
+        
+        
     }
 }
 
