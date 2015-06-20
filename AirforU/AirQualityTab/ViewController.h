@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PageContentViewController.h"
 
 @interface ViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 @property (strong, nonatomic) UIPageViewController *pageViewController;

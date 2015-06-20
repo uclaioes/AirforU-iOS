@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AQUtilities.h"
+#import "AQBaseViewController.h"
 #import "GoogleGeocodingAPI.h"
 #import "LicenseAgreementViewController.h"
 #import "AppDelegate.h"
@@ -31,17 +32,12 @@
 @end
 
 @implementation ViewController
-{
-    CGFloat totalHeight;
-}
 
 #pragma mark - View Controller Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    totalHeight = self.view.frame.size.height - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - TOP_HEIGHT;
     
 	// Create the data model
     self.date = [NSDate date];
@@ -53,23 +49,12 @@
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     
-    PageContentViewController *startingViewController = [self viewControllerAtIndex:1];
+    AQBaseViewController *startingViewController = [self viewControllerAtIndex:1];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
-    // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT, self.view.frame.size.width, totalHeight);
-    
     [self addChildViewController:self.pageViewController];
-    [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
-    // Add the UIPageControl
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, self.pageViewController.view.frame.size.height + NAVIGATION_BAR_HEIGHT + TOP_HEIGHT - 20.0, self.view.frame.size.width, 20.0)];
-    [self.view addSubview:self.pageControl];
-    self.pageControl.numberOfPages = 3;
-    self.pageControl.currentPage = ((PageContentViewController *)self.pageViewController.viewControllers[0]).pageIndex;
-    self.pageControl.userInteractionEnabled = NO;
     
     NSString *imageName = [AQUtilities aqImageNameForAQ:AQGood];
     
@@ -80,21 +65,38 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:bg];
     self.pageViewController.view.backgroundColor = [UIColor clearColor];
-    
-    [[UIPageControl appearance] setBounds:CGRectMake(0.0, 0.0, self.view.frame.size.width, 10.0)];
 
     [self initRightBarButtons];
-    
-    /* Add random survey */
-    [self addSurvey];
 }
 
-- (PageContentViewController *)viewControllerAtIndex:(NSUInteger)index
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Set the size of page view controller
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    
+    [self.view addSubview:self.pageViewController.view];
+
+    // Add the UIPageControl
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 10, self.view.bounds.size.width, 0)];
+    [self.view addSubview:self.pageControl];
+    self.pageControl.numberOfPages = 3;
+    self.pageControl.currentPage = ((AQBaseViewController *)self.pageViewController.viewControllers[0]).pageIndex;
+    self.pageControl.userInteractionEnabled = NO;
+    
+    [[UIPageControl appearance] setBounds:CGRectMake(0, 0, self.view.frame.size.width, 10.0)];
+    
+    /* Add random survey */
+//    [self addSurvey];
+}
+
+- (AQBaseViewController *)viewControllerAtIndex:(NSUInteger)index
 {
     if (([self.pages count] == 0) || (index >= [self.pages count]))
         return nil;
     
-    PageContentViewController *vc = [self.pageContents objectAtIndex:index];
+    AQBaseViewController *vc = [self.pageContents objectAtIndex:index];
     
     return vc;
 }
@@ -191,16 +193,22 @@
     delegate.shouldZipSearch = zipsearch;
     delegate.shouldCitySearch = citySearch;
     
-    for (int i = 0; i < 3; i++)
+    AQBaseViewController *historicalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Historical View"];
+    historicalVC.content = self.pages[0];
+    historicalVC.pageIndex = 0;
+    [historicalVC getContent];
+    [self.pageContents addObject:historicalVC];
+    
+    for (int i = 1; i < 3; i++)
     {
         // Create a new view controller and pass suitable data.
-        PageContentViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
-        pageContentViewController.content = self.pages[i];
-        pageContentViewController.contentSize = totalHeight;
-        pageContentViewController.pageIndex = i;
+        AQBaseViewController *airQualityVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Air Quality"];
+        airQualityVC.content = self.pages[i];
+//        airQualityVC.contentSize = totalHeight;
+        airQualityVC.pageIndex = i;
         
-        [self.pageContents addObject:pageContentViewController];
-        [pageContentViewController getAirQuality];
+        [self.pageContents addObject:airQualityVC];
+        [airQualityVC getContent];
     }
 }
 
@@ -248,7 +256,7 @@
     [defaults setObject:questionNumbers forKey:@"questionNumbers"];
     
     _survey = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
-    _survey.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, totalHeight*(1.0/3.0 - 2.0/24.0));
+//    _survey.view.frame = CGRectMake(0.0, NAVIGATION_BAR_HEIGHT + TOP_HEIGHT + totalHeight*(2.0/3.0 + 1.0/24.0), self.view.frame.size.width, totalHeight*(1.0/3.0 - 2.0/24.0));
     
     [self addChildViewController:_survey];
     [self.view addSubview:_survey.view];
@@ -259,7 +267,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
+    NSUInteger index = ((AQBaseViewController *) viewController).pageIndex;
     
     if ((index == 0) || (index == NSNotFound))
         return nil;
@@ -270,7 +278,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((PageContentViewController*) viewController).pageIndex;
+    NSUInteger index = ((AQBaseViewController *) viewController).pageIndex;
     
     if (index == NSNotFound)
         return nil;
@@ -287,7 +295,7 @@
 - (void)pageViewController:(UIPageViewController *)pageViewController
 willTransitionToViewControllers:(NSArray *)pendingViewControllers
 {
-    PageContentViewController *vc = [pendingViewControllers firstObject];
+    AQBaseViewController *vc = [pendingViewControllers firstObject];
     if ([vc.content isEqualToString:AIR_NOW_HISTORY]) {
         if (self.survey && self.survey.view.superview) {
             [self.survey.view removeFromSuperview];
@@ -301,11 +309,11 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
        transitionCompleted:(BOOL)completed
 {
     if (finished) {
-        PageContentViewController *vc = pageViewController.viewControllers[0];
+        AQBaseViewController *vc = pageViewController.viewControllers[0];
         if (![vc.content isEqualToString:AIR_NOW_HISTORY]) {
             [vc updateDisplay];
-            UIImage *im = vc.bgImage;
-            self.view.backgroundColor = [UIColor colorWithPatternImage:im];
+//            UIImage *im = vc.bgImage;
+//            self.view.backgroundColor = [UIColor colorWithPatternImage:im];
             if (self.survey && !self.survey.view.superview) {
                 [self.view addSubview:self.survey.view];
             }
