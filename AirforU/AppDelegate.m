@@ -16,7 +16,6 @@
 #import "GAIDictionaryBuilder.h"
 #import "CCLocationNotifications.h"
 #import "NSDate+AQHelper.h"
-//#import "GoogleGeocodingAPI.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
 @end
@@ -34,7 +33,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     /* Background session configuration */
-    [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    [application setMinimumBackgroundFetchInterval:14400];  // 4 hours
     
     
     
@@ -183,7 +182,7 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
             
             propertyListResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error2];
             NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
-            //            max = [NSNumber numberWithInt:150];
+//            max = [NSNumber numberWithInt:150];
             NSLog(@"%@", max);
             
             if ([max integerValue] >= 100) {
