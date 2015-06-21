@@ -7,6 +7,7 @@
 //
 
 #import "NSDate+AQHelper.h"
+#import "AQConstants.h"
 
 @implementation NSDate (AQHelper)
 
@@ -16,6 +17,13 @@
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateID = [formatter stringFromDate:self];
     return dateID;
+}
+
+- (NSString *)weekdayForOffset:(NSInteger)offset
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"cccc"];
+    return [formatter stringFromDate:[self dateByAddingTimeInterval:(SECONDS_PER_DAY*offset)]];
 }
 
 @end

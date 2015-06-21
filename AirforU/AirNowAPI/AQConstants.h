@@ -15,12 +15,12 @@
 
 // define keys for AirNowAPI results
 #define AIR_NOW_RESULTS_AREA @"ReportingArea"
-#define AIR_NOW_RESULTS_STATE_CODE @"StateCode"
+//#define AIR_NOW_RESULTS_STATE_CODE @"StateCode"
 #define AIR_NOW_RESULTS_AQI @"AQI"
-#define AIR_NOW_RESULTS_DATE_OBSERVED @"DateObserved"
-#define AIR_NOW_RESULTS_DATE_FORECAST @"DateForecast"
-#define AIR_NOW_RESULTS_CATEGORY_NAME @"Category.Name"
-#define AIR_NOW_RESULTS_ACTIONDAY @"actionDay"
+//#define AIR_NOW_RESULTS_DATE_OBSERVED @"DateObserved"
+//#define AIR_NOW_RESULTS_DATE_FORECAST @"DateForecast"
+//#define AIR_NOW_RESULTS_CATEGORY_NAME @"Category.Name"
+//#define AIR_NOW_RESULTS_ACTIONDAY @"actionDay"
 
 //define keys for Google Geocoding Results
 #define GEOCODING_RESULTS_FORMATTED_ADDRESS @"results.formatted_address"
@@ -33,9 +33,9 @@
 #define AIR_NOW_TODAY @"Today's Air Quality"
 #define AIR_NOW_TOMORROW_FORECAST @"Tomorrow's Forecast"
 
-#define DOWNLOADED_AQI @"DownloadedAQI"
-#define DOWNLOADED_LOCATION @"DownloadedLocation"
-#define DOWNLOADED_DESCRIPTION @"DownloadedDescription"
+//#define DOWNLOADED_AQI @"DownloadedAQI"
+//#define DOWNLOADED_LOCATION @"DownloadedLocation"
+//#define DOWNLOADED_DESCRIPTION @"DownloadedDescription"
 
 // define UI sizes
 #define NAVIGATION_BAR_HEIGHT 44.0

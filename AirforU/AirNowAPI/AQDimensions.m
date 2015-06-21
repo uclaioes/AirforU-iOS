@@ -76,19 +76,6 @@
     return 0.0;
 }
 
-//+ (CGFloat)sizeForBehavorialQuestionForPhoneType:(AQPhoneType)type
-//{
-//    switch (type) {
-//        case IPHONE4: return 0.0; break;
-//        case IPHONE5: return 0.0; break;
-//        case IPHONE6: return 0.0; break;
-//        case IPHONE6P: return 0.0; break;
-//        default: break;
-//    }
-//    
-//    return 0.0;
-//}
-
 /* Historical View Page */
 + (CGFloat)sizeForWeekdayLabelsForPhoneType:(AQPhoneType)type
 {
@@ -106,10 +93,10 @@
 + (CGFloat)sizeForSmallAQIForPhoneType:(AQPhoneType)type
 {
     switch (type) {
-        case IPHONE4: return 9.0; break;
-        case IPHONE5: return 11.0; break;
-        case IPHONE6: return 12.0; break;
-        case IPHONE6P: return 13.0; break;
+        case IPHONE4: return 10.0; break;
+        case IPHONE5: return 12.0; break;
+        case IPHONE6: return 15.0; break;
+        case IPHONE6P: return 16.0; break;
         default: break;
     }
     
@@ -132,7 +119,7 @@
 + (CGFloat)sizeForAverageTextLabelForPhoneType:(AQPhoneType)type
 {
     switch (type) {
-        case IPHONE4: return 12.0; break;
+        case IPHONE4: return 13.0; break;
         case IPHONE5: return 14.0; break;
         case IPHONE6: return 16.0; break;
         case IPHONE6P: return 18.0; break;
@@ -158,7 +145,7 @@
 + (CGFloat)sizeForDisclaimerForPhoneType:(AQPhoneType)type;
 {
     switch (type) {
-        case IPHONE4: return 7.0; break;
+        case IPHONE4: return 9.0; break;
         case IPHONE5: return 8.0; break;
         case IPHONE6: return 9.0; break;
         case IPHONE6P: return 11.0; break;

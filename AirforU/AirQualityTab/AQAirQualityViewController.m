@@ -42,6 +42,13 @@
     self.descriptionLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:[AQDimensions sizeForAirQualityDescriptionForPhoneType:type]];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateDisplay];
+}
+
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];

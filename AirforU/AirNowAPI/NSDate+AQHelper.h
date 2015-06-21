@@ -12,4 +12,7 @@
 
 - (NSString *)dateID;
 
+// offset ranges from [-6,0]
+- (NSString *)weekdayForOffset:(NSInteger)offset;
+
 @end

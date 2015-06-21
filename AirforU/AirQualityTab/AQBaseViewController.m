@@ -14,25 +14,9 @@
 
 @implementation AQBaseViewController
 
-#pragma mark - View Controller Life Cycle
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateDisplay];
-}
-
 #pragma mark - Actions
 
-- (void)getContent
-{
-    NSLog(@"GET CONTENT IN BASE");
-}
-
-- (void)updateDisplay
-{
-    NSLog(@"UPDATE DISPLAY IN BASE");
-}
+- (void)getContent { }
+- (void)updateDisplay { }
 
 @end

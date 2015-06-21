@@ -18,7 +18,6 @@
 {
     NSString *urlString = [NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_get_histo.php?location=%@", station];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@", urlString);
     return [NSURL URLWithString:urlString];
 }
 
