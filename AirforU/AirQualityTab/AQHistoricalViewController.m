@@ -16,13 +16,6 @@
 
 #pragma mark - View Controller Life Cycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    
-}
-
 #pragma mark - Actions
 
 - (void)getContent

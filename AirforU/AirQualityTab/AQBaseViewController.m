@@ -14,6 +14,15 @@
 
 @implementation AQBaseViewController
 
+#pragma mark - View Controller Life Cycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateDisplay];
+}
+
 #pragma mark - Actions
 
 - (void)getContent

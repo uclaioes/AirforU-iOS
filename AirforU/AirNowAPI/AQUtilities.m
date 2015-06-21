@@ -45,7 +45,7 @@
         case AQUnhealthy: return [UIColor aqRedColor]; break;
         case AQVeryUnhealthy: return [UIColor aqPurpleColor]; break;
         case AQHazardous: return [UIColor aqMaroonColor]; break;
-        case AQUnavailable: return [UIColor whiteColor]; break;
+        case AQUnavailable: return [UIColor clearColor]; break;
             
         default: break;
     }

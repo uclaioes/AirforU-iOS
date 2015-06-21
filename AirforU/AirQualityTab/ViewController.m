@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "AQUtilities.h"
 #import "AQBaseViewController.h"
+#import "AQAirQualityViewController.h"
 #import "GoogleGeocodingAPI.h"
 #import "LicenseAgreementViewController.h"
 #import "AppDelegate.h"
@@ -309,10 +310,11 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
 {
     if (finished) {
         AQBaseViewController *vc = pageViewController.viewControllers[0];
-        if (![vc.content isEqualToString:AIR_NOW_HISTORY]) {
-            [vc updateDisplay];
-//            UIImage *im = vc.bgImage;
-//            self.view.backgroundColor = [UIColor colorWithPatternImage:im];
+        if ([vc isKindOfClass:[AQAirQualityViewController class]]) {
+            AQAirQualityViewController *avc = (AQAirQualityViewController *)vc;
+            [avc updateDisplay];
+            UIImage *im = avc.bgImage;
+            self.view.backgroundColor = [UIColor colorWithPatternImage:im];
             if (self.survey && !self.survey.view.superview) {
                 [self.view addSubview:self.survey.view];
             }

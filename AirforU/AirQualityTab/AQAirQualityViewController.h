@@ -10,6 +10,8 @@
 
 @interface AQAirQualityViewController : AQBaseViewController
 
+@property (nonatomic, strong) UIImage *bgImage;
+
 - (void)updateDisplay;
 
 @end

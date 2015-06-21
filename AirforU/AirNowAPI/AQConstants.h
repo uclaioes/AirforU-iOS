@@ -47,13 +47,13 @@
 
 // define AQ levels
 typedef enum {
+    AQUnavailable,
     AQGood,
     AQModerate,
     AQUnhealthyForSensitive,
     AQUnhealthy,
     AQVeryUnhealthy,
-    AQHazardous,
-    AQUnavailable
+    AQHazardous
 } AQAirQuality;
 
 #endif

@@ -40,7 +40,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Air Quality" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="pFT-cn-IiD">
                                 <rect key="frame" x="16" y="27" width="568" height="27.5"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qJA-Wm-nvv"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Los Angeles, CA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Eu8-cz-Qfw">
                                 <rect key="frame" x="16" y="81" width="568" height="40.5"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="eZx-Yu-r2z"/>
                                 </constraints>
@@ -70,7 +70,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unhealthy for sensitive groups" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="P29-cx-8si">
                                 <rect key="frame" x="16" y="284" width="568" height="40.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="w9G-k6-fAO"/>
                                 </constraints>
@@ -85,33 +85,36 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8P-BY-lhE">
                                 <rect key="frame" x="16" y="0.0" width="568" height="27"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTj-PF-Gdh">
                                 <rect key="frame" x="16" y="54" width="568" height="27"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YaG-EY-50O">
                                 <rect key="frame" x="16" y="122" width="568" height="40.5"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtM-RJ-Tln">
                                 <rect key="frame" x="16" y="162" width="568" height="122"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGV-bK-l4g">
                                         <rect key="frame" x="223" y="0.0" width="122" height="122"/>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="pGV-bK-l4g" secondAttribute="height" id="tq4-3S-N7f"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
-                                        <state key="normal" title="150">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                        <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="showHealthInfo:" destination="GlC-fx-b8E" eventType="touchUpInside" id="jzG-hQ-mGy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="pGV-bK-l4g" secondAttribute="centerY" id="35j-wE-MBl"/>
                                     <constraint firstItem="pGV-bK-l4g" firstAttribute="height" secondItem="GtM-RJ-Tln" secondAttribute="height" id="dtd-Gi-uZH"/>
@@ -1095,11 +1098,11 @@ Any personal information obtained in connection with this study will remain conf
                         <viewControllerLayoutGuide type="bottom" id="hlt-Xb-p6y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="419-5Y-ieQ">
-                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pJa-xj-f2m">
-                                <rect key="frame" x="0.0" y="236" width="600" height="315"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="365"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Nearest Facilities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gka-Gx-p7v">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="26"/>
@@ -1156,33 +1159,33 @@ Any personal information obtained in connection with this study will remain conf
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The toxics feature allows you to locate large manufacturing facilities that are emitting toxic chemicals in your neighborhood." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jb0-bK-xLv">
-                                <rect key="frame" x="16" y="72" width="568" height="118"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter zipcode" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DpL-Xr-cHD">
-                                <rect key="frame" x="245" y="198" width="110" height="30"/>
+                                <rect key="frame" x="245" y="84" width="110" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="nqr-Ss-6bG"/>
+                                    <constraint firstAttribute="height" constant="30" id="u6l-zn-PGc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The toxics feature allows you to locate large manufacturing facilities that are emitting toxic chemicals in your neighborhood." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Jb0-bK-xLv">
+                                <rect key="frame" x="16" y="8" width="568" height="68"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Jb0-bK-xLv" firstAttribute="leading" secondItem="419-5Y-ieQ" secondAttribute="leadingMargin" id="4BH-6m-idf"/>
+                            <constraint firstItem="DpL-Xr-cHD" firstAttribute="top" secondItem="Jb0-bK-xLv" secondAttribute="bottom" constant="8" id="7CA-qs-jGu"/>
                             <constraint firstItem="hlt-Xb-p6y" firstAttribute="top" secondItem="pJa-xj-f2m" secondAttribute="bottom" id="B7M-rG-dI1"/>
-                            <constraint firstAttribute="centerX" secondItem="DpL-Xr-cHD" secondAttribute="centerX" id="EnL-VZ-mXc"/>
-                            <constraint firstAttribute="height" secondItem="pJa-xj-f2m" secondAttribute="height" multiplier="7:4" id="Ifb-vF-NXT"/>
-                            <constraint firstItem="Jb0-bK-xLv" firstAttribute="top" secondItem="D4y-mM-2og" secondAttribute="bottom" constant="8" id="OGI-Ie-MX0"/>
-                            <constraint firstItem="DpL-Xr-cHD" firstAttribute="top" secondItem="Jb0-bK-xLv" secondAttribute="bottom" constant="8" id="UUi-oj-9OR"/>
-                            <constraint firstItem="Jb0-bK-xLv" firstAttribute="leading" secondItem="419-5Y-ieQ" secondAttribute="leadingMargin" id="ZJz-ci-7bQ"/>
-                            <constraint firstItem="Jb0-bK-xLv" firstAttribute="trailing" secondItem="419-5Y-ieQ" secondAttribute="trailingMargin" id="bA0-XQ-jZa"/>
+                            <constraint firstItem="Jb0-bK-xLv" firstAttribute="top" secondItem="D4y-mM-2og" secondAttribute="bottom" constant="8" id="H3Q-aL-y1p"/>
+                            <constraint firstItem="pJa-xj-f2m" firstAttribute="height" secondItem="419-5Y-ieQ" secondAttribute="height" multiplier="3:4" id="Ifb-vF-NXT"/>
+                            <constraint firstItem="Jb0-bK-xLv" firstAttribute="trailing" secondItem="419-5Y-ieQ" secondAttribute="trailingMargin" id="bQY-9P-9Lk"/>
+                            <constraint firstItem="pJa-xj-f2m" firstAttribute="top" secondItem="DpL-Xr-cHD" secondAttribute="bottom" constant="8" id="eR3-8H-IYa"/>
                             <constraint firstItem="pJa-xj-f2m" firstAttribute="leading" secondItem="419-5Y-ieQ" secondAttribute="leadingMargin" constant="-16" id="mpv-TY-adX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pJa-xj-f2m" secondAttribute="trailing" constant="-16" id="rv7-on-0P7"/>
-                            <constraint firstItem="pJa-xj-f2m" firstAttribute="top" secondItem="DpL-Xr-cHD" secondAttribute="bottom" constant="8" id="wWK-Mh-suK"/>
+                            <constraint firstAttribute="centerX" secondItem="DpL-Xr-cHD" secondAttribute="centerX" id="uKG-LC-5pj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Toxics" id="6Tc-Gf-GT8"/>
@@ -2262,7 +2265,8 @@ Any personal information obtained in connection with this study will remain conf
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="glP-lS-2KP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Health" image="Health-Icon.png" id="dar-82-vTr"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXE-Ja-Vv6">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="MXE-Ja-Vv6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2280,7 +2284,7 @@ Any personal information obtained in connection with this study will remain conf
             <objects>
                 <tableViewController id="4TD-ZO-ZmU" customClass="HealthInfoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="0Uo-WW-mXo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -2371,9 +2375,9 @@ If you have any questions, comments or concerns about the research, you can talk
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZQl-zJ-FFC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Toxics" image="Toxic-Icon.png" id="AyH-S0-evU"/>
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MmG-ZG-zpp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="MmG-ZG-zpp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
