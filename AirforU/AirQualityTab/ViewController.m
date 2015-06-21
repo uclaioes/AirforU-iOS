@@ -310,9 +310,9 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
 {
     if (finished) {
         AQBaseViewController *vc = pageViewController.viewControllers[0];
+        [vc updateDisplay];
         if ([vc isKindOfClass:[AQAirQualityViewController class]]) {
             AQAirQualityViewController *avc = (AQAirQualityViewController *)vc;
-            [avc updateDisplay];
             UIImage *im = avc.bgImage;
             self.view.backgroundColor = [UIColor colorWithPatternImage:im];
             if (self.survey && !self.survey.view.superview) {

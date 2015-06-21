@@ -56,8 +56,6 @@
 {
     [super getContent];
     
-    NSLog(@"GET CONTENT IN AIR QUALITY VC");
-    
     dispatch_queue_t AirQueue = dispatch_queue_create("Air Queue", NULL);
     dispatch_async(AirQueue, ^{
         NSArray *values = [((AppDelegate *)[[UIApplication sharedApplication] delegate]) getAirQualityWithContent:self.content];
@@ -114,8 +112,6 @@
         [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
         [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
     }
-
-    NSLog(@"UPDATE DISPLAY IN AIR QUALITY VC");
 }
 
 /* IBAction to change tab */

@@ -12,6 +12,4 @@
 
 @property (nonatomic, strong) UIImage *bgImage;
 
-- (void)updateDisplay;
-
 @end
