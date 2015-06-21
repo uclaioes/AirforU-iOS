@@ -16,6 +16,9 @@
 		B4163DA41B06DC91001B128C /* MonthlyGiveaways.m in Sources */ = {isa = PBXBuildFile; fileRef = B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */; };
 		B4163DA61B06E15D001B128C /* card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B4163DA51B06E15D001B128C /* card.jpg */; };
 		B433B8C51B07F01800B7DE6A /* LocationIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */; };
+		B4519DAD1B3588560059B231 /* AQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4519DAC1B3588560059B231 /* AQBaseViewController.m */; };
+		B4519DB01B3588BE0059B231 /* AQAirQualityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4519DAF1B3588BE0059B231 /* AQAirQualityViewController.m */; };
+		B4519DB31B3588CE0059B231 /* AQHistoricalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4519DB21B3588CE0059B231 /* AQHistoricalViewController.m */; };
 		B4544ABC1ADC999D0023AB13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544ABB1ADC999D0023AB13 /* main.m */; };
 		B4544AD61ADC999D0023AB13 /* AirforUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4544AD51ADC999D0023AB13 /* AirforUTests.m */; };
 		B4544AFB1ADC9A110023AB13 /* Cloud-Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B4544AE81ADC9A110023AB13 /* Cloud-Icon@2x.png */; };
@@ -87,6 +90,12 @@
 		B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthlyGiveaways.m; path = MonthlyGiveaways/MonthlyGiveaways.m; sourceTree = "<group>"; };
 		B4163DA51B06E15D001B128C /* card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = card.jpg; path = Supporting/card.jpg; sourceTree = "<group>"; };
 		B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LocationIcon@3x.png"; sourceTree = "<group>"; };
+		B4519DAB1B3588560059B231 /* AQBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQBaseViewController.h; sourceTree = "<group>"; };
+		B4519DAC1B3588560059B231 /* AQBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQBaseViewController.m; sourceTree = "<group>"; };
+		B4519DAE1B3588BE0059B231 /* AQAirQualityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQAirQualityViewController.h; sourceTree = "<group>"; };
+		B4519DAF1B3588BE0059B231 /* AQAirQualityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQAirQualityViewController.m; sourceTree = "<group>"; };
+		B4519DB11B3588CE0059B231 /* AQHistoricalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQHistoricalViewController.h; sourceTree = "<group>"; };
+		B4519DB21B3588CE0059B231 /* AQHistoricalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQHistoricalViewController.m; sourceTree = "<group>"; };
 		B4544AB61ADC999D0023AB13 /* AirforU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirforU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4544ABA1ADC999D0023AB13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4544ABB1ADC999D0023AB13 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -336,6 +345,12 @@
 			children = (
 				B4544B121ADC9A270023AB13 /* ViewController.h */,
 				B4544B131ADC9A270023AB13 /* ViewController.m */,
+				B4519DAB1B3588560059B231 /* AQBaseViewController.h */,
+				B4519DAC1B3588560059B231 /* AQBaseViewController.m */,
+				B4519DAE1B3588BE0059B231 /* AQAirQualityViewController.h */,
+				B4519DAF1B3588BE0059B231 /* AQAirQualityViewController.m */,
+				B4519DB11B3588CE0059B231 /* AQHistoricalViewController.h */,
+				B4519DB21B3588CE0059B231 /* AQHistoricalViewController.m */,
 				B4544B0E1ADC9A270023AB13 /* PageContentViewController.h */,
 				B4544B0F1ADC9A270023AB13 /* PageContentViewController.m */,
 				B4544B101ADC9A270023AB13 /* RandomSurveyViewController.h */,
@@ -581,7 +596,9 @@
 				B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */,
 				B41349B01B15807B0028CCD3 /* FacilityCell.m in Sources */,
 				B47151AD1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m in Sources */,
+				B4519DAD1B3588560059B231 /* AQBaseViewController.m in Sources */,
 				B4544B4D1ADC9A280023AB13 /* ToxicsViewController.m in Sources */,
+				B4519DB31B3588CE0059B231 /* AQHistoricalViewController.m in Sources */,
 				B490F6A71B1E83590044886F /* AirQualityFetchAPI.m in Sources */,
 				B4544B491ADC9A280023AB13 /* SpecifyOtherQuestionTableViewController.m in Sources */,
 				B4544B471ADC9A280023AB13 /* LicenseAgreementViewController.m in Sources */,
@@ -590,6 +607,7 @@
 				B4661B7E1AF8437A00CEA31C /* NSString+Helper.m in Sources */,
 				B4544B461ADC9A280023AB13 /* InfoTableViewController.m in Sources */,
 				B4B3A1011B352BB40074C29F /* HistoricalViewAPI.m in Sources */,
+				B4519DB01B3588BE0059B231 /* AQAirQualityViewController.m in Sources */,
 				B4544B4A1ADC9A280023AB13 /* LearnMoreTableViewController.m in Sources */,
 				B4544B431ADC9A280023AB13 /* BackgroundViewController.m in Sources */,
 				B4544B481ADC9A280023AB13 /* QuestionTableViewController.m in Sources */,

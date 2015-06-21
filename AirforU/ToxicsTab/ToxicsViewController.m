@@ -53,7 +53,6 @@
     self.searchField.inputAccessoryView = toolBar;
     
     [self fetchCurrentResults];
-    
 }
 
 #pragma mark - Actions
@@ -117,6 +116,7 @@
         [self fetchCurrentResults];
     }
     
+    self.searchField.text = @"";
     [self.searchField resignFirstResponder];
 }
 

@@ -53,22 +53,22 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_EXTRA_DISPLAY];
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:14.0]];
-        NSString *detail = [AQUtilities aqPreventionDetailForAQ:(AQAirQuality)indexPath.section];
+        NSString *detail = [AQUtilities aqPreventionDetailForAQ:(AQAirQuality)(indexPath.section+1)];
         cell.textLabel.text = detail;
     }
     else
     {
         cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_DISPLAY];
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:18.0]];
-        NSString *title = [NSString stringWithFormat:@"%@ %@", [AQUtilities aqQualityTitleForAQ:(AQAirQuality)indexPath.section],
-                           [AQUtilities aqRangeForAQ:(AQAirQuality)indexPath.section]];
+        NSString *title = [NSString stringWithFormat:@"%@ %@", [AQUtilities aqQualityTitleForAQ:(AQAirQuality)(indexPath.section+1)],
+                           [AQUtilities aqRangeForAQ:(AQAirQuality)(indexPath.section+1)]];
         cell.textLabel.text = title;
     }
     
     if (cell) {
         cell.textLabel.numberOfLines = 7;
         cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        cell.contentView.backgroundColor = [AQUtilities aqColorForAQ:(AQAirQuality)indexPath.section];
+        cell.contentView.backgroundColor = [AQUtilities aqColorForAQ:(AQAirQuality)(indexPath.section+1)];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
     
