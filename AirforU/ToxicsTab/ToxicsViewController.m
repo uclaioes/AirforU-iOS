@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 @property (weak, nonatomic) IBOutlet UILabel *facilitiesTitle;
 
+@property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) NSArray *results;
 
 @end
@@ -26,6 +27,7 @@
 {
     NSString *zipcode;
     BOOL shouldZipSearch;
+    BOOL clearTableView;
 }
 
 #pragma mark - View Controller Life Cycle
@@ -42,6 +44,11 @@
     self.tableView.delegate = self;
     self.searchField.delegate = self;
     [self.searchField setKeyboardType:UIKeyboardTypeNumberPad];
+    
+    /* add current location search button */
+    UIBarButtonItem *locationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"LocationIcon@3x.png"] style:UIBarButtonItemStyleDone target:self action:@selector(showCurrentLocation:)];
+    locationButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = locationButton;
     
     /* Add Toolbar to keyboard */
     UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 50.0)];
@@ -64,14 +71,18 @@
     NSURL *url;
     if (shouldZipSearch && zipcode) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_tri.php?zip=%@", zipcode]];
-        self.facilitiesTitle.text = [NSString stringWithFormat:@"  Nearest facilities for %@", zipcode];
+        self.titleString = [NSString stringWithFormat:@"  Nearest facilities for %@", zipcode];
     } else if (delegate.latitude && delegate.longitude) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_tri.php?lat=%f&long=%f", delegate.latitude, delegate.longitude]];
-        self.facilitiesTitle.text = @"  Nearest facilities";
+        self.titleString = @"  Nearest facilities";
     } else {
         url = [NSURL URLWithString:@"http://engage.environment.ucla.edu/airforu_tri.php?zip=90024"];
-        self.facilitiesTitle.text = @"  Nearest facilities for 90024";
+        self.titleString = @"  Nearest facilities for 90024";
     }
+    
+    self.facilitiesTitle.text = @"";
+    clearTableView = YES;
+    [self.tableView reloadData];
     
     dispatch_queue_t ToxicsQueue = dispatch_queue_create("ToxicsQueue", NULL);
     dispatch_async(ToxicsQueue, ^{
@@ -81,12 +92,19 @@
             if (arr) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.results = arr;
-                    NSLog(@"%@", self.results);
+                    clearTableView = NO;
                     [self.tableView reloadData];
+                    self.facilitiesTitle.text = self.titleString;
                 });
             }
         }
     });
+}
+
+- (IBAction)showCurrentLocation:(UIBarButtonItem *)sender
+{
+    shouldZipSearch = NO;
+    [self fetchCurrentResults];
 }
 
 - (void)cancel:(UIBarButtonItem *)sender
@@ -129,6 +147,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (clearTableView)
+        return 0;
     return self.results.count > 10 ? 10 : self.results.count;
 }
 
