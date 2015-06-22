@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) NSArray *results;
 
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
+
 @end
 
 @implementation ToxicsViewController
@@ -48,7 +50,14 @@
     /* add current location search button */
     UIBarButtonItem *locationButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"LocationIcon@3x.png"] style:UIBarButtonItemStyleDone target:self action:@selector(showCurrentLocation:)];
     locationButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = locationButton;
+    
+    /* add spinner */
+    _spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    self.spinner.color = [UIColor blackColor];
+    self.spinner.hidesWhenStopped = YES;
+    UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:self.spinner];
+    
+    self.navigationItem.rightBarButtonItems = @[locationButton, activityItem];
     
     /* Add Toolbar to keyboard */
     UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 50.0)];
@@ -83,6 +92,7 @@
     self.facilitiesTitle.text = @"";
     clearTableView = YES;
     [self.tableView reloadData];
+    [self.spinner startAnimating];
     
     dispatch_queue_t ToxicsQueue = dispatch_queue_create("ToxicsQueue", NULL);
     dispatch_async(ToxicsQueue, ^{
@@ -95,6 +105,7 @@
                     clearTableView = NO;
                     [self.tableView reloadData];
                     self.facilitiesTitle.text = self.titleString;
+                    [self.spinner stopAnimating];
                 });
             }
         }
