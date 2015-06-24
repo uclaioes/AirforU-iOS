@@ -106,7 +106,7 @@
     
     /* Update Health Info Selection */
     HealthInfoTableViewController *vc = ((UINavigationController *)self.tabBarController.viewControllers[1]).viewControllers[0];
-    AQAirQuality index = [AQUtilities aqForAQI:m_aqi];
+    AQAirQuality index = [AQUtilities aqForAQI:m_aqi] - 1;
     if (index != AQUnavailable && index != AQHazardous) {
         if (vc.shouldDisplay && vc.displayIndex == index)
             return;
