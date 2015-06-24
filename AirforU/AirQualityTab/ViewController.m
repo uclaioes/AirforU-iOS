@@ -80,13 +80,14 @@
     [self.view addSubview:self.pageViewController.view];
 
     // Add the UIPageControl
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 10, self.view.bounds.size.width, 0)];
-    [self.view addSubview:self.pageControl];
-    self.pageControl.numberOfPages = 3;
-    self.pageControl.currentPage = ((AQBaseViewController *)self.pageViewController.viewControllers[0]).pageIndex;
-    self.pageControl.userInteractionEnabled = NO;
-    
-    [[UIPageControl appearance] setBounds:CGRectMake(0, 0, self.view.frame.size.width, 10.0)];
+    if (!_pageControl) {
+        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 10, self.view.bounds.size.width, 0)];
+        [self.view addSubview:self.pageControl];
+        self.pageControl.numberOfPages = 3;
+        self.pageControl.currentPage = ((AQBaseViewController *)self.pageViewController.viewControllers[0]).pageIndex;
+        self.pageControl.userInteractionEnabled = NO;
+        }
+        [[UIPageControl appearance] setBounds:CGRectMake(0, 0, self.view.frame.size.width, 10.0)];
     
     /* Add random survey */
     [self addSurvey];
