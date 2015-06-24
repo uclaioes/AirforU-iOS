@@ -81,7 +81,7 @@
 
     // Add the UIPageControl
     if (!_pageControl) {
-        self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 10, self.view.bounds.size.width, 0)];
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 10, self.view.bounds.size.width, 0)];
         [self.view addSubview:self.pageControl];
         self.pageControl.numberOfPages = 3;
         self.pageControl.currentPage = ((AQBaseViewController *)self.pageViewController.viewControllers[0]).pageIndex;
@@ -90,7 +90,14 @@
         [[UIPageControl appearance] setBounds:CGRectMake(0, 0, self.view.frame.size.width, 10.0)];
     
     /* Add random survey */
-    [self addSurvey];
+    [self.survey.view removeFromSuperview];
+    if (self.pageControl.currentPage != 0) {
+        if (self.survey) {
+            [self.view addSubview:self.survey.view];
+        } else {
+            [self addSurvey];
+        }
+    }
 }
 
 - (AQBaseViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -156,10 +163,10 @@
 - (IBAction)showSearch:(UIBarButtonItem *)sender
 {
     _searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-    _searchController.hidesNavigationBarDuringPresentation = NO;
-    _searchController.searchBar.placeholder = @"Enter city name or zipcode";
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    self.searchController.searchBar.placeholder = @"Enter city name or zipcode";
     
-    _searchController.searchBar.delegate = self;
+    self.searchController.searchBar.delegate = self;
     
     [self presentViewController:self.searchController animated:YES completion:nil];
 }
@@ -171,6 +178,8 @@
 
 - (void)reloadPageControllerWithZipSearch:(BOOL)zipSearch withCitySearch:(BOOL)citySearch
 {
+    [self.survey.view removeFromSuperview];
+    
     NSInteger index = self.pageControl.currentPage;
     [self.pageViewController removeFromParentViewController];
     [self.pageViewController.view removeFromSuperview];
@@ -186,7 +195,13 @@
     [self.pageViewController didMoveToParentViewController:self];
     self.pageControl.currentPage = index;
     
-    [self addSurvey];
+    if (self.pageControl.currentPage != 0) {
+        if (self.survey) {
+            [self.view addSubview:self.survey.view];
+        } else {
+            [self addSurvey];
+        }
+    }
 }
 
 - (void)createPageContentsWithZipSearch:(BOOL)zipsearch withCitySearch:(BOOL)citySearch
@@ -220,6 +235,9 @@
     
     if (self.pageControl.currentPage == 0)
         return;
+    
+    if (self.survey)
+        [self.view addSubview:self.survey.view];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH"];
@@ -257,11 +275,11 @@
     [defaults setObject:questionNumbers forKey:@"questionNumbers"];
     
     _survey = [self.storyboard instantiateViewControllerWithIdentifier:@"Random Survey"];
-    _survey.view.frame = CGRectMake(0.0, self.view.bounds.size.height * (17.0/24), self.view.frame.size.width, self.view.bounds.size.height * (1.0/4));
+    self.survey.view.frame = CGRectMake(0.0, self.view.bounds.size.height * (17.0/24), self.view.frame.size.width, self.view.bounds.size.height * (1.0/4));
     
-    [self addChildViewController:_survey];
-    [self.view addSubview:_survey.view];
-    [_survey didMoveToParentViewController:self];
+    [self addChildViewController:self.survey];
+    [self.view addSubview:self.survey.view];
+    [self.survey didMoveToParentViewController:self];
 }
 
 #pragma mark - UIPageViewControllerDataSource
@@ -318,6 +336,8 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
             self.view.backgroundColor = [UIColor colorWithPatternImage:im];
             if (self.survey && !self.survey.view.superview) {
                 [self.view addSubview:self.survey.view];
+            } else if (!self.survey) {
+                [self addSurvey];
             }
         }
         
