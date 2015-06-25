@@ -41,7 +41,7 @@
     [GAI sharedInstance].dispatchInterval = 45;
     
     // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelWarning];
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-60706322-1"];
     
     
@@ -131,14 +131,14 @@
     [self.window makeKeyAndVisible];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL surveyed = [defaults boolForKey:@"hasBeenSurveyed"];
-    NSString *date = [defaults stringForKey:@"behavioralQuestionDate"];
+    BOOL surveyed = [defaults boolForKey:HAS_BEEN_SURVEYED];
+    NSString *date = [defaults stringForKey:BEHAVIORAL_QUESTION_DATE];
     if (!date)
-        [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:@"behavioralQuestionDate"];
+        [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:BEHAVIORAL_QUESTION_DATE];
     
-    NSString *refreshDate = [defaults stringForKey:@"refreshDate"];
+    NSString *refreshDate = [defaults stringForKey:REFRESH_DATE];
     if (!refreshDate)
-        [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:@"refreshDate"];
+        [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:REFRESH_DATE];
     
     if (!surveyed)
         [[((UITabBarController *)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"Agreement Segue" sender:self];
