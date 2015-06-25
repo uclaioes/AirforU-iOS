@@ -195,13 +195,14 @@
     [self.pageViewController didMoveToParentViewController:self];
     self.pageControl.currentPage = index;
     
-    if (self.pageControl.currentPage != 0) {
-        if (self.survey) {
-            [self.view addSubview:self.survey.view];
-        } else {
-            [self addSurvey];
-        }
-    }
+//    if (self.pageControl.currentPage != 0) {
+//        if (self.survey) {
+//            [self.view addSubview:self.survey.view];
+//        } else {
+//            [self addSurvey];
+//        }
+//    }
+    [self addSurvey];
 }
 
 - (void)createPageContentsWithZipSearch:(BOOL)zipsearch withCitySearch:(BOOL)citySearch
@@ -236,8 +237,10 @@
     if (self.pageControl.currentPage == 0)
         return;
     
-    if (self.survey)
+    if (self.survey) {
         [self.view addSubview:self.survey.view];
+        return;
+    }
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH"];
@@ -245,7 +248,7 @@
     NSInteger hour = [hourString integerValue];
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *date = [defaults stringForKey:@"behavioralQuestionDate"];
+    NSString *date = [defaults stringForKey:BEHAVIORAL_QUESTION_DATE];
 
     if (hour >= 0 && hour <= 2) {
         if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_PER_DAY] dateID]])
@@ -256,15 +259,15 @@
         return;
     
     /* Reset score in NSUserDefaults */
-    NSString *refreshDate = [defaults stringForKey:@"refreshDate"];
+    NSString *refreshDate = [defaults stringForKey:REFRESH_DATE];
     
     if (![refreshDate isEqualToString:[[NSDate date] dateID]]) {
         if (hour >= 2) {
-            NSInteger score = [defaults integerForKey:@"currentScore"];
-            NSLog(@"currentScore: %ld", (long)score);
-            score = 0;
-            [defaults setInteger:score forKey:@"currentScore"];
-            [defaults setObject:[[NSDate date] dateID] forKey:@"refreshDate"];
+//            NSInteger score = [defaults integerForKey:@"currentScore"];
+//            NSLog(@"currentScore: %ld", (long)score);
+//            score = 0;
+            [defaults setInteger:0 forKey:@"currentScore"];
+            [defaults setObject:[[NSDate date] dateID] forKey:REFRESH_DATE];
         }
     }
     
@@ -334,11 +337,12 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
             AQAirQualityViewController *avc = (AQAirQualityViewController *)vc;
             UIImage *im = avc.bgImage;
             self.view.backgroundColor = [UIColor colorWithPatternImage:im];
-            if (self.survey && !self.survey.view.superview) {
-                [self.view addSubview:self.survey.view];
-            } else if (!self.survey) {
-                [self addSurvey];
-            }
+//            if (self.survey && !self.survey.view.superview) {
+//                [self.view addSubview:self.survey.view];
+//            } else if (!self.survey) {
+//                [self addSurvey];
+//            }
+            [self addSurvey];
         }
         
         self.pageControl.currentPage = vc.pageIndex;
