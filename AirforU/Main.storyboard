@@ -951,7 +951,7 @@ Electrical Engineering </string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74m-g0-She" id="NWf-5R-ovy">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-ia-AH2">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walter_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-ia-AH2">
                                                     <rect key="frame" x="506" y="8" width="80" height="79.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="K1F-ia-AH2" secondAttribute="height" multiplier="96:95" id="Vzm-42-9bf"/>
@@ -2624,7 +2624,7 @@ If you have any questions, comments or concerns about the research, you can talk
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQM-8y-q7l">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQM-8y-q7l">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2914,6 +2914,7 @@ If you have any questions, comments or concerns about the research, you can talk
         <image name="magali_image.png" width="117" height="150"/>
         <image name="stephen_image.png" width="810" height="862"/>
         <image name="victor_image.png" width="855" height="840"/>
+        <image name="walter_image.png" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wxd-yS-lf0"/>

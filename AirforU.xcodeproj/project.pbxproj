@@ -64,6 +64,7 @@
 		B490F6AA1B1EB6930044886F /* AQUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A91B1EB6930044886F /* AQUtilities.m */; };
 		B498521E1B22DF0E00FE7B59 /* AQDimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B498521D1B22DF0E00FE7B59 /* AQDimensions.m */; };
 		B4B3A1011B352BB40074C29F /* HistoricalViewAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B3A1001B352BB40074C29F /* HistoricalViewAPI.m */; };
+		B4E45CC51B3BB518002B178B /* walter_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E45CC41B3BB518002B178B /* walter_image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +177,7 @@
 		B498521D1B22DF0E00FE7B59 /* AQDimensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQDimensions.m; sourceTree = "<group>"; };
 		B4B3A0FF1B352BB40074C29F /* HistoricalViewAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoricalViewAPI.h; sourceTree = "<group>"; };
 		B4B3A1001B352BB40074C29F /* HistoricalViewAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoricalViewAPI.m; sourceTree = "<group>"; };
+		B4E45CC41B3BB518002B178B /* walter_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walter_image.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 		B40AACBE1B0FEBF800574453 /* Team */ = {
 			isa = PBXGroup;
 			children = (
+				B4E45CC41B3BB518002B178B /* walter_image.png */,
 				B40AACBF1B0FEBF800574453 /* aanchal_image.png */,
 				B40AACC01B0FEBF800574453 /* magali_image.png */,
 				B40AACC11B0FEBF800574453 /* stephen_image.png */,
@@ -562,6 +565,7 @@
 				B4544B701ADC9EB80023AB13 /* very_unhealthy_background.png in Resources */,
 				B46F52CF1AE59D9800A18E39 /* LaunchScreen.xib in Resources */,
 				B4544B041ADC9A110023AB13 /* Images.xcassets in Resources */,
+				B4E45CC51B3BB518002B178B /* walter_image.png in Resources */,
 				B4544B6D1ADC9EB80023AB13 /* moderate_background.png in Resources */,
 				B4544B011ADC9A110023AB13 /* Toxic-Icon@2x.png in Resources */,
 			);
