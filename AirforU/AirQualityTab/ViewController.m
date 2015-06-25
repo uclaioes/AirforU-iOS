@@ -195,13 +195,6 @@
     [self.pageViewController didMoveToParentViewController:self];
     self.pageControl.currentPage = index;
     
-//    if (self.pageControl.currentPage != 0) {
-//        if (self.survey) {
-//            [self.view addSubview:self.survey.view];
-//        } else {
-//            [self addSurvey];
-//        }
-//    }
     [self addSurvey];
 }
 
@@ -250,22 +243,21 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *date = [defaults stringForKey:BEHAVIORAL_QUESTION_DATE];
 
-    if (hour >= 0 && hour <= 2) {
+    if (hour >= 0 && hour < 2) {
         if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_PER_DAY] dateID]])
             return;
-    } else if ([date isEqualToString:[[NSDate date] dateID]])
+    } else if (hour >= 2 && hour < 15) {
         return;
-    else if (hour > 2 && hour < 16)
-        return;
+    } else {
+        if ([date isEqualToString:[[NSDate date] dateID]])
+            return;
+    }
     
     /* Reset score in NSUserDefaults */
     NSString *refreshDate = [defaults stringForKey:REFRESH_DATE];
     
     if (![refreshDate isEqualToString:[[NSDate date] dateID]]) {
         if (hour >= 2) {
-//            NSInteger score = [defaults integerForKey:@"currentScore"];
-//            NSLog(@"currentScore: %ld", (long)score);
-//            score = 0;
             [defaults setInteger:0 forKey:@"currentScore"];
             [defaults setObject:[[NSDate date] dateID] forKey:REFRESH_DATE];
         }
@@ -337,11 +329,6 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
             AQAirQualityViewController *avc = (AQAirQualityViewController *)vc;
             UIImage *im = avc.bgImage;
             self.view.backgroundColor = [UIColor colorWithPatternImage:im];
-//            if (self.survey && !self.survey.view.superview) {
-//                [self.view addSubview:self.survey.view];
-//            } else if (!self.survey) {
-//                [self addSurvey];
-//            }
             [self addSurvey];
         }
         
