@@ -41,7 +41,7 @@
     [GAI sharedInstance].dispatchInterval = 45;
     
     // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelWarning];
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-60706322-1"];
     
     
