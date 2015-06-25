@@ -31,6 +31,10 @@
 // define seconds in a day
 #define SECONDS_PER_DAY 24*60*60
 
+#define BEHAVIORAL_QUESTION_DATE @"behavioralQuestionDate"
+#define HAS_BEEN_SURVEYED @"hasBeenSurveyed"
+#define REFRESH_DATE @"refreshDate"
+
 // define AQ levels
 typedef enum {
     AQUnavailable,
