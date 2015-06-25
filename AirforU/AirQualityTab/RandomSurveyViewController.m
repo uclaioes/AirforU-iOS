@@ -56,11 +56,6 @@
              [self.questions count] != 0);
     
     if ([self.questions count] == 0) {
-        
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *dateID = [[NSDate date] dateID];
-        [defaults setValue:dateID forKey:@"behavioralQuestionDate"];
-        
         question = @"Thank you for your response! Check your score in the prizes tab.";
         [self.questionLabel setText:question];
         
@@ -154,18 +149,17 @@
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH"];
-    NSString *hourString = [formatter stringFromDate:[NSDate date]];
-    NSInteger hour = [hourString integerValue];
+    NSInteger hour = [[formatter stringFromDate:[NSDate date]] integerValue];
     
     NSDate *date = [NSDate date];
     
-    if (hour >= 0 && hour <= 2)
+    if (hour >= 0 && hour < 2)
         date = [date dateByAddingTimeInterval:-SECONDS_PER_DAY];
     
     NSString *dateString = [date dateID];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:dateString forKey:@"behavioralQuestionDate"];
+    [defaults setObject:dateString forKey:BEHAVIORAL_QUESTION_DATE];
 }
 
 @end

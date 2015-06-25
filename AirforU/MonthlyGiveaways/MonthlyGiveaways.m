@@ -11,10 +11,6 @@
 
 @interface MonthlyGiveaways ()
 
-@property (nonatomic, strong) NSDate *date;
-@property (nonatomic) NSInteger score;
-@property (nonatomic, strong) NSString *scoreName;
-
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *monthlyGift;
 
@@ -38,37 +34,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.date = [NSDate date];
-    
-    /* Get score */
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.score = [defaults integerForKey:@"currentScore"];
-    self.scoreName = @"LOW";
-    switch (self.score) {
-        case 2: self.scoreName = @"MEDIUM"; break;
-        case 3: self.scoreName = @"HIGH"; break;
-        case 0:
-        case 1:
-        default: break;
-    }
+    [self updateUI:nil];
 }
 
 - (void)updateUI:(id)sender
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger newScore = [defaults integerForKey:@"currentScore"];
-    if (newScore == self.score)
-        return;
-    self.score = newScore;
-    switch (self.score) {
-        case 2: self.scoreName = @"MEDIUM"; break;
-        case 3: self.scoreName = @"HIGH"; break;
-        case 0:
-        case 1:
+    NSInteger score = [defaults integerForKey:@"currentScore"];
+    NSString *scoreName = @"LOW";
+    switch (score) {
+        case 2: scoreName = @"MEDIUM"; break;
+        case 3: scoreName = @"HIGH"; break;
         default: break;
     }
-    self.scoreLabel.text = self.scoreName;
+    self.scoreLabel.text = scoreName;
 }
 
 @end

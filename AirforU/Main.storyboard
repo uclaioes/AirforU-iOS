@@ -951,7 +951,7 @@ Electrical Engineering </string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="74m-g0-She" id="NWf-5R-ovy">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-ia-AH2">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="walter_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="K1F-ia-AH2">
                                                     <rect key="frame" x="506" y="8" width="80" height="79.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="K1F-ia-AH2" secondAttribute="height" multiplier="96:95" id="Vzm-42-9bf"/>
@@ -984,7 +984,7 @@ Computer Science Student </string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4nH-qJ-hGd" id="POD-p0-kYp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-Ip-TAv">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="peter_image.png" translatesAutoresizingMaskIntoConstraints="NO" id="wcd-Ip-TAv">
                                                     <rect key="frame" x="16" y="8" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="wcd-Ip-TAv" secondAttribute="height" multiplier="1:1" id="UpF-ul-dJn"/>
@@ -2911,9 +2911,11 @@ If you have any questions, comments or concerns about the research, you can talk
         <image name="UGraphic_RGB.jpg" width="600" height="600"/>
         <image name="aanchal_image.png" width="849" height="945"/>
         <image name="card.jpg" width="300" height="192"/>
-        <image name="magali_image.png" width="117" height="150"/>
+        <image name="magali_image.png" width="579" height="579"/>
+        <image name="peter_image.png" width="734" height="735"/>
         <image name="stephen_image.png" width="810" height="862"/>
         <image name="victor_image.png" width="855" height="840"/>
+        <image name="walter_image.png" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wxd-yS-lf0"/>

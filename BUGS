@@ -1,0 +1,7 @@
+-----------
+BUG REPORT
+-----------
+
+1. No synchronization if app is in background and relaunched.
+   - Behavioral questions survey may get mixed up due to time & date issues
+   - Same issue for Prizes tab

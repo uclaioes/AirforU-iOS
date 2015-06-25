@@ -106,18 +106,18 @@
     
     /* Update Health Info Selection */
     HealthInfoTableViewController *vc = ((UINavigationController *)self.tabBarController.viewControllers[1]).viewControllers[0];
-    AQAirQuality index = [AQUtilities aqForAQI:m_aqi] - 1;
+    AQAirQuality index = [AQUtilities aqForAQI:m_aqi];
     if (index != AQUnavailable && index != AQHazardous) {
-        if (vc.shouldDisplay && vc.displayIndex == index)
+        if (vc.shouldDisplay && vc.displayIndex == (index-1))
             return;
-        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
+        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:(index-1)] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:(index-1)]];
     } else {
         if (!vc.shouldDisplay)
             return;
         index = (AQAirQuality)vc.displayIndex;
-        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index]];
+        [vc.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:(index-1)] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [vc.tableView.delegate tableView:vc.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:(index-1)]];
     }
 }
 
