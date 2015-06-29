@@ -732,27 +732,27 @@ If you wish to ask questions about your rights as a research participant or if y
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K7T-zq-Cqb" id="2BV-Bc-ZaJ">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UGraphic_RGB.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="K6h-Ji-GTp">
-                                            <rect key="frame" x="16" y="5" width="34" height="34"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="K6h-Ji-GTp" secondAttribute="height" multiplier="1:1" id="233-9f-9Rd"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Child Asthma" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jk-aR-jqr">
-                                            <rect key="frame" x="58" y="5" width="509" height="34"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asthma" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jk-aR-jqr">
+                                            <rect key="frame" x="186" y="5" width="380.5" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UCLA_HealthSystem_RGB.png" translatesAutoresizingMaskIntoConstraints="NO" id="jnC-E2-s4x">
+                                            <rect key="frame" x="16" y="5" width="162" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="162" id="gNJ-j5-vWN"/>
+                                                <constraint firstAttribute="height" constant="34" id="j28-pR-l1t"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="K6h-Ji-GTp" firstAttribute="leading" secondItem="2BV-Bc-ZaJ" secondAttribute="leadingMargin" constant="8" id="3At-08-b69"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="6Jk-aR-jqr" secondAttribute="bottom" constant="-3" id="4ck-d0-mnr"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="K6h-Ji-GTp" secondAttribute="bottom" constant="-3" id="61T-xd-EBJ"/>
                                         <constraint firstItem="6Jk-aR-jqr" firstAttribute="top" secondItem="2BV-Bc-ZaJ" secondAttribute="topMargin" constant="-3" id="BtV-jz-Ywn"/>
-                                        <constraint firstItem="6Jk-aR-jqr" firstAttribute="leading" secondItem="K6h-Ji-GTp" secondAttribute="trailing" constant="8" id="OQs-Aa-RfN"/>
+                                        <constraint firstItem="jnC-E2-s4x" firstAttribute="leading" secondItem="2BV-Bc-ZaJ" secondAttribute="leadingMargin" constant="8" id="DxH-ls-Zyq"/>
+                                        <constraint firstItem="jnC-E2-s4x" firstAttribute="top" secondItem="2BV-Bc-ZaJ" secondAttribute="topMargin" constant="-3" id="HLv-Fh-jxa"/>
+                                        <constraint firstItem="6Jk-aR-jqr" firstAttribute="leading" secondItem="jnC-E2-s4x" secondAttribute="trailing" constant="8" id="Jpa-5T-hIh"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="6Jk-aR-jqr" secondAttribute="trailing" constant="-8" id="nMd-wh-Qy8"/>
-                                        <constraint firstItem="K6h-Ji-GTp" firstAttribute="top" secondItem="2BV-Bc-ZaJ" secondAttribute="topMargin" constant="-3" id="tGq-cd-gNw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -772,7 +772,7 @@ If you wish to ask questions about your rights as a research participant or if y
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1LF-pv-Bgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872" y="-78"/>
+            <point key="canvasLocation" x="1872.5" y="-78"/>
         </scene>
         <!--About Us-->
         <scene sceneID="6xX-e0-8YT">
@@ -1136,13 +1136,13 @@ Any personal information obtained in connection with this study will remain conf
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your daily score is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPm-u5-6Kp">
                                 <rect key="frame" x="16" y="32" width="568" height="32.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This month's prize is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJB-Ra-a8G">
                                 <rect key="frame" x="16" y="194" width="568" height="32.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6U-AA-v9m">
@@ -2614,20 +2614,20 @@ If you have any questions, comments or concerns about the research, you can talk
                                         <rect key="frame" x="8" y="40" width="227" height="54.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Individual exposure may vary due to other factors." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="XMi-sc-CfF">
                                         <rect key="frame" x="8" y="94.5" width="227" height="26.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQM-8y-q7l">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQM-8y-q7l">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2719,42 +2719,42 @@ If you have any questions, comments or concerns about the research, you can talk
                                 <rect key="frame" x="24" y="58" width="247.5" height="40.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rug-Nc-UCU">
                                 <rect key="frame" x="24" y="102.5" width="247.5" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQJ-7J-Ao9">
                                 <rect key="frame" x="24" y="146" width="247.5" height="40.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCw-HH-Pgt">
                                 <rect key="frame" x="24" y="190.5" width="247.5" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-Na-S3E">
                                 <rect key="frame" x="24" y="235" width="247" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtR-rW-lAn">
                                 <rect key="frame" x="24" y="279" width="247" height="40.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ted-QW-oqR">
@@ -2908,7 +2908,6 @@ If you have any questions, comments or concerns about the research, you can talk
         <image name="Toxic-Icon.png" width="30" height="30"/>
         <image name="UCLAHealth-Icon.png" width="30" height="30"/>
         <image name="UCLA_HealthSystem_RGB.png" width="1800" height="378"/>
-        <image name="UGraphic_RGB.jpg" width="600" height="600"/>
         <image name="aanchal_image.png" width="849" height="945"/>
         <image name="card.jpg" width="300" height="192"/>
         <image name="magali_image.png" width="579" height="579"/>

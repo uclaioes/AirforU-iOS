@@ -167,7 +167,7 @@
 		B46C62121AFB2E5F00463605 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		B46F52D01AE5FB9F00A18E39 /* CCLocationNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCLocationNotifications.h; sourceTree = "<group>"; };
-		B47151AA1B1BAA8800AFABB1 /* AQConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AQConstants.h; sourceTree = "<group>"; };
+		B47151AA1B1BAA8800AFABB1 /* AQConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AQConstants.h; path = AirNowAPI/AQConstants.h; sourceTree = "<group>"; };
 		B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleGeocodingAPI.h; sourceTree = "<group>"; };
 		B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleGeocodingAPI.m; sourceTree = "<group>"; };
 		B490F6A51B1E83590044886F /* AirQualityFetchAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirQualityFetchAPI.h; sourceTree = "<group>"; };
@@ -251,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				B4544B381ADC9A280023AB13 /* Main.storyboard */,
+				B47151AA1B1BAA8800AFABB1 /* AQConstants.h */,
 				B4544B141ADC9A270023AB13 /* AppDelegate.h */,
 				B4544B151ADC9A270023AB13 /* AppDelegate.m */,
 				B46F52D01AE5FB9F00A18E39 /* CCLocationNotifications.h */,
@@ -320,7 +321,6 @@
 		B4544B071ADC9A270023AB13 /* AirNowAPI */ = {
 			isa = PBXGroup;
 			children = (
-				B47151AA1B1BAA8800AFABB1 /* AQConstants.h */,
 				B490F6A51B1E83590044886F /* AirQualityFetchAPI.h */,
 				B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */,
 				B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */,
