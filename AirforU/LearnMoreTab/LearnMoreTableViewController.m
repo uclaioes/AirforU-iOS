@@ -239,7 +239,7 @@
                     break;
                     
                 case 3:
-                    url = [NSURL URLWithString:@"https://www.uclahealth.org/Mattel/Pediatric-Pulmonology/Pages/Asthma-Program.aspx"];
+                    url = [NSURL URLWithString:@"http://healthinfo.uclahealth.org/Library/DiseasesConditions/Adult/Allergy/"];
                     
                 default: break;
             }
