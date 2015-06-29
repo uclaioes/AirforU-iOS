@@ -24,7 +24,7 @@
 #define GEOCODING_RESULTS_LNG @"results.geometry.location.lng"
 
 // define keys for Content in PageContentViewController
-#define AIR_NOW_HISTORY @"Historical AQI"
+#define AIR_NOW_HISTORY @"Last Week AQI"
 #define AIR_NOW_TODAY @"Today's Air Quality"
 #define AIR_NOW_TOMORROW_FORECAST @"Tomorrow's Forecast"
 
