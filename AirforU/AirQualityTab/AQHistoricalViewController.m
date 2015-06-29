@@ -102,12 +102,21 @@
     [super updateDisplay];
     
     self.contentLabel.text = self.content;
+    
+    NSInteger total = 0;
+    NSInteger count = 0;
+    NSInteger average = 0;
 
     if (self.history.count > 7) {
         for (int i = 0; i < 6; i++) {
             NSInteger offset = [[self.history[i] valueForKey:@"offset"] integerValue];
             NSInteger value = [[self.history[i] valueForKey:@"value"] integerValue];
-            NSString *aqi = [NSString stringWithFormat:@"%ld", (long)value];
+            NSString *aqi = value ? [NSString stringWithFormat:@"%ld", (long)value] : @"N/A";
+            
+            if (value != 0) {
+                total += value;
+                count++;
+            }
                         
             if (self.dayLabels && self.aqiButtons ) {
                 
@@ -121,8 +130,10 @@
             }
         }
         
-        NSInteger average = [[self.history[6] valueForKey:@"value"] integerValue];
-        NSString *averageAQI = [NSString stringWithFormat:@"%ld", (long)average];
+        if (count != 0)
+            average = total/count;
+        
+        NSString *averageAQI = average ? [NSString stringWithFormat:@"%ld", (long)average] : @"N/A";
         
         [self.averageButton setTitle:averageAQI forState:UIControlStateNormal];
         [self.averageButton setBackgroundColor:[AQUtilities aqColorForAQ:[AQUtilities aqForAQI:averageAQI]]];
