@@ -24,7 +24,8 @@
     [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     NSString *timestamp = [formatter stringFromDate:[NSDate date]];
     
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:action label:timestamp value:nil] build]];
+    if (identification)
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:action label:timestamp value:nil] build]];
 }
 
 + (void)sendEventWithAction:(NSString *)action withLabel:(NSString *)label
@@ -33,7 +34,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *identification = [defaults objectForKey:@"identification"];
     
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:action label:label value:nil] build]];
+    if (identification)
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:action label:label value:nil] build]];
 }
 
 @end
