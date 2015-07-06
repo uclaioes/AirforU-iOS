@@ -38,4 +38,14 @@
         [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:action label:label value:nil] build]];
 }
 
++ (void)sendEventWithAction:(NSString *)action withLabel:(NSString *)label withValue:(int)value
+{
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *identification = [defaults objectForKey:@"identification"];
+    
+    if (identification)
+        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:action label:label value:[NSNumber numberWithInt:value]] build]];
+}
+
 @end

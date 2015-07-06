@@ -14,7 +14,7 @@
 @interface GASend : NSObject
 
 + (void)sendEventWithAction:(NSString *)action;
-
 + (void)sendEventWithAction:(NSString *)action withLabel:(NSString *)label;
++ (void)sendEventWithAction:(NSString *)action withLabel:(NSString *)label withValue:(int)value;
 
 @end
