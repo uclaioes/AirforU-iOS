@@ -51,7 +51,7 @@
         case 0:
         case 1:
         case 3: return 1; break;
-        case 2: return 4; break;
+        case 2: return 2; break;
         case 4:
         case 5:
         case 6:
@@ -110,17 +110,6 @@
                     break;
                 }
                 case 1:
-                {
-                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_ORDINARY];
-                    cell.textLabel.text = @"Environmental Protection Agency";
-                    break;
-                }
-                case 2:
-                {
-                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_UCLA_HEALTH];
-                    break;
-                }
-                case 3:
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_UCLA_ASTHMA];
                     break;
@@ -216,9 +205,7 @@
         
         NSString *label = @"";
         switch (indexPath.row) {
-            case 1: label = @"EPA"; break;
-            case 2: label = @"UCLA Health"; break;
-            case 3: label = @"U Child Asthma"; break;
+            case 1: label = @"UCLA Child Asthma"; break;
             default: break;
         }
         
@@ -231,16 +218,7 @@
             NSURL *url;
             switch (indexPath.row) {
                 case 1:
-                    url = [NSURL URLWithString:@"http://www.airnow.gov"];
-                    break;
-                
-                case 2:
-                    url = [NSURL URLWithString:@"https://www.uclahealth.org/Pages/Home.aspx"];
-                    break;
-                    
-                case 3:
                     url = [NSURL URLWithString:@"http://healthinfo.uclahealth.org/Library/DiseasesConditions/Adult/Allergy/"];
-                    
                 default: break;
             }
         
