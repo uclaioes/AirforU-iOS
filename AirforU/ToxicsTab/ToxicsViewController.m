@@ -170,7 +170,8 @@
     NSDictionary *dict = self.results[indexPath.row];
     
     /* Set cell properties */
-    cell.nameLabel.text = [NSString stringWithFormat:@"%ld. %@", (long)(indexPath.row+1), [dict valueForKeyPath:TOXICS_KEY_NAME]];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@", [dict valueForKeyPath:TOXICS_KEY_NAME]];
+    cell.numberLabel.text = [NSString stringWithFormat:@"%ld.", (long)(indexPath.row+1)];
     
     NSString *distance = [dict valueForKeyPath:TOXICS_KEY_DISTANCE];
     if (!distance)
