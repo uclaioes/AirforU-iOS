@@ -10,7 +10,7 @@
 
 @interface AQBaseViewController : UIViewController
 
-@property (nonatomic, strong) NSString *content; // either "today", "todayForecast", "tomorrowForecast"
+@property (nonatomic, strong) NSString *content; // either "Today's Air Quality", "Tomorrow's Forecast", "Last Week AQI"
 @property NSUInteger pageIndex;
 
 - (void)getContent;
