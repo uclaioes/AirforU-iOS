@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RandomSurveyViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+
 @end

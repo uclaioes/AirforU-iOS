@@ -9,8 +9,7 @@
 #import "ToxicsViewController.h"
 #import "FacilityCell.h"
 #import "AppDelegate.h"
-#import "GAIDictionaryBuilder.h"
-#import "GAI.h"
+#import "GASend.h"
 
 @interface ToxicsViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
@@ -81,12 +80,15 @@
     if (shouldZipSearch && zipcode) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_tri.php?zip=%@", zipcode]];
         self.titleString = [NSString stringWithFormat:@"  Nearest facilities for %@", zipcode];
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"TRI Facilities Search (%@)", zipcode]];
     } else if (delegate.latitude && delegate.longitude) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_tri.php?lat=%f&long=%f", delegate.latitude, delegate.longitude]];
         self.titleString = @"  Nearest facilities";
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"TRI Facilities Search (%f, %f)", delegate.latitude, delegate.longitude]];
     } else {
         url = [NSURL URLWithString:@"http://engage.environment.ucla.edu/airforu_tri.php?zip=90024"];
         self.titleString = @"  Nearest facilities for 90024";
+        [GASend sendEventWithAction:@"TRI Facilities Search (Default)"];
     }
     
     self.facilitiesTitle.text = @"";
@@ -131,16 +133,10 @@
         [alert show];
     } else {
         zipcode = self.searchField.text;
-        /* Google Analytics Report*/
-        id tracker = [[GAI sharedInstance] defaultTracker];
-        NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-        NSString *timestamp = [formatter stringFromDate:[NSDate date]];
         
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:[NSString stringWithFormat:@"Search Facilities Zipcode (%@)", zipcode]
-                                                               label:timestamp value:nil] build]];
+        /* Google Analytics Report*/
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Search Facilities Zipcode (%@)", zipcode]];
+        
         shouldZipSearch = YES;
         [self fetchCurrentResults];
     }

@@ -8,13 +8,14 @@
 
 #import "LearnMoreTableViewController.h"
 #import "AQUtilities.h"
-#import "GAIDictionaryBuilder.h"
-#import "GAI.h"
+#import "GASend.h"
 #import "AppDelegate.h"
 
 @interface LearnMoreTableViewController ()
+
 @property (nonatomic) BOOL shouldDisplay;
 @property (nonatomic) NSInteger displayIndex;
+
 @end
 
 @implementation LearnMoreTableViewController
@@ -51,7 +52,7 @@
         case 0:
         case 1:
         case 3: return 1; break;
-        case 2: return 2; break;
+        case 2: return 3; break;
         case 4:
         case 5:
         case 6:
@@ -110,6 +111,13 @@
                     break;
                 }
                 case 1:
+                {
+                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_ORDINARY];
+                    cell.textLabel.text = @"Environmental Protection Agency";
+                    break;
+                }
+                    
+                case 2:
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_UCLA_ASTHMA];
                     break;
@@ -172,32 +180,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /* Google Analytics Initialize*/
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
         
         /* Google Analytics Report */
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:@"Show About Us"
-                                                               label:timestamp value:nil] build]];
-        
+        [GASend sendEventWithAction:@"Show About Us"];
         [self performSegueWithIdentifier:@"Show About Us" sender:self];
         return;
         
     } else if (indexPath.section == 1) {
         
         /* Google Analytics Report */
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:@"Show Contact Us"
-                                                               label:timestamp value:nil] build]];
-        
+        [GASend sendEventWithAction:@"Show Contact Us"];
         [self performSegueWithIdentifier:@"Show Contact Us" sender:self];
         return;
         
@@ -205,20 +200,19 @@
         
         NSString *label = @"";
         switch (indexPath.row) {
-            case 1: label = @"UCLA Child Asthma"; break;
+            case 1: label = @"EPA"; break;
+            case 2: label = @"UCLA Child Asthma"; break;
             default: break;
         }
         
         if (![label isEqualToString:@""])
             /* Google Analytics Report */
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Show %@", label]
-                                                                   label:timestamp value:nil] build]];
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@", label]];
         
             NSURL *url;
             switch (indexPath.row) {
-                case 1:
-                    url = [NSURL URLWithString:@"http://healthinfo.uclahealth.org/Library/DiseasesConditions/Adult/Allergy/"];
+                case 1: url = [NSURL URLWithString:@"http://www.airnow.gov"]; break;
+                case 2: url = [NSURL URLWithString:@"http://healthinfo.uclahealth.org/Library/DiseasesConditions/Adult/Allergy/"]; break;
                 default: break;
             }
         
@@ -232,26 +226,26 @@
         NSUInteger index = indexPath.section - 3;
         
         if (self.shouldDisplay && self.displayIndex == indexPath.section) {
+            
             self.shouldDisplay = NO;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:self.displayIndex] withRowAnimation:UITableViewRowAnimationFade];
+            
         } else if (self.shouldDisplay && self.displayIndex != indexPath.section) {
+            
             self.shouldDisplay = NO;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:self.displayIndex] withRowAnimation:UITableViewRowAnimationFade];
             
             /* Google Analytics Report */
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]
-                                                                   label:timestamp value:nil] build]];
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]];
             
             self.shouldDisplay = YES;
             self.displayIndex = indexPath.section;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:self.displayIndex] withRowAnimation:UITableViewRowAnimationFade];
+            
         } else if (!self.shouldDisplay) {
             
             /* Google Analytics Report */
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]
-                                                                   label:timestamp value:nil] build]];
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]];
             
             self.shouldDisplay = YES;
             self.displayIndex = indexPath.section;

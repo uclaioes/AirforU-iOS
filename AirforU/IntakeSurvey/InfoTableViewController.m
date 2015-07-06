@@ -7,8 +7,7 @@
 //
 
 #import "InfoTableViewController.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "GASend.h"
 #import "AppDelegate.h"
 
 @interface InfoTableViewController() <UITextFieldDelegate>
@@ -78,25 +77,13 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:identification forKey:@"identification"];
-    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification = identification;
-    
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    
+        
     if (!emailBad && [email length] != 0)
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:@"Email"
-                                                           label:email
-                                                           value:nil] build]];
+        [GASend sendEventWithAction:@"Email" withLabel:email];
     if (!phoneBad && [phone length] != 0)
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:@"Phone"
-                                                               label:phone
-                                                               value:nil] build]];
+        [GASend sendEventWithAction:@"Phone" withLabel:phone];
     if ([zipcode length] == 5)
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:@"Zipcode"
-                                                               label:zipcode
-                                                               value:nil] build]];
+        [GASend sendEventWithAction:@"Zipcode" withLabel:zipcode];
     
     
     NSString *segueIdentifier = @"To Question 1";
