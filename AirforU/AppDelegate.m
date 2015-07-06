@@ -222,6 +222,7 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     
     /* Google Analytics Report */
     [GASend sendEventWithAction:@"Close App"];
+    [GASend sendEventWithAction:@"---------------------------------------------------"];
 }
 
 #pragma mark - UITabBarControllerDelegate
@@ -298,17 +299,25 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     /* Google Analytics Report */
     
     if (self.shouldZipSearch && self.zipcode && [self.zipcode length] == 5) {
+        
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%@)", content, self.zipcode]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forZipcode:self.zipcode];
+        
     } else if (self.shouldCitySearch && self.city) {
+        
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%@)", content, self.city]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forSearch:self.city];
+        
     } else if (self.latitude && self.longitude) {
+        
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%f, %f)", content, self.latitude, self.longitude]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forLatitude:self.latitude forLongitude:self.longitude];
+        
     } else {
+        
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (Default)", content]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forZipcode:@"90024"];
+        
     }
 
     return values;
