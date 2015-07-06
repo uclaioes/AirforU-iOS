@@ -8,13 +8,14 @@
 
 #import "LearnMoreTableViewController.h"
 #import "AQUtilities.h"
-#import "GAIDictionaryBuilder.h"
-#import "GAI.h"
+#import "GASend.h"
 #import "AppDelegate.h"
 
 @interface LearnMoreTableViewController ()
+
 @property (nonatomic) BOOL shouldDisplay;
 @property (nonatomic) NSInteger displayIndex;
+
 @end
 
 @implementation LearnMoreTableViewController
@@ -172,32 +173,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /* Google Analytics Initialize*/
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
         
         /* Google Analytics Report */
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:@"Show About Us"
-                                                               label:timestamp value:nil] build]];
-        
+        [GASend sendEventWithAction:@"Show About Us"];
         [self performSegueWithIdentifier:@"Show About Us" sender:self];
         return;
         
     } else if (indexPath.section == 1) {
         
         /* Google Analytics Report */
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:@"Show Contact Us"
-                                                               label:timestamp value:nil] build]];
-        
+        [GASend sendEventWithAction:@"Show Contact Us"];
         [self performSegueWithIdentifier:@"Show Contact Us" sender:self];
         return;
         
@@ -211,9 +199,7 @@
         
         if (![label isEqualToString:@""])
             /* Google Analytics Report */
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Show %@", label]
-                                                                   label:timestamp value:nil] build]];
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@", label]];
         
             NSURL *url;
             switch (indexPath.row) {
@@ -232,26 +218,26 @@
         NSUInteger index = indexPath.section - 3;
         
         if (self.shouldDisplay && self.displayIndex == indexPath.section) {
+            
             self.shouldDisplay = NO;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:self.displayIndex] withRowAnimation:UITableViewRowAnimationFade];
+            
         } else if (self.shouldDisplay && self.displayIndex != indexPath.section) {
+            
             self.shouldDisplay = NO;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:self.displayIndex] withRowAnimation:UITableViewRowAnimationFade];
             
             /* Google Analytics Report */
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]
-                                                                   label:timestamp value:nil] build]];
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]];
             
             self.shouldDisplay = YES;
             self.displayIndex = indexPath.section;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:self.displayIndex] withRowAnimation:UITableViewRowAnimationFade];
+            
         } else if (!self.shouldDisplay) {
             
             /* Google Analytics Report */
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]
-                                                                   label:timestamp value:nil] build]];
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Show FAQ%lu", (unsigned long)index]];
             
             self.shouldDisplay = YES;
             self.displayIndex = indexPath.section;

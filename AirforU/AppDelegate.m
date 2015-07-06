@@ -11,8 +11,7 @@
 #import "AirQualityFetchAPI.h"
 #import "ViewController.h"
 #import "QuestionTableViewController.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "GASend.h"
 #import "CCLocationNotifications.h"
 #import "NSDate+AQHelper.h"
 
@@ -41,7 +40,7 @@
     [GAI sharedInstance].dispatchInterval = 45;
     
     // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelWarning];
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-60706322-1"];
     
     
@@ -143,7 +142,6 @@
     if (!surveyed)
         [[((UITabBarController *)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"Agreement Segue" sender:self];
     else {
-        self.identification = [defaults objectForKey:@"identification"];
         self.zipcode = [defaults objectForKey:@"zipcode"];
     }
     
@@ -207,46 +205,23 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     [[GAI sharedInstance] dispatch];
     
     /* Google Analytics Report */
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = self.identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Close App" label:timestamp value:nil] build]];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"---------------------------------------------------"
-                                                           label:timestamp value:nil] build]];
+    [GASend sendEventWithAction:@"Close App"];
+    [GASend sendEventWithAction:@"---------------------------------------------------"];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     /* Google Analytics Report */
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = self.identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
-    if (self.identification) {
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"---------------------------------------------------"
-                                                               label:timestamp value:nil] build]];
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Open App" label:timestamp value:nil] build]];
-    }
+    [GASend sendEventWithAction:@"---------------------------------------------------"];
+    [GASend sendEventWithAction:@"Open App"];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [self saveContext];
     [[GAI sharedInstance] dispatch];
     
     /* Google Analytics Report */
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = self.identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Close App" label:timestamp value:nil] build]];
+    [GASend sendEventWithAction:@"Close App"];
 }
 
 #pragma mark - UITabBarControllerDelegate
@@ -256,18 +231,12 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     NSUInteger index = tabBarController.selectedIndex;
     
     /* Google Analytics Report */
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = self.identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
     switch (index) {
-        case 0: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Air Quality Tab" label:timestamp value:nil] build]]; break;
-        case 1: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Health Info Tab" label:timestamp value:nil] build]]; break;
-        case 2: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Toxics Tab" label:timestamp value:nil] build]]; break;
-        case 3: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Prizes Tab" label:timestamp value:nil] build]]; break;
-        case 4: [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:@"Show Learn More Tab" label:timestamp value:nil] build]]; break;
+        case 0: [GASend sendEventWithAction:@"Show Air Quality Tab"]; break;
+        case 1: [GASend sendEventWithAction:@"Show Health Info Tab"]; break;
+        case 2: [GASend sendEventWithAction:@"Show Toxics Tab"]; break;
+        case 3: [GASend sendEventWithAction:@"Show Prizes Tab"]; break;
+        case 4: [GASend sendEventWithAction:@"Show Learn More Tab"]; break;
         default: break;
     }
 }
@@ -324,117 +293,25 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
 
 - (NSArray *)getAirQualityWithContent:(NSString *)content
 {
-    /* Google Analytics Report */
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
     NSArray *values;
+
+    /* Google Analytics Report */
     
     if (self.shouldZipSearch && self.zipcode && [self.zipcode length] == 5) {
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@ (%@)", content, self.zipcode] label:timestamp value:nil] build]];
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%@)", content, self.zipcode]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forZipcode:self.zipcode];
     } else if (self.shouldCitySearch && self.city) {
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@ (%@)", content, self.city] label:timestamp value:nil] build]];
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%@)", content, self.city]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forSearch:self.city];
     } else if (self.latitude && self.longitude) {
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@ (%f, %f)", content, self.latitude, self.longitude] label:timestamp value:nil] build]];
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%f, %f)", content, self.latitude, self.longitude]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forLatitude:self.latitude forLongitude:self.longitude];
     } else {
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@ (Default)", content] label:timestamp value:nil] build]];
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (Default)", content]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forZipcode:@"90024"];
     }
 
     return values;
-}
-
-
-
-#pragma mark - Core Data stack
-
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
-- (NSURL *)applicationDocumentsDirectory
-{
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "LAN.Air_Quality" in the application's documents directory.
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
-
-- (NSManagedObjectModel *)managedObjectModel
-{
-    // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
-    if (_managedObjectModel != nil) {
-        return _managedObjectModel;
-    }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Air_Quality" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
-}
-
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it.
-    if (_persistentStoreCoordinator != nil) {
-        return _persistentStoreCoordinator;
-    }
-    
-    // Create the coordinator and store
-    
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Air_Quality.sqlite"];
-    NSError *error = nil;
-    NSString *failureReason = @"There was an error creating or loading the application's saved data.";
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        // Report any error we got.
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
-        dict[NSLocalizedFailureReasonErrorKey] = failureReason;
-        dict[NSUnderlyingErrorKey] = error;
-        error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-        // Replace this with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    return _persistentStoreCoordinator;
-}
-
-
-- (NSManagedObjectContext *)managedObjectContext
-{
-    // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-        return nil;
-    }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    return _managedObjectContext;
-}
-
-#pragma mark - Core Data Saving support
-
-- (void)saveContext
-{
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
 }
 
 @end

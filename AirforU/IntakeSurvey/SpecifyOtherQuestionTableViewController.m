@@ -21,6 +21,8 @@
 {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    
     NSInteger questionNumber = [self.title integerValue];
 
     if (questionNumber == 3 || questionNumber == 4) {
@@ -39,7 +41,7 @@
             }
             
             NSString *answer = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-            NSMutableString *mutableAnswers = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber] mutableCopy];
+            NSMutableString *mutableAnswers = [delegate.answers[questionNumber] mutableCopy];
             if ([mutableAnswers containsString:answer]) {
                 NSRange startRange = [mutableAnswers rangeOfString:answer];
                 NSRange endRange = [mutableAnswers rangeOfString:@"]"];
@@ -52,8 +54,8 @@
                 }
                 [mutableAnswers deleteCharactersInRange:range];
             }
-            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber] = mutableAnswers;
-            NSLog(@"%@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers);
+            delegate.answers[questionNumber] = mutableAnswers;
+            NSLog(@"%@", delegate.answers);
             
         } else if (cell.accessoryType == UITableViewCellAccessoryNone) {
             
@@ -65,11 +67,11 @@
             }
             
             NSString *answer = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-            NSMutableString *mutableAnswers = [((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber] mutableCopy];
+            NSMutableString *mutableAnswers = [delegate.answers[questionNumber] mutableCopy];
             if (![mutableAnswers containsString:answer])
                 [mutableAnswers appendString:answer];
-            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber] = mutableAnswers;
-            NSLog(@"%@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers);
+            delegate.answers[questionNumber] = mutableAnswers;
+            NSLog(@"%@", delegate.answers);
             
         }
     }
@@ -90,8 +92,10 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    
     NSInteger questionNumber = [self.title integerValue];
-    NSString *tempAnswer = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber];
+    NSString *tempAnswer = delegate.answers[questionNumber];
     NSRange rangeOfOtherBegin = [tempAnswer rangeOfString:@"6"];
     NSRange rangeOfOtherEnd = [tempAnswer rangeOfString:@"]"];
     
@@ -104,18 +108,18 @@
         range.length = rangeOfOtherEnd.location - rangeOfOtherBegin.location + 1;
         
         tempAnswer = [tempAnswer stringByReplacingCharactersInRange:range withString:[NSString stringWithFormat:@"6:[%@]", curAnswer]];
-        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber] = tempAnswer;
+        delegate.answers[questionNumber] = tempAnswer;
         
     } else {
         
         tempAnswer = [tempAnswer stringByReplacingCharactersInRange:rangeOfOtherBegin withString:[NSString stringWithFormat:@"6:[%@]", curAnswer]];
-        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers[questionNumber] = tempAnswer;
+        delegate.answers[questionNumber] = tempAnswer;
         
     }
     
     [textField resignFirstResponder];
     
-    NSLog(@"%@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).answers);
+    NSLog(@"%@", delegate.answers);
     
     return YES;
 }

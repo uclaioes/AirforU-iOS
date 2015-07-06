@@ -16,6 +16,7 @@
 		B4163DA41B06DC91001B128C /* MonthlyGiveaways.m in Sources */ = {isa = PBXBuildFile; fileRef = B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */; };
 		B4163DA61B06E15D001B128C /* card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B4163DA51B06E15D001B128C /* card.jpg */; };
 		B433B8C51B07F01800B7DE6A /* LocationIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */; };
+		B4434C091B4AA5DB002B191C /* GASend.m in Sources */ = {isa = PBXBuildFile; fileRef = B4434C081B4AA5DB002B191C /* GASend.m */; };
 		B4519DAD1B3588560059B231 /* AQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4519DAC1B3588560059B231 /* AQBaseViewController.m */; };
 		B4519DB01B3588BE0059B231 /* AQAirQualityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4519DAF1B3588BE0059B231 /* AQAirQualityViewController.m */; };
 		B4519DB31B3588CE0059B231 /* AQHistoricalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4519DB21B3588CE0059B231 /* AQHistoricalViewController.m */; };
@@ -91,6 +92,8 @@
 		B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthlyGiveaways.m; path = MonthlyGiveaways/MonthlyGiveaways.m; sourceTree = "<group>"; };
 		B4163DA51B06E15D001B128C /* card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = card.jpg; path = Supporting/card.jpg; sourceTree = "<group>"; };
 		B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LocationIcon@3x.png"; sourceTree = "<group>"; };
+		B4434C071B4AA5DB002B191C /* GASend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASend.h; sourceTree = "<group>"; };
+		B4434C081B4AA5DB002B191C /* GASend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASend.m; sourceTree = "<group>"; };
 		B4519DAB1B3588560059B231 /* AQBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQBaseViewController.h; sourceTree = "<group>"; };
 		B4519DAC1B3588560059B231 /* AQBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQBaseViewController.m; sourceTree = "<group>"; };
 		B4519DAE1B3588BE0059B231 /* AQAirQualityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQAirQualityViewController.h; sourceTree = "<group>"; };
@@ -321,6 +324,8 @@
 		B4544B071ADC9A270023AB13 /* AirNowAPI */ = {
 			isa = PBXGroup;
 			children = (
+				B4434C071B4AA5DB002B191C /* GASend.h */,
+				B4434C081B4AA5DB002B191C /* GASend.m */,
 				B490F6A51B1E83590044886F /* AirQualityFetchAPI.h */,
 				B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */,
 				B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */,
@@ -594,6 +599,7 @@
 				B4544B421ADC9A280023AB13 /* BackgroundTableViewController.m in Sources */,
 				B4544B3F1ADC9A280023AB13 /* RandomSurveyViewController.m in Sources */,
 				B498521E1B22DF0E00FE7B59 /* AQDimensions.m in Sources */,
+				B4434C091B4AA5DB002B191C /* GASend.m in Sources */,
 				B4544B3C1ADC9A280023AB13 /* AirNowAPI.m in Sources */,
 				B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */,
 				B41349B01B15807B0028CCD3 /* FacilityCell.m in Sources */,

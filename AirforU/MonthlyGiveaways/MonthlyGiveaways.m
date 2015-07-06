@@ -17,9 +17,6 @@
 @end
 
 @implementation MonthlyGiveaways
-{
-    CGFloat totalHeight;
-}
 
 #pragma mark - View Controller Life Cycle
 
