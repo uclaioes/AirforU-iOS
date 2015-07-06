@@ -48,7 +48,7 @@
         } else if ([answer isEqualToString:@"2"] || [answer length] == 0) {
             
             /* Google Analytics Report */
-            [GASend sendEventWithAction:[NSString stringWithFormat:@"Q4 (%@)", [AQUtilities intakeSurveyQuestionForQuestionNumber:4]] withLabel:@"skp"];
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Q4 (%@)", [AQUtilities intakeSurveyQuestionForQuestionNumber:4]] withLabel:@"N/A"];
             
             NSString *segueIdentifier = @"Pass Question 4";
             [self performSegueWithIdentifier:segueIdentifier sender:sender];
@@ -63,7 +63,7 @@
         } else if ([answer isEqualToString:@"2"] || [answer length] == 0) {
             
             /* Google Analytics Repor t*/
-            [GASend sendEventWithAction:[NSString stringWithFormat:@"Q8 (%@)", [AQUtilities intakeSurveyQuestionForQuestionNumber:8]] withLabel:@"skp"];
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Q8 (%@)", [AQUtilities intakeSurveyQuestionForQuestionNumber:8]] withLabel:@"N/A"];
             
             NSString *segueIdentifier = @"Pass Question 8";
             [self performSegueWithIdentifier:segueIdentifier sender:sender];
