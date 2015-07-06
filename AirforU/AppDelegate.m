@@ -103,9 +103,7 @@
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
                                                             message:@"To re-enable, please go to Settings and turn on Location Service for this app."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
+                                                           delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
     }
@@ -189,6 +187,7 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
                     return;
                 notif.alertBody = @"Your local air quality is poor!";
                 [application presentLocalNotificationNow:notif];
+                [GASend sendEventWithAction:@"Notification (Local air quality is poor) Sent"];
             }
         }
         
