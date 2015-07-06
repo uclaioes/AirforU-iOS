@@ -21,7 +21,7 @@
     NSString *identification = [defaults objectForKey:@"identification"];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *timestamp = [formatter stringFromDate:[NSDate date]];
     
     if (identification)
