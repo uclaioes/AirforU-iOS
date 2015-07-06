@@ -204,6 +204,11 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     [task resume];
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    [GASend sendEventWithAction:@"Notification (Check local air quality) Sent"];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     [[GAI sharedInstance] dispatch];
