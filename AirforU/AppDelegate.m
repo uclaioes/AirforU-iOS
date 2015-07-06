@@ -54,8 +54,7 @@
     [self setNotificationTypesAllowed];
     if (notif)
     {
-        if (allowNotif && allowsAlert)
-        {
+        if (allowNotif && allowsAlert) {
             NSCalendar *cal = [NSCalendar currentCalendar];
             NSDateComponents *comps = [[NSDateComponents alloc] init];
             [comps setDay:9];
@@ -74,6 +73,10 @@
             
             /* Schedule Notification */
             [application scheduleLocalNotification:notif];
+            
+            [GASend sendEventWithAction:@"Notification Services Enabled"];
+        } else {
+            [GASend sendEventWithAction:@"Notification Services Disabled"];
         }
     }
     
