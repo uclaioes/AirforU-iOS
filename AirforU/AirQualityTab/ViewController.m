@@ -134,12 +134,13 @@
             NSString *zipcode = self.searchController.searchBar.text;
             /* Google Analytics Report*/
             [GASend sendEventWithAction:[NSString stringWithFormat:@"Search Zipcode (%@)", zipcode]];
-            
             delegate.zipcode = zipcode;
             [self reloadPageControllerWithZipSearch:YES withCitySearch:NO];
         }
     } else {
         delegate.city = self.searchController.searchBar.text;
+        /* Google Analytics Report*/
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Search City (%@)", delegate.city]];
         [self reloadPageControllerWithZipSearch:NO withCitySearch:YES];
     }
 }
