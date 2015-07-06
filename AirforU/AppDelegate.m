@@ -97,15 +97,20 @@
     
     
     if ([CLLocationManager locationServicesEnabled]) {
-        
-        NSLog(@"Location Services Enabled");
-        
+        [GASend sendEventWithAction:@"Location Services Enabled"];
         if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+            [GASend sendEventWithAction:@"Location Services Permission Denied"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Permission Denied"
                                                             message:@"To re-enable, please go to Settings and turn on Location Service for this app."
                                                            delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
+        } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways) {
+            [GASend sendEventWithAction:@"Location Services Permission Authorized Always"];
+        } else if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+            [GASend sendEventWithAction:@"Location Services Permission Authorized When In Use"];
         }
+    } else {
+        [GASend sendEventWithAction:@"Location Services Disabled"];
     }
     
     
@@ -137,9 +142,9 @@
     if (!refreshDate)
         [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:REFRESH_DATE];
     
-    if (!surveyed)
+    if (!surveyed) {
         [[((UITabBarController *)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"Agreement Segue" sender:self];
-    else {
+    } else {
         self.zipcode = [defaults objectForKey:@"zipcode"];
     }
     
