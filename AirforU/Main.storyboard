@@ -1221,64 +1221,6 @@ Any personal information obtained in connection with this study will remain conf
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pJa-xj-f2m">
-                                <rect key="frame" x="0.0" y="122" width="600" height="365"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Nearest Facilities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gka-Gx-p7v">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="26"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <prototypes>
-                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Facility Cell" rowHeight="91" id="QWj-13-89i" customClass="FacilityCell">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWj-13-89i" id="BJy-gE-Ei4">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Tesoro Alaoka Co." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFf-TP-6zn">
-                                                    <rect key="frame" x="8" y="12" width="584" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance: 20 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDA-BQ-qUA">
-                                                    <rect key="frame" x="25" y="37" width="567" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chemical Release (lbs): 84" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvn-Uq-KpW">
-                                                    <rect key="frame" x="25" y="62" width="567" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="top" secondItem="HFf-TP-6zn" secondAttribute="bottom" constant="8" id="3ss-Oa-kJY"/>
-                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="top" secondItem="BJy-gE-Ei4" secondAttribute="topMargin" constant="4" id="6Nb-sV-tul"/>
-                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="top" secondItem="HFf-TP-6zn" secondAttribute="bottom" constant="8" id="B9s-uE-LBy"/>
-                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" id="J5q-85-wZP"/>
-                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" constant="17" id="TQw-lf-Py0"/>
-                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="Tq1-nl-0gD"/>
-                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="top" secondItem="ZDA-BQ-qUA" secondAttribute="bottom" constant="8" id="Xz0-hM-SBJ"/>
-                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="top" secondItem="ZDA-BQ-qUA" secondAttribute="bottom" constant="8" id="fo8-rh-Q5E"/>
-                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="tz2-iw-bww"/>
-                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="uTi-zw-oxL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="bvn-Uq-KpW" secondAttribute="bottom" constant="3.5" id="un0-3u-fK3"/>
-                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" constant="17" id="vZd-r2-BZE"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="distanceLabel" destination="ZDA-BQ-qUA" id="681-Xd-puO"/>
-                                            <outlet property="nameLabel" destination="HFf-TP-6zn" id="dcP-on-3Ld"/>
-                                            <outlet property="releaseLabel" destination="bvn-Uq-KpW" id="tap-98-nrS"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter zipcode" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DpL-Xr-cHD">
                                 <rect key="frame" x="245" y="84" width="110" height="30"/>
                                 <constraints>
@@ -1293,6 +1235,75 @@ Any personal information obtained in connection with this study will remain conf
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="pJa-xj-f2m">
+                                <rect key="frame" x="0.0" y="122" width="600" height="365"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Nearest Facilities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gka-Gx-p7v">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <prototypes>
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Facility Cell" rowHeight="108" id="QWj-13-89i" customClass="FacilityCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWj-13-89i" id="BJy-gE-Ei4">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFf-TP-6zn">
+                                                    <rect key="frame" x="31" y="10" width="560.5" height="36.5"/>
+                                                    <string key="text">Tesoro Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co. Alaoka Co.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance: 20 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDA-BQ-qUA">
+                                                    <rect key="frame" x="31" y="54.5" width="561" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chemical Release (lbs): 84" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvn-Uq-KpW">
+                                                    <rect key="frame" x="31" y="79.5" width="561" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIU-Vw-Oih">
+                                                    <rect key="frame" x="8" y="20" width="19" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="19" id="kXg-n0-dFc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rIU-Vw-Oih" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" id="4jM-tM-TCf"/>
+                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="54s-4e-8i1"/>
+                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="top" secondItem="BJy-gE-Ei4" secondAttribute="topMargin" constant="2" id="9dh-ZA-DFd"/>
+                                                <constraint firstItem="rIU-Vw-Oih" firstAttribute="centerY" secondItem="HFf-TP-6zn" secondAttribute="centerY" constant="-0.25" id="Edm-dt-2gN"/>
+                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" constant="23" id="Ijc-eJ-Sdl"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bvn-Uq-KpW" secondAttribute="bottom" constant="3" id="MeF-EP-cLT"/>
+                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="PIi-JH-4Hl"/>
+                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="trailing" secondItem="BJy-gE-Ei4" secondAttribute="trailingMargin" id="Yl3-61-ABf"/>
+                                                <constraint firstItem="bvn-Uq-KpW" firstAttribute="top" secondItem="ZDA-BQ-qUA" secondAttribute="bottom" constant="8" id="bc4-39-LBE"/>
+                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="leading" secondItem="BJy-gE-Ei4" secondAttribute="leadingMargin" constant="23" id="f7m-dT-e80"/>
+                                                <constraint firstItem="HFf-TP-6zn" firstAttribute="leading" secondItem="rIU-Vw-Oih" secondAttribute="trailing" constant="4" id="i5q-U5-qel"/>
+                                                <constraint firstItem="ZDA-BQ-qUA" firstAttribute="top" secondItem="HFf-TP-6zn" secondAttribute="bottom" constant="8" id="uBg-ev-Dxn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="distanceLabel" destination="ZDA-BQ-qUA" id="681-Xd-puO"/>
+                                            <outlet property="nameLabel" destination="HFf-TP-6zn" id="dcP-on-3Ld"/>
+                                            <outlet property="numberLabel" destination="rIU-Vw-Oih" id="wY9-7a-uRH"/>
+                                            <outlet property="releaseLabel" destination="bvn-Uq-KpW" id="tap-98-nrS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
