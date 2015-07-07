@@ -14,8 +14,7 @@
 #import "LicenseAgreementViewController.h"
 #import "AppDelegate.h"
 #import "RandomSurveyViewController.h"
-#import "GAIDictionaryBuilder.h"
-#import "GAI.h"
+#import "GASend.h"
 #import "NSDate+AQHelper.h"
 #import "NSString+Helper.h"
 
@@ -33,12 +32,17 @@
 @end
 
 @implementation ViewController
+{
+    AppDelegate *delegate;
+}
 
 #pragma mark - View Controller Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    delegate = [[UIApplication sharedApplication] delegate];
     
 	// Create the data model
     self.date = [NSDate date];
@@ -86,8 +90,8 @@
         self.pageControl.numberOfPages = 3;
         self.pageControl.currentPage = ((AQBaseViewController *)self.pageViewController.viewControllers[0]).pageIndex;
         self.pageControl.userInteractionEnabled = NO;
-        }
-        [[UIPageControl appearance] setBounds:CGRectMake(0, 0, self.view.frame.size.width, 10.0)];
+    }
+    [[UIPageControl appearance] setBounds:CGRectMake(0, 0, self.view.frame.size.width, 10.0)];
     
     /* Add random survey */
     [self.survey.view removeFromSuperview];
@@ -129,21 +133,14 @@
         } else {
             NSString *zipcode = self.searchController.searchBar.text;
             /* Google Analytics Report*/
-            id tracker = [[GAI sharedInstance] defaultTracker];
-            NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-            NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-            
-            [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                                  action:[NSString stringWithFormat:@"Search Zipcode (%@)", zipcode]
-                                                                   label:timestamp value:nil] build]];
-            
-            ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = zipcode;
+            [GASend sendEventWithAction:[NSString stringWithFormat:@"Search Zipcode (%@)", zipcode]];
+            delegate.zipcode = zipcode;
             [self reloadPageControllerWithZipSearch:YES withCitySearch:NO];
         }
     } else {
-        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).city = self.searchController.searchBar.text;
+        delegate.city = self.searchController.searchBar.text;
+        /* Google Analytics Report*/
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Search City (%@)", delegate.city]];
         [self reloadPageControllerWithZipSearch:NO withCitySearch:YES];
     }
 }
@@ -200,7 +197,6 @@
 
 - (void)createPageContentsWithZipSearch:(BOOL)zipsearch withCitySearch:(BOOL)citySearch
 {
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     delegate.shouldZipSearch = zipsearch;
     delegate.shouldCitySearch = citySearch;
     
@@ -224,17 +220,6 @@
 
 - (void)addSurvey
 {
-    if (self.survey && self.survey.view.superview)
-        return;
-    
-    if (self.pageControl.currentPage == 0)
-        return;
-    
-    if (self.survey) {
-        [self.view addSubview:self.survey.view];
-        return;
-    }
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH"];
     NSString *hourString = [formatter stringFromDate:[NSDate date]];
@@ -244,13 +229,28 @@
     NSString *date = [defaults stringForKey:BEHAVIORAL_QUESTION_DATE];
 
     if (hour >= 0 && hour < 2) {
-        if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_PER_DAY] dateID]])
+        if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_PER_DAY] dateID]]) {
             return;
-    } else if (hour >= 2 && hour < 16) {
+        }
+    } else if (hour >= 2 && hour < 12) {
         return;
     } else {
-        if ([date isEqualToString:[[NSDate date] dateID]])
+        if ([date isEqualToString:[[NSDate date] dateID]]) {
             return;
+        }
+    }
+    
+    if (self.survey && self.survey.view.superview) {
+        return;
+    }
+    
+    if (self.pageControl.currentPage == 0) {
+        return;
+    }
+    
+    if (self.survey) {
+        [self.view addSubview:self.survey.view];
+        return;
     }
     
     /* Reset score in NSUserDefaults */
@@ -324,6 +324,7 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
 {
     if (finished) {
         AQBaseViewController *vc = pageViewController.viewControllers[0];
+        self.pageControl.currentPage = vc.pageIndex;
         [vc updateDisplay];
         if ([vc isKindOfClass:[AQAirQualityViewController class]]) {
             AQAirQualityViewController *avc = (AQAirQualityViewController *)vc;
@@ -332,16 +333,8 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
             [self addSurvey];
         }
         
-        self.pageControl.currentPage = vc.pageIndex;
-        
         /* Google Analytics Report */
-        id tracker = [[GAI sharedInstance] defaultTracker];
-        NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-        NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-        
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification action:[NSString stringWithFormat:@"Show %@", vc.content] label:timestamp value:nil] build]];
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@", vc.content]];
     }
 }
 

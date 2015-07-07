@@ -8,9 +8,7 @@
 
 #import "HealthInfoTableViewController.h"
 #import "AQUtilities.h"
-#import "AppDelegate.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "GASend.h"
 
 @interface HealthInfoTableViewController()
 @end
@@ -79,13 +77,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /* Google Analytics Initialize*/
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (self.shouldDisplay && self.displayIndex == indexPath.section)
@@ -99,10 +90,7 @@
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:self.displayIndex] withRowAnimation:UITableViewRowAnimationFade];
         
         /* Google Analytics Report */
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                              action:[NSString stringWithFormat:@"Show Health Info %ld", (long)(indexPath.section+1)]
-                                                               label:timestamp
-                                                               value:nil] build]];
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Show Health Info %ld", (long)(indexPath.section+1)]];
         
         self.shouldDisplay = YES;
         self.displayIndex = indexPath.section;
@@ -111,10 +99,7 @@
     else if (!self.shouldDisplay)
     {
         /* Google Analytics Report */
-        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                             action:[NSString stringWithFormat:@"Show Health Info %ld", (long)(indexPath.section+1)]
-                                                               label:timestamp
-                                                               value:nil] build]];
+        [GASend sendEventWithAction:[NSString stringWithFormat:@"Show Health Info %ld", (long)(indexPath.section+1)]];
         
         self.shouldDisplay = YES;
         self.displayIndex = indexPath.section;
