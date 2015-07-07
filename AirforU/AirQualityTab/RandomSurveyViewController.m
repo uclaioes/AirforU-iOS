@@ -8,8 +8,7 @@
 
 #import "RandomSurveyViewController.h"
 #import "AQConstants.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "GASend.h"
 #import "NSDate+AQHelper.h"
 #import "AppDelegate.h"
 
@@ -86,26 +85,15 @@
 
 - (IBAction)yesAnswer:(UIButton *)sender
 {
-    /* Google Analytics Report*/
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
     /* Update score in NSUserDefaults */
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger score = [defaults integerForKey:@"currentScore"];
     score++;
     [defaults setInteger:score forKey:@"currentScore"];
     
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:[NSString stringWithFormat:@"BQ%ld (%@) (1)", (long)(self.currentQuestion+1), self.questionLabel.text]
-                                                           label:timestamp value:nil] build]];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:@"Score" label:@""
-                                                           value:[NSNumber numberWithInt:1]] build]];
+    /* Google Analytics Report*/
+    [GASend sendEventWithAction:[NSString stringWithFormat:@"BQ%ld (%@) (1)", (long)(self.currentQuestion+1), self.questionLabel.text]];
+    [GASend sendEventWithAction:@"Score" withLabel:@"" withValue:1];
     
     [self.questions removeObject:[NSNumber numberWithInteger:self.currentQuestion]];
     [defaults setObject:self.questions forKey:@"questionNumbers"];
@@ -114,26 +102,15 @@
 
 - (IBAction)noAnswer:(UIButton *)sender
 {
-    /* Google Analytics Report*/
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *identification = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).identification;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
-    
     /* Update score in NSUserDefaults */
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger score = [defaults integerForKey:@"currentScore"];
     score++;
     [defaults setInteger:score forKey:@"currentScore"];
     
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:[NSString stringWithFormat:@"BQ%ld (%@) (2)", (long)(self.currentQuestion+1), self.questionLabel.text]
-                                                           label:timestamp value:nil] build]];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:identification
-                                                          action:@"Score" label:@""
-                                                           value:[NSNumber numberWithInt:1]] build]];
+    /* Google Analytics Report*/
+    [GASend sendEventWithAction:[NSString stringWithFormat:@"BQ%ld (%@) (2)", (long)(self.currentQuestion+1), self.questionLabel.text]];
+    [GASend sendEventWithAction:@"Score" withLabel:@"" withValue:1];
     
     [self.questions removeObject:[NSNumber numberWithInteger:self.currentQuestion]];
     [defaults setObject:self.questions forKey:@"questionNumbers"];
