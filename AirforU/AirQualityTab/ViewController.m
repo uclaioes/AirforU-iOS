@@ -220,17 +220,6 @@
 
 - (void)addSurvey
 {
-    if (self.survey && self.survey.view.superview)
-        return;
-    
-    if (self.pageControl.currentPage == 0)
-        return;
-    
-    if (self.survey) {
-        [self.view addSubview:self.survey.view];
-        return;
-    }
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH"];
     NSString *hourString = [formatter stringFromDate:[NSDate date]];
@@ -240,13 +229,28 @@
     NSString *date = [defaults stringForKey:BEHAVIORAL_QUESTION_DATE];
 
     if (hour >= 0 && hour < 2) {
-        if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_PER_DAY] dateID]])
+        if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_PER_DAY] dateID]]) {
             return;
-    } else if (hour >= 2 && hour < 16) {
+        }
+    } else if (hour >= 2 && hour < 12) {
         return;
     } else {
-        if ([date isEqualToString:[[NSDate date] dateID]])
+        if ([date isEqualToString:[[NSDate date] dateID]]) {
             return;
+        }
+    }
+    
+    if (self.survey && self.survey.view.superview) {
+        return;
+    }
+    
+    if (self.pageControl.currentPage == 0) {
+        return;
+    }
+    
+    if (self.survey) {
+        [self.view addSubview:self.survey.view];
+        return;
     }
     
     /* Reset score in NSUserDefaults */
@@ -320,6 +324,7 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
 {
     if (finished) {
         AQBaseViewController *vc = pageViewController.viewControllers[0];
+        self.pageControl.currentPage = vc.pageIndex;
         [vc updateDisplay];
         if ([vc isKindOfClass:[AQAirQualityViewController class]]) {
             AQAirQualityViewController *avc = (AQAirQualityViewController *)vc;
@@ -327,8 +332,6 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers
             self.view.backgroundColor = [UIColor colorWithPatternImage:im];
             [self addSurvey];
         }
-        
-        self.pageControl.currentPage = vc.pageIndex;
         
         /* Google Analytics Report */
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@", vc.content]];
