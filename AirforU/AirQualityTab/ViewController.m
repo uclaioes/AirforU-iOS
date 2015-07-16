@@ -232,7 +232,7 @@
         if ([date isEqualToString:[[[NSDate date] dateByAddingTimeInterval:-SECONDS_PER_DAY] dateID]]) {
             return;
         }
-    } else if (hour >= 2 && hour < 12) {
+    } else if (hour >= 2 && hour < 16) {
         return;
     } else {
         if ([date isEqualToString:[[NSDate date] dateID]]) {
