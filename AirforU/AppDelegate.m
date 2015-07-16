@@ -41,7 +41,7 @@
     
     // Optional: set Logger to VERBOSE for debug information.
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-60706322-1"];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-60540649"];
     
     
     
