@@ -1,10 +1,8 @@
-//
-//  AQConstants.h
-//  AirforU
-//
-//  Created by QINGWEI on 5/31/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        AQConstants.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #ifndef AQCONSTANTS_INCLUDED
 #define AQCONSTANTS_INCLUDED

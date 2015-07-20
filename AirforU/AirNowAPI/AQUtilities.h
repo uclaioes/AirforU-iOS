@@ -1,10 +1,8 @@
-//
-//  AQUtilities.h
-//  AirforU
-//
-//  Created by QINGWEI on 6/2/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        AQUtilities.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -19,7 +17,7 @@
 + (NSString *)aqImageNameForAQ:(AQAirQuality)aq;
 + (NSString *)aqQualityTitleForAQ:(AQAirQuality)aq;
 + (NSString *)aqRangeForAQ:(AQAirQuality)aq;
-+ (NSString *)aqPreventionDetailForAQ:(AQAirQuality)aq;
++ (NSAttributedString *)aqPreventionDetailForAQ:(AQAirQuality)aq;
 
 + (NSString *)worstAQ:(NSArray *)aq;
 

@@ -1,10 +1,8 @@
-//
-//  ViewController.m
-//  Air Quality
-//
-//  Created by QINGWEI on 2/28/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        ViewController.m
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import "ViewController.h"
 #import "AQUtilities.h"
