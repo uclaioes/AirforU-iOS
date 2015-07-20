@@ -30,7 +30,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -49,8 +49,8 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_EXTRA_DISPLAY];
         [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:14.0]];
-        NSString *detail = [AQUtilities aqPreventionDetailForAQ:(AQAirQuality)(indexPath.section+1)];
-        cell.textLabel.text = detail;
+        NSAttributedString *detail = [AQUtilities aqPreventionDetailForAQ:(AQAirQuality)(indexPath.section+1)];
+        cell.textLabel.attributedText = detail;
     }
     else
     {
@@ -111,7 +111,15 @@
     if (indexPath.row == 0) {
         return 64.0;
     } else if (indexPath.row == 1) {
-        return 120.0;
+        switch (indexPath.section) {
+            case 0:
+            case 5: return 90.0; break;
+            case 1: return 105.0; break;
+            case 2:
+            case 4: return 120.0; break;
+            case 3: return 140.0; break;
+            default: break;
+        }
     }
     
     return 44.0;

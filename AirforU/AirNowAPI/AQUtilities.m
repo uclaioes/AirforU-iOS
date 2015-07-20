@@ -107,7 +107,7 @@
         case AQUnhealthyForSensitive: return @"(101–150)"; break;
         case AQUnhealthy: return @"(151–200)"; break;
         case AQVeryUnhealthy: return @"(201–300)"; break;
-        case AQHazardous: return @"(300-500)"; break;
+        case AQHazardous: return @"(301-500)"; break;
             
         default: break;
     }
@@ -115,21 +115,53 @@
     return @"";
 }
 
-+ (NSString *)aqPreventionDetailForAQ:(AQAirQuality)aq
++ (NSAttributedString *)aqPreventionDetailForAQ:(AQAirQuality)aq
 {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@""];
+    
     switch (aq)
     {
-        case AQGood: return @"No significant health effects."; break;
-        case AQModerate: return @"Unusually sensitive people should consider reducing prolonged or heavy outdoor exertion."; break;
-        case AQUnhealthyForSensitive: return @"The following groups should reduce prolonged or heavy outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors"; break;
-        case AQUnhealthy: return @"The following groups should avoid prolonged or heavy outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors\nEveryone else should limit prolonged outdoor exertion."; break;
-        case AQVeryUnhealthy: return @"The following groups should avoid all outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors\nEveryone else should limit outdoor exertion."; break;
-        case AQHazardous: return @""; break;
-            
+        case AQGood:
+        {
+            attributedString = [[NSMutableAttributedString alloc] initWithString: @"No significant health effects."];
+            break;
+        }
+        case AQModerate:
+        {
+            attributedString = [[NSMutableAttributedString alloc] initWithString: @"Unusually sensitive people should consider reducing prolonged or heavy outdoor exertion."];
+            break;
+        }
+        case AQUnhealthyForSensitive:
+        {
+            attributedString = [[NSMutableAttributedString alloc] initWithString: @"The following groups should reduce prolonged or heavy outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors"];
+            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1] range:NSMakeRange(28, 6)];
+            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1] range:NSMakeRange(35, 9)];
+            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1] range:NSMakeRange(48, 5)];
+            break;
+        }
+        case AQUnhealthy:
+        {
+            attributedString = [[NSMutableAttributedString alloc] initWithString: @"The following groups should avoid prolonged or heavy outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors\nEveryone else should limit prolonged outdoor exertion."];
+            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1] range:NSMakeRange(28, 5)];
+            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1] range:NSMakeRange(34, 9)];
+            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1] range:NSMakeRange(47, 5)];
+            break;
+        }
+        case AQVeryUnhealthy:
+        {
+            attributedString = [[NSMutableAttributedString alloc] initWithString: @"The following groups should avoid all outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors\nEveryone else should limit outdoor exertion."];
+            [attributedString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:1] range:NSMakeRange(28, 9)];
+            break;
+        }
+        case AQHazardous:
+        {
+            attributedString = [[NSMutableAttributedString alloc] initWithString: @"Health alert: everyone may experience more serous health effects."];
+            break;
+        }
         default: break;
     }
     
-    return @"";
+    return attributedString;
 }
 
 + (NSString *)worstAQ:(NSArray *)aq

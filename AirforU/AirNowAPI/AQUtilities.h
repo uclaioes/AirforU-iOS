@@ -17,7 +17,7 @@
 + (NSString *)aqImageNameForAQ:(AQAirQuality)aq;
 + (NSString *)aqQualityTitleForAQ:(AQAirQuality)aq;
 + (NSString *)aqRangeForAQ:(AQAirQuality)aq;
-+ (NSString *)aqPreventionDetailForAQ:(AQAirQuality)aq;
++ (NSAttributedString *)aqPreventionDetailForAQ:(AQAirQuality)aq;
 
 + (NSString *)worstAQ:(NSArray *)aq;
 
