@@ -1,10 +1,8 @@
-//
-//  AppDelegate.h
-//  Air Quality
-//
-//  Created by QINGWEI on 2/8/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        AppDelegate.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>

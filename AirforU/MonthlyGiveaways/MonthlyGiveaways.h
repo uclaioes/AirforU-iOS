@@ -1,10 +1,8 @@
-//
-//  MonthlyGiveaways.h
-//  AirforU
-//
-//  Created by QINGWEI on 5/15/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        MonthlyGiveaways.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import "BackgroundViewController.h"
 
