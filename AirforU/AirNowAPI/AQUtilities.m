@@ -109,7 +109,7 @@
         case AQUnhealthyForSensitive: return @"(101–150)"; break;
         case AQUnhealthy: return @"(151–200)"; break;
         case AQVeryUnhealthy: return @"(201–300)"; break;
-        case AQHazardous: return @"(300-500)"; break;
+        case AQHazardous: return @"(301-500)"; break;
             
         default: break;
     }
@@ -126,7 +126,7 @@
         case AQUnhealthyForSensitive: return @"The following groups should reduce prolonged or heavy outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors"; break;
         case AQUnhealthy: return @"The following groups should avoid prolonged or heavy outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors\nEveryone else should limit prolonged outdoor exertion."; break;
         case AQVeryUnhealthy: return @"The following groups should avoid all outdoor exertion:\n• People with lung disease, such as asthma\n• Children and older adults\n• People who are active outdoors\nEveryone else should limit outdoor exertion."; break;
-        case AQHazardous: return @""; break;
+        case AQHazardous: return @"Health alert: everyone may experience more serous health effects."; break;
             
         default: break;
     }
