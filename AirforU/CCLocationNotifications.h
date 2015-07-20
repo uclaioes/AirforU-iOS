@@ -1,10 +1,8 @@
-//
-//  CCLocationNotifications.h
-//  AirforU
-//
-//  Created by QINGWEI on 4/20/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        CCLocationNotifications.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #ifndef AIR_NOW_CLLOCATION_NOTIFICATIONS_INCLUDED
 #define AIR_NOW_CLLOCATION_NOTIFICATIONS_INCLUDED

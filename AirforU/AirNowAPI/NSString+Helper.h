@@ -1,10 +1,8 @@
-//
-//  NSString+Helper.h
-//  AirforU
-//
-//  Created by QINGWEI on 5/4/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        NSString+Helper.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import <Foundation/Foundation.h>
 

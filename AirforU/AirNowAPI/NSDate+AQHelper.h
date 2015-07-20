@@ -1,10 +1,8 @@
-//
-//  NSDate+AQHelper.h
-//  AirforU
-//
-//  Created by QINGWEI on 4/27/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        NSDate+AQHelper.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import <Foundation/Foundation.h>
 

@@ -1,10 +1,8 @@
-//
-//  UIColor+Helper.h
-//  AirforU
-//
-//  Created by QINGWEI on 5/6/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        UIColor+Helper.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import <UIKit/UIKit.h>
 

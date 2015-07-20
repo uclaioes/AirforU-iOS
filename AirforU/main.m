@@ -1,10 +1,8 @@
-//
-//  main.m
-//  AirforU
-//
-//  Created by QINGWEI on 4/13/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        main.m
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"

@@ -1,10 +1,8 @@
-//
-//  LearnMoreTableViewController.m
-//  Air Quality
-//
-//  Created by QINGWEI on 3/4/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        LearnMoreTableViewController.m
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import "LearnMoreTableViewController.h"
 #import "AQUtilities.h"

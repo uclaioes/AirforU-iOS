@@ -1,10 +1,8 @@
-//
-//  AirNow API.h
-//  Air Quality
-//
-//  Created by QINGWEI on 1/20/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        AirNowAPI.h
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>

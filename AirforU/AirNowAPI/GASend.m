@@ -1,10 +1,8 @@
-//
-//  GASend.m
-//  AirforU
-//
-//  Created by Qingwei Lan on 7/6/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        GASend.m
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import "GASend.h"
 

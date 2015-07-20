@@ -1,10 +1,8 @@
-//
-//  AirQualityFetchAPI.m
-//  AirforU
-//
-//  Created by QINGWEI on 6/2/15.
-//  Copyright (c) 2015 QINGWEI LAN. All rights reserved.
-//
+/*!
+ * @name        AirQualityFetchAPI.m
+ * @version     1.1
+ * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
+ */
 
 #import "AirQualityFetchAPI.h"
 #import "GoogleGeocodingAPI.h"
