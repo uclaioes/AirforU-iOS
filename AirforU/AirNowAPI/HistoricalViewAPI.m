@@ -14,7 +14,7 @@
 
 + (NSURL *)urlForMonitoringStation:(NSString *)station
 {
-    NSString *urlString = [NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_get_histo.php?location=%@", station];
+    NSString *urlString = [NSString stringWithFormat:@"http://datadev.environment.ucla.edu/airforu/airforu_get_histo.php?location=%@", station];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return [NSURL URLWithString:urlString];
 }

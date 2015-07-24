@@ -76,15 +76,15 @@
     
     NSURL *url;
     if (shouldZipSearch && zipcode) {
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_tri.php?zip=%@", zipcode]];
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://datadev.environment.ucla.edu/airforu/airforu_tri.php?zip=%@", zipcode]];
         self.titleString = [NSString stringWithFormat:@"  Nearest facilities for %@", zipcode];
         [GASend sendEventWithAction:[NSString stringWithFormat:@"TRI Facilities Search (%@)", zipcode]];
     } else if (delegate.latitude && delegate.longitude) {
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://engage.environment.ucla.edu/airforu_tri.php?lat=%f&long=%f", delegate.latitude, delegate.longitude]];
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"http://datadev.environment.ucla.edu/airforu/airforu_tri.php?lat=%f&long=%f", delegate.latitude, delegate.longitude]];
         self.titleString = @"  Nearest facilities";
         [GASend sendEventWithAction:[NSString stringWithFormat:@"TRI Facilities Search (%f, %f)", delegate.latitude, delegate.longitude]];
     } else {
-        url = [NSURL URLWithString:@"http://engage.environment.ucla.edu/airforu_tri.php?zip=90024"];
+        url = [NSURL URLWithString:@"http://datadev.environment.ucla.edu/airforu/airforu_tri.php?zip=90024"];
         self.titleString = @"  Nearest facilities for 90024";
         [GASend sendEventWithAction:@"TRI Facilities Search (Default)"];
     }
