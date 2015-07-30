@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15927ECD10338E6F4D9133C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931BBFC24A3D5461B863E5A1 /* Foundation.framework */; };
+		F9865DDC1E82FD051BFFF5ED /* Pods-AirforU-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A107C7A7436BF55A2DECAFA /* Pods-AirforU-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0AC3855DD0F7101C5EB953DB /* Pods-AirforU-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AirforU-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0EED1ED1F309D61724F8DD4F /* Pods-AirforU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AirforU.debug.xcconfig"; sourceTree = "<group>"; };
+		14F24AF1D4B3BA0CD8C0918B /* libGTM_NSScannerJSON.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSScannerJSON.a; path = Libraries/libGTM_NSScannerJSON.a; sourceTree = "<group>"; };
+		1B1F5AE884471B52607D4F2E /* libGGLInstanceIDLib.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGGLInstanceIDLib.a; path = Libraries/libGGLInstanceIDLib.a; sourceTree = "<group>"; };
+		21AB1DC8BA11F48F292C46A3 /* libGTM_SystemVersion.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_SystemVersion.a; path = Libraries/libGTM_SystemVersion.a; sourceTree = "<group>"; };
+		21BECDE3D6488D4698DD1589 /* libGTMSessionFetcher_full.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMSessionFetcher_full.a; path = Libraries/libGTMSessionFetcher_full.a; sourceTree = "<group>"; };
+		250F893B4731F32D7EEAA3AC /* libGTM_AddressBook.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_AddressBook.a; path = Libraries/libGTM_AddressBook.a; sourceTree = "<group>"; };
+		272AD931D40D687134E2E1AF /* libGGLCloudMessaging.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGGLCloudMessaging.a; path = Libraries/libGGLCloudMessaging.a; sourceTree = "<group>"; };
+		27E5D76C7A59C95EB6ECAD20 /* libGcmLib.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGcmLib.a; path = Libraries/libGcmLib.a; sourceTree = "<group>"; };
+		2F4D1A510696891CA86D27D6 /* GCMService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCMService.h; path = Headers/Public/GCMService.h; sourceTree = "<group>"; };
+		312BF282777461D8786C4341 /* libGTM_Regex.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_Regex.a; path = Libraries/libGTM_Regex.a; sourceTree = "<group>"; };
+		321734DC553DB5B463594C60 /* libGTM_GTMURLBuilder.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_GTMURLBuilder.a; path = Libraries/libGTM_GTMURLBuilder.a; sourceTree = "<group>"; };
+		32AC908EFCC8FDA06072EE74 /* libGTMSessionFetcher_core.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMSessionFetcher_core.a; path = Libraries/libGTMSessionFetcher_core.a; sourceTree = "<group>"; };
+		3631994A3E70655C45981036 /* libGTMStackTrace.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTMStackTrace.a; path = Libraries/libGTMStackTrace.a; sourceTree = "<group>"; };
+		422A436ED45B08567525B41E /* libGTM_core.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_core.a; path = Libraries/libGTM_core.a; sourceTree = "<group>"; };
+		484466276CC385CD68A3B986 /* libGTM_UIFont+LineHeight.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGTM_UIFont+LineHeight.a"; path = "Libraries/libGTM_UIFont+LineHeight.a"; sourceTree = "<group>"; };
+		4A107C7A7436BF55A2DECAFA /* Pods-AirforU-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AirforU-dummy.m"; sourceTree = "<group>"; };
+		4A513BE21D824D0D9FB45F53 /* libGTM_RoundedRectPath.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_RoundedRectPath.a; path = Libraries/libGTM_RoundedRectPath.a; sourceTree = "<group>"; };
+		4D52F4BB0C2A69E3F73B6E86 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		4D9D7ED04CE9E5F6C683E7A1 /* libGTM_StringEncoding.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_StringEncoding.a; path = Libraries/libGTM_StringEncoding.a; sourceTree = "<group>"; };
+		4DDBBD86878DBEA1F977E911 /* CloudMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CloudMessaging.h; path = Headers/GGLCloudMessaging/Public/CloudMessaging.h; sourceTree = "<group>"; };
+		5706CC14BC7E2B8E7D2E78B8 /* libGGLCore.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGGLCore.a; path = Libraries/libGGLCore.a; sourceTree = "<group>"; };
+		5EAC6B188A391079944E1F06 /* GCMConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCMConfig.h; path = Headers/Public/GCMConfig.h; sourceTree = "<group>"; };
+		7A12C616C8A134E879B57434 /* libGTM_NSStringHTML.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSStringHTML.a; path = Libraries/libGTM_NSStringHTML.a; sourceTree = "<group>"; };
+		83DBFC22AA98854DDBE410B6 /* libGTM_NSDictionary+URLArguments.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = "libGTM_NSDictionary+URLArguments.a"; path = "Libraries/libGTM_NSDictionary+URLArguments.a"; sourceTree = "<group>"; };
+		8939A1CF7A0FA5BAC6749AB1 /* libPods-AirforU.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirforU.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FA82D64EA700AE2BE917701 /* libGTM_iPhone.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_iPhone.a; path = Libraries/libGTM_iPhone.a; sourceTree = "<group>"; };
+		931BBFC24A3D5461B863E5A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		93425DD697B30644FDBD3FE0 /* GGLContext+CloudMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GGLContext+CloudMessaging.h"; path = "Headers/GGLCloudMessaging/Public/GGLContext+CloudMessaging.h"; sourceTree = "<group>"; };
+		994F1D9A01E32CB38F3926E7 /* libGTM_DebugUtils.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_DebugUtils.a; path = Libraries/libGTM_DebugUtils.a; sourceTree = "<group>"; };
+		9D885EE32F8DC7235DFBE8DF /* GoogleCloudMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GoogleCloudMessaging.h; path = Headers/Public/GoogleCloudMessaging.h; sourceTree = "<group>"; };
+		9DC70CA857B1884E01AC6800 /* GGLInstanceIDDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GGLInstanceIDDelegate.h; path = Headers/Public/GGLInstanceIDDelegate.h; sourceTree = "<group>"; };
+		ADFFDD52897CD6A9CBBAECC6 /* Pods-AirforU-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AirforU-environment.h"; sourceTree = "<group>"; };
+		B49B05B51B6A0DA500BF5E43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BC5971D7812D4C98D50EB848 /* GGLConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GGLConfiguration.h; path = Headers/GGLCore/Public/GGLConfiguration.h; sourceTree = "<group>"; };
+		BD540CD05E095A14F887DAD0 /* GGLInstanceIDHeaders.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GGLInstanceIDHeaders.h; path = Headers/Public/GGLInstanceIDHeaders.h; sourceTree = "<group>"; };
+		C184A0CF818ED89F63A05980 /* libGSDK_Overload.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGSDK_Overload.a; path = Libraries/libGSDK_Overload.a; sourceTree = "<group>"; };
+		C3B0CFF7300A14B735A00F3C /* GGLContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GGLContext.h; path = Headers/GGLCore/Public/GGLContext.h; sourceTree = "<group>"; };
+		D34ACBB5A9F4553FF6CD3944 /* GGLErrorCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GGLErrorCode.h; path = Headers/GGLCore/Public/GGLErrorCode.h; sourceTree = "<group>"; };
+		D853118DEB0AD50792F60CF5 /* Pods-AirforU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AirforU.release.xcconfig"; sourceTree = "<group>"; };
+		DB821DB9C48D9E84F5A51EE7 /* Pods-AirforU-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AirforU-resources.sh"; sourceTree = "<group>"; };
+		DF770F37D33381BA09F25592 /* libGTM_KVO.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_KVO.a; path = Libraries/libGTM_KVO.a; sourceTree = "<group>"; };
+		E3A8FBBE84A7DCC36FD4F1C5 /* GCMPubSub.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCMPubSub.h; path = Headers/Public/GCMPubSub.h; sourceTree = "<group>"; };
+		EA5118F8AB41C261AEF9ECAE /* Pods-AirforU-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AirforU-acknowledgements.plist"; sourceTree = "<group>"; };
+		EC6D2B54F334F604139D88EF /* Core.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Core.h; path = Headers/GGLCore/Public/Core.h; sourceTree = "<group>"; };
+		EF442B621F704E3FFFAA1890 /* libProtocolBuffers.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libProtocolBuffers.a; path = Libraries/libProtocolBuffers.a; sourceTree = "<group>"; };
+		EF684AD3B512F02D381280EF /* libGTM_NSStringXML.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSStringXML.a; path = Libraries/libGTM_NSStringXML.a; sourceTree = "<group>"; };
+		F5C07F045450DFC915FC4976 /* GCMReceiverDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GCMReceiverDelegate.h; path = Headers/Public/GCMReceiverDelegate.h; sourceTree = "<group>"; };
+		FAC6EA6E85777D99CDC52060 /* GGLInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GGLInstanceID.h; path = Headers/Public/GGLInstanceID.h; sourceTree = "<group>"; };
+		FC325D56FF77CE82B3DBE641 /* GGLInstanceIDConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GGLInstanceIDConfig.h; path = Headers/Public/GGLInstanceIDConfig.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B0C9D0ADF32FFB5C40DEC74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15927ECD10338E6F4D9133C2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08160FAB46DD6A8855D1A0CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				272AD931D40D687134E2E1AF /* libGGLCloudMessaging.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		208B4EED292673C0C5BFE989 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1CAF07A9D7AF2122F67B3ED /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BA6ADE5917BB664E64B2993 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B6516067274FAE06503E6A25 /* GGLInstanceID */,
+				64A4EE29D94A807A9F87DECD /* Google */,
+				E915E1627B993C54F2ACA3F1 /* GoogleCloudMessaging */,
+				E1225BD8BEBDA1E427BD1F3E /* GoogleInterchangeUtilities */,
+				46FDD44280FEEEFE8ADCC375 /* GoogleNetworkingUtilities */,
+				BD713C70577DA6B198ECFC33 /* GoogleSymbolUtilities */,
+				362BD8371E281FBD1F18FB0A /* GoogleUtilities */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		362BD8371E281FBD1F18FB0A /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				4618A7B675F4B9095B64A206 /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		4618A7B675F4B9095B64A206 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3631994A3E70655C45981036 /* libGTMStackTrace.a */,
+				250F893B4731F32D7EEAA3AC /* libGTM_AddressBook.a */,
+				994F1D9A01E32CB38F3926E7 /* libGTM_DebugUtils.a */,
+				321734DC553DB5B463594C60 /* libGTM_GTMURLBuilder.a */,
+				DF770F37D33381BA09F25592 /* libGTM_KVO.a */,
+				83DBFC22AA98854DDBE410B6 /* libGTM_NSDictionary+URLArguments.a */,
+				14F24AF1D4B3BA0CD8C0918B /* libGTM_NSScannerJSON.a */,
+				7A12C616C8A134E879B57434 /* libGTM_NSStringHTML.a */,
+				EF684AD3B512F02D381280EF /* libGTM_NSStringXML.a */,
+				312BF282777461D8786C4341 /* libGTM_Regex.a */,
+				4A513BE21D824D0D9FB45F53 /* libGTM_RoundedRectPath.a */,
+				4D9D7ED04CE9E5F6C683E7A1 /* libGTM_StringEncoding.a */,
+				21AB1DC8BA11F48F292C46A3 /* libGTM_SystemVersion.a */,
+				484466276CC385CD68A3B986 /* libGTM_UIFont+LineHeight.a */,
+				422A436ED45B08567525B41E /* libGTM_core.a */,
+				8FA82D64EA700AE2BE917701 /* libGTM_iPhone.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		46FDD44280FEEEFE8ADCC375 /* GoogleNetworkingUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				AB3C974C93C3AC98E4677D36 /* Frameworks */,
+			);
+			path = GoogleNetworkingUtilities;
+			sourceTree = "<group>";
+		};
+		4EBAFB3E32554468C8224551 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				EC6D2B54F334F604139D88EF /* Core.h */,
+				BC5971D7812D4C98D50EB848 /* GGLConfiguration.h */,
+				C3B0CFF7300A14B735A00F3C /* GGLContext.h */,
+				D34ACBB5A9F4553FF6CD3944 /* GGLErrorCode.h */,
+				A5764FCA501F2067F52CDFA2 /* Frameworks */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		64A4EE29D94A807A9F87DECD /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				B3ED94840E5A4B2A012C3D6F /* CloudMessaging */,
+				4EBAFB3E32554468C8224551 /* Core */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		758A6D388D5F51D35AC10272 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8939A1CF7A0FA5BAC6749AB1 /* libPods-AirforU.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76A00F14460AD6FB88D5FDEC = {
+			isa = PBXGroup;
+			children = (
+				4D52F4BB0C2A69E3F73B6E86 /* Podfile */,
+				B49B05B51B6A0DA500BF5E43 /* GoogleService-Info.plist */,
+				208B4EED292673C0C5BFE989 /* Frameworks */,
+				2BA6ADE5917BB664E64B2993 /* Pods */,
+				758A6D388D5F51D35AC10272 /* Products */,
+				A83556CAD80C413858B32C1A /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A19C1A1C80E3A3C786F06A4A /* Pods-AirforU */ = {
+			isa = PBXGroup;
+			children = (
+				0AC3855DD0F7101C5EB953DB /* Pods-AirforU-acknowledgements.markdown */,
+				EA5118F8AB41C261AEF9ECAE /* Pods-AirforU-acknowledgements.plist */,
+				4A107C7A7436BF55A2DECAFA /* Pods-AirforU-dummy.m */,
+				ADFFDD52897CD6A9CBBAECC6 /* Pods-AirforU-environment.h */,
+				DB821DB9C48D9E84F5A51EE7 /* Pods-AirforU-resources.sh */,
+				0EED1ED1F309D61724F8DD4F /* Pods-AirforU.debug.xcconfig */,
+				D853118DEB0AD50792F60CF5 /* Pods-AirforU.release.xcconfig */,
+			);
+			name = "Pods-AirforU";
+			path = "Target Support Files/Pods-AirforU";
+			sourceTree = "<group>";
+		};
+		A1CAF07A9D7AF2122F67B3ED /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				931BBFC24A3D5461B863E5A1 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A5764FCA501F2067F52CDFA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5706CC14BC7E2B8E7D2E78B8 /* libGGLCore.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A83556CAD80C413858B32C1A /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A19C1A1C80E3A3C786F06A4A /* Pods-AirforU */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		AB3C974C93C3AC98E4677D36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32AC908EFCC8FDA06072EE74 /* libGTMSessionFetcher_core.a */,
+				21BECDE3D6488D4698DD1589 /* libGTMSessionFetcher_full.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3ED94840E5A4B2A012C3D6F /* CloudMessaging */ = {
+			isa = PBXGroup;
+			children = (
+				4DDBBD86878DBEA1F977E911 /* CloudMessaging.h */,
+				93425DD697B30644FDBD3FE0 /* GGLContext+CloudMessaging.h */,
+				08160FAB46DD6A8855D1A0CA /* Frameworks */,
+			);
+			name = CloudMessaging;
+			sourceTree = "<group>";
+		};
+		B6516067274FAE06503E6A25 /* GGLInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				FAC6EA6E85777D99CDC52060 /* GGLInstanceID.h */,
+				FC325D56FF77CE82B3DBE641 /* GGLInstanceIDConfig.h */,
+				9DC70CA857B1884E01AC6800 /* GGLInstanceIDDelegate.h */,
+				BD540CD05E095A14F887DAD0 /* GGLInstanceIDHeaders.h */,
+				B9332AFC413CAADDAF4DCF33 /* Frameworks */,
+			);
+			path = GGLInstanceID;
+			sourceTree = "<group>";
+		};
+		B9332AFC413CAADDAF4DCF33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B1F5AE884471B52607D4F2E /* libGGLInstanceIDLib.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD713C70577DA6B198ECFC33 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				F06CC99BFB58E7A46FFD9A1F /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		C24FE27560FDC070D3AB937B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27E5D76C7A59C95EB6ECAD20 /* libGcmLib.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF431568C23209D95FFE7477 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF442B621F704E3FFFAA1890 /* libProtocolBuffers.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1225BD8BEBDA1E427BD1F3E /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				CF431568C23209D95FFE7477 /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		E915E1627B993C54F2ACA3F1 /* GoogleCloudMessaging */ = {
+			isa = PBXGroup;
+			children = (
+				5EAC6B188A391079944E1F06 /* GCMConfig.h */,
+				E3A8FBBE84A7DCC36FD4F1C5 /* GCMPubSub.h */,
+				F5C07F045450DFC915FC4976 /* GCMReceiverDelegate.h */,
+				2F4D1A510696891CA86D27D6 /* GCMService.h */,
+				9D885EE32F8DC7235DFBE8DF /* GoogleCloudMessaging.h */,
+				C24FE27560FDC070D3AB937B /* Frameworks */,
+			);
+			path = GoogleCloudMessaging;
+			sourceTree = "<group>";
+		};
+		F06CC99BFB58E7A46FFD9A1F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C184A0CF818ED89F63A05980 /* libGSDK_Overload.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A65A2E5F8AC22C46B98C2412 /* Pods-AirforU */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCCDA369AF318A106C6CEEFC /* Build configuration list for PBXNativeTarget "Pods-AirforU" */;
+			buildPhases = (
+				52060044AB6C50BE72F1B060 /* Sources */,
+				1B0C9D0ADF32FFB5C40DEC74 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-AirforU";
+			productName = "Pods-AirforU";
+			productReference = 8939A1CF7A0FA5BAC6749AB1 /* libPods-AirforU.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAEAA91B474EF8B69342E051 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+			};
+			buildConfigurationList = AE9CDFD49C365A22329CD288 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 76A00F14460AD6FB88D5FDEC;
+			productRefGroup = 758A6D388D5F51D35AC10272 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A65A2E5F8AC22C46B98C2412 /* Pods-AirforU */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52060044AB6C50BE72F1B060 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9865DDC1E82FD051BFFF5ED /* Pods-AirforU-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2FBF3143A6BB2029C02F7FBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D853118DEB0AD50792F60CF5 /* Pods-AirforU.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B6BC02C2C5CC1BADC1F6D7AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BAE6A782B8822E83690BB88F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		EBF4B3D2D9B302EEAA2299E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EED1ED1F309D61724F8DD4F /* Pods-AirforU.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE9CDFD49C365A22329CD288 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAE6A782B8822E83690BB88F /* Debug */,
+				B6BC02C2C5CC1BADC1F6D7AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCCDA369AF318A106C6CEEFC /* Build configuration list for PBXNativeTarget "Pods-AirforU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBF4B3D2D9B302EEAA2299E0 /* Debug */,
+				2FBF3143A6BB2029C02F7FBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAEAA91B474EF8B69342E051 /* Project object */;
+}
