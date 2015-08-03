@@ -155,7 +155,8 @@
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"%@", deviceToken);
+    NSLog(@"TOKEN: %@", deviceToken);
+    [GASend sendEventWithAction:@"Device ID" withLabel:[NSString stringWithFormat:@"%@", deviceToken]];
     
     // Start the GGLInstanceID shared instance with the default config
     // and request a registration token to enable reception of notifications
