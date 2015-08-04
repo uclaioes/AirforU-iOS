@@ -14,6 +14,13 @@
 #import "NSDate+AQHelper.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
+
+/* GCM properties */
+@property(nonatomic, strong) void (^registrationHandler) (NSString *registrationToken, NSError *error);
+@property(nonatomic, assign) BOOL connectedToGCM;
+@property(nonatomic, strong) NSString* registrationToken;
+@property(nonatomic, assign) BOOL subscribedToTopic;
+
 @end
 
 @implementation AppDelegate
@@ -28,30 +35,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    /* Background session configuration */
-    [application setMinimumBackgroundFetchInterval:14400];  // 4 hours
-    
-    
-    
     /* Initialize Google Analytics Tracker */
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 45;
     
     // Optional: set Logger to VERBOSE for debug information.
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-60540649"];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-60540649-1"];
     
-    
-    
-    /* Register Local Notifications */
-    UIUserNotificationType types = UIUserNotificationTypeAlert;
+    /* Register for local notifications */
+    UIUserNotificationType types = (UIUserNotificationTypeSound | UIUserNotificationTypeAlert);
     UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
     [application registerUserNotificationSettings:mySettings];
     
+    /* Register for remote notifications */
+    [application registerForRemoteNotifications];
+    
     UILocalNotification *notif = [[UILocalNotification alloc] init];
     [self setNotificationTypesAllowed];
-    if (notif)
-    {
+    
+    if (notif) {
         if (allowNotif && allowsAlert) {
             NSCalendar *cal = [NSCalendar currentCalendar];
             NSDateComponents *comps = [[NSDateComponents alloc] init];
@@ -78,8 +81,6 @@
         }
     }
     
-    
-    
     /* Core Location Integration */
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager requestWhenInUseAuthorization];
@@ -95,7 +96,6 @@
     }
     
     [self.locationManager startUpdatingLocation];
-    
     
     if ([CLLocationManager locationServicesEnabled]) {
         [GASend sendEventWithAction:@"Location Services Enabled"];
@@ -113,8 +113,6 @@
     } else {
         [GASend sendEventWithAction:@"Location Services Disabled"];
     }
-    
-    
     
     /* Other Setups on Launch */
     ((UITabBarController *)self.window.rootViewController).delegate = self;
@@ -136,12 +134,14 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL surveyed = [defaults boolForKey:HAS_BEEN_SURVEYED];
     NSString *date = [defaults stringForKey:BEHAVIORAL_QUESTION_DATE];
-    if (!date)
+    if (!date) {
         [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:BEHAVIORAL_QUESTION_DATE];
+    }
     
     NSString *refreshDate = [defaults stringForKey:REFRESH_DATE];
-    if (!refreshDate)
+    if (!refreshDate) {
         [defaults setObject:[[NSDate dateWithTimeIntervalSince1970:0] dateID] forKey:REFRESH_DATE];
+    }
     
     if (!surveyed) {
         [[((UITabBarController *)self.window.rootViewController).viewControllers firstObject] performSegueWithIdentifier:@"Agreement Segue" sender:self];
@@ -153,61 +153,45 @@
 }
 
 - (void)application:(UIApplication *)application
-performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"BACKGROUND FETCH STARTED");
-    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+    NSLog(@"TOKEN: %@", deviceToken);
+    [GASend sendEventWithAction:@"Device ID" withLabel:[NSString stringWithFormat:@"%@", deviceToken]];
     
-    NSURL *url;
-    if (self.latitude && self.longitude)
-        url = [AirNowAPI URLForLatitute:self.latitude forLongitude:self.longitude];
-    else if (![self.zipcode isEqualToString:@""])
-        url = [AirNowAPI URLForZipcode:self.zipcode];
-    else
-        url = [AirNowAPI URLForZipcode:@"90024"];
-    
-    NSURLSessionTask *task = [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error) {
-            completionHandler(UIBackgroundFetchResultFailed);
-            return;
-        }
-        
-        // Parse response/data and determine whether new content was available
-        // Launch notifications if over AQI 100
-        
-        if (data) {
-            
-            NSDictionary *propertyListResults;
-            NSError *error2;
-            
-            propertyListResults = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error2];
-            NSNumber *max = [[propertyListResults valueForKeyPath:AIR_NOW_RESULTS_AQI] valueForKeyPath:@"@max.intValue"];
-//            max = [NSNumber numberWithInt:150];
-            NSLog(@"%@", max);
-            
-            if ([max integerValue] >= 100) {
-                // Create local notification to alert
-                UILocalNotification *notif = [[UILocalNotification alloc] init];
-                if (notif == nil)
-                    return;
-                notif.alertBody = @"Your local air quality is poor!";
-                [application presentLocalNotificationNow:notif];
-                [GASend sendEventWithAction:@"Notification (Local air quality is poor) Sent"];
-            }
-        }
-        
-        completionHandler(UIBackgroundFetchResultNewData);
-        return;
-        
-    }];
-    
-    [task resume];
+    // Start the GGLInstanceID shared instance with the default config
+    // and request a registration token to enable reception of notifications
+    [[GGLInstanceID sharedInstance] startWithConfig:[GGLInstanceIDConfig defaultConfig]];
+    _registrationOptions = @{kGGLInstanceIDRegisterAPNSOption: deviceToken,
+                             kGGLInstanceIDAPNSServerTypeSandboxOption: @YES};
+    [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:_gcmSenderID
+                                                        scope:kGGLInstanceIDScopeGCM
+                                                      options:_registrationOptions
+                                                      handler:_registrationHandler];
+}
+
+- (void)application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"ERROR IN REGISTERING FOR REMOTE NOTIFICATIONS: %@", error);
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
     [GASend sendEventWithAction:@"Notification (Check local air quality) Sent"];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSLog(@"Notification received: %@", userInfo);
+    
+    // This works only if the app started the GCM service
+    [[GCMService sharedInstance] appDidReceiveMessage:userInfo];
+    
+    // Handle the received message
+    // Invoke the completion handler passing the appropriate UIBackgroundFetchResult value
+    completionHandler(UIBackgroundFetchResultNoData);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -216,13 +200,11 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     
     /* Google Analytics Report */
     [GASend sendEventWithAction:@"Close App"];
-    [GASend sendEventWithAction:@"---------------------------------------------------"];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     /* Google Analytics Report */
-    [GASend sendEventWithAction:@"---------------------------------------------------"];
     [GASend sendEventWithAction:@"Open App"];
 }
 
@@ -232,7 +214,6 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     
     /* Google Analytics Report */
     [GASend sendEventWithAction:@"Close App"];
-    [GASend sendEventWithAction:@"---------------------------------------------------"];
 }
 
 #pragma mark - UITabBarControllerDelegate
@@ -290,6 +271,18 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     }
 }
 
+#pragma mark - GGLInstanceIDDelegate
+
+- (void)onTokenRefresh
+{
+    // A rotation of the registration tokens is happening, so the app needs to request a new token.
+    NSLog(@"The GCM registration token needs to be changed.");
+    [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:_gcmSenderID
+                                                        scope:kGGLInstanceIDScopeGCM
+                                                      options:_registrationOptions
+                                                      handler:_registrationHandler];
+}
+
 #pragma mark - Actions
 
 - (void)setNotificationTypesAllowed
@@ -307,27 +300,18 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     NSArray *values;
 
     /* Google Analytics Report */
-    
     if (self.shouldZipSearch && self.zipcode && [self.zipcode length] == 5) {
-        
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%@)", content, self.zipcode]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forZipcode:self.zipcode];
-        
     } else if (self.shouldCitySearch && self.city) {
-        
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%@)", content, self.city]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forSearch:self.city];
-        
     } else if (self.latitude && self.longitude) {
-        
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (%f, %f)", content, self.latitude, self.longitude]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forLatitude:self.latitude forLongitude:self.longitude];
-        
     } else {
-        
         [GASend sendEventWithAction:[NSString stringWithFormat:@"Show %@ (Default)", content]];
         values = [AirQualityFetchAPI getAirQualityForContent:content forZipcode:@"90024"];
-        
     }
 
     return values;

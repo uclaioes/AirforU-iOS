@@ -6,16 +6,16 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Google/CloudMessaging.h>
 #import "AQConstants.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, GGLInstanceIDDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 /* Location Properties (with Core Location) */
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLPlacemark *placemark;
-
 
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
@@ -29,6 +29,12 @@
 /* Intake survey properties */
 @property (nonatomic, strong) NSMutableArray *answers; // contains NSString
 @property (nonatomic, strong) NSMutableArray *userInformation; // contains NSString
+
+/* GCM properties */
+@property(nonatomic, readonly, strong) NSString *registrationKey;
+@property(nonatomic, readonly, strong) NSString *messageKey;
+@property(nonatomic, readonly, strong) NSString *gcmSenderID;
+@property(nonatomic, readonly, strong) NSDictionary *registrationOptions;
 
 @end
 
