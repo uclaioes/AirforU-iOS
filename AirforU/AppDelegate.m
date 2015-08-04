@@ -169,6 +169,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
                                                       handler:_registrationHandler];
 }
 
+- (void)application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"ERROR IN REGISTERING FOR REMOTE NOTIFICATIONS: %@", error);
+}
+
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
     [GASend sendEventWithAction:@"Notification (Check local air quality) Sent"];
