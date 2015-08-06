@@ -1,8 +1,8 @@
 # AirforU project (iOS version)
 
-This appliication and the associated research study have been developed by a team of researchers at the UCLA Institute of the Environment and Sustainability in connection with UCLA Health.
+This application and the associated research study have been developed by a team of researchers at the UCLA Institute of the Environment and Sustainability in connection with UCLA Health.
 
-Primarily developed by Qingwei Lan.
+The iOS version is primarily developed by Qingwei Lan.
 
 ## Data Flow Chart
 
