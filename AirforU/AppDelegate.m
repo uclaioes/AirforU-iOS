@@ -17,9 +17,6 @@
 
 /* GCM properties */
 @property(nonatomic, strong) void (^registrationHandler) (NSString *registrationToken, NSError *error);
-@property(nonatomic, assign) BOOL connectedToGCM;
-@property(nonatomic, strong) NSString* registrationToken;
-@property(nonatomic, assign) BOOL subscribedToTopic;
 
 @end
 
@@ -35,13 +32,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
     /* Initialize Google Analytics Tracker */
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [GAI sharedInstance].dispatchInterval = 45;
     
-    // Optional: set Logger to VERBOSE for debug information.
+    /* Optional: set Logger to VERBOSE for debug information. */
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-60540649-1"];
+    
+    /* Register Google Cloud Messaging */
+    _registrationKey = @"onRegistrationCompleted";
+    _messageKey = @"onMessageReceived";
+    // Configure the Google context: parses the GoogleService-Info.plist, and initializes
+    // the services that have entries in the file
+    NSError* configureError;
+    [[GGLContext sharedInstance] configureWithError:&configureError];
+    if (configureError != nil) {
+        NSLog(@"Error configuring the Google context: %@", configureError);
+    }
+    _gcmSenderID = [[[GGLContext sharedInstance] configuration] gcmSenderID];
     
     /* Register for local notifications */
     UIUserNotificationType types = (UIUserNotificationTypeSound | UIUserNotificationTypeAlert);
@@ -81,6 +92,12 @@
         }
     }
     
+    /* Google Analytics Report for Device ID */
+    NSString *token = [defaults stringForKey:DEVICE_TOKEN];
+    if (token) {
+        [GASend sendEventWithAction:@"Device ID" withLabel:token];
+    }
+    
     /* Core Location Integration */
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager requestWhenInUseAuthorization];
@@ -88,7 +105,7 @@
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
-    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+    /* Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7. */
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [self.locationManager requestWhenInUseAuthorization];
     } else if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
@@ -131,7 +148,6 @@
     
     [self.window makeKeyAndVisible];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL surveyed = [defaults boolForKey:HAS_BEEN_SURVEYED];
     NSString *date = [defaults stringForKey:BEHAVIORAL_QUESTION_DATE];
     if (!date) {
@@ -155,11 +171,13 @@
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"TOKEN: %@", deviceToken);
-    [GASend sendEventWithAction:@"Device ID" withLabel:[NSString stringWithFormat:@"%@", deviceToken]];
+    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
+    NSLog(@"TOKEN: %@", token);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:token forKey:DEVICE_TOKEN];
     
-    // Start the GGLInstanceID shared instance with the default config
-    // and request a registration token to enable reception of notifications
+    /* Start the GGLInstanceID shared instance with the default config
+       and request a registration token to enable reception of notifications */
     [[GGLInstanceID sharedInstance] startWithConfig:[GGLInstanceIDConfig defaultConfig]];
     _registrationOptions = @{kGGLInstanceIDRegisterAPNSOption: deviceToken,
                              kGGLInstanceIDAPNSServerTypeSandboxOption: @YES};

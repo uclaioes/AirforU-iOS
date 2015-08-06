@@ -32,6 +32,7 @@
 #define BEHAVIORAL_QUESTION_DATE @"behavioralQuestionDate"
 #define HAS_BEEN_SURVEYED @"hasBeenSurveyed"
 #define REFRESH_DATE @"refreshDate"
+#define DEVICE_TOKEN @"gcmDeviceToken"
 
 // define AQ levels
 typedef enum {
