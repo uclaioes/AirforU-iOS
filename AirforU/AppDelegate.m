@@ -10,13 +10,16 @@
 #import "ViewController.h"
 #import "QuestionTableViewController.h"
 #import "GASend.h"
-#import "CCLocationNotifications.h"
+#import "AQNotifications.h"
 #import "NSDate+AQHelper.h"
 
 @interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
 
 /* GCM properties */
 @property(nonatomic, strong) void (^registrationHandler) (NSString *registrationToken, NSError *error);
+@property(nonatomic, strong) NSString* registrationToken;
+@property(nonatomic, readonly, strong) NSString *gcmSenderID;
+@property(nonatomic, readonly, strong) NSDictionary *registrationOptions;
 
 @end
 
@@ -43,8 +46,6 @@
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-60540649-1"];
     
     /* Register Google Cloud Messaging */
-    _registrationKey = @"onRegistrationCompleted";
-    _messageKey = @"onMessageReceived";
     // Configure the Google context: parses the GoogleService-Info.plist, and initializes
     // the services that have entries in the file
     NSError* configureError;
@@ -53,6 +54,18 @@
         NSLog(@"Error configuring the Google context: %@", configureError);
     }
     _gcmSenderID = [[[GGLContext sharedInstance] configuration] gcmSenderID];
+    
+    /* Set up registration handler */
+    __weak typeof(self) weakSelf = self;
+    _registrationHandler = ^(NSString *registrationToken, NSError *error) {
+        if(registrationToken != nil) {
+            weakSelf.registrationToken = registrationToken;
+            NSLog(@"Registration Token: %@", registrationToken);
+            [GASend sendEventWithAction:@"Device ID" withLabel:registrationToken];
+        } else {
+            NSLog(@"Registration to GCM failed with error: %@", error.localizedDescription);
+        }
+    };
     
     /* Register for local notifications */
     UIUserNotificationType types = (UIUserNotificationTypeSound | UIUserNotificationTypeAlert);
@@ -92,14 +105,8 @@
         }
     }
     
-    /* Google Analytics Report for Device ID */
-    NSString *token = [defaults stringForKey:DEVICE_TOKEN];
-    if (token) {
-        [GASend sendEventWithAction:@"Device ID" withLabel:token];
-    }
-    
     /* Core Location Integration */
-    self.locationManager = [[CLLocationManager alloc] init];
+    _locationManager = [[CLLocationManager alloc] init];
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager requestAlwaysAuthorization];
     self.locationManager.delegate = self;
@@ -171,20 +178,15 @@
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSString *token = [NSString stringWithFormat:@"%@", deviceToken];
-    NSLog(@"TOKEN: %@", token);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:token forKey:DEVICE_TOKEN];
-    
     /* Start the GGLInstanceID shared instance with the default config
        and request a registration token to enable reception of notifications */
     [[GGLInstanceID sharedInstance] startWithConfig:[GGLInstanceIDConfig defaultConfig]];
     _registrationOptions = @{kGGLInstanceIDRegisterAPNSOption: deviceToken,
                              kGGLInstanceIDAPNSServerTypeSandboxOption: @YES};
-    [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:_gcmSenderID
+    [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:self.gcmSenderID
                                                         scope:kGGLInstanceIDScopeGCM
-                                                      options:_registrationOptions
-                                                      handler:_registrationHandler];
+                                                      options:self.registrationOptions
+                                                      handler:self.registrationHandler];
 }
 
 - (void)application:(UIApplication *)application
@@ -276,16 +278,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
         CLLocation *location = [locations lastObject];
         self.latitude = location.coordinate.latitude;
         self.longitude = location.coordinate.longitude;
-
         NSLog(@"GPS LOCATION: %f, %f", self.latitude, self.longitude);
-        
-        if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateBackground) {
-            NSLog(@"NOTIFICATION SENT");
-            [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidUpdateNotification object:self];
-        } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidBackgroundUpdateNotification object:self];
-            NSLog(@"APPLICATION IS IN BACKGROUND");
-        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:CLLocationDidUpdateNotification object:self];
     }
 }
 
@@ -295,13 +289,15 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     // A rotation of the registration tokens is happening, so the app needs to request a new token.
     NSLog(@"The GCM registration token needs to be changed.");
-    [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:_gcmSenderID
+    [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:self.gcmSenderID
                                                         scope:kGGLInstanceIDScopeGCM
-                                                      options:_registrationOptions
-                                                      handler:_registrationHandler];
+                                                      options:self.registrationOptions
+                                                      handler:self.registrationHandler];
 }
 
 #pragma mark - Actions
+
+
 
 - (void)setNotificationTypesAllowed
 {
