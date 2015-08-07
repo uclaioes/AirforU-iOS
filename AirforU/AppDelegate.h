@@ -15,8 +15,8 @@
 
 /* Location Properties (with Core Location) */
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) CLPlacemark *placemark;
 
+/* Air Quality fetch properties */
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
 @property (nonatomic, strong) NSString *zipcode;
@@ -29,12 +29,6 @@
 /* Intake survey properties */
 @property (nonatomic, strong) NSMutableArray *answers; // contains NSString
 @property (nonatomic, strong) NSMutableArray *userInformation; // contains NSString
-
-/* GCM properties */
-@property(nonatomic, readonly, strong) NSString *registrationKey;
-@property(nonatomic, readonly, strong) NSString *messageKey;
-@property(nonatomic, readonly, strong) NSString *gcmSenderID;
-@property(nonatomic, readonly, strong) NSDictionary *registrationOptions;
 
 @end
 
