@@ -172,7 +172,6 @@
 		B46C62111AFB2E5F00463605 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
 		B46C62121AFB2E5F00463605 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		B46F52D01AE5FB9F00A18E39 /* CCLocationNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCLocationNotifications.h; sourceTree = "<group>"; };
 		B47151AA1B1BAA8800AFABB1 /* AQConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AQConstants.h; path = AirNowAPI/AQConstants.h; sourceTree = "<group>"; };
 		B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleGeocodingAPI.h; sourceTree = "<group>"; };
 		B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleGeocodingAPI.m; sourceTree = "<group>"; };
@@ -183,6 +182,7 @@
 		B498521C1B22DF0E00FE7B59 /* AQDimensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQDimensions.h; sourceTree = "<group>"; };
 		B498521D1B22DF0E00FE7B59 /* AQDimensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQDimensions.m; sourceTree = "<group>"; };
 		B49B05B31B6A0D8A00BF5E43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B4B205761B74DAFB00958773 /* AQNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQNotifications.h; sourceTree = "<group>"; };
 		B4B3A0FF1B352BB40074C29F /* HistoricalViewAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoricalViewAPI.h; sourceTree = "<group>"; };
 		B4B3A1001B352BB40074C29F /* HistoricalViewAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoricalViewAPI.m; sourceTree = "<group>"; };
 		B4E45CC41B3BB518002B178B /* walter_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walter_image.png; sourceTree = "<group>"; };
@@ -272,9 +272,9 @@
 			children = (
 				B4544B381ADC9A280023AB13 /* Main.storyboard */,
 				B47151AA1B1BAA8800AFABB1 /* AQConstants.h */,
+				B4B205761B74DAFB00958773 /* AQNotifications.h */,
 				B4544B141ADC9A270023AB13 /* AppDelegate.h */,
 				B4544B151ADC9A270023AB13 /* AppDelegate.m */,
-				B46F52D01AE5FB9F00A18E39 /* CCLocationNotifications.h */,
 				B4544B2A1ADC9A270023AB13 /* IntakeSurvey */,
 				B4544B0D1ADC9A270023AB13 /* AirQualityTab */,
 				B4544B271ADC9A270023AB13 /* HealthTab */,
