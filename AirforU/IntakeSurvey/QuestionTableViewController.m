@@ -100,6 +100,8 @@
     
     NSLog(@"%@", delegate.answers);
     
+    [GASend sendEventWithAction:@"Completed Intake Survey"];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:YES forKey:@"hasBeenSurveyed"];
     

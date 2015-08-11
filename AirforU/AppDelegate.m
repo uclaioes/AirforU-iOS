@@ -13,7 +13,7 @@
 #import "AQNotifications.h"
 #import "NSDate+AQHelper.h"
 
-@interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate>
+@interface AppDelegate () <UITabBarControllerDelegate, CLLocationManagerDelegate, GGLInstanceIDDelegate>
 
 /* GCM properties */
 @property(nonatomic, strong) void (^registrationHandler) (NSString *registrationToken, NSError *error);
