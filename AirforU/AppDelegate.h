@@ -9,7 +9,7 @@
 #import <Google/CloudMessaging.h>
 #import "AQConstants.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, GGLInstanceIDDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
