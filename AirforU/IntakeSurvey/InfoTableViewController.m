@@ -9,21 +9,37 @@
 #import "AppDelegate.h"
 
 @interface InfoTableViewController() <UITextFieldDelegate>
+
+@property (nonatomic, strong) NSString *timeStarted;
+@property (nonatomic, strong) AppDelegate *delegate;
+
 @end
 
 @implementation InfoTableViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    _delegate = [[UIApplication sharedApplication] delegate];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *timestamp = [formatter stringFromDate:[NSDate date]];
+    _timeStarted = timestamp;
+}
+
 - (IBAction)next:(id)sender
 {
-    NSString *email = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).userInformation[0];
-    NSString *phone = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).userInformation[1];
-    NSString *zipcode = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).userInformation[2];
+    NSString *email = self.delegate.userInformation[0];
+    NSString *phone = self.delegate.userInformation[1];
+    NSString *zipcode = self.delegate.userInformation[2];
     
     if ([zipcode length] == 5) {
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:zipcode forKey:@"zipcode"];
-        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).zipcode = zipcode;
+        self.delegate.zipcode = zipcode;
     }
 
     if ([email length] == 0 && [phone length] == 0) {
@@ -75,6 +91,8 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:identification forKey:@"identification"];
+    
+    [GASend sendEventWithAction:@"Started Intake Survey" withLabel:self.timeStarted];
         
     if (!emailBad && [email length] != 0)
         [GASend sendEventWithAction:@"Email" withLabel:email];
@@ -120,8 +138,8 @@
     NSString *answer = textField.text;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)[[textField superview] superview]];
     
-    ((AppDelegate *)[[UIApplication sharedApplication] delegate]).userInformation[indexPath.section] = answer;
-    NSLog(@"%@", ((AppDelegate *)[[UIApplication sharedApplication] delegate]).userInformation);
+    self.delegate.userInformation[indexPath.section] = answer;
+    NSLog(@"%@", self.delegate.userInformation);
 
 }
 
