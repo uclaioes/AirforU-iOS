@@ -1,13 +1,13 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '6.0'
 
-target 'AirforU' do
+target 'AirForU' do
 
 pod 'Google/CloudMessaging'
 
 end
 
-target 'AirforUTests' do
+target 'AirForUTests' do
 
 end
 

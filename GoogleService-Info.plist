@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>GCM_SENDER_ID</key>
-	<string>495356117718</string>
+	<string>634678181719</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.qingweilan.AirforU</string>
+	<string>com.qingweilan.uclahealth.AirForU</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>

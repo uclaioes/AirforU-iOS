@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7549FA309E83298101331C51 /* libPods-AirforU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C20D48FF66052BC87120BAE5 /* libPods-AirforU.a */; };
+		815572D49C49DB941C0CA35E /* libPods-AirForU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F117E29FB92B3BC97A24BC46 /* libPods-AirForU.a */; };
 		B407B0E31AEEFBEB00882A2B /* NSDate+AQHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B407B0E21AEEFBEB00882A2B /* NSDate+AQHelper.m */; };
 		B40AACC31B0FEBF800574453 /* aanchal_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACBF1B0FEBF800574453 /* aanchal_image.png */; };
 		B40AACC41B0FEBF800574453 /* magali_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B40AACC01B0FEBF800574453 /* magali_image.png */; };
@@ -62,10 +62,10 @@
 		B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = B46C62121AFB2E5F00463605 /* UIColor+Helper.m */; };
 		B46F52CF1AE59D9800A18E39 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */; };
 		B47151AD1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */; };
+		B4758E751B93A6CD00CF95F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4758E741B93A6CD00CF95F3 /* GoogleService-Info.plist */; };
 		B490F6A71B1E83590044886F /* AirQualityFetchAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */; };
 		B490F6AA1B1EB6930044886F /* AQUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A91B1EB6930044886F /* AQUtilities.m */; };
 		B498521E1B22DF0E00FE7B59 /* AQDimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B498521D1B22DF0E00FE7B59 /* AQDimensions.m */; };
-		B49B05B41B6A0D8A00BF5E43 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B49B05B31B6A0D8A00BF5E43 /* GoogleService-Info.plist */; };
 		B4B3A1011B352BB40074C29F /* HistoricalViewAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B4B3A1001B352BB40074C29F /* HistoricalViewAPI.m */; };
 		B4E45CC51B3BB518002B178B /* walter_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E45CC41B3BB518002B178B /* walter_image.png */; };
 		B4E45CC71B3BB829002B178B /* peter_image.png in Resources */ = {isa = PBXBuildFile; fileRef = B4E45CC61B3BB829002B178B /* peter_image.png */; };
@@ -82,7 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7551C997C5118FC5386393B8 /* Pods-AirforU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirforU.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirforU/Pods-AirforU.debug.xcconfig"; sourceTree = "<group>"; };
+		3815E7BD585DD4158D65A7D4 /* Pods-AirForU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirForU.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirForU/Pods-AirForU.release.xcconfig"; sourceTree = "<group>"; };
 		B407B0E11AEEFBEB00882A2B /* NSDate+AQHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AQHelper.h"; sourceTree = "<group>"; };
 		B407B0E21AEEFBEB00882A2B /* NSDate+AQHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AQHelper.m"; sourceTree = "<group>"; };
 		B40AACBF1B0FEBF800574453 /* aanchal_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aanchal_image.png; sourceTree = "<group>"; };
@@ -103,10 +103,10 @@
 		B4519DAF1B3588BE0059B231 /* AQAirQualityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQAirQualityViewController.m; sourceTree = "<group>"; };
 		B4519DB11B3588CE0059B231 /* AQHistoricalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQHistoricalViewController.h; sourceTree = "<group>"; };
 		B4519DB21B3588CE0059B231 /* AQHistoricalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQHistoricalViewController.m; sourceTree = "<group>"; };
-		B4544AB61ADC999D0023AB13 /* AirforU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirforU.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4544AB61ADC999D0023AB13 /* AirForU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirForU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4544ABA1ADC999D0023AB13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4544ABB1ADC999D0023AB13 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B4544ACF1ADC999D0023AB13 /* AirforUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirforUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4544ACF1ADC999D0023AB13 /* AirForUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirForUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4544AD41ADC999D0023AB13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4544AD51ADC999D0023AB13 /* AirforUTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirforUTests.m; sourceTree = "<group>"; };
 		B4544AE81ADC9A110023AB13 /* Cloud-Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud-Icon@2x.png"; sourceTree = "<group>"; };
@@ -175,20 +175,20 @@
 		B47151AA1B1BAA8800AFABB1 /* AQConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AQConstants.h; path = AirNowAPI/AQConstants.h; sourceTree = "<group>"; };
 		B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleGeocodingAPI.h; sourceTree = "<group>"; };
 		B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleGeocodingAPI.m; sourceTree = "<group>"; };
+		B4758E741B93A6CD00CF95F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B490F6A51B1E83590044886F /* AirQualityFetchAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirQualityFetchAPI.h; sourceTree = "<group>"; };
 		B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirQualityFetchAPI.m; sourceTree = "<group>"; };
 		B490F6A81B1EB6930044886F /* AQUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQUtilities.h; sourceTree = "<group>"; };
 		B490F6A91B1EB6930044886F /* AQUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQUtilities.m; sourceTree = "<group>"; };
 		B498521C1B22DF0E00FE7B59 /* AQDimensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQDimensions.h; sourceTree = "<group>"; };
 		B498521D1B22DF0E00FE7B59 /* AQDimensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQDimensions.m; sourceTree = "<group>"; };
-		B49B05B31B6A0D8A00BF5E43 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4B205761B74DAFB00958773 /* AQNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQNotifications.h; sourceTree = "<group>"; };
 		B4B3A0FF1B352BB40074C29F /* HistoricalViewAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoricalViewAPI.h; sourceTree = "<group>"; };
 		B4B3A1001B352BB40074C29F /* HistoricalViewAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoricalViewAPI.m; sourceTree = "<group>"; };
 		B4E45CC41B3BB518002B178B /* walter_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walter_image.png; sourceTree = "<group>"; };
 		B4E45CC61B3BB829002B178B /* peter_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = peter_image.png; sourceTree = "<group>"; };
-		C20D48FF66052BC87120BAE5 /* libPods-AirforU.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirforU.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4DDBEA9895D02008F76961C /* Pods-AirforU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirforU.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirforU/Pods-AirforU.release.xcconfig"; sourceTree = "<group>"; };
+		BBA9FB99056E229B4814962B /* Pods-AirForU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirForU.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirForU/Pods-AirForU.debug.xcconfig"; sourceTree = "<group>"; };
+		F117E29FB92B3BC97A24BC46 /* libPods-AirForU.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirForU.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +201,7 @@
 				B4544B521ADC9AA10023AB13 /* SystemConfiguration.framework in Frameworks */,
 				B4544B501ADC9A980023AB13 /* CoreData.framework in Frameworks */,
 				B4544B441ADC9A280023AB13 /* libGoogleAnalyticsServices.a in Frameworks */,
-				7549FA309E83298101331C51 /* libPods-AirforU.a in Frameworks */,
+				815572D49C49DB941C0CA35E /* libPods-AirForU.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,11 +215,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22CC056C307A567AD8B2AD7D /* Pods */ = {
+		2F6F2CD11229C0F97C277C7E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7551C997C5118FC5386393B8 /* Pods-AirforU.debug.xcconfig */,
-				C4DDBEA9895D02008F76961C /* Pods-AirforU.release.xcconfig */,
+				BBA9FB99056E229B4814962B /* Pods-AirForU.debug.xcconfig */,
+				3815E7BD585DD4158D65A7D4 /* Pods-AirForU.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -254,15 +254,15 @@
 				B4544B4E1ADC9A390023AB13 /* Frameworks */,
 				B4544AD21ADC999D0023AB13 /* AirforUTests */,
 				B4544AB71ADC999D0023AB13 /* Products */,
-				22CC056C307A567AD8B2AD7D /* Pods */,
+				2F6F2CD11229C0F97C277C7E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		B4544AB71ADC999D0023AB13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B4544AB61ADC999D0023AB13 /* AirforU.app */,
-				B4544ACF1ADC999D0023AB13 /* AirforUTests.xctest */,
+				B4544AB61ADC999D0023AB13 /* AirForU.app */,
+				B4544ACF1ADC999D0023AB13 /* AirForUTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -291,6 +291,7 @@
 		B4544AB91ADC999D0023AB13 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B4758E741B93A6CD00CF95F3 /* GoogleService-Info.plist */,
 				B4163DA51B06E15D001B128C /* card.jpg */,
 				B40AACBE1B0FEBF800574453 /* Team */,
 				B4544B641ADC9EB80023AB13 /* BackgroundImages */,
@@ -301,7 +302,6 @@
 				B4661B811AF8477B00CEA31C /* IOES-Logo-Top.png */,
 				B4544AF21ADC9A110023AB13 /* UCLA_HealthSystem_RGB.png */,
 				B4544AF31ADC9A110023AB13 /* UGraphic_RGB.jpg */,
-				B49B05B31B6A0D8A00BF5E43 /* GoogleService-Info.plist */,
 				B4544ABA1ADC999D0023AB13 /* Info.plist */,
 				B4544ABB1ADC999D0023AB13 /* main.m */,
 			);
@@ -464,7 +464,7 @@
 				B4544B511ADC9AA10023AB13 /* SystemConfiguration.framework */,
 				B4544B4F1ADC9A980023AB13 /* CoreData.framework */,
 				B4544B1B1ADC9A270023AB13 /* GoogleAnalyticsFramework */,
-				C20D48FF66052BC87120BAE5 /* libPods-AirforU.a */,
+				F117E29FB92B3BC97A24BC46 /* libPods-AirForU.a */,
 			);
 			name = Frameworks;
 			path = AirforU;
@@ -487,28 +487,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B4544AB51ADC999D0023AB13 /* AirforU */ = {
+		B4544AB51ADC999D0023AB13 /* AirForU */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4544AD91ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirforU" */;
+			buildConfigurationList = B4544AD91ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirForU" */;
 			buildPhases = (
-				012CAB1B05AC80FB2E48E420 /* Check Pods Manifest.lock */,
+				8EB8D909B3832B2BB7290C2E /* Check Pods Manifest.lock */,
 				B4544AB21ADC999D0023AB13 /* Sources */,
 				B4544AB31ADC999D0023AB13 /* Frameworks */,
 				B4544AB41ADC999D0023AB13 /* Resources */,
-				BA3C2BCC88FAC8D01324DE13 /* Copy Pods Resources */,
+				AB80DA992553A32C887E6E3B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = AirforU;
+			name = AirForU;
 			productName = AirforU;
-			productReference = B4544AB61ADC999D0023AB13 /* AirforU.app */;
+			productReference = B4544AB61ADC999D0023AB13 /* AirForU.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B4544ACE1ADC999D0023AB13 /* AirforUTests */ = {
+		B4544ACE1ADC999D0023AB13 /* AirForUTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B4544ADC1ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirforUTests" */;
+			buildConfigurationList = B4544ADC1ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirForUTests" */;
 			buildPhases = (
 				B4544ACB1ADC999D0023AB13 /* Sources */,
 				B4544ACC1ADC999D0023AB13 /* Frameworks */,
@@ -519,9 +519,9 @@
 			dependencies = (
 				B4544AD11ADC999D0023AB13 /* PBXTargetDependency */,
 			);
-			name = AirforUTests;
+			name = AirForUTests;
 			productName = AirforUTests;
-			productReference = B4544ACF1ADC999D0023AB13 /* AirforUTests.xctest */;
+			productReference = B4544ACF1ADC999D0023AB13 /* AirForUTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -548,7 +548,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B4544AB11ADC999D0023AB13 /* Build configuration list for PBXProject "AirforU" */;
+			buildConfigurationList = B4544AB11ADC999D0023AB13 /* Build configuration list for PBXProject "AirForU" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -561,8 +561,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B4544AB51ADC999D0023AB13 /* AirforU */,
-				B4544ACE1ADC999D0023AB13 /* AirforUTests */,
+				B4544AB51ADC999D0023AB13 /* AirForU */,
+				B4544ACE1ADC999D0023AB13 /* AirForUTests */,
 			);
 		};
 /* End PBXProject section */
@@ -583,7 +583,7 @@
 				B4544AFD1ADC9A110023AB13 /* Health-Icon@2x.png in Resources */,
 				B40AACC41B0FEBF800574453 /* magali_image.png in Resources */,
 				B40AACC51B0FEBF800574453 /* stephen_image.png in Resources */,
-				B49B05B41B6A0D8A00BF5E43 /* GoogleService-Info.plist in Resources */,
+				B4758E751B93A6CD00CF95F3 /* GoogleService-Info.plist in Resources */,
 				B4544B6E1ADC9EB80023AB13 /* sensitive_backgroung.png in Resources */,
 				B4163DA61B06E15D001B128C /* card.jpg in Resources */,
 				B4544B6B1ADC9EB80023AB13 /* good_background.png in Resources */,
@@ -612,7 +612,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		012CAB1B05AC80FB2E48E420 /* Check Pods Manifest.lock */ = {
+		8EB8D909B3832B2BB7290C2E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -627,7 +627,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		BA3C2BCC88FAC8D01324DE13 /* Copy Pods Resources */ = {
+		AB80DA992553A32C887E6E3B /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -639,7 +639,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirforU/Pods-AirforU-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AirForU/Pods-AirForU-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -693,7 +693,7 @@
 /* Begin PBXTargetDependency section */
 		B4544AD11ADC999D0023AB13 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B4544AB51ADC999D0023AB13 /* AirforU */;
+			target = B4544AB51ADC999D0023AB13 /* AirForU */;
 			targetProxy = B4544AD01ADC999D0023AB13 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -779,7 +779,7 @@
 		};
 		B4544ADA1ADC999D0023AB13 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7551C997C5118FC5386393B8 /* Pods-AirforU.debug.xcconfig */;
+			baseConfigurationReference = BBA9FB99056E229B4814962B /* Pods-AirForU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -790,14 +790,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AirForU;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		B4544ADB1ADC999D0023AB13 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4DDBEA9895D02008F76961C /* Pods-AirforU.release.xcconfig */;
+			baseConfigurationReference = 3815E7BD585DD4158D65A7D4 /* Pods-AirForU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -808,7 +808,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AirForU;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -827,7 +827,7 @@
 				);
 				INFOPLIST_FILE = AirforUTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AirForUTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirforU.app/AirforU";
 			};
 			name = Debug;
@@ -842,7 +842,7 @@
 				);
 				INFOPLIST_FILE = AirforUTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AirForUTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirforU.app/AirforU";
 			};
 			name = Release;
@@ -850,7 +850,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B4544AB11ADC999D0023AB13 /* Build configuration list for PBXProject "AirforU" */ = {
+		B4544AB11ADC999D0023AB13 /* Build configuration list for PBXProject "AirForU" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B4544AD71ADC999D0023AB13 /* Debug */,
@@ -859,7 +859,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4544AD91ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirforU" */ = {
+		B4544AD91ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirForU" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B4544ADA1ADC999D0023AB13 /* Debug */,
@@ -868,7 +868,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B4544ADC1ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirforUTests" */ = {
+		B4544ADC1ADC999D0023AB13 /* Build configuration list for PBXNativeTarget "AirForUTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B4544ADD1ADC999D0023AB13 /* Debug */,
