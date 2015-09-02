@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -17,14 +17,20 @@
                         <constraint firstAttribute="width" secondItem="BEg-gy-eIH" secondAttribute="height" multiplier="1:1" id="IpS-fn-S1U"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2015 The Regents of the University of California" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="673-nN-htA">
+                    <rect key="frame" x="8" y="545.5" width="304" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IOES-Logo-Top.png" translatesAutoresizingMaskIntoConstraints="NO" id="2m6-Wa-9Mn">
-                    <rect key="frame" x="8" y="480" width="304" height="47"/>
+                    <rect key="frame" x="8" y="457" width="304" height="47"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="2m6-Wa-9Mn" secondAttribute="height" multiplier="304:47" id="sZy-6V-nFv"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UCLA_HealthSystem_RGB.png" translatesAutoresizingMaskIntoConstraints="NO" id="dWz-2U-5UH">
-                    <rect key="frame" x="99" y="535" width="122" height="25"/>
+                    <rect key="frame" x="99" y="512" width="122" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="dWz-2U-5UH" secondAttribute="height" multiplier="122:25" id="J0k-BR-uA3"/>
                     </constraints>
@@ -36,17 +42,27 @@
                 <constraint firstAttribute="centerX" secondItem="BEg-gy-eIH" secondAttribute="centerX" id="EkS-Pn-wGU"/>
                 <constraint firstItem="BEg-gy-eIH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="Gli-Yk-MbG"/>
                 <constraint firstItem="BEg-gy-eIH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="110" id="IZl-3b-5Pw"/>
+                <constraint firstItem="673-nN-htA" firstAttribute="top" secondItem="dWz-2U-5UH" secondAttribute="bottom" constant="8" id="Xrd-jD-rHI"/>
+                <constraint firstAttribute="trailing" secondItem="673-nN-htA" secondAttribute="trailing" constant="8" id="Y51-Mr-7pY"/>
                 <constraint firstAttribute="trailing" secondItem="BEg-gy-eIH" secondAttribute="trailing" constant="110" id="YA8-yi-60Z"/>
                 <constraint firstAttribute="centerX" secondItem="2m6-Wa-9Mn" secondAttribute="centerX" id="YEk-Gc-usc"/>
+                <constraint firstAttribute="bottom" secondItem="673-nN-htA" secondAttribute="bottom" constant="8" id="cAW-YM-YTp"/>
                 <constraint firstAttribute="trailing" secondItem="2m6-Wa-9Mn" secondAttribute="trailing" constant="8" id="e8g-sr-Ra1"/>
                 <constraint firstItem="dWz-2U-5UH" firstAttribute="top" secondItem="2m6-Wa-9Mn" secondAttribute="bottom" constant="8" id="gxJ-Z1-MMU"/>
                 <constraint firstAttribute="trailing" secondItem="dWz-2U-5UH" secondAttribute="trailing" constant="99" id="jRl-7w-Dx4"/>
                 <constraint firstItem="dWz-2U-5UH" firstAttribute="top" secondItem="2m6-Wa-9Mn" secondAttribute="bottom" constant="8" id="kfT-Ub-0oO"/>
                 <constraint firstItem="2m6-Wa-9Mn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="llF-CF-rph"/>
                 <constraint firstAttribute="centerX" secondItem="dWz-2U-5UH" secondAttribute="centerX" id="zKY-VH-4KE"/>
+                <constraint firstItem="673-nN-htA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="zSw-f8-VsG"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="CTx-RG-vLK"/>
+                    <exclude reference="gxJ-Z1-MMU"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="404" y="562"/>
         </view>
     </objects>
