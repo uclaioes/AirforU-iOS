@@ -1,6 +1,6 @@
 /*!
  * @name        LearnMoreTableViewController.m
- * @version     1.1
+ * @version     2.0
  * @copyright   Qingwei Lan (qingweilandeveloper@gmail.com) 2015
  */
 
@@ -117,7 +117,8 @@
                     
                 case 2:
                 {
-                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_UCLA_ASTHMA];
+                    cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER_ORDINARY];
+                    cell.textLabel.text = @"UCLA Health Pediatric Asthma Program";
                     break;
                 }
                     
@@ -199,7 +200,7 @@
         NSString *label = @"";
         switch (indexPath.row) {
             case 1: label = @"EPA"; break;
-            case 2: label = @"UCLA Child Asthma"; break;
+            case 2: label = @"UCLA Health Pediatric Asthma Program"; break;
             default: break;
         }
         
@@ -210,7 +211,7 @@
             NSURL *url;
             switch (indexPath.row) {
                 case 1: url = [NSURL URLWithString:@"http://www.airnow.gov"]; break;
-                case 2: url = [NSURL URLWithString:@"http://healthinfo.uclahealth.org/Library/DiseasesConditions/Adult/Allergy/"]; break;
+                case 2: url = [NSURL URLWithString:@"https://www.uclahealth.org/Mattel/Pediatric-Pulmonology/Pages/Asthma-Program.aspx"]; break;
                 default: break;
             }
         

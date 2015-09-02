@@ -116,6 +116,7 @@
     }
     
     [GASend sendEventWithAction:@"Group" withLabel:group];
+    [GASend sendEventWithAction:@"Device Type" withLabel:@"iOS"];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

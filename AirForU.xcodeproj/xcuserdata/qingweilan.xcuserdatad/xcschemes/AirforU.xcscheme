@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B4544AB51ADC999D0023AB13"
-               BuildableName = "AirforU.app"
-               BlueprintName = "AirforU"
-               ReferencedContainer = "container:AirforU.xcodeproj">
+               BuildableName = "AirForU.app"
+               BlueprintName = "AirForU"
+               ReferencedContainer = "container:AirForU.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B4544ACE1ADC999D0023AB13"
-               BuildableName = "AirforUTests.xctest"
-               BlueprintName = "AirforUTests"
-               ReferencedContainer = "container:AirforU.xcodeproj">
+               BuildableName = "AirForUTests.xctest"
+               BlueprintName = "AirForUTests"
+               ReferencedContainer = "container:AirForU.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B4544ACE1ADC999D0023AB13"
-               BuildableName = "AirforUTests.xctest"
-               BlueprintName = "AirforUTests"
-               ReferencedContainer = "container:AirforU.xcodeproj">
+               BuildableName = "AirForUTests.xctest"
+               BlueprintName = "AirForUTests"
+               ReferencedContainer = "container:AirForU.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B4544AB51ADC999D0023AB13"
-            BuildableName = "AirforU.app"
-            BlueprintName = "AirforU"
-            ReferencedContainer = "container:AirforU.xcodeproj">
+            BuildableName = "AirForU.app"
+            BlueprintName = "AirForU"
+            ReferencedContainer = "container:AirForU.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B4544AB51ADC999D0023AB13"
-            BuildableName = "AirforU.app"
-            BlueprintName = "AirforU"
-            ReferencedContainer = "container:AirforU.xcodeproj">
+            BuildableName = "AirForU.app"
+            BlueprintName = "AirForU"
+            ReferencedContainer = "container:AirForU.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B4544AB51ADC999D0023AB13"
-            BuildableName = "AirforU.app"
-            BlueprintName = "AirforU"
-            ReferencedContainer = "container:AirforU.xcodeproj">
+            BuildableName = "AirForU.app"
+            BlueprintName = "AirForU"
+            ReferencedContainer = "container:AirForU.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
