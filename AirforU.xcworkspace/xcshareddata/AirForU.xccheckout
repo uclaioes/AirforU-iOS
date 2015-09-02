@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>BD3EEBC4-6255-4AAE-851E-A9D277BFEF02</string>
+	<string>09EAAA2B-0236-4156-8CA9-FAA20A6C49AF</string>
 	<key>IDESourceControlProjectName</key>
-	<string>AirforU</string>
+	<string>AirForU</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>82406A6302F634046292DFB7A93B726B1E1C91A3</key>
 		<string>github.com:QingweiPeterLan/AirforU.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AirforU.xcodeproj</string>
+	<string>AirForU.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>82406A6302F634046292DFB7A93B726B1E1C91A3</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:QingweiPeterLan/AirforU.git</string>

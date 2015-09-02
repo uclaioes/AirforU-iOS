@@ -182,7 +182,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
        and request a registration token to enable reception of notifications */
     [[GGLInstanceID sharedInstance] startWithConfig:[GGLInstanceIDConfig defaultConfig]];
     _registrationOptions = @{kGGLInstanceIDRegisterAPNSOption: deviceToken,
-                             kGGLInstanceIDAPNSServerTypeSandboxOption: @YES};
+                             kGGLInstanceIDAPNSServerTypeSandboxOption: @NO};
     [[GGLInstanceID sharedInstance] tokenWithAuthorizedEntity:self.gcmSenderID
                                                         scope:kGGLInstanceIDScopeGCM
                                                       options:self.registrationOptions
