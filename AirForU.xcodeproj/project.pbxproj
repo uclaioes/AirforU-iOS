@@ -16,6 +16,7 @@
 		B41349B01B15807B0028CCD3 /* FacilityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B41349AF1B15807B0028CCD3 /* FacilityCell.m */; };
 		B4163DA41B06DC91001B128C /* MonthlyGiveaways.m in Sources */ = {isa = PBXBuildFile; fileRef = B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */; };
 		B4163DA61B06E15D001B128C /* card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B4163DA51B06E15D001B128C /* card.jpg */; };
+		B41CA1DE1B9FB52D002A88B3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B41CA1DD1B9FB52D002A88B3 /* GoogleService-Info.plist */; };
 		B433B8C51B07F01800B7DE6A /* LocationIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */; };
 		B4434C091B4AA5DB002B191C /* GASend.m in Sources */ = {isa = PBXBuildFile; fileRef = B4434C081B4AA5DB002B191C /* GASend.m */; };
 		B4519DAD1B3588560059B231 /* AQBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B4519DAC1B3588560059B231 /* AQBaseViewController.m */; };
@@ -62,7 +63,6 @@
 		B46C62131AFB2E5F00463605 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = B46C62121AFB2E5F00463605 /* UIColor+Helper.m */; };
 		B46F52CF1AE59D9800A18E39 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B46F52CE1AE59D9800A18E39 /* LaunchScreen.xib */; };
 		B47151AD1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */; };
-		B4758E751B93A6CD00CF95F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4758E741B93A6CD00CF95F3 /* GoogleService-Info.plist */; };
 		B490F6A71B1E83590044886F /* AirQualityFetchAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */; };
 		B490F6AA1B1EB6930044886F /* AQUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B490F6A91B1EB6930044886F /* AQUtilities.m */; };
 		B498521E1B22DF0E00FE7B59 /* AQDimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B498521D1B22DF0E00FE7B59 /* AQDimensions.m */; };
@@ -94,6 +94,7 @@
 		B4163DA21B06DC91001B128C /* MonthlyGiveaways.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonthlyGiveaways.h; path = MonthlyGiveaways/MonthlyGiveaways.h; sourceTree = "<group>"; };
 		B4163DA31B06DC91001B128C /* MonthlyGiveaways.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MonthlyGiveaways.m; path = MonthlyGiveaways/MonthlyGiveaways.m; sourceTree = "<group>"; };
 		B4163DA51B06E15D001B128C /* card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = card.jpg; path = Supporting/card.jpg; sourceTree = "<group>"; };
+		B41CA1DD1B9FB52D002A88B3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B433B8C41B07F01800B7DE6A /* LocationIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LocationIcon@3x.png"; sourceTree = "<group>"; };
 		B4434C071B4AA5DB002B191C /* GASend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASend.h; sourceTree = "<group>"; };
 		B4434C081B4AA5DB002B191C /* GASend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASend.m; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		B47151AA1B1BAA8800AFABB1 /* AQConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AQConstants.h; path = AirNowAPI/AQConstants.h; sourceTree = "<group>"; };
 		B47151AB1B1BAC7100AFABB1 /* GoogleGeocodingAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleGeocodingAPI.h; sourceTree = "<group>"; };
 		B47151AC1B1BAC7100AFABB1 /* GoogleGeocodingAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleGeocodingAPI.m; sourceTree = "<group>"; };
-		B4758E741B93A6CD00CF95F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B490F6A51B1E83590044886F /* AirQualityFetchAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirQualityFetchAPI.h; sourceTree = "<group>"; };
 		B490F6A61B1E83590044886F /* AirQualityFetchAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirQualityFetchAPI.m; sourceTree = "<group>"; };
 		B490F6A81B1EB6930044886F /* AQUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQUtilities.h; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 		B4544AB91ADC999D0023AB13 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B4758E741B93A6CD00CF95F3 /* GoogleService-Info.plist */,
+				B41CA1DD1B9FB52D002A88B3 /* GoogleService-Info.plist */,
 				B4163DA51B06E15D001B128C /* card.jpg */,
 				B40AACBE1B0FEBF800574453 /* Team */,
 				B4544B641ADC9EB80023AB13 /* BackgroundImages */,
@@ -535,7 +535,7 @@
 				TargetAttributes = {
 					B4544AB51ADC999D0023AB13 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = YD86QUJBH5;
+						DevelopmentTeam = T6HB6947U6;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -544,6 +544,7 @@
 					};
 					B4544ACE1ADC999D0023AB13 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = T6HB6947U6;
 						TestTargetID = B4544AB51ADC999D0023AB13;
 					};
 				};
@@ -583,7 +584,7 @@
 				B4544AFD1ADC9A110023AB13 /* Health-Icon@2x.png in Resources */,
 				B40AACC41B0FEBF800574453 /* magali_image.png in Resources */,
 				B40AACC51B0FEBF800574453 /* stephen_image.png in Resources */,
-				B4758E751B93A6CD00CF95F3 /* GoogleService-Info.plist in Resources */,
+				B41CA1DE1B9FB52D002A88B3 /* GoogleService-Info.plist in Resources */,
 				B4544B6E1ADC9EB80023AB13 /* sensitive_backgroung.png in Resources */,
 				B4163DA61B06E15D001B128C /* card.jpg in Resources */,
 				B4544B6B1ADC9EB80023AB13 /* good_background.png in Resources */,
@@ -736,6 +737,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "3ee859a7-b8b7-4ed4-b3bb-aa9abfc52b0d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -771,6 +773,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "3ee859a7-b8b7-4ed4-b3bb-aa9abfc52b0d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -817,6 +820,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -828,6 +833,7 @@
 				INFOPLIST_FILE = AirforUTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = AirForUTests;
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirforU.app/AirforU";
 			};
 			name = Debug;
@@ -836,6 +842,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -843,6 +851,7 @@
 				INFOPLIST_FILE = AirforUTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = AirForUTests;
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirforU.app/AirforU";
 			};
 			name = Release;

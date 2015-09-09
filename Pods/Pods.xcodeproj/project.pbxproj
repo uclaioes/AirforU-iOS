@@ -51,7 +51,7 @@
 		A8BBB41588FDAC527E315463 /* Pods-AirForU-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AirForU-environment.h"; sourceTree = "<group>"; };
 		AD6B32C02E2FC63A82AB2584 /* libGTM_iPhone.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_iPhone.a; path = Libraries/libGTM_iPhone.a; sourceTree = "<group>"; };
 		B230B0DBC7001842C1061E24 /* GoogleCloudMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GoogleCloudMessaging.h; path = Headers/Public/GoogleCloudMessaging.h; sourceTree = "<group>"; };
-		B4758E761B93A6D600CF95F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B41CA1DF1B9FB539002A88B3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../AirforU/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B67D9506307095A0D4A1A7BD /* libPods-AirForU.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AirForU.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B72CD43AD55A8DABEF25F1 /* libGTM_NSScannerJSON.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGTM_NSScannerJSON.a; path = Libraries/libGTM_NSScannerJSON.a; sourceTree = "<group>"; };
 		C448B47E760FA2E8BEB97248 /* GGLContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GGLContext.h; path = Headers/GGLCore/Public/GGLContext.h; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		560C7841FC9332264CC674B8 = {
 			isa = PBXGroup;
 			children = (
-				B4758E761B93A6D600CF95F3 /* GoogleService-Info.plist */,
+				B41CA1DF1B9FB539002A88B3 /* GoogleService-Info.plist */,
 				39AA865DFAF277C8056DF4E8 /* Podfile */,
 				67673B36A7A18907517FE254 /* Frameworks */,
 				311018850D35E71DB5FF3460 /* Pods */,
