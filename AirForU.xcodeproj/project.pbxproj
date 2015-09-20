@@ -785,7 +785,7 @@
 			baseConfigurationReference = BBA9FB99056E229B4814962B /* Pods-AirForU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: UCLA Health System (T6HB6947U6)";
 				INFOPLIST_FILE = AirforU/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -794,6 +794,7 @@
 					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
 				);
 				PRODUCT_NAME = AirForU;
+				PROVISIONING_PROFILE = "c8ece66b-9511-4c68-af89-f8d60f9346db";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -803,7 +804,7 @@
 			baseConfigurationReference = 3815E7BD585DD4158D65A7D4 /* Pods-AirForU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: UCLA Health System (T6HB6947U6)";
 				INFOPLIST_FILE = AirforU/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -812,6 +813,7 @@
 					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
 				);
 				PRODUCT_NAME = AirForU;
+				PROVISIONING_PROFILE = "c8ece66b-9511-4c68-af89-f8d60f9346db";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
