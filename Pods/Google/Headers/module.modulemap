@@ -1,0 +1,24 @@
+module Google {
+  header "Core.h"
+  export *
+  module AdMob {
+    header "AdMob-Module.h"
+    export *
+  }
+  module Analytics {
+    header "Analytics-Module.h"
+    export *
+  }
+  module AppInvite {
+    header "AppInvite-Module.h"
+    export *
+  }
+  module CloudMessaging {
+    header "CloudMessaging-Module.h"
+    export *
+  }
+  module SignIn {
+    header "SignIn-Module.h"
+    export *
+  }
+}
