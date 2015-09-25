@@ -530,7 +530,7 @@
 		B4544AAE1ADC999D0023AB13 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "QINGWEI LAN";
 				TargetAttributes = {
 					B4544AB51ADC999D0023AB13 = {
@@ -720,6 +720,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -794,6 +795,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.uclahealth.$(PRODUCT_NAME)";
 				PRODUCT_NAME = AirForU;
 				PROVISIONING_PROFILE = "c8ece66b-9511-4c68-af89-f8d60f9346db";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -814,6 +816,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AirforU/GoogleAnalyticsFramework",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.uclahealth.$(PRODUCT_NAME)";
 				PRODUCT_NAME = AirForU;
 				PROVISIONING_PROFILE = "c8ece66b-9511-4c68-af89-f8d60f9346db";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -836,6 +839,7 @@
 				);
 				INFOPLIST_FILE = AirforUTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.uclahealth.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AirForUTests;
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirforU.app/AirforU";
@@ -854,6 +858,7 @@
 				);
 				INFOPLIST_FILE = AirforUTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.uclahealth.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AirForUTests;
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirforU.app/AirforU";
