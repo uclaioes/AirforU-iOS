@@ -7,7 +7,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.qingweilan.uclahealth.AirForU</string>
+	<string>org.uclahealth.AirForU</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -18,5 +18,7 @@
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
 	<false/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:634678181719:ios:2f9564d0445512f8</string>
 </dict>
 </plist>
